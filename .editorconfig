@@ -13,11 +13,3 @@ indent_size = 4
 # Don't trim end spacing because unfortunately Markdown uses that
 indent_style = space
 trim_trailing_whitespace = false
-
-[*.{bash,sh,zsh}]
-indent_style = space
-indent_size = 2
-
-[{.zsh*,.bash*}]
-indent_style = space
-indent_size = 2
