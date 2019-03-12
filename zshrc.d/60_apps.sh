@@ -148,7 +148,7 @@ fi
 # tmux -------------------------------------------------------------------------
 # re-home app configs to ~/.config
 # tmux sucks at modern and uses -f instead of knowing about XDG
-export TMUX_HOME="$XDG_CONFIG_HOME"/tmux/tmux.conf && _ensure "$TMUX_HOME"
+export TMUX_HOME="$XDG_CONFIG_HOME"/tmux/tmux.conf
 alias tmux='tmux -f "$TMUX_HOME"'
 
 # todo.txt ---------------------------------------------------------------------
@@ -156,6 +156,3 @@ export TODOTXT_CFG_FILE="$XDG_CONFIG_HOME"/todotxt/config
 export TODO="t"
 alias t="todo.sh"
 alias todo="subl ~/Dropbox/notes/todo/todo.txt"
-
-# z
-export _Z_DATA="${XDG_DATA_HOME}/z/z"

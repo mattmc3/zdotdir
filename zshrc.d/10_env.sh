@@ -1,6 +1,6 @@
 # exports
-[[ -n "$TZ" ]] || export TZ=America/New_York
-[[ -n "$TERM" ]] || export TERM=xterm-256color
+export TZ="${TZ:-America/New_York}"
+export TERM="${TERM:-xterm-256color}"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then

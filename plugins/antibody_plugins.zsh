@@ -12,7 +12,7 @@ source $HOME/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-
 fpath+=( $HOME/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-arzzen-SLASH-calc.plugin.zsh )
 source $HOME/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-rupa-SLASH-z/z.sh
 fpath+=( $HOME/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-rupa-SLASH-z )
-source $HOME/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh/plugins/colored-man-pages/colored-man-pages.plugin.zsh
-fpath+=( $HOME/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh/plugins/colored-man-pages )
+source $HOME/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ael-code-SLASH-zsh-colored-man-pages/colored-man-pages.plugin.zsh
+fpath+=( $HOME/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ael-code-SLASH-zsh-colored-man-pages )
 source $HOME/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-denysdovhan-SLASH-spaceship-prompt/spaceship.zsh
 fpath+=( $HOME/Library/Caches/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-denysdovhan-SLASH-spaceship-prompt )
