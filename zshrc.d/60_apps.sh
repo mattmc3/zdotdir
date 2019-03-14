@@ -109,7 +109,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 # python
-export WORKON_HOME=~/.virtualenvs
+export WORKON_HOME="${WORKON_HOME:-$HOME/.virtualenvs}"
 
 alias py2='python2'
 alias py3='python3'
@@ -121,6 +121,7 @@ alias pygrep='grep --include="*.py"'
 alias pyva="source .venv/bin/activate"
 
 workon() {
+	[[ -z "$1" ]] && { echo "Expecting workon project name"; return 1; }
 	source "$WORKON_HOME/$1/bin/activate"
 }
 
