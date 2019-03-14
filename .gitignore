@@ -3,3 +3,4 @@
 zsh_history
 *.local
 *_local
+*.zwc

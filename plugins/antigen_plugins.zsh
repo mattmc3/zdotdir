@@ -5,12 +5,19 @@ export ADOTDIR="${ADOTDIR:-$XDG_DATA_HOME/antigen}"
 [[ -f "$ADOTDIR"/antigen.zsh ]] || curl -L git.io/antigen > "$ADOTDIR"/antigen.zsh
 source "$ADOTDIR"/antigen.zsh
 
+# tell antigen to monitor the following files for changes
+typeset -a ANTIGEN_CHECK_FILES=("$ZDOTDIR/.zshrc" "$ZDOTDIR/plugins/antigen_plugins.zsh" "$ADOTDIR/antigen.zsh")
+
 export ZSH=$ADOTDIR/plugins/bundles/robbyrussell/oh-my-zsh
 
 antigen use oh-my-zsh
 
-# themes I like: refined, wezm, juanghurtado, avit, kardan, juanghurtado, steeef
-antigen theme avit
+# omz themes I like:
+#   refined, wezm, juanghurtado, avit, kardan, juanghurtado, steeef
+# 3rd party themes:
+#   sindresorhus/pure
+#   denysdovhan/spaceship-prompt
+antigen theme denysdovhan/spaceship-prompt
 
 # antigen can init via heredocs
 antigen bundles <<EOBUNDLES
@@ -20,21 +27,19 @@ common-aliases
 extract
 # history
 # osx
-# python
+python
 # golang
 
 rupa/z
 mafredri/zsh-async
-arzzen/calc.plugin.zsh
+# arzzen/calc.plugin.zsh
 
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-completions
 
-# # themes
-# sindresorhus/pure
-# denysdovhan/spaceship-prompt
-
 EOBUNDLES
 antigen apply
+
+alias ls='ls -GF'

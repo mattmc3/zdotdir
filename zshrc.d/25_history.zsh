@@ -1,6 +1,7 @@
 SAVEHIST="${SAVEHIST:-50000}"
 HISTSIZE="${HISTSIZE:-50000}"
 HIST_STAMPS="${HIST_STAMPS:-yyyy-mm-dd}"  # https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/history.zsh
+HISTFILE="$HOME/.zsh_history"
 
 setopt append_history
 setopt extended_history
