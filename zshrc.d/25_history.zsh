@@ -1,14 +1,15 @@
-SAVEHIST=10000
-HISTSIZE=10000
+SAVEHIST="${SAVEHIST:-50000}"
+HISTSIZE="${HISTSIZE:-50000}"
+HIST_STAMPS="${HIST_STAMPS:-yyyy-mm-dd}"  # https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/history.zsh
 
-setopt APPEND_HISTORY
-setopt EXTENDED_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY
-setopt INC_APPEND_HISTORY
-setopt NO_HIST_BEEP
-setopt SHARE_HISTORY
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_find_no_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_verify
+setopt inc_append_history
+setopt no_hist_beep
+setopt share_history
