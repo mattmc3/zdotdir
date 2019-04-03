@@ -2,6 +2,5 @@
 .*_history
 *_history
 *.local
-*_local
 *.zwc
 *.bak

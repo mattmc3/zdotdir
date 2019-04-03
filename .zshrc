@@ -3,6 +3,6 @@ for file in $ZDOTDIR/conf.d/*.{sh,zsh}(N); do
   source "$file"
 done
 
-[[ -f $ZDOTDIR/.zshrc.local ]] && . $ZDOTDIR/.zshrc.local
+[[ -f "$ZDOTDIR"/.shellrc.local ]] && . "$ZDOTDIR"/.shellrc.local
 
 true  # make exit code happy

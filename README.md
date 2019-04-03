@@ -15,17 +15,17 @@ find ~ -type f -maxdepth 1 \( -name '.bash*' -o -name '.zsh*' \) -exec cp {} {}.
 ### ZSH
 
 ```zsh
-git clone git@github.com/mattmc3/dotfiles.shell ~/.shell
+git clone git@github.com:mattmc3/dotfiles.shell.git ~/.shell
 echo "export ZDOTDIR=~/.shell" > ~/.zshenv
-echo '[[ -f "$ZDOTDIR"/.zshenv ]] source "$ZDOTDIR"/.zshenv' >> ~/.zshenv
+echo '[[ -f "$ZDOTDIR"/.zshenv ]] && source "$ZDOTDIR"/.zshenv' >> ~/.zshenv
 ```
 
 ### Bash
 
 ```bash
-git clone git@github.com/mattmc3/dotfiles.shell ~/.shell
+git clone git@github.com:mattmc3/dotfiles.shell.git ~/.shell
 echo "export BASHDOTDIR=~/.shell" > ~/.bash_profile
-echo '[[ -f "$BASHDOTDIR"/.bash_profile ]] source "$BASHDOTDIR"/.bash_profile' >> ~/.bash_profile
+echo '[[ -f "$BASHDOTDIR"/.bash_profile ]] && source "$BASHDOTDIR"/.bash_profile' >> ~/.bash_profile
 echo "export BASHDOTDIR=~/.shell" > ~/.bashrc
-echo '[[ -f "$BASHDOTDIR"/.bashrc ]] source "$BASHDOTDIR"/.bashrc' >> ~/.bashrc
+echo '[[ -f "$BASHDOTDIR"/.bashrc ]] && source "$BASHDOTDIR"/.bashrc' >> ~/.bashrc
 ```

@@ -156,4 +156,4 @@ alias tmux='tmux -f "$TMUX_HOME"'
 export TODOTXT_CFG_FILE="$XDG_CONFIG_HOME"/todotxt/config
 export TODO="t"
 alias t="todo.sh"
-alias todo="subl ~/Dropbox/notes/todo/todo.txt"
+alias todos="subl ~/Desktop/todo.txt"
