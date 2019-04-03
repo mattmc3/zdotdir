@@ -1,2 +1,2 @@
-export BASHDOTDIR="${BASHDOTDIR:-$HOME/.shell}"
+export BASHDOTDIR="${BASHDOTDIR:-$HOME/.config/shell}"
 source "$BASHDOTDIR"/.bashrc
