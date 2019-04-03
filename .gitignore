@@ -1,6 +1,7 @@
 ~*
-.zsh_history
-zsh_history
+.*_history
+*_history
 *.local
 *_local
 *.zwc
+*.bak

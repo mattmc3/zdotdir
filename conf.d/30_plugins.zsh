@@ -6,7 +6,7 @@ export ADOTDIR="${ADOTDIR:-$XDG_DATA_HOME/antigen}"
 source "$ADOTDIR"/antigen.zsh
 
 # tell antigen to monitor the following files for changes
-typeset -a ANTIGEN_CHECK_FILES=("$ZDOTDIR/.zshrc" "$ZDOTDIR/plugins/antigen_plugins.zsh" "$ADOTDIR/antigen.zsh")
+typeset -a ANTIGEN_CHECK_FILES=("$ZDOTDIR"/.zshrc "$ADOTDIR"/antigen.zsh "$ZDOTDIR"/conf.d/*.zsh "$ZDOTDIR"/conf.d/*.sh)
 
 export ZSH=$ADOTDIR/plugins/bundles/robbyrussell/oh-my-zsh
 
@@ -42,4 +42,6 @@ zsh-users/zsh-completions
 EOBUNDLES
 antigen apply
 
+# fixes for plugins
 alias ls='ls -GF'
+export LSCOLORS=ExFxBxDxCxegedabagacad

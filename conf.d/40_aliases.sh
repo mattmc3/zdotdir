@@ -4,39 +4,39 @@
 
 # zsh only aliases
 if [[ -n $ZSH_VERSION ]]; then
-	alias 1='cd -'
-	alias 2='cd -2'
-	alias 3='cd -3'
-	alias 4='cd -4'
-	alias 5='cd -5'
-	alias 6='cd -6'
-	alias 7='cd -7'
-	alias 8='cd -8'
-	alias 9='cd -9'
+  alias 1='cd -'
+  alias 2='cd -2'
+  alias 3='cd -3'
+  alias 4='cd -4'
+  alias 5='cd -5'
+  alias 6='cd -6'
+  alias 7='cd -7'
+  alias 8='cd -8'
+  alias 9='cd -9'
 
-	alias cd..='cd ..'
-	alias -g ..2='../..'
-	alias -g ..3='../../..'
-	alias -g ..4='../../../..'
-	alias -g ..5='../../../../..'
-	alias -g ...='../..'
-	alias -g ....='../../..'
-	alias -g .....='../../../..'
-	alias -g ......='../../../../..'
-	alias zshrc='ide "${ZDOTDIR:-$HOME}"/.zshrc'
-	alias reload='source "${ZDOTDIR:-$HOME}"/.zshrc'
+  alias cd..='cd ..'
+  alias -g ..2='../..'
+  alias -g ..3='../../..'
+  alias -g ..4='../../../..'
+  alias -g ..5='../../../../..'
+  alias -g ...='../..'
+  alias -g ....='../../..'
+  alias -g .....='../../../..'
+  alias -g ......='../../../../..'
+  alias zshrc='ide "${ZDOTDIR:-$HOME}"/.zshrc'
+  alias reload='source "${ZDOTDIR:-$HOME}"/.zshrc'
 
-	# zsh pipes
-	alias -g H='| head'
-	alias -g T='| tail'
-	alias -g G='| grep -E'
-	alias -g S='| sort'
-	alias -g L='| less'
-	alias -g M='| more'
+  # zsh pipes
+  alias -g H='| head'
+  alias -g T='| tail'
+  alias -g G='| grep -E'
+  alias -g S='| sort'
+  alias -g L='| less'
+  alias -g M='| more'
 
 elif [[ -n $BASH_VERSION ]]; then
-	alias s="source ~/.bashrc"  # quick sourcing
-	alias reload="source ~/.bashrc"
+  alias s="source ~/.bashrc"  # quick sourcing
+  alias reload="source ~/.bashrc"
 fi
 
 # mask built-ins with better defaults
