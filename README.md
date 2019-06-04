@@ -1,4 +1,4 @@
-# dotfiles.shell
+# dotfiles.zsh
 
 My ~/.zsh directory, which contains my zsh configuration.
 
