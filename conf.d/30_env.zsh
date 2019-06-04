@@ -1,4 +1,5 @@
-# exports
+export DOTFILES=~/.dotfiles
+export LSCOLORS=ExFxBxDxCxegedabagacad
 export TZ="${TZ:-America/New_York}"
 export TERM="${TERM:-xterm-256color}"
 
@@ -13,16 +14,15 @@ fi
 export VISUAL='code'
 export PAGER='less'
 
-if [[ -n $ZSH_VERSION ]]; then
-  # Set path
-  path=(
-    $HOME/bin
-    /usr/local/{sbin,bin}
-    /usr/local/share/npm/bin
-    /usr/{sbin,bin}
-    /{sbin,bin}
-    $path
-  )
+# Set path
+path=(
+  $HOME/bin
+  /usr/local/{sbin,bin}
+  /usr/{sbin,bin}
+  /{sbin,bin}
+  /usr/local/share/npm/bin
+  .
+  $path
+)
 
-  typeset -gxU path
-fi
+typeset -gxU path

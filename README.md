@@ -1,31 +1,32 @@
 # dotfiles.shell
 
-My ~/.shell directory, which contains my zsh/bash configuration.
+My ~/.zsh directory, which contains my zsh configuration.
 
 ## Installation
 
-### Backups
+```zsh
+# its a good idea to backup existing files first
+find ~ -type f -maxdepth 1 -name '.zsh*' -exec cp {} {}.bak \;
 
-**Warning**: before running these commands, you may want to backup your existing dotfiles:
+# set the amazing ZDOTDIR variable
+export ZDOTDIR=~/.zsh
 
-```bash
-find ~ -type f -maxdepth 1 \( -name '.bash*' -o -name '.zsh*' \) -exec cp {} {}.bak \;
+# clone this repo
+git clone git@github.com:mattmc3/dotfiles.zsh.git $ZDOTDIR
+
+# place the .zshenv file
+ln -sf $ZDOTDIR/.zshenv ~/.zshenv
+
+# load zsh
+zsh
 ```
 
-### ZSH
+### Alternative
+
+If you would rather not deal with symlinks, you can easily make a simple
+`~/.zshenv` file.
 
 ```zsh
-git clone git@github.com:mattmc3/dotfiles.shell.git ~/.config/shell
-echo "export ZDOTDIR=~/.config/shell" > ~/.zshenv
+echo "export ZDOTDIR=~/.zsh" > ~/.zshenv
 echo '[[ -f "$ZDOTDIR"/.zshenv ]] && source "$ZDOTDIR"/.zshenv' >> ~/.zshenv
-```
-
-### Bash
-
-```bash
-git clone git@github.com:mattmc3/dotfiles.shell.git ~/.config/shell
-echo "export BASHDOTDIR=~/.config/shell" > ~/.bash_profile
-echo '[[ -f "$BASHDOTDIR"/.bash_profile ]] && source "$BASHDOTDIR"/.bash_profile' >> ~/.bash_profile
-echo "export BASHDOTDIR=~/.config/shell" > ~/.bashrc
-echo '[[ -f "$BASHDOTDIR"/.bashrc ]] && source "$BASHDOTDIR"/.bashrc' >> ~/.bashrc
 ```
