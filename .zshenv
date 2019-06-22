@@ -1,8 +1,7 @@
-# # ~/.zshenv sources this file. It should only contain the following lines:
-#
-# export ZDOTDIR=~/.zsh
-# [[ -f $ZDOTDIR/.zshenv ]] source $ZDOTDIR/.zshenv
-#
+# ~/.zshenv is linked to this file.
+# ZDOTDIR=${ZDOTDIR:-$HOME/.zsh}; ln -s $ZDOTDIR/.zshenv ~/.zshenv
+
+export ZDOTDIR=~/.zsh
 
 # Make sure XDG dirs are set
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"

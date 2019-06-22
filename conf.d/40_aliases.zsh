@@ -57,7 +57,7 @@ alias del='safe-rm -i'
 alias _='sudo'
 alias c='clear'
 alias d='dirs -v | head -10'
-alias g='git'
+#alias g='git'
 alias v='nvim'
 alias h='history'
 
