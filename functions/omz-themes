@@ -1,0 +1,6 @@
+# list the zsh themes available, or set a theme
+if [ -z "$1" ]; then
+	find "$ZSH"/themes -type f -name '*.zsh-theme' -exec basename {} .zsh-theme \; | sort -f | column
+else
+	antigen theme "$1" || antigen theme "$OMZ_THEME"
+fi

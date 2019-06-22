@@ -1,0 +1,2 @@
+# list the zsh plugins available
+find "$ZSH"/plugins -type d -exec basename {} \; | sort -f | column

@@ -1,21 +1,7 @@
 # functions - only put things here that really should be loaded with each and
 # every shell instance
 
-up() {
-  if [[ "$#" < 1 ]] ; then
-    cd ..
-  else
-    local CDSTR=""
-    for i in {1..$1} ; do
-      CDSTR="../$CDSTR"
-    done
-    cd $CDSTR
-  fi
-}
-
-shellname() {
-  ps -p $$ -ocomm= | sed -E -e 's/^.*[\/\-]//'
-}
+export CDLS=${CDLS:-true}
 
 if [[ -n $ZSH_VERSION ]]; then
   # 'ls' after 'cd'
@@ -27,3 +13,6 @@ if [[ -n $ZSH_VERSION ]]; then
     fi
   }
 fi
+
+fpath=("$ZDOTDIR"/functions $fpath);
+autoload -U "$ZDOTDIR"/functions/*(.:t)
