@@ -13,7 +13,10 @@ rupa/z
 zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
 
+# theme
+mattmc3/omz-themes-standalone
+# sindresorhus/pure
+
 # these should be at last!
-sindresorhus/pure
 zdharma/fast-syntax-highlighting
 zsh-users/zsh-history-substring-search
