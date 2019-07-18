@@ -5,4 +5,4 @@
 *.zwc
 *.bak
 .antigen
-.zcompdump
+.zcompdump*
