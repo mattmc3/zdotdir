@@ -23,10 +23,8 @@ if [[ -n $ZSH_VERSION ]]; then
   alias -g ....='../../..'
   alias -g .....='../../../..'
   alias -g ......='../../../../..'
-
-  alias zshrc='$VISUAL "${ZDOTDIR:-$HOME}"/.zshrc'
+  alias zshrc='ide "${ZDOTDIR:-$HOME}"/.zshrc'
   alias reload='source "${ZDOTDIR:-$HOME}"/.zshrc'
-  alias zbenchmark="for i in \$(seq 1 10); do /usr/bin/time /usr/local/bin/zsh -i -c exit; done"
 
   # zsh pipes
   alias -g H='| head'
@@ -35,15 +33,18 @@ if [[ -n $ZSH_VERSION ]]; then
   alias -g S='| sort'
   alias -g L='| less'
   alias -g M='| more'
+
+elif [[ -n $BASH_VERSION ]]; then
+  alias s="source ~/.bashrc"  # quick sourcing
+  alias reload="source ~/.bashrc"
 fi
 
 # mask built-ins with better defaults
 alias cp='cp -i'
 alias mv='mv -i'
-# alias rm='rm -i'
-alias rm='safe-rm -i'
+alias rm='rm -i'
 alias ls='ls -GF'
-alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
+alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ping='ping -c 5'
 
 # be safe
@@ -58,7 +59,7 @@ alias del='safe-rm -i'
 alias _='sudo'
 alias c='clear'
 alias d='dirs -v | head -10'
-#alias g='git'
+alias g='git'
 alias v='nvim'
 alias h='history'
 
@@ -79,7 +80,7 @@ alias pu=pushd
 alias zz=exit
 alias globurl='noglob urlglobber '
 
-# more ways to ls
+# ls
 alias ll='ls -lFh'
 alias l='ls -F'
 alias la='ls -lAFh'

@@ -1,4 +1,4 @@
-# java -------------------------------------------------------------------------
+# java
 if [[ "$OSTYPE" == darwin* ]]; then
   # run this: /usr/libexec/java_home -v 10
   export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home"

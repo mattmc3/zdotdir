@@ -1,20 +1,11 @@
 mafredri/zsh-async
 
-robbyrussell/oh-my-zsh path:lib/clipboard.zsh
-robbyrussell/oh-my-zsh path:lib/directories.zsh
-robbyrussell/oh-my-zsh path:lib/key-bindings.zsh
-
-robbyrussell/oh-my-zsh path:plugins/colored-man-pages
-robbyrussell/oh-my-zsh path:plugins/extract
-robbyrussell/oh-my-zsh path:plugins/python
-
-rupa/z
+robbyrussell/oh-my-zsh
 
 zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
 
 # theme
-mattmc3/omz-themes-standalone
 # sindresorhus/pure
 
 # these should be at last!

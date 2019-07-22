@@ -1,4 +1,3 @@
-export DOTFILES=~/.dotfiles
 export LSCOLORS=ExFxBxDxCxegedabagacad
 export TZ="${TZ:-America/New_York}"
 export TERM="${TERM:-xterm-256color}"

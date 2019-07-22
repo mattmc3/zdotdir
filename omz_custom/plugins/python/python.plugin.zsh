@@ -1,4 +1,4 @@
-# python -----------------------------------------------------------------------
+# python
 export WORKON_HOME="${WORKON_HOME:-$HOME/.virtualenvs}"
 
 alias py2='python2'
@@ -20,7 +20,40 @@ pyclean() {
   find . -type d -name "__pycache__" -delete
 }
 
-if [[ -n $ZSH_VERSION ]]; then
+if [[ -n $WORKON_HOME ]]; then
   # python: tab complete for workon dir (virtualenv)
   compdef '_files -W "$WORKON_HOME"' workon &> /dev/null
 fi
+
+pip_export() {
+  __pip_export "pip" "$@"
+}
+
+pip2_export() {
+  __pip_export "pip2" "$@"
+}
+
+pip3_export() {
+  __pip_export "pip3" "$@"
+}
+
+__pip_export() {
+  $1 freeze
+}
+
+pip_import() {
+  __pip_import "pip" "$@"
+}
+
+pip2_import() {
+  __pip_import "pip2" "$@"
+}
+
+pip3_import() {
+  __pip_import "pip3" "$@"
+}
+
+__pip_import() {
+  [[ -f "$2" ]] || { echo "Usage: Expecting valid requirements.txt path" >&2; return; }
+  $1 install -r "$2"
+}
