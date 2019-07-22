@@ -41,7 +41,7 @@ fi
 alias cp='cp -i'
 alias mv='mv -i'
 # alias rm='rm -i'
-alias rm='safe-rm -i'
+alias rm='safe-rm'
 alias ls='ls -GF'
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ping='ping -c 5'
