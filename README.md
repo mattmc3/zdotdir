@@ -1,6 +1,6 @@
-# dotfiles.zsh
+# zdotdir
 
-My ~/.zsh directory, which contains my zsh configuration.
+My ~/.config/zsh directory, which contains my zsh configuration.
 
 ## Installation
 
@@ -9,10 +9,10 @@ My ~/.zsh directory, which contains my zsh configuration.
 find ~ -type f -maxdepth 1 -name '.zsh*' -exec cp {} {}.bak \;
 
 # set the amazing ZDOTDIR variable
-export ZDOTDIR=~/.zsh
+export ZDOTDIR=~/.config/zsh
 
 # clone this repo
-git clone git@github.com:mattmc3/dotfiles.zsh.git $ZDOTDIR
+git clone git@github.com:mattmc3/zdotdir.git $ZDOTDIR
 
 # place the .zshenv file
 ln -sf $ZDOTDIR/.zshenv ~/.zshenv
@@ -41,14 +41,14 @@ The latest benchmark run shows that we load a new shell pretty fast.
 ```zsh
 % # 2.5 GHz i7 MacBook Pro
 % zbenchmark
-        0.09 real         0.05 user         0.03 sys
-        0.08 real         0.04 user         0.03 sys
-        0.08 real         0.04 user         0.03 sys
-        0.08 real         0.04 user         0.03 sys
-        0.08 real         0.04 user         0.03 sys
-        0.08 real         0.04 user         0.03 sys
-        0.08 real         0.04 user         0.03 sys
-        0.08 real         0.04 user         0.03 sys
-        0.08 real         0.04 user         0.03 sys
-        0.08 real         0.04 user         0.03 sys
+        0.12 real         0.06 user         0.04 sys
+        0.11 real         0.06 user         0.04 sys
+        0.11 real         0.06 user         0.04 sys
+        0.11 real         0.06 user         0.04 sys
+        0.11 real         0.06 user         0.04 sys
+        0.11 real         0.06 user         0.04 sys
+        0.11 real         0.06 user         0.04 sys
+        0.12 real         0.07 user         0.04 sys
+        0.12 real         0.07 user         0.04 sys
+        0.11 real         0.06 user         0.04 sys
 ```
