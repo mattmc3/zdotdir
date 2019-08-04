@@ -1,8 +1,4 @@
 # prezto ------------------------------------------------------------------- {{{
-if [[ -s "${ZDOTDIR:-$HOME}/plugins/prezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/plugins/prezto/init.zsh"
-fi
-
 # Unset stuff from prezto...
 unsetopt correct
 unsetopt correctall
