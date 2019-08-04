@@ -1,6 +1,9 @@
 # set plugin variables here
 export _Z_DATA="$XDG_DATA_HOME/z/data"
 
+#
+# antibody is an option if you want it
+#
 # source <(antibody init)
 # antibody bundle < $ZDOTDIR/zsh_plugins
 
