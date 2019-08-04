@@ -51,4 +51,17 @@ The latest benchmark run shows that we load a new shell pretty fast.
         0.12 real         0.07 user         0.04 sys
         0.12 real         0.07 user         0.04 sys
         0.11 real         0.06 user         0.04 sys
+
+% # 2.8 GHz i7 MacBook Pro
+% zbenchmark
+        0.09 real         0.05 user         0.03 sys
+        0.09 real         0.06 user         0.03 sys
+        0.09 real         0.06 user         0.03 sys
+        0.09 real         0.05 user         0.03 sys
+        0.09 real         0.06 user         0.03 sys
+        0.09 real         0.05 user         0.03 sys
+        0.09 real         0.06 user         0.03 sys
+        0.09 real         0.05 user         0.03 sys
+        0.09 real         0.06 user         0.03 sys
+        0.09 real         0.06 user         0.03 sys
 ```
