@@ -1,10 +1,10 @@
 
 if [[ "$#" < 1 ]] ; then
-	cd ..
+  cd ..
 else
-	local CDSTR=""
-	for i in {1..$1} ; do
-		CDSTR="../$CDSTR"
-	done
-	cd $CDSTR
+  local CDSTR=""
+  for i in {1..$1} ; do
+    CDSTR="../$CDSTR"
+  done
+  cd $CDSTR
 fi

@@ -1,2 +1,6 @@
 # list the zsh plugins available
-find "$ZSH"/plugins -type d -exec basename {} \; | sort -f | column
+if [ -n "$ZSH" ]; then
+  find "$ZSH"/plugins -type d -exec basename {} \; | sort -f | column
+else
+  echo "\$ZSH not set"
+fi

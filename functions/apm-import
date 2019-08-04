@@ -1,0 +1,3 @@
+[[ -f "$1" ]] || { echo "Usage: Expecting valid apm file path" >&2; return; }
+awk -F'@' '{print $1}' "$1" |
+xargs -I % sh -c '[ ! -d "$ATOM_HOME/packages/%" ] && apm install % --compatible || echo "already installed: %"'
