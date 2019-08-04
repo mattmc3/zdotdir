@@ -36,6 +36,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'autosuggestions' \
   'history-substring-search' \
+  'git' \
   'ssh' \
   'completion' \
   'prompt'
