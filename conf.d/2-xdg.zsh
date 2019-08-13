@@ -54,7 +54,7 @@ function verify_appfile {
 #
 # atom
 #
-if type apm &> /dev/null; then
+if command -v apm &> /dev/null; then
   export ATOM_HOME="$XDG_CONFIG_HOME"/atom
   [[ $VERIFY_XDG == true ]] && verify_appdir "$ATOM_HOME" "$HOME"/.atom
 fi
@@ -62,8 +62,8 @@ fi
 #
 # docker and docker-machine
 #
-if type docker &> /dev/null; then
-  if type docker-machine &> /dev/null; then
+if command -v docker &> /dev/null; then
+  if command -v docker-machine &> /dev/null; then
     export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
     [[ $VERIFY_XDG == true ]] && verify_appdir "$MACHINE_STORAGE_PATH" "$HOME"/.docker/machine
   fi
@@ -74,7 +74,7 @@ fi
 #
 # gnupg
 #
-if type gpg &> /dev/null || type gpg2 &> /dev/null; then
+if command -v gpg &> /dev/null || command -v gpg2 &> /dev/null; then
   export GNUPGHOME="$XDG_DATA_HOME"/gnupg
   [[ $VERIFY_XDG == true ]] && verify_appdir "$GNUPGHOME" "$HOME"/.gnupg
 fi
@@ -82,7 +82,7 @@ fi
 #
 # ipython/jupyter
 #
-if type ipython &> /dev/null || type jupyter &> /dev/null; then
+if command -v ipython &> /dev/null || type jupyter &> /dev/null; then
   export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
   [[ $VERIFY_XDG == true ]] && verify_appdir "$IPYTHONDIR" "$HOME"/.ipython
   export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
@@ -92,7 +92,7 @@ fi
 #
 # less
 #
-if type less &> /dev/null; then
+if command -v less &> /dev/null; then
   export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
   [[ $VERIFY_XDG == true ]] && verify_appfile "$LESSKEY" "$HOME"/.less
   export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
@@ -102,7 +102,7 @@ fi
 #
 # npm
 #
-if type npm &> /dev/null; then
+if command -v npm &> /dev/null; then
   npmrc=$(cat <<EOF
 prefix=\${XDG_DATA_HOME}/npm
 cache=\${XDG_CACHE_HOME}/npm
@@ -117,7 +117,7 @@ fi
 #
 # python
 #
-if type python3 &> /dev/null || type virtualenv &> /dev/null; then
+if command -v python3 &> /dev/null || type virtualenv &> /dev/null; then
   export WORKON_HOME="$XDG_DATA_HOME"/venvs
   [[ $VERIFY_XDG == true ]] && verify_appdir "$WORKON_HOME" "$HOME"/.virtualenvs
 fi
@@ -125,7 +125,7 @@ fi
 #
 # python-pylint
 #
-if type pylint &> /dev/null; then
+if command -v pylint &> /dev/null; then
   export PYLINTHOME="$XDG_CACHE_HOME"/pylint
   [[ $VERIFY_XDG == true ]] && verify_appdir "$PYLINTHOME" "$HOME"/.pylint.d
 fi
@@ -139,7 +139,7 @@ export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 #
 # screen
 #
-if type screen &> /dev/null; then
+if command -v screen &> /dev/null; then
   export SCREENRC="$XDG_CONFIG_HOME"/screen/.screenrc
   [[ $VERIFY_XDG == true ]] && verify_appfile "$SCREENRC" "$HOME"/.screenrc
 fi
@@ -147,7 +147,7 @@ fi
 #
 # subversion
 #
-if type svn &> /dev/null; then
+if command -v svn &> /dev/null; then
   [[ $VERIFY_XDG == true ]] && verify_appdir "$XDG_CONFIG_HOME"/subversion "$HOME"/.svn
   alias svn="command svn --config-dir \"$XDG_CONFIG_HOME\"/subversion"
 fi
@@ -155,7 +155,7 @@ fi
 #
 # sqlite
 #
-if type sqlite3 &> /dev/null; then
+if command -v sqlite3 &> /dev/null; then
   export SQLITE_HISTORY="$XDG_DATA_HOME"/sqlite/sqlite_history
   [[ $VERIFY_XDG == true ]] && verify_appfile "$SQLITE_HISTORY" "$HOME"/.sqlite_history
 fi
@@ -163,7 +163,7 @@ fi
 #
 # tmux
 #
-if type tmux &> /dev/null; then
+if command -v tmux &> /dev/null; then
   export TMUX_CONFIG="$XDG_CONFIG_HOME"/tmux/tmux.conf
   [[ $VERIFY_XDG == true ]] && verify_appfile "$TMUX_CONFIG" "$HOME"/.tmux.conf
   # tmux devs are stubborn turkeys (that's the nice version)
@@ -175,7 +175,7 @@ fi
 #
 # todo.sh (todo.txt)
 #
-if type todo.sh &> /dev/null; then
+if command -v todo.sh &> /dev/null; then
   export TODOTXT_CFG_FILE="$XDG_CONFIG_HOME"/todo-txt/config
   verify_appfile "$TODOTXT_CFG_FILE" "$HOME"/.todo/config
 fi
@@ -183,7 +183,7 @@ fi
 #
 # wget
 #
-if type wget &> /dev/null; then
+if command -v wget &> /dev/null; then
   wgetrc_contents=$(cat <<EOF
 hsts-file = $XDG_CACHE_HOME/wget-hsts
 EOF
@@ -195,7 +195,7 @@ fi
 #
 # z
 #
-if type z &> /dev/null; then
+if command -v z &> /dev/null; then
   export _Z_DATA="$XDG_DATA_HOME/z/data"
   verify_appfile "$_Z_DATA" "$HOME"/.z
 fi
