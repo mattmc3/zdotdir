@@ -1,1 +1,0 @@
-code --list-extensions
