@@ -1,1 +1,1 @@
-[[ -f "$ZDOTDIR"/.zshrc.local ]] && . "$ZDOTDIR"/.zshrc.local
+[[ -f "$ZDOTDIR"/.zshrc_local ]] && . "$ZDOTDIR"/.zshrc_local
