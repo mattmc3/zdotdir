@@ -50,9 +50,16 @@ alias ping='ping -c 5'
 alias cpi='cp -i'
 alias mvi='mv -i'
 alias rmi='rm -i'
+alias rm='echo "STOP using rm! Use del instead." >&2 && safe-rm -i'
 
-#alias rm='echo "STOP using rm! Use \"safe-rm\" instead. Removing anyway." && safe-rm "$@"'
-alias del='safe-rm -i'
+if command -v trash &> /dev/null; then
+  alias del='trash'
+elif command -v safe-rm &> /dev/null; then
+  alias del='safe-rm'
+else
+  echo "WARNING: no safe rm alternative. Using del='rm -i'" >&2
+  alias del='rm -i'
+fi
 
 # single character shortcuts - be sparing!
 alias _='sudo'
