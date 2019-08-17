@@ -1,0 +1,70 @@
+function __zshplug_update {
+  local plugin_dir="${ZDOTDIR}"/plugins
+  find "$plugin_dir" -type d -maxdepth 1 -exec test -e '{}/.git' ';' -print0 | while read -d $'\0' p
+  do
+    local plugin_name="${p##*/}"
+    echo "updating $plugin_name"
+    git --work-tree="$p" --git-dir="$p"/.git pull --recurse-submodules
+  done
+}
+
+function __zshplug_install {
+  local repo="$1"
+
+  if [[ -z "$repo" ]]; then
+    echo "zshplug install expects a repo name" >&2
+    echo "ex: zshplug install rupa/z" >&2
+    return 1
+  fi
+
+  local plugin_name="${repo##*/}"
+  local plugin_dir="${ZDOTDIR}"/plugins/$plugin_name
+
+  if [[ -d "$plugin_dir" ]]; then
+    echo "zshplug detected you already have this repo installed: $repo" >&2
+    return 1
+  fi
+
+  git clone --depth=1 --recursive "https://github.com/${repo}.git" "$plugin_dir"
+}
+
+function __zshplug_load {
+  local repo="$1"
+  local plugin_name="${repo##*/}"
+  local plugin_dir="${ZDOTDIR}/plugins/${plugin_name}"
+
+  if [[ ! -d "$plugin_dir" ]]; then
+    __zshplug_install "$repo"
+  fi
+
+  if [[ "$repo" == "robbyrussell/oh-my-zsh" ]]; then
+    # don't load frameworks
+    return
+  fi
+
+  for ext in '.plugin.zsh' '.zsh' '.sh' '.zsh-theme'; do
+    local f="$plugin_dir/${plugin_name}${ext}"
+    if [[ -f "$f" ]]; then
+      source "$f"
+      break
+    fi
+  done
+}
+
+function __zshplug {
+  local cmd="$1"
+  [[ -n $cmd ]] && shift
+
+  if [[ "$cmd" == "install" ]]; then
+    __zshplug_install "$@"
+  elif [[ "$cmd" == "update" ]]; then
+    __zshplug_update "$@"
+  elif [[ "$cmd" == "load" ]]; then
+    __zshplug_load "$@"
+  else
+    echo "zshplug expecting command" >&2
+    echo "ex: zshplug install rupa/z" >&2
+    return 1
+  fi
+}
+__zshplug "$@"

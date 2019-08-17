@@ -11,7 +11,3 @@ function chpwd() {
     ls -FG
   fi
 }
-
-# make the functions directory work like fish
-fpath=("$ZDOTDIR"/functions $fpath);
-autoload -U "$ZDOTDIR"/functions/*(.:t)

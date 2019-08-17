@@ -1,11 +1,15 @@
-rupa/z
-# zsh-users/zsh-completions
-# zsh-users/zsh-autosuggestions
+zsh_plugins=(
+  robbyrussell/oh-my-zsh
 
-# theme
-# mattmc3/omz-themes-standalone
-# sindresorhus/pure
+  rupa/z
+  # zsh-users/zsh-completions
+  # zsh-users/zsh-autosuggestions
 
-# these should be at last!
-zdharma/fast-syntax-highlighting
-# zsh-users/zsh-history-substring-search
+  # theme
+  # mattmc3/omz-themes-standalone
+  # sindresorhus/pure
+
+  # these should be at last!
+  zdharma/fast-syntax-highlighting
+  # zsh-users/zsh-history-substring-search
+)
