@@ -1,9 +1,11 @@
 ~*
 .*_history
 *_history
+*.zhistory
 *.local
 *.zwc
 *.bak
+*.old
 .antigen
 .zcompdump*
 plugins/*
