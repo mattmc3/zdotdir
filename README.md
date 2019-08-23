@@ -65,3 +65,17 @@ The latest benchmark run shows that we load a new shell pretty fast.
         0.09 real         0.06 user         0.03 sys
         0.09 real         0.06 user         0.03 sys
 ```
+
+## Resources
+
+- [Terminal Font][terminal-font]: Meslo LG M for Powerline
+- [antigen][antigen]
+- [antibody][antibody]
+- [oh my zsh][omz]
+- [supercharge your terminal with zsh][supercharge-zsh]
+
+[antigen]: https://github.com/zsh-users/antigen/wiki/In-the-wild
+[antibody]: https://getantibody.github.io/
+[supercharge-zsh]: https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
+[omz]: https://github.com/robbyrussell/oh-my-zsh/tree/master/lib
+[terminal-font]: https://github.com/powerline/fonts
