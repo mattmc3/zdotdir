@@ -3,8 +3,6 @@
 
 # ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}; ln -s $ZDOTDIR/.zshenv ~/.zshenv
 
-export ZDOTDIR=$HOME/.zsh
-
+export ZDOTDIR=$HOME/.config/zsh
 export DOTFILES="$HOME/.config/dotfiles"
-
-source $ZDOTDIR/xdg.zsh
+source $ZDOTDIR/xdg.sh
