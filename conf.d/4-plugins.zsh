@@ -24,4 +24,4 @@ _plugins
 unfunction _plugins
 
 # unset bad plugin settings here
-# ...
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
