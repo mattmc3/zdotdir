@@ -26,7 +26,7 @@ if [[ -n $ZSH_VERSION ]]; then
 
   alias zshrc='$VISUAL "${ZDOTDIR:-$HOME}"/.zshrc'
   alias reload='source "${ZDOTDIR:-$HOME}"/.zshrc'
-  alias zbenchmark="for i in \$(seq 1 10); do /usr/bin/time /usr/local/bin/zsh -i -c exit; done"
+  alias zbench="for i in \$(seq 1 10); do; /usr/bin/time zsh -i -c exit; done"
 
   # zsh pipes
   alias -g H='| head'
@@ -50,7 +50,12 @@ alias ping='ping -c 5'
 alias cpi='cp -i'
 alias mvi='mv -i'
 alias rmi='rm -i'
-alias rm='echo "STOP using rm! Use del instead." >&2 && safe-rm -i'
+
+if command -v safe-rm &> /dev/null; then
+  alias rm='safe-rm'
+else
+  alias rm='rm -i'
+fi
 
 if command -v trash &> /dev/null; then
   alias del='trash'
@@ -73,7 +78,6 @@ alias h='history'
 alias vi='nvim'
 alias vim='nvim'
 alias oldvim='\vim'
-alias cl='clear'
 alias py2='python2'
 alias py3='python3'
 alias py='python3'

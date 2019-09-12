@@ -4,8 +4,10 @@
 *.zhistory
 *.local
 *.zwc
+*.zwc.old
 *.bak
-*.old
 .antigen
 .zcompdump*
+.zdirs
 plugins/*
+

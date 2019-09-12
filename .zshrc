@@ -1,10 +1,15 @@
-# https://htr3n.github.io/2018/07/faster-zsh/
-# uncomment for profiling, then run zprof after zsh loads
-# zmodload zsh/zprof
-
+# zsh profiling
+# just execute 'ZSH_PROFILE_RC=1 zsh' and run 'zprof' to get the details
+if [[ $ZSH_PROFILE_RC -gt 0 ]] ; then
+    zmodload zsh/zprof
+    echo "run zprof to profile"
+fi
+# conf.d
 for file in $ZDOTDIR/conf.d/*.{sh,zsh}(N); do
   case $file:t in ~*) continue;; esac
   source "$file"
 done
+unset file
 
-return true  # start out error free
+# I dislike when my prompt starts with an error
+true

@@ -197,7 +197,3 @@ alias st="subl"
 
 alias t="todo.sh"
 alias todos="$VISUAL $HOME/Desktop/todo.txt"
-
-
-# zsh
-alias cleanzwc="find . -type f -name '*.zwc' -delete"

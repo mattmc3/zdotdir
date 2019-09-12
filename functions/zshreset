@@ -1,0 +1,2 @@
+command -v zgen >/dev/null 2>&1 && zgen reset
+command -v cleanzwc >/dev/null 2>&1 && cleanzwc reset

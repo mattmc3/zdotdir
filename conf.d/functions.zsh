@@ -1,6 +1,10 @@
 # functions - only put things here that really should be loaded with each and
 # every shell instance
 
+# make the functions directory work like fish
+fpath=("$ZDOTDIR"/functions $fpath);
+autoload -U "$ZDOTDIR"/functions/*(.:t)
+
 export CD_LS=${CD_LS:-true}
 
 # 'ls' after 'cd'

@@ -1,0 +1,2 @@
+emulate -L zsh
+cd $1 && ls -FG

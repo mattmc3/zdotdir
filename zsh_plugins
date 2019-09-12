@@ -1,15 +1,14 @@
-zsh_plugins=(
-  robbyrussell/oh-my-zsh
+# if you change this, don't forget to run `zgen reset`
 
-  rupa/z
-  # zsh-users/zsh-completions
-  # zsh-users/zsh-autosuggestions
+mafredri/zsh-async
+zsh-users/zsh-autosuggestions
 
-  # theme
-  # mattmc3/omz-themes-standalone
-  # sindresorhus/pure
+# theme
+# mattmc3/omz-themes-standalone
+sindresorhus/pure
+# denysdovhan/spaceship-prompt
 
-  # these should be at last!
-  zdharma/fast-syntax-highlighting
-  # zsh-users/zsh-history-substring-search
-)
+# these should be at last!
+zdharma/fast-syntax-highlighting
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-completions

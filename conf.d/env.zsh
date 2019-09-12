@@ -2,16 +2,21 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 export TZ="${TZ:-America/New_York}"
 export TERM="${TERM:-xterm-256color}"
 
-# Preferred editor for local and remote sessions
+# Set preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
-else
-  # https://help.github.com/articles/associating-text-editors-with-git/
-  # export EDITOR="subl -n -w"
-  export EDITOR='nvim'
+elif [[ -n $EDITOR ]]; then
+  if command -v subl &> /dev/null; then
+    export EDITOR="subl -n -w"
+  elif command -v nvim &> /dev/null; then
+    export EDITOR="nvim"
+  else
+    export EDITOR="vim"
+  fi
 fi
-export VISUAL='code'
-export PAGER='less'
+
+export VISUAL=${VISUAL:-code}
+export PAGER=${PAGER:-less}
 
 # Set path
 path=(
@@ -25,3 +30,6 @@ path=(
 )
 
 typeset -gxU path
+
+# plugin values and other variables
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
