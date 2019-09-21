@@ -4,6 +4,7 @@ if [[ $ZSH_PROFILE_RC -gt 0 ]] ; then
     zmodload zsh/zprof
     echo "run zprof to profile"
 fi
+
 # conf.d
 for file in $ZDOTDIR/conf.d/*.{sh,zsh}(N); do
   case $file:t in ~*) continue;; esac
