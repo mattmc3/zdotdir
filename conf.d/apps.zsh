@@ -179,6 +179,10 @@ alias pyva="source .venv/bin/activate"
 #   $1 install -r "$2"
 # }
 
+# ruby
+# brew doesn't link ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
 # ssh --------------------------------------------------------------------------
 # if [[ -f ~/.ssh/id_rsa ]] && ! ssh-add -L >/dev/null; then
 #   if [[ "$OSTYPE" == darwin* ]]; then
