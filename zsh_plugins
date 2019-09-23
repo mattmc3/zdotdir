@@ -1,4 +1,8 @@
-# if you change this, don't forget to run `zgen reset`
+# if you change this, you may need to rejigger some things
+# For zgen:
+#   zgen reset
+# For antibody:
+#   antibody bundle < ${1:-$ZDOTDIR/zsh_plugins} | sed "s|$HOME|\$HOME|g" > ${1:-$ZDOTDIR}/conf.d/1-antibody.zsh
 
 mafredri/zsh-async
 zsh-users/zsh-autosuggestions
