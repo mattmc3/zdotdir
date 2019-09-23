@@ -33,3 +33,4 @@ typeset -gxU path
 
 # plugin values and other variables
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
+PURE_PROMPT_SYMBOL="%%"
