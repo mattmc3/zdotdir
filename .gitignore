@@ -10,4 +10,4 @@
 .zcompdump*
 .zdirs
 plugins/*
-
+.zgen
