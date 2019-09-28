@@ -51,6 +51,19 @@ The latest benchmark run shows that we load a new shell pretty fast.
         0.07 real         0.03 user         0.02 sys
         0.07 real         0.03 user         0.03 sys
         0.07 real         0.03 user         0.03 sys
+
+% # 2.8 GHz i7 MacBook Pro
+% for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done
+        0.06 real         0.03 user         0.02 sys
+        0.05 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.05 real         0.03 user         0.02 sys
+        0.05 real         0.03 user         0.02 sys
+        0.05 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.05 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
 ```
 
 ## Resources
