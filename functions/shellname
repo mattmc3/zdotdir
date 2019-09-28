@@ -1,1 +1,2 @@
-ps -p $$ -ocomm= | sed -E -e 's/^.*[\/\-]//'
+local shellname=$(ps -p $$ -ocomm=)
+echo ${shellname#*-}

@@ -1,0 +1,1 @@
+apm list --installed --bare | grep -v 'node_modules' | grep . | sort -f

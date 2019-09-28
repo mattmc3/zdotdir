@@ -1,0 +1,2 @@
+[[ -f "$1" ]] || { echo "Usage: Expecting valid Brewfile path" >&2; return; }
+brew bundle --file="$1"
