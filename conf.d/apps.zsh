@@ -6,7 +6,6 @@ alias cs='cd'  # darn colemak
 
 ### dotfiles --------------------------------------------------------------- {{{
 alias dotf='cd "$DOTFILES" && $VISUAL .'
-alias dotfl='cd "${DOTFILES}.local" && $VISUAL .'
 
 
 ### git -------------------------------------------------------------------- {{{
@@ -62,6 +61,11 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 
+### images ----------------------------------------------------------------- {{{
+# auto-orient images based on exif tags
+alias autorotate="jhead -autorot"
+
+
 ### java ------------------------------------------------------------------- {{{
 if [[ "$OSTYPE" == darwin* ]]; then
   # run this: /usr/libexec/java_home -v 10
@@ -112,10 +116,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
 
   # macOS has no 'sha1sum', so use 'shasum' as a fallback
   command -v sha1sum > /dev/null || alias sha1sum="shasum"
-
-  # images {{{
-  # auto-orient images based on exif tags
-  alias autorotate="jhead -autorot"
 fi
 
 
@@ -132,44 +132,13 @@ alias pyfind='find . -name "*.py"'
 alias pygrep='grep --include="*.py"'
 alias pyva="source .venv/bin/activate"
 
-# pip_export() {
-#   __pip_export "pip" "$@"
-# }
 
-# pip2_export() {
-#   __pip_export "pip2" "$@"
-# }
-
-# pip3_export() {
-#   __pip_export "pip3" "$@"
-# }
-
-# __pip_export() {
-#   $1 freeze
-# }
-
-# pip_import() {
-#   __pip_import "pip" "$@"
-# }
-
-# pip2_import() {
-#   __pip_import "pip2" "$@"
-# }
-
-# pip3_import() {
-#   __pip_import "pip3" "$@"
-# }
-
-# __pip_import() {
-#   [[ -f "$2" ]] || { echo "Usage: Expecting valid requirements.txt path" >&2; return; }
-#   $1 install -r "$2"
-# }
-
-# ruby
+# ruby --------------------------------------------------------------------- {{{
 # brew doesn't link ruby
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
-# ssh --------------------------------------------------------------------------
+
+# ssh ---------------------------------------------------------------------- {{{
 # if [[ -f ~/.ssh/id_rsa ]] && ! ssh-add -L >/dev/null; then
 #   if [[ "$OSTYPE" == darwin* ]]; then
 #     # TODO: review b/c this is a (small) hit performance-wise
@@ -179,11 +148,8 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 #     ssh-add ~/.ssh/id_rsa &> /dev/null
 #   fi
 # fi
-# source "$ZSH"/plugins/sublime/sublime.plugin.zsh
-
-export VISUAL="${VISUAL:-subl}"
-alias st="subl"
 
 
+# todo-txt ----------------------------------------------------------------- {{{
 alias t="todo.sh"
 alias todos="$VISUAL $HOME/Desktop/todo.txt"

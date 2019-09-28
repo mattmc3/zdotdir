@@ -1,7 +1,5 @@
-# ~/.zshenv needs to source this file and can be created with this
-# echo "source ~/.zsh/.zshenv > ~/.zshenv"
-
-# ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}; ln -s $ZDOTDIR/.zshenv ~/.zshenv
+# ~/.zshenv should only contain a line to source this file:
+# echo ". ~/.config/zsh/.zshenv > ~/.zshenv"
 
 export ZDOTDIR=$HOME/.config/zsh
 

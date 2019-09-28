@@ -19,13 +19,13 @@
   zrecompile -pq $zdotdir/.zshrc
   zrecompile -pq $zdotdir/zshrc.zsh
 
-  # zcompile enabled module autoloaded functions
-  for dir in $zdotdir/plugins/**/functions(/FN); do
-    zrecompile -pq ${dir}.zwc ${dir}/^(_*|prompt_*_setup|*.*)(-.N)
+  # zcompile antibody plugins
+  for file in $zdotdir/.antibody/**/*.zsh(.N); do
+    zrecompile -pq ${file}
   done
 
-  # zcompile scripts
-  for file in $zdotdir/plugins/**/(^*test*/)#*.zsh{,-theme}(.NLk+1); do
+  # zcompile zgen plugins
+  for file in $zdotdir/.zgen/**/*.zsh(.N); do
     zrecompile -pq ${file}
   done
 
@@ -33,4 +33,38 @@
   for file in $zdotdir/conf.d/**/*.zsh(.N); do
     zrecompile -pq ${file}
   done
+
+  # if we're using oh-my-zsh, compile all that stuff
+  if [[ -d $ZSH ]]; then
+    [[ -d $ZSH_CUSTOM ]] || ZSH_CUSTOM="$ZSH/custom"
+
+    # zcompile root OMZ
+    zrecompile -pq $ZSH/oh-my-zsh.sh
+
+    # zcompile root omz lib
+    for file in {$ZSH,$ZSH_CUSTOM}/lib/*.zsh(.N); do
+      zrecompile -pq ${file}
+    done
+
+    # zcompile enabled omz-plugins
+    if [ -n "$plugins" ]; then
+      for file in {$ZSH,$ZSH_CUSTOM}/plugins/${^plugins}/**/*.zsh{,-theme}(.N); do
+        zrecompile -pq ${file}
+      done
+    fi
+
+    # zcompile theme
+    if [ -n "$ZSH_THEME" ]; then
+      for file in {$ZSH,$ZSH_CUSTOM}/themes/$ZSH_THEME.zsh-theme(.N); do
+        zrecompile -pq ${file}
+      done
+    fi
+
+    # clean our mess
+    find $ZSH -type f -name "*.zwc.old" -delete
+    [[ -d $ZSH_CUSTOM ]] && find $ZSH_CUSTOM -type f -name "*.zwc.old" -delete
+  fi
+
+  # cleanup
+  find ${ZDOTDIR:-$HOME} -type f -name "*.zwc.old" -maxdepth 1 -delete
 ) &!

@@ -2,17 +2,37 @@
 # For zgen:
 #   zgen reset
 # For antibody:
-#   antibody bundle < ${1:-$ZDOTDIR/zsh_plugins} | sed "s|$HOME|\$HOME|g" > ${1:-$ZDOTDIR}/conf.d/1-antibody.zsh
+#   antibody bundle < ${1:-$ZDOTDIR/zsh_plugins} | sed "s|$HOME|\$HOME|g" > ${1:-$ZDOTDIR}/conf.d/antibody.zsh
 
+# normal plugins from github
 mafredri/zsh-async
+mattmc3/zsh-xdg-basedirs
 zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+rummik/zsh-tailf
+peterhurford/up.zsh
+rupa/z
+mattmc3/zsh-cd-ls
+mattmc3/zsh-safe-rm
+
+# omz lib
+$ZSH/lib/clipboard.zsh
+$ZSH/lib/functions.zsh
+$ZSH/lib/termsupport.zsh
+$ZSH/lib/key-bindings.zsh
+
+# omz plugins
+$ZSH/plugins/colored-man-pages
+$ZSH/plugins/extract
+$ZSH/plugins/copydir
+$ZSH/plugins/copyfile
+$ZSH/plugins/sublime
 
 # theme
 # mattmc3/omz-themes-standalone
-sindresorhus/pure
 # denysdovhan/spaceship-prompt
+sindresorhus/pure
 
 # these should be at last!
-zdharma/fast-syntax-highlighting
-zsh-users/zsh-history-substring-search
 zsh-users/zsh-completions
+zdharma/fast-syntax-highlighting

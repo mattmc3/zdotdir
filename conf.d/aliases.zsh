@@ -51,21 +51,6 @@ alias cpi='cp -i'
 alias mvi='mv -i'
 alias rmi='rm -i'
 
-if command -v safe-rm &> /dev/null; then
-  alias rm='safe-rm'
-else
-  alias rm='rm -i'
-fi
-
-if command -v trash &> /dev/null; then
-  alias del='trash'
-elif command -v safe-rm &> /dev/null; then
-  alias del='safe-rm'
-else
-  echo "WARNING: no safe rm alternative. Using del='rm -i'" >&2
-  alias del='rm -i'
-fi
-
 # single character shortcuts - be sparing!
 alias _='sudo'
 alias c='clear'
@@ -87,8 +72,8 @@ alias rd=rmdir
 alias please=sudo
 alias po=popd
 alias pu=pushd
-alias zz=exit
 alias globurl='noglob urlglobber '
+alias zz=exit
 
 # more ways to ls
 alias ll='ls -lFh'
@@ -127,5 +112,3 @@ alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
-
-alias zz='exit'
