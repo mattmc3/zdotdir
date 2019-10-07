@@ -1,19 +1,34 @@
-# profiling ---------------------------------------------------------------- {{{
-# just execute 'ZSH_PROFILE_RC=1 zsh' and run 'zprof' to get the details
-if [[ $ZSH_PROFILE_RC -gt 0 ]] ; then
-    zmodload zsh/zprof
-    echo "run zprof to profile"
-fi
+# load lib
+zlibs=(
+  # profiling is first so that everything gets profiled
+  profiling
 
-# conf.d ------------------------------------------------------------------- {{{
-for file in $ZDOTDIR/conf.d/*.{sh,zsh}(N); do
-  case $file:t in ~*) continue;; esac
-  source "$file"
+  # set up the environment correctly
+  setopts
+  history
+  environment
+  key-bindings
+  completions
+
+  # load plugins
+  plugins
+
+  # do all my custom stuff
+  aliases
+  functions
+  apps
+  local
+)
+
+# conf.d if order matters
+for zshfile in $zlibs; do
+  . "${ZDOTDIR}/conf.d/${zshfile}.zsh"
 done
-unset file
+unset zshfile
 
-# local -------------------------------------------------------------------- {{{
-[[ -f "${ZDOTDIR:-HOME}"/.zshrc.local ]] && . "${ZDOTDIR:-HOME}"/.zshrc.local
-
-# done --------------------------------------------------------------------- {{{
-return true
+# conf.d if order doesn't matter
+# for zshfile in $ZDOTDIR/conf.d/*.{sh,zsh}(N); do
+#   case $zshfile:t in ~*) continue;; esac
+#   . "$zshfile"
+# done
+# unset zshfile

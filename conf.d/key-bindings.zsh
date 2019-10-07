@@ -1,11 +1,13 @@
-# use the default OMZ key-bindings
-# https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/key-bindings.zsh
-# sourced in plugins already: $ZSH/lib/key-bindings.zsh
-
-# add our own
+### key-bindings ----------------------------------------------------------- {{{
 # zsh doesn't use .inputrc, so this file holds keybindings
 # https://github.com/changs/slimzsh/blob/master/keys.zsh
 # http://zsh.sourceforge.net/Doc/Release/Parameters.html
+
+# use the default OMZ key-bindings
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/key-bindings.zsh
+[[ -f $ZSH/lib/key-bindings.zsh ]] && . $ZSH/lib/key-bindings.zsh
+
+# add our own bindings not in OMZ
 export KEYTIMEOUT=1  # remove lag
 
 bindkey -s '\el' "ls\n"

@@ -1,3 +1,4 @@
+### aliases ---------------------------------------------------------------- {{{
 # https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789#.vh7hhm6th
 # https://github.com/webpro/dotfiles/blob/master/system/.alias
 # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
@@ -27,6 +28,7 @@ if [[ -n $ZSH_VERSION ]]; then
   alias zshrc='$VISUAL "${ZDOTDIR:-$HOME}"/.zshrc'
   alias reload='source "${ZDOTDIR:-$HOME}"/.zshrc'
   alias zbench="for i in \$(seq 1 10); do; /usr/bin/time zsh -i -c exit; done"
+  alias zprofiler='ZSH_PROFILE_RC=1 zsh'
 
   # zsh pipes
   alias -g H='| head'
@@ -41,7 +43,7 @@ fi
 alias cp='cp -i'
 alias mv='mv -i'
 # alias rm='rm -i'
-alias rm='safe-rm'
+# alias rm='safe-rm'
 alias ls='ls -GF'
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ping='ping -c 5'
@@ -55,7 +57,6 @@ alias rmi='rm -i'
 alias _='sudo'
 alias c='clear'
 alias d='dirs -v | head -10'
-#alias g='git'
 alias v='nvim'
 alias h='history'
 

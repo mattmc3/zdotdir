@@ -62,7 +62,7 @@
 
     # clean our mess
     find $ZSH -type f -name "*.zwc.old" -delete
-    [[ -d $ZSH_CUSTOM ]] && find $ZSH_CUSTOM -type f -name "*.zwc.old" -delete
+    find $ZSH_CUSTOM -type f -name "*.zwc.old" -delete
   fi
 
   # cleanup
