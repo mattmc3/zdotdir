@@ -1,4 +1,4 @@
-
+# up goes up the specified number of directories
 if [[ "$#" < 1 ]] ; then
   cd ..
 else
