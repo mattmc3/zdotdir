@@ -5,7 +5,7 @@ My ~/.config/zsh directory, which contains my zsh configuration.
 ## Installation
 
 ```zsh
-# its a good idea to backup existing files first
+# it's a good idea to backup existing files first
 find ~ -type f -maxdepth 1 -name '.zsh*' -exec cp {} {}.bak \;
 
 # set the amazing ZDOTDIR variable
@@ -14,7 +14,7 @@ export ZDOTDIR=~/.config/zsh
 # clone this repo
 git clone git@github.com:mattmc3/zdotdir.git $ZDOTDIR
 
-# place the .zshenv file
+# symlink the .zshenv file (alternatively, you can just source it from ~/.zshenv)
 ln -sf $ZDOTDIR/.zshenv ~/.zshenv
 
 # load zsh
@@ -27,13 +27,15 @@ If you would rather not deal with symlinks, you can easily make a simple
 `~/.zshenv` file.
 
 ```zsh
-echo "export ZDOTDIR=~/.zsh" > ~/.zshenv
-echo '[[ -f "$ZDOTDIR"/.zshenv ]] && source "$ZDOTDIR"/.zshenv' >> ~/.zshenv
+cat << 'EOF' > $HOME/.zshenv
+export ZDOTDIR=~/.config/zsh
+. "$ZDOTDIR/.zshenv"
+EOF
 ```
 
 ## Performance
 
-A snappy shell is very important. My config includes a `zbenchmark` alias
+A snappy shell is very important. My config includes a `zbench` alias
 that runs zsh 10 times and presents the timings.
 
 The latest benchmark run shows that we load a new shell pretty fast.
@@ -41,16 +43,16 @@ The latest benchmark run shows that we load a new shell pretty fast.
 ```zsh
 % # 2.5 GHz i7 MacBook Pro
 % for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done
+        0.07 real         0.03 user         0.02 sys
+        0.07 real         0.03 user         0.02 sys
+        0.07 real         0.03 user         0.02 sys
+        0.07 real         0.03 user         0.02 sys
         0.07 real         0.03 user         0.03 sys
         0.07 real         0.03 user         0.03 sys
         0.06 real         0.03 user         0.02 sys
-        0.07 real         0.03 user         0.02 sys
-        0.07 real         0.03 user         0.02 sys
-        0.07 real         0.03 user         0.02 sys
         0.07 real         0.03 user         0.03 sys
         0.07 real         0.03 user         0.02 sys
-        0.07 real         0.03 user         0.03 sys
-        0.07 real         0.03 user         0.03 sys
+        0.06 real         0.03 user         0.02 sys
 
 % # 2.8 GHz i7 MacBook Pro
 % for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done
