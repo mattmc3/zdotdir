@@ -26,6 +26,13 @@ setopt PUSHD_MINUS           # Exchanges the meanings of ‘+’ and ‘-’ whe
 # http://zsh.sourceforge.net/Doc/Release/Options.html#Completion-2
 #
 # options set in completions.zsh
+# setopt ALWAYS_TO_END       # Move cursor to the end of a completed word.
+# setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
+# setopt AUTO_MENU           # Show completion menu on a successive tab press.
+# setopt AUTO_PARAM_SLASH    # If completed parameter is a directory, add a trailing slash.
+# setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
+# unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
+
 
 #
 # 16.2.3 Expansion and Globbing
