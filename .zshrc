@@ -3,15 +3,17 @@ zlibs=(
   # profiling is first so that everything gets profiled
   profiling
 
-  # set up the environment correctly
+  # initialize the environment
   setopts
-  history
   environment
-  key-bindings
   completions
 
   # load plugins
   plugins
+
+  # post-plugins environment
+  history
+  key-bindings
 
   # do all my custom stuff
   aliases
