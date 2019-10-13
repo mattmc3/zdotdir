@@ -27,7 +27,9 @@ $ZSH/plugins/z
 # theme
 # mattmc3/omz-themes-standalone
 # denysdovhan/spaceship-prompt
-sindresorhus/pure
+# sindresorhus/pure
+mattmc3/zsh-prompt-pack
+
 
 # these should be at last!
 zsh-users/zsh-completions

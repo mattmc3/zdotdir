@@ -19,6 +19,7 @@ zlibs=(
   aliases
   functions
   apps
+  prompt
   local
 )
 
