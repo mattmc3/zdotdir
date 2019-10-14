@@ -1,14 +1,4 @@
-# if you change this, you may need to rejigger some things
-# For zgen:
-#   zgen reset
-# For antibody:
-#   antibody bundle < ${1:-$ZDOTDIR/zsh_plugins} | sed "s|$HOME|\$HOME|g" > ${1:-$ZDOTDIR}/conf.d/antibody.zsh
-
-# normal plugins from github
-mafredri/zsh-async
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
-mattmc3/zsh-safe-rm
+# If you change this, you may need to run `zgen reset`
 
 # omz lib
 # history and key-bindings sourced elsewhere
@@ -22,25 +12,24 @@ $ZSH/plugins/extract
 $ZSH/plugins/copydir
 $ZSH/plugins/copyfile
 $ZSH/plugins/sublime
-$ZSH/plugins/z
+
+# regular plugins from github
+mafredri/zsh-async
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+zsh-users/zsh-history-substring-search
+mattmc3/zsh-safe-rm
+mattmc3/zsh-cd-ls
+rummik/zsh-tailf
+peterhurford/up.zsh
+rupa/z
 
 # theme
 # mattmc3/omz-themes-standalone
 # denysdovhan/spaceship-prompt
 # sindresorhus/pure
-mattmc3/zsh-prompt-pack
+# mattmc3/zsh-prompt-pack
+miekg/lean
 
-
-# these should be at last!
-zsh-users/zsh-completions
+# plugins that should come last!
 zdharma/fast-syntax-highlighting
-
-#
-# archive
-#
-# plugins that may already have a home in this repo
-# without needing to reference external plugins
-#
-# rummik/zsh-tailf
-# peterhurford/up.zsh
-# rupa/z
