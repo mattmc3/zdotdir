@@ -1,28 +1,13 @@
 # If you change this, you may need to run `zgen reset`
 
-# omz lib
-# history and key-bindings sourced elsewhere
-$ZSH/lib/clipboard.zsh
-$ZSH/lib/functions.zsh
-$ZSH/lib/termsupport.zsh
-
 # omz plugins
-$ZSH/plugins/colored-man-pages
 $ZSH/plugins/extract
 $ZSH/plugins/copydir
 $ZSH/plugins/copyfile
 $ZSH/plugins/sublime
 
 # regular plugins from github
-mafredri/zsh-async
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-completions
-zsh-users/zsh-history-substring-search
-mattmc3/zsh-safe-rm
 mattmc3/zsh-cd-ls
-rummik/zsh-tailf
-peterhurford/up.zsh
-rupa/z
 
 # theme
 # mattmc3/omz-themes-standalone
