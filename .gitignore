@@ -11,3 +11,4 @@
 .zdirs
 plugins/*
 .zgen
+.cache
