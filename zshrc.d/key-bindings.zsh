@@ -5,7 +5,7 @@
 
 # use the default OMZ key-bindings
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/key-bindings.zsh
-[[ -f $ZSH/lib/key-bindings.zsh ]] && . $ZSH/lib/key-bindings.zsh
+# [[ -f $ZSH/lib/key-bindings.zsh ]] && . $ZSH/lib/key-bindings.zsh
 
 # add our own bindings not in OMZ
 export KEYTIMEOUT=1  # remove lag
@@ -13,6 +13,8 @@ export KEYTIMEOUT=1  # remove lag
 bindkey -s '\el' "ls\n"
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
+bindkey '^[^[[C' emacs-forward-word
+bindkey '^[^[[D' emacs-backward-word
 bindkey "^[[H" beginning-of-line
 bindkey "^[[1~" beginning-of-line
 bindkey "^[OH" beginning-of-line
