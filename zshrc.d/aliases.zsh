@@ -104,7 +104,6 @@ alias biggest='du -s ./* | sort -nr | awk '\''{print $2}'\'' | xargs du -sh'
 alias dux='du -x --max-depth=1 | sort -n'
 alias path='echo -e ${PATH//:/\\n}'
 alias linecount="grep -c '^'"
-alias ex="exit"
 alias ds="date +%Y%m%d"
 alias ts="date +%Y%m%d%H%M%S"
 alias timestamp="date '+%Y-%m-%d %H:%M:%S'"
