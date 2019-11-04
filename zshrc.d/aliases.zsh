@@ -97,6 +97,10 @@ alias dnsflush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/10mb.bin"
 alias pinging="command ping"
 
+# git
+alias gcm="git checkout master"
+alias gcd="git checkout develop"
+
 # other aliases
 alias tarls="tar -tvf"
 alias untar="tar -xf"
@@ -112,3 +116,4 @@ alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
+alias zdot='cd $ZDOTDIR'
