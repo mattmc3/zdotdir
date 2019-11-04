@@ -1,12 +1,5 @@
-### environment ------------------------------------------------------------ {{{
-
 # set general stuff
-export LSCOLORS=ExFxBxDxCxegedabagacad
 export TZ="America/New_York"
-export TERM="xterm-256color"
-export EDITOR=vim
-export VISUAL='subl -n -w'
-export PAGER=less
 
 # path
 path=(
