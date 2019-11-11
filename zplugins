@@ -26,6 +26,7 @@ zsh-users/zsh-history-substring-search
 mattmc3/zsh-safe-rm
 mattmc3/zsh-cd-ls
 rupa/z
+momo-lab/zsh-abbrev-alias
 
 # give us some theme options
 mattmc3/zsh-prompt-pack

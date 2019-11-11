@@ -98,8 +98,10 @@ alias speedtest="wget -O /dev/null http://speed.transip.nl/10mb.bin"
 alias pinging="command ping"
 
 # git
-alias gcm="git checkout master"
-alias gcd="git checkout develop"
+# https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git
+# alias gcm="git checkout master"
+# alias gcd="git checkout develop"
+# alias gcb="git checkout -b"
 
 # other aliases
 alias tarls="tar -tvf"
