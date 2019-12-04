@@ -1,3 +1,0 @@
-reqs=${2:-requirements.txt}
-[[ -f "$reqs" ]] || { echo "Usage: Expecting valid requirements.txt path" >&2; return; }
-pip install -r "$reqs"
