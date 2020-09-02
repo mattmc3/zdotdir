@@ -8,6 +8,7 @@ path=(
   /usr/{sbin,bin}
   /{sbin,bin}
   /usr/local/share/npm/bin
+  $HOME/.emacs.d/bin
   .
   $path
 )
