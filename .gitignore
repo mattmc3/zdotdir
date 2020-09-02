@@ -4,10 +4,12 @@
 .cache
 .zcompdump*
 .zdirs
-.zgen
+.zgen/
 *.bak
 *.local
 *.zwc
 *.zwc.old
 *history
 plugins/*
+.zprezto/
+.oh-my-zsh/

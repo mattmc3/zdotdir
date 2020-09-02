@@ -9,19 +9,19 @@ fi
 # setup zgen as plugin manager
 export ZGEN_DIR="${ZDOTDIR:-$HOME}"/.zgen
 [[ -d "$ZGEN_DIR" ]] || git clone --depth 1 https://github.com/tarjoilija/zgen.git "$ZGEN_DIR"
-ZGEN_RESET_ON_CHANGE=(${ZDOTDIR:-$HOME}/.zshrc ${ZDOTDIR:-$HOME}/zplugins)
+ZGEN_RESET_ON_CHANGE=(${ZDOTDIR:-$HOME}/.zshrc ${ZDOTDIR:-$HOME}/.zplugins)
 ZGEN_AUTOLOAD_COMPINIT=false
-ZSH="$ZGEN_DIR/robbyrussell/oh-my-zsh-master"
+ZSH="$ZGEN_DIR/oh-my-zsh/oh-my-zsh-master"
 
 # load plugins
 source "$ZGEN_DIR/zgen.zsh"
 if ! zgen saved; then
   # clone things we don't need to load directly
-  zgen clone robbyrussell/oh-my-zsh
+  zgen clone oh-my-zsh/oh-my-zsh
 
   # use zplugins file for other plugins if it exists
-  if [[ -f $ZDOTDIR/zplugins ]]; then
-    zgen loadall < $ZDOTDIR/zplugins
+  if [[ -f $ZDOTDIR/.zplugins ]]; then
+    zgen loadall < $ZDOTDIR/.zplugins
   fi
 
   # save zgen plugins into init.zsh
@@ -30,6 +30,9 @@ fi
 
 # set the prompt
 prompt lean
+
+# set initial working directory
+IWD=$PWD
 
 # .zshrc.local machine level config (do not add to git)
 [[ -f "${ZDOTDIR:-HOME}"/.zshrc.local ]] && . "${ZDOTDIR:-HOME}"/.zshrc.local
