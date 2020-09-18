@@ -1,12 +1,12 @@
-# ~/.zshenv should only contain a line to source this file:
-# echo ". ~/.zsh/.zshenv" > ~/.zshenv
+# ~/.zshenv only needs to source this file:
+# echo "source \$HOME/.config/zsh/.zshenv" >| ~/.zshenv
 
-export ZDOTDIR=~/.zsh
+export ZDOTDIR="${ZDOTDIR:-$HOME/.config/zsh}"
 
 # Set XDG dirs
-export XDG_CONFIG_HOME=~/.config
-export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.local/share
-export XDG_RUNTIME_DIR=~/.xdg
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_RUNTIME_DIR=$HOME/.xdg
 
-export DOTFILES=~/.dotfiles
+export DOTFILES=$HOME/.dotfiles
