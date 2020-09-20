@@ -4,13 +4,9 @@ export TZ="America/New_York"
 # path
 path=(
   $HOME/bin
-  /usr/local/{sbin,bin}
-  /usr/{sbin,bin}
-  /{sbin,bin}
-  /usr/local/share/npm/bin
-  $HOME/.emacs.d/bin
-  .
   $path
+  /usr/local/opt/ruby/bin
+  $HOME/.emacs.d/bin
 )
 typeset -gxU path
 

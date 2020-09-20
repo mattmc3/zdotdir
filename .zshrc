@@ -1,38 +1,17 @@
-# execute 'ZPROF_ENABLE=1 zsh' and run 'zprof' to get profiler details
-alias zperf='ZPROF_ENABLE=1 zsh'
+# zprof if we ever need to profile
+alias runzprof="RUNZPROF=1 zsh"
 alias zbench='for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done'
-if [[ $ZPROF_ENABLE -gt 0 ]] ; then
-  zmodload zsh/zprof
-  echo 'now run `zprof` to profile...'
-fi
+[[ $RUNZPROF -ne 1 ]] || zmodload zsh/zprof
 
-# setup zgen as plugin manager
-export ZGEN_DIR="${ZDOTDIR:-$HOME}"/.zgen
-[[ -d "$ZGEN_DIR" ]] || git clone --depth 1 https://github.com/tarjoilija/zgen.git "$ZGEN_DIR"
-ZGEN_RESET_ON_CHANGE=(${ZDOTDIR:-$HOME}/.zshrc ${ZDOTDIR:-$HOME}/.zplugins)
-ZGEN_AUTOLOAD_COMPINIT=false
-ZSH="$ZGEN_DIR/oh-my-zsh/oh-my-zsh-master"
+# everything else is in zshrc.d
+function () {
+  local f
+  for f in "$ZDOTDIR"/zshrc.d/**/*.{sh,zsh}(.N); do
+    # ignore files that begin with a tilde
+    case $f:t in ~*) continue;; esac
+    source "$f"
+  done
+}
 
-# load plugins
-source "$ZGEN_DIR/zgen.zsh"
-if ! zgen saved; then
-  # clone things we don't need to load directly
-  zgen clone oh-my-zsh/oh-my-zsh
-
-  # use zplugins file for other plugins if it exists
-  if [[ -f $ZDOTDIR/.zplugins ]]; then
-    zgen loadall < $ZDOTDIR/.zplugins
-  fi
-
-  # save zgen plugins into init.zsh
-  zgen save
-fi
-
-# set the prompt
-prompt lean
-
-# set initial working directory
-IWD=$PWD
-
-# .zshrc.local machine level config (do not add to git)
-[[ -f "${ZDOTDIR:-HOME}"/.zshrc.local ]] && . "${ZDOTDIR:-HOME}"/.zshrc.local
+# done profiling
+[[ $RUNZPROF -ne 1 ]] || { unset RUNZPROF && zprof }
