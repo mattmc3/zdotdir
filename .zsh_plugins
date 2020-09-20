@@ -63,8 +63,6 @@ ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 # $ZSH_CUSTOM/plugins/z
 
 # features
-# peterhurford/up.zsh
-rummik/zsh-tailf
 rupa/z
 mattmc3/zsh-safe-rm
 
@@ -76,3 +74,7 @@ sindresorhus/pure
 #$ZSH_CUSTOM/plugins/local
 #zsh-users/zsh-syntax-highlighting
 #zdharma/fast-syntax-highlighting
+
+# # archive
+# peterhurford/up.zsh
+# rummik/zsh-tailf
