@@ -1,10 +1,3 @@
-### colemak ---------------------------------------------------------------- {{{
-# fix typos
-alias cs='cd'  # darn colemak
-
-### dotfiles --------------------------------------------------------------- {{{
-alias dotf='cd "$DOTFILES" && $VISUAL .'
-
 ### git -------------------------------------------------------------------- {{{
 alias get="git"
 alias gadd="git add ."
@@ -72,7 +65,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 ### jupyter ---------------------------------------------------------------- {{{
-alias juno="jupyter notebook"
+JUPYTER_HOME="$PROJECTS_HOME/jupyter"
 
 # jupyter can use the BROWSER variable
 # if [[ "$OSTYPE" == darwin* ]]; then
