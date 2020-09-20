@@ -1,0 +1,4 @@
+# Find files with no file extension
+
+# for fun, rename with: noext -exec mv '{}' '{}.sql' \;
+find . -not \( -path '*/.git/*' -prune \) -type f ! -name '*.*'

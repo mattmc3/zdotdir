@@ -1,0 +1,2 @@
+# What is the weather?
+curl "http://wttr.in/$1"

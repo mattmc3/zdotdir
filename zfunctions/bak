@@ -1,0 +1,9 @@
+local now f
+now=$(date +"%Y%m%d-%H%M%S")
+for f in "$@"; do
+  if [[ ! -e "$f" ]]; then
+    echo "file not found: $f" >&2
+    continue
+  fi
+  cp -R "$f" "$f".$now.bak
+done
