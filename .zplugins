@@ -3,66 +3,53 @@
 #
 # dynamic sourcing code:
 # source <(antibody init)
-# envsubst < $ZDOTDIR/.zsh_plugins | antibody bundle
+# envsubst < $ZDOTDIR/.zplugins | antibody bundle
 #
 # if using antibody with static sourcing:
-#   when you change this file, delete the generated zsh_plugins.zsh file to
-#   regenerate the static zsh_plugins.zsh
+#   when you change this file, delete the generated zplugins.zsh file to
+#   regenerate the static zplugins.zsh
 #
 # static code:
-# if [[ ! -f "$ZDOTDIR/zsh_plugins.zsh" ]]; then
-#  envsubst < $ZDOTDIR/.zsh_plugins | antibody bundle > $ZDOTDIR/zshrc.d/zsh_plugins.zsh
-#  sed -i '' "s|$HOME|\$HOME|g" $ZDOTDIR/zsh_plugins.zsh
+# static_plugin_file="$ZDOTDIR/zshrc.d/00-zplugins.zsh"
+# if [[ ! -f "$static_plugin_file" ]]; then
+#  envsubst < $ZDOTDIR/.zplugins | /usr/local/bin/antibody bundle >| $static_plugin_file
+#  sed -i '' "s|$HOME|\$HOME|g" $static_plugin_file
 # fi
-# source $ZDOTDIR/zsh_plugins.zsh
+# source $static_plugin_file
 
-# stuff that should be first
-mafredri/zsh-async
-#$ZSH_CUSTOM/plugins/_init
-
-# fish shell goodies in zsh
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-completions
-zsh-users/zsh-history-substring-search
-zshzoo/abbr
+# initialize ZSH
+zshzoo/setopts
+zshzoo/history
+mattmc3/zsh-compinit
+$ZDOTDIR/zlib/environment.zsh
 
 # omz lib
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:lib/termsupport.zsh
 ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
 
+# plugins used by plugins
+mafredri/zsh-async
+
+# fish shell goodies in zsh
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+zsh-users/zsh-history-substring-search
+
+# my plugins
+zshzoo/abbr
+zshzoo/zfunctions
+mattmc3/zsh-cd-ls
+
 # omz plugins
+ohmyzsh/ohmyzsh path:plugins/osx
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 
 # prezto
 # sorin-ionescu/prezto path:modules/terminal
 
-# my goodies
-# $ZSH_CUSTOM/plugins/aliases
-# $ZSH_CUSTOM/plugins/brew
-# $ZSH_CUSTOM/plugins/cd-ls
-# $ZSH_CUSTOM/plugins/dotfiles
-# $ZSH_CUSTOM/plugins/git
-# $ZSH_CUSTOM/plugins/golang
-# $ZSH_CUSTOM/plugins/groovy
-# $ZSH_CUSTOM/plugins/iwd
-# $ZSH_CUSTOM/plugins/java
-# $ZSH_CUSTOM/plugins/jupyter
-# $ZSH_CUSTOM/plugins/lpass
-# $ZSH_CUSTOM/plugins/osx
-# $ZSH_CUSTOM/plugins/python
-# $ZSH_CUSTOM/plugins/ruby
-# $ZSH_CUSTOM/plugins/safe-rm
-# $ZSH_CUSTOM/plugins/shrink-path
-# $ZSH_CUSTOM/plugins/tmux
-# $ZSH_CUSTOM/plugins/todo-txt
-# $ZSH_CUSTOM/plugins/up
-# $ZSH_CUSTOM/plugins/vscode
-# $ZSH_CUSTOM/plugins/zfunctions
-# $ZSH_CUSTOM/plugins/z
-
-# features
+# other great plugins
 rupa/z
 mattmc3/zsh-safe-rm
 
@@ -70,9 +57,12 @@ mattmc3/zsh-safe-rm
 sindresorhus/pure
 # miekg/lean
 
+# my autoload files
+zshzoo/zshrc.d
+
 # stuff that has to be last
-#$ZSH_CUSTOM/plugins/local
-#zsh-users/zsh-syntax-highlighting
+$ZDOTDIR/zlib/local.zsh
+zsh-users/zsh-syntax-highlighting
 #zdharma/fast-syntax-highlighting
 
 # # archive
