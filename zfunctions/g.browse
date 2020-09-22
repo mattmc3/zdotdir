@@ -1,0 +1,3 @@
+local url
+url=$(git config remote.${1-origin}.url | sed -e 's#^.*@#https://#' -e 's#.git$##' -e 's#:#/#2')
+git web--browse $url

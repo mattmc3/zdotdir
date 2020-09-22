@@ -1,0 +1,30 @@
+# make a URL for git
+local parts url user
+parts=(${(@s:/:)1})
+
+if [[ ${#parts[@]} -eq 1 ]]; then
+  user=$(git config user.name)
+  if [[ -z $user ]]; then
+    echo "git config user.name not set" >&2
+    return 1
+  fi
+  parts=($(git config user.name) $parts)
+fi
+if [[ ${#parts[@]} -eq 2 ]]; then
+  parts=("github.com" $parts)
+fi
+if [[ ${#parts[@]} -eq 3 ]]; then
+  parts=("ssh" $parts)
+fi
+if [[ ${#parts[@]} -ne 4 ]]; then
+  echo "unexpected argument: $1" >&2
+  return 1
+fi
+
+if [[ $parts[1] == "git" ]] || [[ $parts[1] == "ssh" ]]; then
+  url="git@${parts[2]}:"
+else
+  url="https://${parts[2]}/"
+fi
+url="${url}${parts[3]}/${parts[4]}.git"
+echo $url

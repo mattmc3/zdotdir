@@ -1,13 +1,13 @@
 local yn reply curbranch
 
 if [[ "$#" -ne 1 ]]; then
-  echo "gacp: Expecting commit message" >&2
+  echo "g.acp: Expecting commit message" >&2
   return 1
 fi
 
 curbranch=$(git -C "$PWD" rev-parse --abbrev-ref HEAD)
 if [[ $? -ne 0 ]]; then
-  echo "gacp: Not in a git repo" >&2
+  echo "g.acp: Not in a git repo" >&2
   return 1
 fi
 
