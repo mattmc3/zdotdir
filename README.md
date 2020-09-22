@@ -9,10 +9,10 @@ My ~/.zsh directory, which contains my zsh configuration.
 find ~ -type f -maxdepth 1 -name '.zsh*' -exec cp {} {}.bak \;
 
 # set the amazing ZDOTDIR variable
-export ZDOTDIR=~/.zsh
+export ZDOTDIR=~/.config/zsh
 
 # clone this repo
-git clone git@github.com:mattmc3/zdotdir.git $ZDOTDIR
+git clone --recursive git@github.com:mattmc3/zdotdir.git $ZDOTDIR
 
 # symlink the .zshenv file (alternatively, you can just source it from ~/.zshenv)
 ln -sf $ZDOTDIR/.zshenv ~/.zshenv
@@ -28,7 +28,7 @@ If you would rather not deal with symlinks, you can easily make a simple
 
 ```zsh
 cat << 'EOF' > $HOME/.zshenv
-export ZDOTDIR=~/.zsh
+export ZDOTDIR=~/.config/zsh
 . "$ZDOTDIR/.zshenv"
 EOF
 ```
@@ -77,7 +77,7 @@ The latest benchmark run shows that we load a new shell pretty fast.
 - [supercharge your terminal with zsh][supercharge-zsh]
 
 [antibody]:        https://getantibody.github.io/
+[omz]:             https://github.com/ohmyzsh/ohmyzsh
 [supercharge-zsh]: https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
-[omz]:             https://github.com/robbyrussell/oh-my-zsh/tree/master/lib
 [terminal-font]:   https://github.com/powerline/fonts
 [zgen]:            https://github.com/tarjoilija/zgen
