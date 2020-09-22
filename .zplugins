@@ -23,15 +23,21 @@ zshzoo/history
 mattmc3/zsh-compinit
 $ZDOTDIR/zlib/environment.zsh
 
-# omz lib
+# plugins used by plugins (inception)
+mafredri/zsh-async
+
+# use oh-my-zsh for great plugins and libs
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:lib/termsupport.zsh
 ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
+ohmyzsh/ohmyzsh path:plugins/osx
+ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 
-# plugins used by plugins
-mafredri/zsh-async
+# prezto or zimfw are other frameworks that I could use too
+# sorin-ionescu/prezto path:modules/terminal
 
-# fish shell goodies in zsh
+# make zsh more like fish
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
 zsh-users/zsh-history-substring-search
@@ -40,31 +46,21 @@ zsh-users/zsh-history-substring-search
 zshzoo/abbr
 zshzoo/zfunctions
 mattmc3/zsh-cd-ls
-
-# omz plugins
-ohmyzsh/ohmyzsh path:plugins/osx
-ohmyzsh/ohmyzsh path:plugins/extract
-ohmyzsh/ohmyzsh path:plugins/colored-man-pages
-
-# prezto
-# sorin-ionescu/prezto path:modules/terminal
-
-# other great plugins
-rupa/z
 mattmc3/zsh-safe-rm
+
+# 3rd party plugins
+rupa/z
 
 # prompts
 sindresorhus/pure
 # miekg/lean
 
-# my autoload files
-zshzoo/zshrc.d
-
 # stuff that has to be last
+zshzoo/zshrc.d
 $ZDOTDIR/zlib/local.zsh
 zsh-users/zsh-syntax-highlighting
-#zdharma/fast-syntax-highlighting
 
-# # archive
+# archive
 # peterhurford/up.zsh
 # rummik/zsh-tailf
+# zdharma/fast-syntax-highlighting
