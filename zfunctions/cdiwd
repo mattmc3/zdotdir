@@ -1,0 +1,2 @@
+# change to the initial working directory ($IWD)
+cd "$IWD"

@@ -1,0 +1,3 @@
+1="${1:-$PWD}"
+current_pwd="${1/#$HOME/~}"
+echo "${${${${(@j:/:M)${(@s:/:)current_pwd}##.#?}:h}%/}//\%/%%}/${${current_pwd:t}//\%/%%}"
