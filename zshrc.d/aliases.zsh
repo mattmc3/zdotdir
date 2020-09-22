@@ -28,7 +28,6 @@ if [[ -n $ZSH_VERSION ]]; then
   alias zshrc='$VISUAL "${ZDOTDIR:-$HOME}"/.zshrc'
   alias reload='source "${ZDOTDIR:-$HOME}"/.zshrc'
   alias zbench="for i in \$(seq 1 10); do; /usr/bin/time zsh -i -c exit; done"
-  alias zprofiler='ZSH_PROFILE_RC=1 zsh'
 
   # zsh pipes
   alias -g H='| head'
@@ -42,8 +41,7 @@ fi
 # mask built-ins with better defaults
 alias cp='cp -i'
 alias mv='mv -i'
-# alias rm='rm -i'
-# alias rm='safe-rm'
+alias rm='rm -i'
 alias ls='ls -GF'
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ping='ping -c 5'
@@ -63,10 +61,7 @@ alias h='history'
 # shortcuts
 alias vi='nvim'
 alias vim='nvim'
-alias oldvim='\vim'
-alias py2='python2'
-alias py3='python3'
-alias py='python3'
+alias realvim='\vim'
 alias afind='ack -il'
 alias md='mkdir -p'
 alias rd=rmdir
@@ -83,7 +78,6 @@ alias la='ls -lAFh'
 alias ldot='ls -ld .*'
 
 # fix typos
-alias cs='cd'  # darn colemak
 alias quit='exit'
 
 # tools
@@ -96,12 +90,6 @@ alias iplocal="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo
 alias dnsflush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/10mb.bin"
 alias pinging="command ping"
-
-# git
-# https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git
-# alias gcm="git checkout master"
-# alias gcd="git checkout develop"
-# alias gcb="git checkout -b"
 
 # other aliases
 alias tarls="tar -tvf"
@@ -119,3 +107,6 @@ alias ff='find . -type f -name'
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
 alias zdot='cd $ZDOTDIR'
+
+# auto-orient images based on exif tags
+alias autorotate="jhead -autorot"

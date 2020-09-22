@@ -3,15 +3,11 @@ alias runzprof="RUNZPROF=1 zsh"
 alias zbench='for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done'
 [[ $RUNZPROF -ne 1 ]] || zmodload zsh/zprof
 
-# everything else is in zshrc.d
-function () {
-  local f
-  for f in "$ZDOTDIR"/zshrc.d/**/*.{sh,zsh}(.N); do
-    # ignore files that begin with a tilde
-    case $f:t in ~*) continue;; esac
-    source "$f"
-  done
-}
+# my whole config is a plugin chain
+source $ZDOTDIR/zlib/antibody.zsh
+
+# initialize completions
+run_compinit
 
 # done profiling
 [[ $RUNZPROF -ne 1 ]] || { unset RUNZPROF && zprof }

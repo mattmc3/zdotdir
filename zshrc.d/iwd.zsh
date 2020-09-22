@@ -1,2 +1,2 @@
-# set initial working directory
+# set the initial working directory
 IWD=$PWD
