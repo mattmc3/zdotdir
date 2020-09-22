@@ -1,8 +1,7 @@
 {
 	// Configure file associations to languages (e.g. "*.extension": "html"). These have precedence over the default associations of the languages installed.
 	"files.associations": {
-		".zsh_plugins": "properties",
-		".zplugins": "shellscript",
+		".zplugins": "properties",
 		"zfunctions/*": "shellscript"
 	}
 }
