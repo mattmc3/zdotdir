@@ -1,6 +1,6 @@
 # zdotdir
 
-My ~/.zsh directory, which contains my zsh configuration.
+My `$ZDOTDIR` directory, which contains my zsh configuration.
 
 ## Installation
 
