@@ -1,0 +1,7 @@
+local curbranch=$(git rev-parse --abbrev-ref HEAD)
+if [[ $curbranch != 'master' ]] || [[ $curbranch != 'main' ]]; then
+  >&2 echo "This command requires you to be on the main branch."
+  >&2 echo "please run: git checkout main"
+  return 1
+fi
+git fetch -p && git branch -vv | awk '/: gone]/{print \$1}' | xargs git branch -d

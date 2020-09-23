@@ -1,0 +1,15 @@
+# https://stackoverflow.com/a/36593218/8314
+local submodule="$1"
+if [[ ! -n "$submodule" || ! -d "$submodule" ]]; then
+  >&2 echo "FAIL: No valid submodule specified"
+  return 1
+fi
+
+# Remove the submodule entry from .git/config
+git submodule deinit -f "$submodule"
+
+# Remove the submodule directory from the superproject's .git/modules directory
+rm -rf ".git/modules/${submodule}"
+
+# Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule
+git rm -f "$submodule"
