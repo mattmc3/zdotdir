@@ -5,13 +5,15 @@
 # envsubst < $ZDOTDIR/.zplugins | antibody bundle
 
 path=( /usr/local/{sbin,bin} $path )
-zplugins_file="$ZDOTDIR/zlib/zplugins.zsh"
-if [[ ! -d "$ANTIBODY_HOME" ]] && [[ -f "$zplugins_file" ]]; then
-  rm -f "$zplugins_file"
+zplugins_file="$ZDOTDIR/.zplugins"
+zplugins_gen="$ZDOTDIR/zlib/zplugins.zsh"
+[[ -n "$ANTIBODY_HOME" ]] || ANTIBODY_HOME=$(antibody home)
+if [[ ! -d "$ANTIBODY_HOME" ]] && [[ -f "$zplugins_gen" ]]; then
+  rm -f "$zplugins_gen"
 fi
-if [[ ! -f "$zplugins_file" ]] || [[ $ZDOTDIR/.zplugins -nt "$zplugins_file" ]]; then
-  envsubst < $ZDOTDIR/.zplugins | antibody bundle >| $zplugins_file
-  sed -i '' "s|$HOME|\$HOME|g" $zplugins_file
+if [[ ! -f "$zplugins_gen" ]] || [[ "$zplugins_file" -nt "$zplugins_gen" ]]; then
+  envsubst < "$zplugins_file" | antibody bundle >| $zplugins_gen
+  sed -i '' "s|$ANTIBODY_HOME|\$ANTIBODY_HOME|g" $zplugins_gen
 fi
-source $zplugins_file
-unset zplugins_file
+source $zplugins_gen
+unset zplugins_file zplugins_gen

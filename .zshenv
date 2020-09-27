@@ -1,8 +1,8 @@
 # ~/.zshenv only needs to source this file:
 # echo "source \$HOME/.config/zsh/.zshenv" >| ~/.zshenv
 
-export ZDOTDIR="$HOME/.config/zsh"
-export ANTIBODY_HOME="$ZDOTDIR/zplugins"
+export ZDOTDIR="${ZDOTDIR:-$HOME/.config/zsh}"
+export ANTIBODY_HOME="${ANTIBODY_HOME:-$ZDOTDIR/zplugins}"
 
 # Set XDG dirs
 export XDG_CONFIG_HOME=$HOME/.config
