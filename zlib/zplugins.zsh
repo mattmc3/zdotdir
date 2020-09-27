@@ -4,7 +4,7 @@ source $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zshzoo-SLASH-hi
 fpath+=( $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zshzoo-SLASH-history )
 source $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-mattmc3-SLASH-zsh-compinit/zsh-compinit.plugin.zsh
 fpath+=( $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-mattmc3-SLASH-zsh-compinit )
-source $HOME/.zsh/zlib/environment.zsh
+source $ZDOTDIR/zlib/environment.zsh
 source $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-mafredri-SLASH-zsh-async/async.plugin.zsh
 fpath+=( $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-mafredri-SLASH-zsh-async )
 source $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh/lib/clipboard.zsh
@@ -36,6 +36,6 @@ source $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-sindresorhus-SL
 fpath+=( $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-sindresorhus-SLASH-pure )
 source $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zshzoo-SLASH-zshrc.d/zshrc.d.plugin.zsh
 fpath+=( $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zshzoo-SLASH-zshrc.d )
-source $HOME/.zsh/zlib/local.zsh
+source $ZDOTDIR/zlib/local.zsh
 source $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 fpath+=( $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting )

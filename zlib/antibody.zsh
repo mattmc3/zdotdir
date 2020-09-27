@@ -13,7 +13,10 @@ if [[ ! -d "$ANTIBODY_HOME" ]] && [[ -f "$zplugins_gen" ]]; then
 fi
 if [[ ! -f "$zplugins_gen" ]] || [[ "$zplugins_file" -nt "$zplugins_gen" ]]; then
   envsubst < "$zplugins_file" | antibody bundle >| $zplugins_gen
+  # disguise directories
   sed -i '' "s|$ANTIBODY_HOME|\$ANTIBODY_HOME|g" $zplugins_gen
+  sed -i '' "s|$ZDOTDIR|\$ZDOTDIR|g" $zplugins_gen
+  sed -i '' "s|$HOME|\$HOME|g" $zplugins_gen
 fi
 source $zplugins_gen
 unset zplugins_file zplugins_gen
