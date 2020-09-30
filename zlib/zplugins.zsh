@@ -37,5 +37,5 @@ fpath+=( $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-sindresorhus-
 source $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zshzoo-SLASH-zshrc.d/zshrc.d.plugin.zsh
 fpath+=( $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zshzoo-SLASH-zshrc.d )
 source $ZDOTDIR/zlib/local.zsh
-source $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-fpath+=( $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zsh-users-SLASH-zsh-syntax-highlighting )
+source $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zdharma-SLASH-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+fpath+=( $ANTIBODY_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-zdharma-SLASH-fast-syntax-highlighting )

@@ -58,9 +58,9 @@ sindresorhus/pure
 # stuff that has to be last
 zshzoo/zshrc.d
 $ZDOTDIR/zlib/local.zsh
-zsh-users/zsh-syntax-highlighting
+zdharma/fast-syntax-highlighting
 
 # archive
 # peterhurford/up.zsh
 # rummik/zsh-tailf
-# zdharma/fast-syntax-highlighting
+# zsh-users/zsh-syntax-highlighting
