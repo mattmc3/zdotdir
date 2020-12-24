@@ -1,13 +1,22 @@
 # zprof if we ever need to profile
-alias runzprof="RUNZPROF=1 zsh"
+alias runzprof="ZPROF=true zsh"
 alias zbench='for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done'
-[[ $RUNZPROF -ne 1 ]] || zmodload zsh/zprof
+[[ $ZPROF != true ]] || zmodload zsh/zprof
 
-# my whole config is a plugin chain
-source $ZDOTDIR/zlib/antibody.zsh
+# use functions directory for zsh functions
+fpath=("$ZDOTDIR"/functions $fpath)
+for _fn in "$ZDOTDIR"/functions/*(.N); do
+  autoload -Uz "$_fn"
+done
+unset _fn
 
-# initialize completions
-run_compinit
+# use zshrc.d directory for config
+for _f in "$ZDOTDIR"/zshrc.d/*.{sh,zsh}(.N); do
+  # ignore files that begin with a tilde
+  case $_f:t in ~*) continue;; esac
+  source "$_f"
+done
+unset _f
 
 # done profiling
-[[ $RUNZPROF -ne 1 ]] || { unset RUNZPROF && zprof }
+[[ $ZPROF != true ]] || { unset ZPROF && zprof }

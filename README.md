@@ -14,23 +14,11 @@ export ZDOTDIR=~/.config/zsh
 # clone this repo
 git clone --recursive git@github.com:mattmc3/zdotdir.git $ZDOTDIR
 
-# symlink the .zshenv file (alternatively, you can just source it from ~/.zshenv)
-ln -sf $ZDOTDIR/.zshenv ~/.zshenv
+# change the root .zshenv file
+echo "source ~/.config/zsh/.zshenv" >| ~/.zshenv
 
 # load zsh
 zsh
-```
-
-### Alternative
-
-If you would rather not deal with symlinks, you can easily make a simple
-`~/.zshenv` file.
-
-```zsh
-cat << 'EOF' > $HOME/.zshenv
-export ZDOTDIR=~/.config/zsh
-. "$ZDOTDIR/.zshenv"
-EOF
 ```
 
 ## Performance
