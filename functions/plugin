@@ -1,0 +1,26 @@
+local zpluginsdir="${ZPLUGINSDIR:-~/.config/zsh/plugins}"
+
+# get znap if we don't have it
+[[ -d "$zpluginsdir/zsh-snap" ]] ||
+  git clone --depth=1 --recursive https://github.com/marlonrichert/zsh-snap.git "$zpluginsdir/zsh-snap"
+
+# load znap if we haven't
+(( $+functions[znap] )) || {
+  zstyle ':znap:*' plugins-dir $zpluginsdir
+  zstyle ':znap:*' auto-compile no
+  source "$zpluginsdir/zsh-snap/znap.zsh"
+}
+
+# wrap znap to give it a bundle command
+cmd="$1"
+local repo="$2"
+local plugin=${${repo##*/}%.git}
+if [[ $cmd == "bundle" ]]; then
+  [[ -d $(znap path)/$plugin ]] ||
+    znap clone $repo
+  znap source $plugin
+elif [[ $cmd == "exists" ]]; then
+  [[ -d $(znap path)/$plugin ]] && return 0 || return 1
+else
+  znap "$@"
+fi

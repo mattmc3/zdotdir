@@ -1,0 +1,24 @@
+if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
+  echo "rmzwc"
+  echo "  removes zcompiled files"
+  echo "options:"
+  echo " -q         Quiet"
+  echo " --dry-run  Dry run"
+  echo " -h --help  Show help screen"
+  return 0
+fi
+
+findprint="-print"
+finddel="-delete"
+if [[ "$1" == '-q' ]]; then
+  findprint=""
+elif [[ "$1" == "--dry-run" ]]; then
+  finddel=""
+fi
+
+if [[ -d "${ZDOTDIR}" ]]; then
+  find "${ZDOTDIR:A}" -type f \( -name "*.zwc" -o -name "*.zwc.old" \) $findprint $finddel
+fi
+find "$HOME" -maxdepth 1 -type f \( -name "*.zwc" -o -name "*.zwc.old" \) $findprint $finddel
+find . -maxdepth 1 -type f \( -name "*.zwc" -o -name "*.zwc.old" \) $findprint $finddel
+unset findargs
