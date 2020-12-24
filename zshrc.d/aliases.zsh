@@ -55,13 +55,12 @@ alias rmi='rm -i'
 alias _='sudo'
 alias c='clear'
 alias d='dirs -v | head -10'
-alias v='nvim'
+alias v='vim'
 alias h='history'
 
 # shortcuts
-alias vi='nvim'
-alias vim='nvim'
-alias realvim='\vim'
+alias vi='vim'
+alias nv='nvim'
 alias afind='ack -il'
 alias md='mkdir -p'
 alias rd=rmdir
