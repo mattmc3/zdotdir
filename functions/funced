@@ -1,13 +1,15 @@
 ### edit the function specified
 
+local zfuncdir="${ZFUNCDIR:-$ZDOTDIR/functions}"
+
 # check args
 if [[ -z "$1" ]]; then
   echo "funced: Expected function name argument" >&2 && return 1
 fi
 
 # new function definition: make a file template
-if [[ ! -f "$ZFUNCDIR/$1" ]]; then
-  cat <<eos > "$ZFUNCDIR/$1"
+if [[ ! -f "$zfuncdir/$1" ]]; then
+  cat <<eos > "$zfuncdir/$1"
 # Add function internals here.
 # Do NOT include function definition (ie: omit 'function $1() {').
 # See: http://zsh.sourceforge.net/Doc/Release/Functions.html#Autoloading-Functions
@@ -16,7 +18,7 @@ fi
 
 # open the function file
 if [[ -z "$VISUAL" ]]; then
-  $VISUAL "$ZFUNCDIR/$1"
+  $VISUAL "$zfuncdir/$1"
 else
-  ${EDITOR:-nano} "$ZFUNCDIR/$1"
+  ${EDITOR:-nano} "$zfuncdir/$1"
 fi
