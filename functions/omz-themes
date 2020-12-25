@@ -1,6 +1,0 @@
-# list the zsh themes available, or set a theme
-if [ -n "$ZSH" ]; then
-  find "$ZSH"/themes -type f -name '*.zsh-theme' -exec basename {} .zsh-theme \; | sort -f | column
-else
-  echo "\$ZSH not set"
-fi

@@ -1,2 +1,0 @@
-# set initial working directory ($IWD) in .zshrc
-echo "$IWD"

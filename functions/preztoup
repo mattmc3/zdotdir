@@ -1,9 +1,0 @@
-if [[ -z $ZPREZTODIR ]] || [[ ! -d $ZPREZTODIR ]]; then
-  echo "Prezto not configured correctly or not enabled" >&2
-  return 1
-fi
-git -C "$ZPREZTODIR" pull
-if [[ -d $ZSH_CUSTOM ]]; then
-  git -C "$ZSH_CUSTOM" pull
-  find $ZSH_CUSTOM -type d -name .git -prune -print -execdir git pull \;
-fi
