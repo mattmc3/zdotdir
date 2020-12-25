@@ -16,7 +16,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 ZPLUGINSDIR=$ZDOTDIR/plugins
-ZFUNCDIR=$ZDOTDIR/.zfunctions
 
 # path
 path=(

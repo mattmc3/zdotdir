@@ -1,10 +1,3 @@
-if [[ -z $DOTFILES ]]; then
-  if [[ -d "${XDG_CONFIG_HOME:-~/.config}/dotfiles" ]]; then
-    export DOTFILES="${XDG_CONFIG_HOME:-~/.config}/dotfiles"
-  elif [[ -d ~/.dotfiles ]]; then
-    export DOTFILES=~/.dotfiles
-  fi
-fi
-
+export DOTFILES=~/.config/dotfiles
 alias cddotf='cd "$DOTFILES"'
 alias dotf='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
