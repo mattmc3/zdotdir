@@ -1,1 +1,1 @@
-plugin bundle zsh-users/zsh-completions
+znap source zsh-users/zsh-completions

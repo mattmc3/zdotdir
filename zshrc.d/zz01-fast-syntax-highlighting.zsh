@@ -1,1 +1,1 @@
-plugin bundle zdharma/fast-syntax-highlighting
+znap source zdharma/fast-syntax-highlighting

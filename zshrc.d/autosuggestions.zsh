@@ -1,2 +1,2 @@
-plugin bundle zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'

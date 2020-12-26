@@ -1,1 +1,1 @@
-plugin bundle mattmc3/zsh-cd-ls
+znap source mattmc3/zsh-cd-ls

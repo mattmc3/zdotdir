@@ -1,1 +1,1 @@
-plugin bundle olets/zsh-abbr
+znap source olets/zsh-abbr

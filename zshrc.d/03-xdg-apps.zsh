@@ -12,4 +12,4 @@ XDG_APPS=(
   wget
 )
 zstyle ':xdg-basedirs:*' apps $XDG_APPS
-plugin bundle mattmc3/zsh-xdg-basedirs
+znap source mattmc3/zsh-xdg-basedirs
