@@ -14,14 +14,14 @@ Show directories with `/`:
 
 ```zsh
 $ echo *(/)
-.zshrc.d .zfunctions
+plugins zshrc.d zfunctions
 ```
 
 Show regular files with `.`:
 
 ```zsh
 $ echo *(.)
-.zlogin .zshenv .zshrc
+.zshenv .zshrc
 ```
 
 Show symlinks with `@`:
@@ -35,7 +35,7 @@ Toggle qualifiers to work with symlinks `-`:
 
 ```zsh
 $ echo *(.-)
-.zlogin .zshenv .zsh_history .zshrc
+.zshenv .zsh_history .zshrc
 ```
 
 Exclude files with `^`:
@@ -60,18 +60,18 @@ Files over/unsder a certain size with `L[+|-]n`:
 ```zsh
 $ # files over 1k
 $ echo *(Lk+1)
-.zlogin .zshrc
+LICENSE README.md
 ```
 
 ## Expansion Modifiers
 
 [Expansion modifiers][zsh-modifiers] change the path stored in a variable.
 
-Set a file path in a variable to play with:
+Set a file path in a variable to play with (assumes OMZ installed):
 
 ```zsh
-$ cd $ZSH
-$ filepath=./plugins/extract/extract.plugin.zsh
+cd $ZSH
+filepath=./plugins/extract/extract.plugin.zsh
 ```
 
 `:a` will expand a relative filepath to an absolute one
