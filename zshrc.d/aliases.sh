@@ -27,7 +27,8 @@ if [[ -n $ZSH_VERSION ]]; then
 
   alias zshrc='$VISUAL "${ZDOTDIR:-$HOME}"/.zshrc'
   alias reload='source "${ZDOTDIR:-$HOME}"/.zshrc'
-  alias zbench="for i in \$(seq 1 10); do; /usr/bin/time zsh -i -c exit; done"
+  alias zbench='export LAZY_PROMPT=false; for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done; unset LAZY_PROMPT'
+  alias zdot='cd $ZDOTDIR'
 
   # zsh pipes
   alias -g H='| head'
@@ -39,9 +40,9 @@ if [[ -n $ZSH_VERSION ]]; then
 fi
 
 # mask built-ins with better defaults
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
+# alias cp='cp -i'
+# alias mv='mv -i'
+# alias rm='rm -i'
 alias ls='ls -GF'
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ping='ping -c 5'
@@ -105,7 +106,6 @@ alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
-alias zdot='cd $ZDOTDIR'
 
 # auto-orient images based on exif tags
 alias autorotate="jhead -autorot"
