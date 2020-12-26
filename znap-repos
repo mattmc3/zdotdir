@@ -7,6 +7,7 @@ ohmyzsh/ohmyzsh
 olets/zsh-abbr
 romkatv/powerlevel10k
 sindresorhus/pure
+sorin-ionescu/prezto
 zdharma/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
