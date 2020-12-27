@@ -1,1 +1,1 @@
-znap source zsh-users/zsh-completions
+zplugr source zsh-users/zsh-completions

@@ -1,1 +1,1 @@
-znap source zdharma/fast-syntax-highlighting
+zplugr source zdharma/fast-syntax-highlighting

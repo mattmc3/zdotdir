@@ -1,1 +1,1 @@
-znap source mattmc3/zsh-cd-ls
+zplugr source mattmc3/zsh-cd-ls

@@ -12,7 +12,7 @@ fpath+="$ZDOTDIR/plugins"
 for _repo in $PROMPT_REPOS; do
   _prompt_name=${${_repo##*/}%.git}
   [[ -d "$ZDOTDIR/plugins/$_prompt_name" ]] ||
-    znap clone $_repo
+    zplugr clone $_repo
   fpath+="$ZDOTDIR/plugins/$_prompt_name"
 done
 unset _repo _prompt_name
@@ -21,5 +21,5 @@ if [[ $ZPROF == "true" || "${LAZY_PROMPT:-true}" == "false" ]]; then
   autoload -U promptinit; promptinit
   prompt "${ZSH_PROMPT:-pure}"
 else
-  znap prompt sindresorhus/pure
+  zplugr prompt sindresorhus/pure
 fi

@@ -1,1 +1,1 @@
-znap source olets/zsh-abbr
+zplugr source olets/zsh-abbr

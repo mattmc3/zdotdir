@@ -1,1 +1,1 @@
-znap source zsh-users/zsh-history-substring-search
+zplugr source zsh-users/zsh-history-substring-search
