@@ -1,1 +1,1 @@
-zplugr source olets/zsh-abbr
+pz source olets/zsh-abbr

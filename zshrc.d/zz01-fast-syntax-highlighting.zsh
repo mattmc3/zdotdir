@@ -1,1 +1,1 @@
-zplugr source zdharma/fast-syntax-highlighting
+pz source zdharma/fast-syntax-highlighting

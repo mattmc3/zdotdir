@@ -12,7 +12,7 @@ ZSH_COMPDUMP="${XDG_CACHE_HOME:-~/.cache}"/zsh/zcompdump
 ZSH_CUSTOM=$ZDOTDIR/plugins/zsh_custom
 
 # omz overrides
-[[ -d $ZSH_CUSTOM ]] || zplugr clone mattmc3/zsh_custom
+[[ -d $ZSH_CUSTOM ]] || pz clone mattmc3/zsh_custom
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -34,4 +34,4 @@ plugins=(
 )
 
 # load ohmyzsh
-zplugr source ohmyzsh/ohmyzsh
+pz source ohmyzsh/ohmyzsh

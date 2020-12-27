@@ -1,1 +1,1 @@
-zplugr source zsh-users/zsh-completions
+pz source zsh-users/zsh-completions

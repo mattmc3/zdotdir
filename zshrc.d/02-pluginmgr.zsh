@@ -12,7 +12,7 @@
 # }
 
 
-ZPLUGR_PLUGINS_DIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
-[[ -d $ZPLUGR_PLUGINS_DIR/zplugr ]] ||
-  git clone --depth=1 --recursive https://github.com/mattmc3/zplugr.git $ZPLUGR_PLUGINS_DIR/zplugr
-source $ZPLUGR_PLUGINS_DIR/zplugr/zplugr.zsh
+PZ_PLUGINS_DIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
+[[ -d $PZ_PLUGINS_DIR/pz ]] ||
+  git clone --depth=1 --recursive https://github.com/mattmc3/pz.git $PZ_PLUGINS_DIR/pz
+source $PZ_PLUGINS_DIR/pz/pz.zsh

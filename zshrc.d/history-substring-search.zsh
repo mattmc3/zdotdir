@@ -1,1 +1,1 @@
-zplugr source zsh-users/zsh-history-substring-search
+pz source zsh-users/zsh-history-substring-search
