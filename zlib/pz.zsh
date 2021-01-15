@@ -2,8 +2,8 @@
 PZ_PLUGIN_HOME="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
 [[ -d $PZ_PLUGIN_HOME/pz ]] ||
   git clone --depth=1 --recursive https://github.com/mattmc3/pz.git $PZ_PLUGIN_HOME/pz
-# source $PZ_PLUGIN_HOME/pz/pz.zsh
-source "$HOME/Projects/github.com/mattmc3/pz/pz.zsh"
+source $PZ_PLUGIN_HOME/pz/pz.zsh
+# source "$HOME/Projects/mattmc3/pz/pz.zsh"
 
 # prompts
 pz prompt -a miekg/lean
@@ -26,6 +26,11 @@ pz source rupa/z
 
 # omz plugins
 pz source ohmyzsh/ohmyzsh plugins/colored-man-pages
+
+# prezto plugins
+pz source sorin-ionescu/prezto modules/terminal
+pz source sorin-ionescu/prezto modules/editor
+setopt nobeep
 
 # last plugins
 pz source mattmc3/zshrc.d
