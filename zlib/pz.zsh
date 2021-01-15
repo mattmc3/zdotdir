@@ -17,7 +17,7 @@ pz source mattmc3/zsh-setopts
 pz source mattmc3/zsh-history
 pz source mattmc3/zfunctions
 pz source mattmc3/zsh-xdg-basedirs
-pz source olets/zsh-abbr
+# pz source olets/zsh-abbr
 pz source mattmc3/zsh-cd-ls
 pz source zsh-users/zsh-autosuggestions
 pz source zsh-users/zsh-completions
