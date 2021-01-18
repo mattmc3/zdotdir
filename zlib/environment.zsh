@@ -36,6 +36,7 @@ fi
 # path
 path=(
   $HOME/bin
+  $ZDOTDIR/bin
   /opt/homebrew/{bin,sbin}
   /usr/local/{bin,sbin}
   /usr/{bin,sbin}
