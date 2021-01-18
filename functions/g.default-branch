@@ -1,2 +1,0 @@
-# https://stackoverflow.com/questions/28666357/git-how-to-get-default-branch
-basename $(git symbolic-ref --short refs/remotes/origin/HEAD)

@@ -1,7 +1,0 @@
-local url=$(g.url "$1")
-if [[ $? -ne 0 ]]; then
-  echo "unexpected param: $1" >&2
-  return 1
-fi
-echo "git clone --recursive $url $2"
-git clone --recursive $url $2
