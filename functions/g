@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 
 function _g_clone() {
+  if [[ $# -lt 2 ]]; then
+    command git "$@"
+    return $?
+  fi
   local repo="${@[-1]}"
   if [[ $repo != git://* &&
         $repo != https://* &&
@@ -17,12 +21,6 @@ function _g_clone() {
   else
     command git $@
   fi
-}
-
-function _g_pushup() {
-  # git push should just do this, but it doesn't
-  # when you create a new branch, push it upstream
-  git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
 }
 
 main() {
