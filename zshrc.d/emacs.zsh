@@ -1,1 +1,1 @@
-path+=~/.emacs.d/bin
+path=($path ~/.emacs.d/bin ~/.config/emacs/bin)
