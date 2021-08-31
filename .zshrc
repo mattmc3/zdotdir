@@ -35,12 +35,27 @@ PZ_PLUGIN_HOME="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
   git clone --depth=1 --recursive https://github.com/mattmc3/pz.git $PZ_PLUGIN_HOME/pz
 source $PZ_PLUGIN_HOME/pz/pz.zsh
 
-pz source zshzoo/zebrafish
-#source ~/Projects/zshzoo/zebrafish/zebrafish.zsh
+pz source zshzoo/setopts
+pz source zshzoo/history
+pz source zshzoo/up
+pz source ohmyzsh/ohmyzsh lib/functions
+pz source ohmyzsh/ohmyzsh lib/termsupport
+#pz source ohmyzsh/ohmyzsh lib/key-bindings
+pz source ohmyzsh/ohmyzsh lib/clipboard
+pz source ohmyzsh/ohmyzsh plugins/colored-man-pages
+pz source sorin-ionescu/prezto modules/editor
+#pz source sorin-ionescu/prezto modules/terminal
+pz source zsh-users/zsh-autosuggestions
+pz source zsh-users/zsh-completions
 pz source mattmc3/zsh-xdg-basedirs
 pz source mattmc3/zsh-cd-ls
 pz source zsh-users/zsh-completions
 pz source rupa/z
+pz prompt sindresorhus/pure
+pz source mattmc3/zshrc.d
+pz source mattmc3/zfunctions
+pz source zdharma/fast-syntax-highlighting
+pz source zsh-users/zsh-history-substring-search
 
 # local overrides
 [[ -f $DOTFILES/local/zsh/zshrc.local.zsh ]] && . $DOTFILES/local/zsh/zshrc.local.zsh
