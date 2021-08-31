@@ -1,0 +1,6 @@
+tmp1=$(mktemp)
+tmp2=$(mktemp)
+zsh -df -c "set -o" >| $tmp1
+set -o >| $tmp2
+diff --changed-group-format='%<' --unchanged-group-format='' $tmp2 $tmp1
+rm -rf $tmp1 $tmp2

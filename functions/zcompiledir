@@ -1,0 +1,19 @@
+emulate -L zsh; setopt localoptions extendedglob globdots globstarshort nullglob rcquotes
+autoload -U zrecompile
+
+local f
+local flag_clean=false
+[[ "$1" == "-c" ]] && flag_clean=true && shift
+if [[ -z "$1" ]] || [[ ! -d "$1" ]]; then
+  echo "Bad or missing directory $1" && return 1
+fi
+
+if [[ $flag_clean == true ]]; then
+  for f in "$1"/**/*.zwc(.N) "$1"/**/*.zwc.old(.N); do
+    echo "removing $f" && command rm -f "$f"
+  done
+else
+  for f in "$1"/**/*.zsh{,-theme}; do
+    echo "compiling $f" && zrecompile -pq "$f"
+  done
+fi

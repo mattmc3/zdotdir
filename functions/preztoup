@@ -1,0 +1,12 @@
+# updates zprezto, and the contrib dependencies
+zprezto-update
+local d
+for d in $ZPREZTODIR/contrib/*/.git;
+ do
+  echo "Updating $d:h:t"
+  git -C "$d/.." pull
+  echo ""
+done
+
+echo "Updating zprezto-contrib"
+git -C $ZDOTDIR/.zprezto-contrib pull
