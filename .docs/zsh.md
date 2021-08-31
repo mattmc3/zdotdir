@@ -2,6 +2,40 @@
 
 I can't always remember all the ZSH goodies, so here's all the wonderful stuff I have learned and references to things other's have provided.
 
+## Bare Zsh
+
+Zsh can be run without RCs using the following command:
+
+```zsh
+zsh -dfi
+```
+
+When run this way, be careful - all exported environment variables are still set.
+Here's the list of environment variables set when run totally clean:
+
+```zsh
+% env
+TERM_PROGRAM=Apple_Terminal
+SHELL=/bin/zsh
+TERM=xterm-256color
+TMPDIR=/var/folders/3q/pg2lffq50dj8xq787lhtfm2m0000gs/T/
+TERM_PROGRAM_VERSION=440
+TERM_SESSION_ID=BCC7821F-73F9-451F-9D8F-A948AFF587C5
+USER=matt
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.pSelXw92Wo/Listeners
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools
+__CFBundleIdentifier=com.apple.Terminal
+PWD=/Users/matt/.config
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+SHLVL=1
+HOME=/Users/matt
+LOGNAME=matt
+OLDPWD=/Users/matt/.config
+LANG=en_US.UTF-8
+_=/usr/bin/env
+```
+
 ## Globbing
 
 [Glob qualifiers][zsh-glob-qualifiers] are options tacked onto a wildcard pattern that filter or modify the match. Some examples:
