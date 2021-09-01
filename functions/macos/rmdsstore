@@ -1,0 +1,2 @@
+# Remove .DS_Store files recursively in a directory
+find "${@:-.}" -type f -name .DS_Store -delete

@@ -1,1 +1,0 @@
-antibody bundle < ${1:-$ZDOTDIR/zsh_plugins} | sed "s|$HOME|\$HOME|g"

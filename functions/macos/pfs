@@ -1,4 +1,4 @@
-# present finder selection
+# Return the paths of the current Finder selection
 osascript 2>/dev/null <<EOF
   set output to ""
   tell application "Finder" to set the_selection to selection

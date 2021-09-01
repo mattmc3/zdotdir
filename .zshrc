@@ -38,6 +38,8 @@ source $PZ_PLUGIN_HOME/pz/pz.zsh
 pz source zshzoo/setopts
 pz source zshzoo/history
 pz source zshzoo/up
+pz source zshzoo/iwd
+pz source rummik/zsh-tailf
 pz source ohmyzsh/ohmyzsh lib/functions
 pz source ohmyzsh/ohmyzsh lib/termsupport
 #pz source ohmyzsh/ohmyzsh lib/key-bindings
@@ -57,8 +59,17 @@ pz source mattmc3/zfunctions
 pz source zdharma/fast-syntax-highlighting
 pz source zsh-users/zsh-history-substring-search
 
+# funcs
+for _d in $ZDOTDIR/functions/*/; do
+  fpath=("$_d" $fpath)
+  for _fn in "$_d"/*(.N); do
+    autoload -Uz "$_fn"
+  done
+done
+unset _d _fn
+
 # local overrides
-[[ -f $DOTFILES/local/zsh/zshrc.local.zsh ]] && . $DOTFILES/local/zsh/zshrc.local.zsh
+[[ -f $DOTFILES.local/zsh/zshrc.local.zsh ]] && . $DOTFILES.local/zsh/zshrc.local.zsh
 
 # done profiling
 [[ $ZPROF != true ]] || { unset ZPROF && zprof }
