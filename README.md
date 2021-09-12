@@ -32,15 +32,15 @@ The latest benchmark run shows that we load a new shell pretty fast.
 % # MacBook Air (M1, 2020)
 % for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done
         0.09 real         0.05 user         0.03 sys
-        0.07 real         0.04 user         0.02 sys
-        0.07 real         0.04 user         0.02 sys
-        0.07 real         0.04 user         0.02 sys
-        0.07 real         0.04 user         0.02 sys
-        0.07 real         0.04 user         0.02 sys
-        0.07 real         0.04 user         0.02 sys
-        0.07 real         0.04 user         0.02 sys
-        0.07 real         0.04 user         0.02 sys
-        0.07 real         0.04 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
 ```
 
 ## Resources
