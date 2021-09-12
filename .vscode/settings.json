@@ -3,7 +3,13 @@
 	"files.associations": {
 		".zsh*": "shellscript",
 		"**/functions/*": "shellscript",
+		"**/functions/**/*": "shellscript",
 		"**/zfunctions/*": "shellscript",
 		"**/.zfunctions/*": "shellscript"
+	},
+	// Configure glob patterns for excluding files and folders.
+	"files.exclude": {
+		"**/*.zwc": true,
+		"**/*.zwc.old": true
 	}
 }
