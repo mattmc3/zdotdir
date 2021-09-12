@@ -14,4 +14,4 @@ for d in $fndirs; do
     autoload -Uz "$fn"
   done
 done
-unset dirname fn fndirs
+unset d fn fndirs
