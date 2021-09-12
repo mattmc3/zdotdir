@@ -1,0 +1,28 @@
+### funced
+# edit the function specified
+
+local zfuncdir
+zstyle -s ':zfunctions:*' 'path' zfuncdir ||
+  zfuncdir=${ZDOTDIR:-$HOME}/functions
+
+# check args
+if [[ -z "$1" ]]; then
+  echo "funced: Expected function name argument" >&2 && return 1
+fi
+
+# new function definition: make a file template
+if [[ ! -f "$zfuncdir/$1" ]]; then
+  cat <<eos > "$zfuncdir/$1"
+# Add function internals here.
+# Do NOT include function definition (ie: omit 'function $1() {').
+# See: http://zsh.sourceforge.net/Doc/Release/Functions.html#Autoloading-Functions
+eos
+fi
+
+# open the function file
+if [[ -z "$VISUAL" ]]; then
+  $VISUAL "$zfuncdir/$1"
+else
+  ${EDITOR:-nano} "$zfuncdir/$1"
+fi
+autoload -Uz "$zfuncdir/$1"

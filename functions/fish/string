@@ -1,0 +1,29 @@
+function _string_help() {
+  local usage
+  usage=$(<<'EOS'
+string - manipulate strings
+
+   string length [(-q | --quiet)] [STRING...]
+   string lower [(-q | --quiet)] [STRING...]
+   string upper [(-q | --quiet)] [STRING...]
+EOS
+)
+  echo $usage
+  return
+}
+
+function _string_length() {
+  local flag_quiet=false
+  if [[ "$1" = "-q" ]] || [[ "$1" = "--quiet" ]]; then
+    flag_quiet=true
+    shift
+  fi
+  local exitcode=1
+  local s result
+  for s in "$@"; do
+    result="${#s}"
+    [[ $result -ne 0 ]] && exitcode=0
+    [[ $flag_quiet = "false" ]] && echo "$result"
+  done
+  return $exitcode
+}
