@@ -27,8 +27,10 @@ if [[ -n $ZSH_VERSION ]]; then
 
   alias zshrc='$VISUAL "${ZDOTDIR:-$HOME}"/.zshrc'
   alias reload='source "${ZDOTDIR:-$HOME}"/.zshrc'
-  alias zbench='export LAZY_PROMPT=false; for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done; unset LAZY_PROMPT'
+  alias zbench='for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done'
+  alias zprofilerc="ZPROF=true zsh"
   alias zdot='cd $ZDOTDIR'
+  alias confd='cd $HOME/.config'
 
   # zsh pipes
   alias -g H='| head'
