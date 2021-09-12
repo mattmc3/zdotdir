@@ -7,7 +7,7 @@ fndirs=(
   ${ZDOTDIR:-~/.config/zsh}/functions
   ${ZDOTDIR:-~/.config/zsh}/functions/*/(N)
 )
-for d in fndirs; do
+for d in $fndirs; do
   [[ -d $d ]] || continue
   fpath=("$d" $fpath)
   for fn in "$d"/*(.N); do
