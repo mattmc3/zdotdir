@@ -7,6 +7,11 @@ export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 export XDG_RUNTIME_DIR=~/.xdg
 
+for _dir in $XDG_CONFIG_HOME $XDG_CACHE_HOME $XDG_DATA_HOME $XDG_RUNTIME_DIR; do
+  [[ -d "$_dir" ]] || mkdir -p "$_dir"
+done
+unset _dir
+
 if [[ "$OSTYPE" == darwin* ]]; then
   export XDG_DESKTOP_DIR=~/Desktop
   export XDG_DOCUMENTS_DIR=~/Documents
