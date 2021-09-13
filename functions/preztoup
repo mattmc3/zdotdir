@@ -1,7 +1,7 @@
 # updates zprezto, and the contrib dependencies
 zprezto-update
 local d f
-for d in $ZPREZTODIR/contrib/*/.git; do
+for d in $ZPREZTODIR/contrib/*/external/.git; do
   echo "Updating $d:h:t"
   git -C "$d/.." pull
   echo ""
