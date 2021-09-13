@@ -26,11 +26,11 @@ if [[ -n $ZSH_VERSION ]]; then
   alias -g ......='../../../../..'
 
   alias zshrc='$VISUAL "${ZDOTDIR:-$HOME}"/.zshrc'
-  alias reload='source "${ZDOTDIR:-$HOME}"/.zshrc'
   alias zbench='for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done'
   alias zprofilerc="ZPROF=true zsh"
   alias zdot='cd $ZDOTDIR'
   alias confd='cd $HOME/.config'
+  alias prj='cd $HOME/Projects'
 
   # zsh pipes
   alias -g H='| head'
