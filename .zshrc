@@ -1,22 +1,31 @@
-# zprof if we ever need to profile
-[[ $ZPROF != true ]] || zmodload zsh/zprof
+# load zprof first if we need to profile
+[[ ${ZSH_PROFILE_RC:-0} -eq 0 ]] || zmodload zsh/zprof
 
-# source all files in config dir
-_confdirs=(
-  "${ZDOTDIR:-$HOME}/.zshrc.d"
-  "${ZDOTDIR:-$HOME/.config/zsh}/zshrc.d"
-  "${ZDOTDIR:-$HOME/.config/zsh}/conf.d"
-)
-for _d in $_confdirs; do
-  [[ -d $_d ]] || continue
-  _files=("$_d"/*.{sh,zsh})
-  for _f in ${(o)_files}; do
+# helpful profiling aliases
+alias zprofrc="ZSH_PROFILE_RC=1 zsh"
+alias zbench='for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done'
+
+# source all scripts in a config dir
+function src_confd {
+  local files=("$1"/*.{sh,zsh}(.N))
+  local f; for f in ${(o)files}; do
     # ignore files that begin with a tilde
-    case ${_f:t} in '~'*) continue;; esac
-    source "$_f"
+    case ${f:t} in '~'*) continue;; esac
+    source "$f"
   done
-done
-unset _confdirs _d _f _files
+}
+
+() {
+  local confdirs=(
+    "${ZDOTDIR:-$HOME}/.zshrc.d"
+    "${ZDOTDIR:-$HOME/.config/zsh}/zshrc.d"
+    "${ZDOTDIR:-$HOME/.config/zsh}/conf.d"
+  )
+  local d; for d in $confdirs; do
+    [[ -d $d ]] || continue
+    src_confd $d
+  done
+}
 
 # done profiling
-[[ $ZPROF != true ]] || { unset ZPROF && zprof }
+[[ ${ZSH_PROFILE_RC:-0} -eq 0 ]] || { unset ZSH_PROFILE_RC && zprof }
