@@ -1,8 +1,0 @@
-if [[ -z "$1" ]]; then
-  echo "Expecting workon project name" >&2 && return 1
-elif [[ -z "$WORKON_HOME" ]]; then
-  echo "\$WORKON_HOME not set" >&2 && return 1
-elif [[ ! -d "$WORKON_HOME" ]]; then
-  echo "\$WORKON_HOME directory not found: $WORKON_HOME" >&2 && return 1
-fi
-source "$WORKON_HOME/$1/bin/activate"
