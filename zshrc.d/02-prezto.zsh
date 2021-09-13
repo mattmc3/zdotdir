@@ -12,31 +12,27 @@ fi
 
 for repo in $contrib_plugins; do
   plugin_name=${repo#*/}
-  plugin_dir="$ZPREZTODIR/contrib/$plugin_name"
+  plugin_dir="$ZPREZTODIR/contrib/$plugin_name/external"
 
   if [[ ! -d "$plugin_dir" ]]; then
-    mkdir -p "$ZPREZTODIR/contrib"
+    mkdir -p "${plugin_dir:h}"
     git clone --depth 1 --recursive --shallow-submodules https://github.com/$repo.git "$plugin_dir"
 
-    if [[ ! -f "$plugin_dir/init.zsh" ]]; then
-      pushd
-      cd "$plugin_dir"
-      search_files=(
-        # look for specific files first
-        $plugin_name.plugin.zsh(.N)
-        $plugin_name.zsh(.N)
-        $plugin_name(.N)
-        $plugin_name.zsh-theme(.N)
-        # then do more aggressive globbing
-        *.plugin.zsh(.N)
-        *.zsh(.N)
-        *.zsh-theme(.N)
-        *.sh(.N)
-      )
-      if [[ ${#search_files[@]} -gt 0 ]]; then
-        ln -s "${search_files[1]}" "init.zsh"
-      fi
-      popd
+    search_files=(
+      # look for specific files first
+      $plugin_dir/init.zsh(.N)
+      $plugin_dir/$plugin_name.plugin.zsh(.N)
+      $plugin_dir/$plugin_name.zsh(.N)
+      $plugin_dir/$plugin_name(.N)
+      $plugin_dir/$plugin_name.zsh-theme(.N)
+      # then do more aggressive globbing
+      $plugin_dir/*.plugin.zsh(.N)
+      $plugin_dir/*.zsh(.N)
+      $plugin_dir/*.zsh-theme(.N)
+      $plugin_dir/*.sh(.N)
+    )
+    if [[ ${#search_files[@]} -gt 0 ]]; then
+      echo "source \${0:A:h}/external/${search_files[1]:t}" >| "${plugin_dir:h}/init.zsh"
     fi
   fi
 done
