@@ -1,2 +1,0 @@
-# change directory to frontmost finder dir
-cd "$(pfd)"

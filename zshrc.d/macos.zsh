@@ -6,6 +6,12 @@ alias hidefiles="defaults write com.apple.finder AppleShowAllFiles -bool false &
 # Recursively clean files
 alias cleands="find . -name '.DS_Store' -depth -exec rm {} \;"
 
+# flush DNS
+alias flushdns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+
+# finder integrations
+alias ofd='open "$PWD"'
+
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
 
