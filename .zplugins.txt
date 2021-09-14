@@ -1,12 +1,12 @@
 ### frameworks
-# sorin-ionescu/prezto
+sorin-ionescu/prezto
 # ohmyzsh/ohmyzsh
 
 ### themes
 # agnoster/agnoster-zsh-theme
 # miekg/lean
 # romkatv/powerlevel10k
-sindresorhus/pure
+# sindresorhus/pure
 
 ### plugins
 rupa/z

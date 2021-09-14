@@ -19,3 +19,4 @@ zplugins/
 .oh-my-zsh/
 .zsh_custom/
 plugins/
+.zplugins/

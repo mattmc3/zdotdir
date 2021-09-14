@@ -3,6 +3,7 @@
 	"files.associations": {
 		".zsh*": "shellscript",
 		".zpreztorc": "shellscript",
+		".zplugins.*": "shellscript",
 		"**/functions/*": "shellscript",
 		"**/functions/**/*": "shellscript",
 		"**/zfunctions/*": "shellscript",
