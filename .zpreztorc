@@ -37,9 +37,7 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'emacs' \
   'git' \
-  'osx' \
-  'z' \
-  'fast-syntax-highlighting'
+  'osx'
 
 #
 # Autosuggestions
