@@ -1,4 +1,4 @@
-# Filename:  pluginz.zsh
+# Filename:  plugins.zsh
 # Version:   0.0.3
 # Purpose:   A simple, elegant, and speedy git plugin manager for Zsh
 # Author:    (c)mattmc3
