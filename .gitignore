@@ -20,3 +20,4 @@ zplugins/
 .zsh_custom/
 plugins/
 .zplugins/
+.zprezto-contrib/
