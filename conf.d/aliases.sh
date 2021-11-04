@@ -27,7 +27,7 @@ if [[ -n $ZSH_VERSION ]]; then
 
   alias zshrc='$VISUAL "${ZDOTDIR:-$HOME}"/.zshrc'
   alias zbench='for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done'
-  alias zprofilerc="ZPROF=true zsh"
+  alias zprofrc="ZPROFRC=1 zsh"
   alias zdot='cd $ZDOTDIR'
   alias confd='cd $HOME/.config'
   alias prj='cd $HOME/Projects'
