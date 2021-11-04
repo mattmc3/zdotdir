@@ -3,7 +3,7 @@
 # set prezto variables
 ZPREZTODIR="${ZPREZTODIR:-${ZDOTDIR:-$HOME}/.zprezto}"
 ZPREZTO_CONTRIB_DIR="$ZPREZTODIR/contrib"
-ZPREZTO_CONTRIB_FILE="${ZDOTDIR:-$HOME}/.zprezto_contrib"
+ZPREZTO_CONTRIB_FILE="${ZDOTDIR:-$HOME}/zprezto_contribs.zsh"
 # prezto doesn't set this variable, so borrow the omz one
 ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/prezto/zcompdump"
 
@@ -63,17 +63,17 @@ function zpreztoup() {
 # clone prezto and contribs
 () {
   local REPLY repo
-  local contribs=()
+  source "$ZPREZTO_CONTRIB_FILE"
   # parse the contribs file, which allows "#comments"
-  if [[ -f "$ZPREZTO_CONTRIB_FILE" ]]; then
-    contribs=("${(@f)$(command awk '!/^(#| *$)/' $ZPREZTO_CONTRIB_FILE)}")
-  fi
+  # if [[ -f "$ZPREZTO_CONTRIB_FILE" ]]; then
+  #   contribs=("${(@f)$(command awk '!/^(#| *$)/' $ZPREZTO_CONTRIB_FILE)}")
+  # fi
   # clone prezto itself
   if [[ ! -d "$ZPREZTODIR" ]]; then
     zprezto_clone "sorin-ionescu/prezto" "$ZPREZTODIR"
   fi
   # clone contribs
-  for repo in $contribs; do
+  for repo in $zprezto_contribs; do
     local contrib_subdir="$ZPREZTO_CONTRIB_DIR/${repo##*/}"
     if [[ ! -d "$contrib_subdir" ]]; then
       zprezto_clone "$repo" "$contrib_subdir"/external
