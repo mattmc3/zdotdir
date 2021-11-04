@@ -10,6 +10,7 @@ zstyle ':prezto:*:*' color 'yes'
 
 # Add additional directories to load prezto modules from
 # zstyle ':prezto:load' pmodule-dirs ${ZDOTDIR:-$HOME}/.zprezto-contrib
+# zstyle ':prezto:load' pmodule-dirs ${ZDOTDIR:-$HOME}/.zplugins
 
 # Allow module overrides when pmodule-dirs causes module name collisions
 # zstyle ':prezto:load' pmodule-allow-overrides 'yes'
@@ -37,7 +38,10 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'emacs' \
   'git' \
-  'osx'
+  'osx' \
+  'z' \
+  'fast-syntax-highlighting'
+
 
 #
 # Autosuggestions
@@ -226,3 +230,10 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
 zstyle ':prezto:module:utility' correct 'no'
+
+
+#
+# .zfunctions
+#
+
+zstyle ':zfunctions:*' 'path' $ZDOTDIR/.zfunctions

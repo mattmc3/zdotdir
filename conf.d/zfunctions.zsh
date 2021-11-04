@@ -8,17 +8,5 @@ function autoload_funcdir {
     autoload -Uz "$fn"
   done
 }
-
-fndirs=(
-  ${ZDOTDIR:-$HOME}/.zfunctions
-  ${ZDOTDIR:-$HOME}/.zfunctions/*/(N)
-  ${ZDOTDIR:-~/.config/zsh}/zfunctions
-  ${ZDOTDIR:-~/.config/zsh}/zfunctions/*/(N)
-  ${ZDOTDIR:-~/.config/zsh}/functions
-  ${ZDOTDIR:-~/.config/zsh}/functions/*/(N)
-)
-for d in $fndirs; do
-  [[ -d $d ]] || continue
-  autoload_funcdir "$d"
-done
-unset fndirs d
+ZFUNCDIR="${ZFUNCDIR:-$ZDOTDIR/functions}"
+autoload_funcdir "$ZFUNCDIR"

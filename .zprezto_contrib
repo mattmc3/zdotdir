@@ -1,5 +1,5 @@
 ### frameworks
-sorin-ionescu/prezto
+# sorin-ionescu/prezto
 # ohmyzsh/ohmyzsh
 
 ### themes
@@ -10,8 +10,9 @@ sorin-ionescu/prezto
 
 ### plugins
 rupa/z
+zshzoo/fast-syntax-highlighting
+
 # olets/zsh-abbr
-zdharma/fast-syntax-highlighting
 # peterhurford/up.zsh
 # rummik/zsh-tailf
 # zshzoo/iwd
