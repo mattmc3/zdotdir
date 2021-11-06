@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+
+"""
+parse_giturl
+
+Parse a giturl into parts
+
+Usage:
+  parse_giturl <giturl>
+
+Example:
+  In Zsh, you can assign an array to the output like so:
+  $ arr=("${(@f)$(parse_giturl user/repo)}")
+"""
+
+import os
+import sys
+import re
+
+
+def construct_url(parts):
+    protocol, domain, user, repo = parts
+    sep = "/"
+    if protocol == "git@":
+        sep = ":"
+    return f"{protocol}{domain}{sep}{user}/{repo}.git"
+
+
+def print_result(parts):
+    # support for shortened URLs via default values
+    defaults = (
+        os.environ.get("GIT_PROTOCOL", "git@"),
+        os.environ.get("GIT_DOMAIN", "github.com"),
+        os.environ.get("GIT_USER", "mattmc3"),
+    )
+    # we need 4 parts, so borrow from the defaults if we are short
+    if len(parts) < 4:
+        parts = defaults[0 : 4 - len(parts)] + parts
+    print(construct_url(parts))
+    for part in parts:
+        print(part)
+
+
+def main(giturl):
+    patterns = {
+        # https://github.com/mattmc3/dotfiles.git
+        "full url": r"((?:https?|git|ssh):\/\/)(.+?)\/([^\/:]+?)\/([^\/]+?)(?:\.git)?",
+        # git@github.com:mattmc3/dotfiles.git
+        "git url": r"(git@)([^:]+):([^\/]+)\/([^\/]+?)(?:\.git)?",
+        # mattmc3/dotfiles
+        "short repo": r"([^\/]+)\/([^\/]+)",
+        # dotfiles
+        "my repo": r"([^\/]+)",
+    }
+    for patname, pat in patterns.items():
+        match = re.fullmatch(pat, giturl)
+        if match:
+            print_result(match.groups())
+            return
+    print("parse_giturl: git URL format not recognized", file=sys.stderr)
+    return 1
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("parse_giturl: Expecting giturl argument", file=sys.stderr)
+        sys.exit(1)
+    errcode = main(sys.argv[1])
+    if errcode:
+        sys.exit(errcode)
