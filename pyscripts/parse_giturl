@@ -9,6 +9,13 @@ Usage:
   parse_giturl <giturl>
 
 Example:
+  $ parse_giturl https://github.com/mattmc3/dotfiles                                                   ✘ 1 main ✱ ◼
+  https://github.com/mattmc3/dotfiles.git
+  https://
+  github.com
+  mattmc3
+  dotfiles
+
   In Zsh, you can assign an array to the output like so:
   $ arr=("${(@f)$(parse_giturl user/repo)}")
 """
