@@ -33,3 +33,7 @@ indent_size = 2
 [**/bin/*]
 indent_style = space
 indent_size = 2
+
+[**/pyscripts/*]
+indent_style = space
+indent_size = 4

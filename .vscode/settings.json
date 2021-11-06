@@ -7,7 +7,8 @@
 		"**/functions/*": "shellscript",
 		"**/functions/**/*": "shellscript",
 		"**/zfunctions/*": "shellscript",
-		"**/.zfunctions/*": "shellscript"
+		"**/.zfunctions/*": "shellscript",
+		"**/pyscripts/*": "python"
 	},
 	// Configure glob patterns for excluding files and folders.
 	"files.exclude": {
