@@ -11,7 +11,9 @@ zprezto_contribs=(
 
   ### plugins
   rupa/z
-  zshzoo/fast-syntax-highlighting
+  zdharma-continuum/fast-syntax-highlighting
+  #zshzoo/fast-syntax-highlighting
+  desyncr/auto-ls
 
   # olets/zsh-abbr
   # peterhurford/up.zsh

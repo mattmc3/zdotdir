@@ -11,7 +11,7 @@ function zprezto_compile() {
   local dir="${1:a}"
   echo "zcompiling $dir"
   autoload -U zrecompile
-  for f in "$dir"/**/*.zsh{,-theme}; do
+  for f in "$dir"/**/*.zsh{,-theme}(.N); do
     zrecompile -pq "$f"
   done
 }
