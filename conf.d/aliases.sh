@@ -29,6 +29,7 @@ if [[ -n $ZSH_VERSION ]]; then
   alias zbench='for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done'
   alias zprofrc="ZPROFRC=1 zsh"
   alias zdot='cd $ZDOTDIR'
+  alias fishconf='cd $HOME/.config/fish'
   alias confd='cd $HOME/.config'
   alias prj='cd $HOME/Projects'
 
