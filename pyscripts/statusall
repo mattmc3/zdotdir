@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+"""
+statusall
+
+Git pull from all repos in the provided dir
+
+Usage:
+  statusall <dir>
+"""
+
+import sys
+from pathlib import Path
+from shell import echo, echoerr, run
+
+
+def main(dir):
+    basepath = Path(dir).expanduser().resolve()
+    for gitdir in basepath.glob("**/.git"):
+        echo(gitdir.parent)
+        run(f"""git -C "{gitdir.parent}" status""")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        echoerr("statusall: Expecting dir argument")
+        sys.exit(1)
+    errcode = main(sys.argv[1])
+    if errcode:
+        sys.exit(errcode)
