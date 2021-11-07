@@ -23,6 +23,7 @@ Example:
 import os
 import sys
 import re
+from shell import echo, echoerr
 
 
 def construct_url(parts):
@@ -33,7 +34,7 @@ def construct_url(parts):
     return f"{protocol}{domain}{sep}{user}/{repo}.git"
 
 
-def print_result(parts):
+def output_result(parts):
     # support for shortened URLs via default values
     defaults = (
         os.environ.get("GIT_PROTOCOL", "git@"),
@@ -43,9 +44,9 @@ def print_result(parts):
     # we need 4 parts, so borrow from the defaults if we are short
     if len(parts) < 4:
         parts = defaults[0 : 4 - len(parts)] + parts
-    print(construct_url(parts))
+    echo(construct_url(parts))
     for part in parts:
-        print(part)
+        echo(part)
 
 
 def main(giturl):
@@ -62,15 +63,15 @@ def main(giturl):
     for patname, pat in patterns.items():
         match = re.fullmatch(pat, giturl)
         if match:
-            print_result(match.groups())
+            output_result(match.groups())
             return
-    print("parse_giturl: git URL format not recognized", file=sys.stderr)
+    echoerr("parse_giturl: git URL format not recognized")
     return 1
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("parse_giturl: Expecting giturl argument", file=sys.stderr)
+        echoerr("parse_giturl: Expecting giturl argument")
         sys.exit(1)
     errcode = main(sys.argv[1])
     if errcode:
