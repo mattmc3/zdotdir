@@ -1,1 +1,1 @@
-compdef '_dispatch git git' g
+# compdef '_dispatch git git' g
