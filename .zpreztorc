@@ -10,7 +10,7 @@ zstyle ':prezto:*:*' color 'yes'
 
 # Add additional directories to load prezto modules from
 # zstyle ':prezto:load' pmodule-dirs ${ZDOTDIR:-$HOME}/.zprezto-contrib
-# zstyle ':prezto:load' pmodule-dirs ${ZDOTDIR:-$HOME}/.zplugins
+zstyle ':prezto:load' pmodule-dirs $ZDOTDIR/plugins
 
 # Allow module overrides when pmodule-dirs causes module name collisions
 # zstyle ':prezto:load' pmodule-allow-overrides 'yes'
@@ -40,7 +40,6 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'osx' \
   'z' \
-  'auto-ls' \
   'fast-syntax-highlighting'
 
 

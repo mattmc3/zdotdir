@@ -1,0 +1,6 @@
+local plugindir="${ZPLUGINDIR:-$ZDOTDIR/plugins}"
+autoload -U zrecompile
+local f
+for f in $plugindir/**/*.zsh{,-theme}(N); do
+  zrecompile -pq "$f"
+done

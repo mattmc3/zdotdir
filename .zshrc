@@ -4,6 +4,9 @@
 # like fish, we're going to use functions, conf.d, and completions directories
 # to drive Zsh functionality
 
+# plugins
+ZPLUGINDIR=$ZDOTDIR/plugins
+
 # functions
 ZFUNCDIR="$ZDOTDIR/functions"
 for _fndir in $ZFUNCDIR $ZFUNCDIR/**(/); do
