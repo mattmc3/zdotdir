@@ -4,10 +4,28 @@ My `$ZDOTDIR` directory, which contains my zsh configuration.
 
 ## Installation
 
-```zsh
-# it's a good idea to backup existing files first
-find ~ -type f -maxdepth 1 -name '.zsh*' -exec cp {} {}.bak \;
+It's a good idea to backup existing files first:
 
+```zsh
+setopt extended_glob
+zfiles=(
+  ${ZDOTDIR:-$HOME}/.zlogin(.N)
+  ${ZDOTDIR:-$HOME}/.zlogout(.N)
+  ${ZDOTDIR:-$HOME}/.zpreztorc(.N)
+  ${ZDOTDIR:-$HOME}/.zprofile(.N)
+  ${ZDOTDIR:-$HOME}/.zsh_history(.N)
+  ${ZDOTDIR:-$HOME}/.zshenv(.N)
+  ${ZDOTDIR:-$HOME}/.zshrc(.N)
+)
+mkdir -p ~/.bak
+for zfile in $zfiles; do
+  cp $zfile ~/.bak
+done
+```
+
+Install this dotfiles repo to your $ZDOTDIR:
+
+```zsh
 # set the amazing ZDOTDIR variable
 export ZDOTDIR=~/.config/zsh
 
