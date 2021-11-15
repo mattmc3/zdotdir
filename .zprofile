@@ -90,8 +90,3 @@ fi
 #
 
 export SHELL_SESSIONS_DISABLE=1
-
-#
-# plugin variables
-#
-PURE_PROMPT_SYMBOL="%%"

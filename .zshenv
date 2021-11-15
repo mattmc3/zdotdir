@@ -21,3 +21,8 @@ fi
 export SHELL_SESSIONS_DISABLE=1
 
 [[ -d ~/.config/dotfiles ]] && export DOTFILES=~/.config/dotfiles
+
+# Ensure that a non-login, non-interactive shell has a defined environment.
+if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi
