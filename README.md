@@ -74,14 +74,37 @@ The latest benchmark run shows that we load a new shell pretty fast.
         0.29 real         0.07 user         0.11 sys
 ```
 
+## Look-and-feel
+
+### Fonts
+
+Install [nerd fonts][nerd-fonts] via homebrew:
+
+```zsh
+brew tap homebrew/cask-fonts
+brew install --cask font-meslo-lg-nerd-font
+brew install --cask font-fira-code-nerd-font
+brew install --cask font-hack-nerd-font
+brew install --cask font-inconsolata-nerd-font
+brew install --cask font-sauce-code-pro-nerd-font
+```
+
+### Color schemes
+
+iTerm2 has some awesome [color schemes][iterm2-colors]. You can use them for more than just iTerm2.
+
+I use Space Gray:
+<img alt="space gray" src="https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/screenshots/space_gray.png?raw=true"/>
+
 ## Resources
 
-- [Terminal Font][terminal-font]: Meslo LG M for Powerline]
-- [oh-my-zsh][omz]
 - [prezto][prezto]
+- [oh-my-zsh][omz]
 - [supercharge your terminal with zsh][supercharge-zsh]
 
-[omz]:             https://github.com/ohmyzsh/ohmyzsh
-[supercharge-zsh]: https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
-[terminal-font]:   https://github.com/powerline/fonts
-[prezto]:          https://github.com/sorin-ionescu/prezto
+[omz]:              https://github.com/ohmyzsh/ohmyzsh
+[supercharge-zsh]:  https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
+[nerd-fonts]:       https://github.com/ryanoasis/nerd-fonts
+[prezto]:           https://github.com/sorin-ionescu/prezto
+[homebrew]:         https://brew.sh
+[iterm2-colors]:    https://github.com/mbadolato/iTerm2-Color-Schemes
