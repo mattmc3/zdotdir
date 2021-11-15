@@ -1,4 +1,4 @@
-zprezto_contribs=(
+external_plugins=(
   ### frameworks
   # sorin-ionescu/prezto
   # ohmyzsh/ohmyzsh
