@@ -94,7 +94,10 @@ brew install --cask font-sauce-code-pro-nerd-font
 iTerm2 has some awesome [color schemes][iterm2-colors]. You can use them for more than just iTerm2.
 
 I use Space Gray:
-<img alt="space gray" src="https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/screenshots/space_gray.png?raw=true"/>
+
+<p align="center">
+  <img alt="space gray" src="https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/screenshots/space_gray.png?raw=true"/>
+</p>
 
 ## Resources
 
