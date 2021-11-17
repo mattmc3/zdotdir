@@ -22,7 +22,7 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
-[**/{.zfunctions,zfunctions,functions}/*]
+[**/{.zfunctions,zfunctions,functions}/**/*]
 indent_style = space
 indent_size = 2
 
