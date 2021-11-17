@@ -1,0 +1,5 @@
+local fn
+for fn in $ZFUNCDIR/**/*(.); do
+  unfunction "${fn:t}"
+  autoload -Uz "$fn"
+done
