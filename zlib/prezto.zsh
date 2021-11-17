@@ -6,8 +6,13 @@ prezto_plugins=(
   sorin-ionescu/prezto
   # contribs next
   ohmyzsh/ohmyzsh
-  # rupa/z
-  # zdharma-continuum/fast-syntax-highlighting
+  rupa/z
+  # sindresorhus/pure
+  # zsh-users/zsh-autosuggestions
+  # zsh-users/zsh-history-substring-search
+  # zsh-users/zsh-completions
+  # zsh-users/zsh-syntax-highlighting
+  zdharma-continuum/fast-syntax-highlighting
 )
 
 # set prezto variables
