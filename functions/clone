@@ -1,0 +1,18 @@
+# clone a git repo
+if [[ -z "$1" ]]; then
+	echo "What git repo do you want?" >&2
+    return 1
+fi
+
+local user=${1%/*}
+local repo=${1##*/}
+local giturl="github.com"
+local prjhome="${XDG_PROJECTS_HOME:-$HOME/Projects}"
+
+if [[ ! -d $prjhome/$1 ]]; then
+  git clone "git@${giturl}:${user}/${repo}.git" "$prjhome/$1"
+else
+  echo "No need to clone, that directory already exists."
+  echo "Taking you there."
+fi
+cd $prjhome/$1
