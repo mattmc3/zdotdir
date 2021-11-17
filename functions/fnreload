@@ -1,5 +1,5 @@
 local fn
 for fn in $ZFUNCDIR/**/*(.); do
-  unfunction "${fn:t}"
+  unfunction "${fn:t}" &>/dev/null
   autoload -Uz "$fn"
 done
