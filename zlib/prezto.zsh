@@ -6,8 +6,8 @@ prezto_plugins=(
   sorin-ionescu/prezto
   # contribs next
   ohmyzsh/ohmyzsh
-  rupa/z
-  zdharma-continuum/fast-syntax-highlighting
+  # rupa/z
+  # zdharma-continuum/fast-syntax-highlighting
 )
 
 # set prezto variables
@@ -36,3 +36,14 @@ setopt emacs                  # use emacs keybindings in the shell
 setopt glob_dots              # include dotfiles when globbing
 setopt emacs                  # use emacs keybindings in the shell
 setopt pushd_minus            # exchanges the meanings of ‘+’ and ‘-’ when specifying a directory in the stack
+
+# fix prezto history
+HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
+[[ -f "$HISTFILE" ]] || { mkdir -p "$HISTFILE:h" && touch "$HISTFILE" }
+SAVEHIST=20000
+HISTSIZE=100000
+
+setopt hist_no_store          # don't store history commands
+setopt hist_reduce_blanks     # remove superfluous blanks from each command line being added to the history list
+
+alias history="fc -li"        # make the history command more useful
