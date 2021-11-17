@@ -30,6 +30,7 @@ if [[ -n $ZSH_VERSION ]]; then
   alias zprofrc="ZPROFRC=1 zsh"
   alias zdot='cd $ZDOTDIR'
   alias fishconf='cd $HOME/.config/fish'
+  alias xdot='cd $HOME/.config/xonsh'
   alias confd='cd $HOME/.config'
   alias prj='cd $HOME/Projects'
 
