@@ -19,5 +19,6 @@ zplugins/
 .oh-my-zsh/
 .zsh_custom/
 plugins/
+!functions/plugins
 .zplugins/
 .zprezto-contrib/
