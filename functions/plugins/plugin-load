@@ -1,0 +1,17 @@
+# source the plugin and add it to fpath
+# if needed, clone it first and symlink the init file
+local giturl="$1"
+local plugin_name=${${giturl##*/}%.git}
+local plugindir="${ZPLUGINDIR:-$HOME/.zsh/plugins}/$plugin_name"
+
+# clone if the plugin isn't there already
+if [[ ! -e $ZPLUGINDIR/$plugin_name/init.zsh ]]; then
+  plugin-clone "$giturl"
+  plugin-initfile $plugindir >/dev/null
+  ln -s $REPLY $plugindir/init.zsh
+fi
+fpath+=$plugindir
+if [[ -d $plugindir/functions ]]; then
+  fpath+=$plugindir/functions
+fi
+source $plugindir/init.zsh
