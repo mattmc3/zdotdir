@@ -1,0 +1,50 @@
+read -r -d '' usage <<'EOF'
+Project Jump: quickly find a project and cd into it
+
+Usage:
+  pj [--prj-dirs=<dirlist>] [<prjhome>]
+  pj -h|--help
+
+Options:
+  -h --help              Show usage
+  --prj-dirs=<dirlist>   List of dirs that indicate a project
+                         [default: {.bzr,CVS,.git,.hg,.svn,.env,.venv}]
+EOF
+
+if ! command -v fzf >/dev/null; then
+  echo "fzf command not found" >&2
+  return 1
+fi
+
+if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
+  echo $usage
+  return
+fi
+
+# determine the project home
+local prjhome
+if [[ -n "$1" ]]; then
+  prjhome="${1:a}"
+else
+  prjhome=$XDG_PROJECTS_DIR
+fi
+
+if [[ ! -d $prjhome ]]; then
+    echo "Project home directory not found: $prjhome" >&2
+    return 1
+fi
+
+local projects=()
+local p
+for p in $prjhome/**/.git; do
+  projects+=${${p:h}#*$prjhome/}
+done
+
+# fzf a project
+# echo ${(o)projects} | tr ' ' '\n'
+local selection=$(echo ${(O)projects} | tr ' ' '\n' | fzf)
+
+# cd to the selected project
+if [[ -n $selection ]] && [[ -d $prjhome/$selection ]]; then
+  cd $prjhome/$selection
+fi
