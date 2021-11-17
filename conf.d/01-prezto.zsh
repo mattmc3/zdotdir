@@ -14,7 +14,7 @@ external_plugins=(
 
 omz_plugins=(
   extract
-  magic-enter
+  # magic-enter
   # colored-man-pages
 )
 

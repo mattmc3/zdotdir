@@ -1,3 +1,4 @@
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/magic-enter
 if ! typeset -f magic-enter-cmd > /dev/null; then
   function magic-enter-cmd {
     local cmd="ls -GF"
