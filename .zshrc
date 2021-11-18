@@ -5,6 +5,8 @@
 zlibs=(
   # opts
   # history
+  xdg
+  xdg-apps
   zfuncd
   zcompd
   prezto
