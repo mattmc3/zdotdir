@@ -1,20 +1,6 @@
 # apps -
 #   define aliases and variables for different apps
 
-# xdg
-# https://wiki.archlinux.org/title/XDG_Base_Directory
-for _dir in $XDG_CONFIG_HOME $XDG_CACHE_HOME $XDG_DATA_HOME $XDG_RUNTIME_DIR; do
-  [[ -d "$_dir" ]] || mkdir -p "$_dir"
-done
-unset _dir
-
-# atom
-export ATOM_HOME="$XDG_CONFIG_HOME"/atom
-
-# docker
-export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
-export MACHINE_STORAGE_PATH="$XDG_DATA_HOME"/docker-machine
-
 # dotfiles
 export DOTFILES=~/.config/dotfiles
 alias dotf='cd "$DOTFILES"'
@@ -50,10 +36,6 @@ alias gor='go run'
 alias got='go test'
 alias gov='go vet'
 
-# gpg
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-alias gpg='gpg --homedir "$GNUPGHOME"'
-
 # groovy
 if [[ "$OSTYPE" == darwin* ]]; then
   export GROOVY_HOME=/usr/local/opt/groovy/libexec  # per homebrew
@@ -76,30 +58,14 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 alias setjavahome="export JAVA_HOME=\`/usr/libexec/java_home\`"
 
 # jupyter
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 JUPYTER_HOME="${JUPYTER_HOME:-$HOME/Projects/jupyter}"
 [[ -d $JUPYTER_HOME ]] || mkdir -p $JUPYTER_HOME
-
-# less
-export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
-export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 
 # lpass
 export LPASS_AGENT_TIMEOUT="${LPASS_AGENT_TIMEOUT:-0}"
 
 # nodejs
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
-export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node.js/repl_history
 path+=/usr/local/share/npm/bin
-
-# nuget
-export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
-
-# postgres
-export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
-export PSQL_HISTORY="$XDG_CACHE_HOME/pg/psql_history"
-export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
-export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
 
 # python
 export WORKON_HOME="$XDG_DATA_HOME"/venvs
@@ -113,39 +79,20 @@ alias pyfind='find . -name "*.py"'
 alias pygrep='grep --include="*.py"'
 alias pyva="source .venv/bin/activate"
 
-# readline
-export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
-
 # ruby
-export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
-export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
-export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
-export GEM_HOME="$XDG_DATA_HOME"/gem
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
-path+=/usr/local/opt/ruby/bin
+# per homebrew:
+# If you need to have ruby first in your PATH, run:
+#   echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc
 
-# rust
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
+# For compilers to find ruby you may need to set:
+#   export LDFLAGS="-L/usr/local/opt/ruby/lib"
+#   export CPPFLAGS="-I/usr/local/opt/ruby/include"
 
-# screen
-export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
-
-# tmux
-export TMUX_CONFIG="$XDG_CONFIG_HOME"/tmux/tmux.conf
-alias tmux='tmux -f "$TMUX_CONFIG"'
+# For pkg-config to find ruby you may need to set:
+#   export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$GEM_HOME/ruby/3.0.0/bin:$PATH"
 
 # todo-txt
-export TODOTXT_CFG_FILE="${XDG_CONFIG_HOME:-~/.config}"/todo-txt/config
 alias t="todo.sh"
 alias todos="$VISUAL $HOME/Desktop/todo.txt"
-
-# wget
-export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
-alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget/wget-hsts"'
-[[ -f "$WGETRC" ]] || { mkdir -p "$WGETRC:h" && touch "$WGETRC" }
-[[ -f "$XDG_CACHE_HOME/wget/wget-hsts" ]] || { mkdir -p "$XDG_CACHE_HOME/wget" && touch "$XDG_CACHE_HOME/wget/wget-hsts" }
-
-# z
-export _Z_DATA="$XDG_DATA_HOME/z/data"
-[[ -f "$_Z_DATA" ]] || { mkdir -p "$_Z_DATA:h" && touch "$_Z_DATA" }
