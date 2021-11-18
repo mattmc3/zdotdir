@@ -4,10 +4,12 @@ ZPLUGINDIR="$ZDOTDIR/plugins"
 prezto_plugins=(
   # prezto first!
   sorin-ionescu/prezto
-  # contribs next
+  # prompts
+  # mafredri/zsh-async
+  sindresorhus/pure
+  # contribs
   ohmyzsh/ohmyzsh
   rupa/z
-  # sindresorhus/pure
   # zsh-users/zsh-autosuggestions
   # zsh-users/zsh-history-substring-search
   # zsh-users/zsh-completions
@@ -30,6 +32,7 @@ ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/prezto/zcompdump"
       plugin-initfile $ZPLUGINDIR/$plugin_name >/dev/null
       ln -s $REPLY $ZPLUGINDIR/$plugin_name/init.zsh
     fi
+    fpath+=$ZPLUGINDIR/$plugin_name
   done
 }
 
