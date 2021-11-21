@@ -93,7 +93,7 @@ setopt inc_append_history      # write to the history file immediately, not when
 setopt no_share_history        # don't share history between all sessions
 
 # $HISTFILE belongs in the data home, not with zsh configs
-HISTFILE="${XDG_DATA_HOME}/zsh/history"
+HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history"
 [[ -f "$HISTFILE" ]] || { mkdir -p "$HISTFILE:h" && touch "$HISTFILE" }
 
 # you can set $SAVEHIST and $HISTSIZE to anything greater than the ZSH defaults
@@ -334,7 +334,7 @@ zf-compldir
 function zf-plugin-initfile() {
   # find and print a plugin's init file and set it to REPLY
   local plugin_dir="$1"
-  local plugin_name="${1##*/}"
+  local plugin_name="${1:t}"
   [[ -d $plugin_dir ]] || return 1
   local initfiles=(
     # look for specific files first
@@ -390,7 +390,7 @@ function zf-plugin-load() {
   fi
   local REPLY
   if [[ ! -e $plugin_path/init.zsh ]]; then
-    plugin-initfile $plugin_path >/dev/null
+    zf-plugin-initfile $plugin_path >/dev/null
     ln -s $REPLY $plugin_path/init.zsh
   fi
   fpath+=$plugin_path
