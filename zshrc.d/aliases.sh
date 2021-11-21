@@ -62,6 +62,7 @@ alias c='clear'
 alias d='dirs -v | head -10'
 alias v='vim'
 alias h='history'
+alias history="fc -li"
 
 # shortcuts
 alias vi='vim'
