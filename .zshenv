@@ -2,8 +2,9 @@
 # echo "source ~/.config/zsh/.zshenv" >| ~/.zshenv
 
 export ZDOTDIR=~/.config/zsh
+export DOTFILES=~/.config/dotfiles
 
-# Set XDG dirs
+# make sure XDG dirs are always set
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
@@ -16,11 +17,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export XDG_MUSIC_DIR=~/Music
   export XDG_PICTURES_DIR=~/Pictures
   export XDG_VIDEOS_DIR=~/Videos
+  export XDG_PROJECTS_DIR=~/Projects
 fi
-
-export SHELL_SESSIONS_DISABLE=1
-
-[[ -d ~/.config/dotfiles ]] && export DOTFILES=~/.config/dotfiles
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then

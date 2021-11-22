@@ -1,6 +1,17 @@
 # XDG apps
 # define variables/aliases for different apps to use XDG locations
 
+# https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+# https://wiki.archlinux.org/index.php/XDG_Base_Directory
+# https://wiki.archlinux.org/index.php/XDG_user_directories
+
+for xdg in $XDG_CONFIG_HOME $XDG_CACHE_HOME $XDG_DATA_HOME $XDG_RUNTIME_DIR; do
+  if [[ -n "$xdg" ]] && [[ ! -d "$xdg" ]]; then
+    mkdir -p "$xdg"
+  fi
+done
+unset xdg
+
 function _xdg_ensure_files {
   local f
   for f in $@; do
