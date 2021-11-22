@@ -39,6 +39,13 @@ echo "source ~/.config/zsh/.zshenv" >| ~/.zshenv
 zsh
 ```
 
+## Frameworks
+
+I like [Prezto][prezto] a lot, but it wasn't quite fast enough for me
+so I took the best parts from it and other frameworks and made
+[Zebrafish][zebrafish]. This made my Zsh config lightning fast, and
+also lets me still pull other plugins to enhance my Zsh config.
+
 ## Performance
 
 A snappy shell is very important. My config includes a `zbench` alias
@@ -49,29 +56,29 @@ The latest benchmark run shows that we load a new shell pretty fast.
 ```zsh
 % # MacBook Air (M1, 2020)
 % for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done
-        0.09 real         0.05 user         0.03 sys
         0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
+        0.05 real         0.02 user         0.02 sys
 
 % # MacBook Pro 2.6 GHz 6-Core Intel Core i7
 % for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done
-        0.32 real         0.08 user         0.15 sys
-        0.32 real         0.07 user         0.14 sys
-        0.31 real         0.07 user         0.14 sys
-        0.31 real         0.07 user         0.14 sys
-        0.32 real         0.07 user         0.14 sys
-        0.32 real         0.07 user         0.15 sys
-        0.32 real         0.08 user         0.14 sys
-        0.33 real         0.08 user         0.15 sys
-        0.32 real         0.08 user         0.13 sys
-        0.29 real         0.07 user         0.11 sys
+        0.13 real         0.05 user         0.06 sys
+        0.11 real         0.04 user         0.06 sys
+        0.11 real         0.04 user         0.06 sys
+        0.11 real         0.04 user         0.05 sys
+        0.11 real         0.04 user         0.06 sys
+        0.11 real         0.04 user         0.05 sys
+        0.11 real         0.04 user         0.05 sys
+        0.11 real         0.04 user         0.05 sys
+        0.11 real         0.05 user         0.06 sys
+        0.11 real         0.04 user         0.05 sys
 ```
 
 ## Look-and-feel
@@ -109,5 +116,6 @@ I use Space Gray:
 [supercharge-zsh]:  https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
 [nerd-fonts]:       https://github.com/ryanoasis/nerd-fonts
 [prezto]:           https://github.com/sorin-ionescu/prezto
+[zebrafish]:        https://github.com/zshzoo/zebrafish
 [homebrew]:         https://brew.sh
 [iterm2-colors]:    https://github.com/mbadolato/iTerm2-Color-Schemes
