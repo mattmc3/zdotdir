@@ -888,7 +888,7 @@ for repo in $gitplugins; do
   zf-plugin-clone "https://github.com/$repo"
   zf-plugin-load "${repo##*/}"
 done
-unset repo
+unset gitplugins repo
 
 # set better plugin values
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
