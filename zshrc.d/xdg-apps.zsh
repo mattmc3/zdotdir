@@ -75,6 +75,5 @@ _xdg_ensure_files $WGETRC "$XDG_CACHE_HOME/wget/wget-hsts"
 export _Z_DATA="$XDG_DATA_HOME/z/data"
 _xdg_ensure_files $_Z_DATA
 
-
 # clean up
 unfunction _xdg_ensure_files
