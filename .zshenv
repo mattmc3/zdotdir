@@ -3,6 +3,7 @@
 
 export ZDOTDIR=~/.config/zsh
 export DOTFILES=~/.config/dotfiles
+export PROJECTS=~/Projects
 
 # make sure XDG dirs are always set
 export XDG_CONFIG_HOME=~/.config
