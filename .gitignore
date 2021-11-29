@@ -23,3 +23,5 @@ plugins/
 !*functions/plugins
 .zplugins/
 .zprezto-contrib/
+*.local.zsh
+foo.*
