@@ -1,6 +1,9 @@
 # apps -
 #   define aliases and variables for different apps
 
+# curl
+export PATH="/usr/local/opt/curl/bin:$PATH"
+
 # dotfiles
 export DOTFILES=~/.config/dotfiles
 alias dotf='cd "$DOTFILES"'
