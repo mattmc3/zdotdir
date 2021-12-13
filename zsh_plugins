@@ -15,7 +15,9 @@ zshzoo/zshrc.d
 # prompt
 sindresorhus/pure
 
+# other great plugins
 rummik/zsh-tailf
+rupa/z
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 #zsh-users/zsh-syntax-highlighting
