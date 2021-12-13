@@ -1,6 +1,23 @@
-mattmc3/zebrafish
+#mattmc3/zebrafish
+zshzoo/environment
+zshzoo/setopts
+zshzoo/history
+zshzoo/completion-zstyles
+zshzoo/keybindings
+zshzoo/magic-enter
+zshzoo/manpage-colorizer
+zshzoo/termtitle
+zshzoo/iwd
+zshzoo/up
+zshzoo/zfunctions
+zshzoo/zshrc.d
+
+# prompt
 sindresorhus/pure
+
+rummik/zsh-tailf
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 #zsh-users/zsh-syntax-highlighting
+zshzoo/compinit
 zdharma-continuum/fast-syntax-highlighting

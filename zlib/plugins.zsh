@@ -7,9 +7,9 @@ function plugin-initfile() {
   [[ -d $plugin_dir ]] || return 1
   local initfiles=(
     # look for specific files first
+    $plugin_dir/$plugin_name.zsh(N)
     $plugin_dir/$plugin_name.plugin.zsh(N)
     $plugin_dir/init.zsh(N)
-    $plugin_dir/$plugin_name.zsh(N)
     $plugin_dir/$plugin_name(N)
     $plugin_dir/$plugin_name.zsh-theme(N)
     # then do more aggressive globbing
@@ -58,16 +58,17 @@ function plugin-load() {
       echo "plugin dir not found: $1" >&2 && return 1
     fi
   fi
+  local initfile=$plugin_path/${plugin_path:t}.zsh
   local REPLY
-  if [[ ! -e $plugin_path/init.zsh ]]; then
+  if [[ ! -e $initfile ]]; then
     plugin-initfile $plugin_path >/dev/null
-    ln -s $REPLY $plugin_path/init.zsh
+    ln -s $REPLY $initfile
   fi
   fpath+=$plugin_path
   if [[ -d $plugin_path/functions ]]; then
     fpath+=$plugin_path/functions
   fi
-  source $plugin_path/init.zsh
+  source $initfile
   ZSH_PLUGINS+="$1"
 }
 
