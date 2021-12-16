@@ -72,6 +72,14 @@ function plugin-load() {
   ZSH_PLUGINS+="$1"
 }
 
+function plugin-update () {
+  local plugindir="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
+  for d in $plugindir/*/.git(/); do
+    echo "Updating ${d:h:t}..."
+    command git -C "${d:h}" pull --ff --recurse-submodules --depth 1 --rebase --autostash
+  done
+}
+
 function plugin-load-fromfile() {
   local plugin_file=${1:-$ZDOTDIR/zsh_plugins}
 
