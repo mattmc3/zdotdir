@@ -2,7 +2,7 @@
 #   define aliases and variables for different apps
 
 # curl
-export PATH="/usr/local/opt/curl/bin:$PATH"
+path=($path /usr/local/opt/curl/bin)
 
 # dotfiles
 export DOTFILES=~/.config/dotfiles
@@ -93,8 +93,7 @@ alias pyva="source .venv/bin/activate"
 
 # For pkg-config to find ruby you may need to set:
 #   export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="$GEM_HOME/ruby/3.0.0/bin:$PATH"
+path=($path /usr/local/opt/ruby/bin $GEM_HOME/ruby/3.0.0/bin)
 
 # todo-txt
 alias t="todo.sh"
