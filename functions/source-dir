@@ -1,0 +1,11 @@
+if [[ ! -d "$1" ]]; then
+  echo >&2 "Config directory not found: $1" && return 1
+fi
+local f files
+files=($1/*.{sh,zsh}(N))
+# make sure the files are sorted properly
+for f in ${(o)files}; do
+  # ignore files that begin with a tilde
+  case ${f:t} in '~'*) continue;; esac
+  source $f
+done
