@@ -1,6 +1,6 @@
 # zdotdir
 
-My `$ZDOTDIR` directory, which contains my zsh configuration.
+My `$ZDOTDIR` [dotfiles] directory, which contains my zsh configuration.
 
 ## Installation
 
@@ -9,21 +9,22 @@ It's a good idea to backup existing files first:
 ```zsh
 setopt extended_glob
 zfiles=(
-  ${ZDOTDIR:-$HOME}/.zlogin(.N)
-  ${ZDOTDIR:-$HOME}/.zlogout(.N)
-  ${ZDOTDIR:-$HOME}/.zpreztorc(.N)
-  ${ZDOTDIR:-$HOME}/.zprofile(.N)
-  ${ZDOTDIR:-$HOME}/.zsh_history(.N)
-  ${ZDOTDIR:-$HOME}/.zshenv(.N)
-  ${ZDOTDIR:-$HOME}/.zshrc(.N)
+  ${ZDOTDIR:-~}/.zlogin(.N)
+  ${ZDOTDIR:-~}/.zlogout(.N)
+  ${ZDOTDIR:-~}/.zpreztorc(.N)
+  ${ZDOTDIR:-~}/.zprofile(.N)
+  ${ZDOTDIR:-~}/.zsh_history(.N)
+  ${ZDOTDIR:-~}/.zshenv(.N)
+  ${ZDOTDIR:-~}/.zshrc(.N)
 )
 mkdir -p ~/.bak
 for zfile in $zfiles; do
   cp $zfile ~/.bak
 done
+unset zfile zfiles
 ```
 
-Install this dotfiles repo to your $ZDOTDIR:
+Install this dotfiles repo to your `$ZDOTDIR`:
 
 ```zsh
 # set the amazing ZDOTDIR variable
@@ -32,8 +33,11 @@ export ZDOTDIR=~/.config/zsh
 # clone this repo
 git clone --recursive git@github.com:mattmc3/zdotdir.git $ZDOTDIR
 
-# change the root .zshenv file
-echo "source ~/.config/zsh/.zshenv" >| ~/.zshenv
+# change the root .zshenv file to use ZDOTDIR
+cat << 'EOF' >| ~/.zshenv
+export ZDOTDIR=~/.config/zsh
+[[ -f $ZDOTDIR/.zshenv ]] && . $ZDOTDIR/.zshenv
+EOF
 
 # load zsh
 zsh
@@ -43,7 +47,7 @@ zsh
 
 I like [Prezto][prezto] a lot, but it wasn't quite fast enough for me
 so I took the best parts from it and other frameworks and made
-[Zebrafish][zebrafish]. This made my Zsh config lightning fast, and
+[ZshZoo][zshzoo]. This made my Zsh config lightning fast, and
 also lets me still pull other plugins to enhance my Zsh config.
 
 ## Performance
@@ -55,33 +59,42 @@ The latest benchmark run shows that we load a new shell pretty fast.
 
 ```zsh
 % # MacBook Air (M1, 2020)
-% for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done
-        0.06 real         0.03 user         0.02 sys
-        0.05 real         0.02 user         0.02 sys
-        0.05 real         0.02 user         0.02 sys
-        0.05 real         0.02 user         0.02 sys
-        0.05 real         0.02 user         0.02 sys
-        0.05 real         0.02 user         0.02 sys
-        0.05 real         0.02 user         0.02 sys
-        0.05 real         0.02 user         0.02 sys
-        0.05 real         0.02 user         0.02 sys
-        0.05 real         0.02 user         0.02 sys
+% alias zbench='for i in $(seq 10); do; /usr/bin/time zsh -i -c exit; done'
+% zbench
+        0.04 real         0.02 user         0.01 sys
+        0.02 real         0.01 user         0.01 sys
+        0.02 real         0.01 user         0.00 sys
+        0.02 real         0.01 user         0.00 sys
+        0.02 real         0.01 user         0.00 sys
+        0.02 real         0.01 user         0.01 sys
+        0.02 real         0.01 user         0.00 sys
+        0.02 real         0.01 user         0.00 sys
+        0.02 real         0.01 user         0.00 sys
+        0.02 real         0.01 user         0.01 sys
 
 % # MacBook Pro 2.6 GHz 6-Core Intel Core i7
-% for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done
-        0.13 real         0.05 user         0.06 sys
-        0.11 real         0.04 user         0.06 sys
-        0.11 real         0.04 user         0.06 sys
-        0.11 real         0.04 user         0.05 sys
-        0.11 real         0.04 user         0.06 sys
-        0.11 real         0.04 user         0.05 sys
-        0.11 real         0.04 user         0.05 sys
-        0.11 real         0.04 user         0.05 sys
-        0.11 real         0.05 user         0.06 sys
-        0.11 real         0.04 user         0.05 sys
+% alias zbench='for i in $(seq 10); do; /usr/bin/time zsh -i -c exit; done'
+% zbench
+        0.08 real         0.03 user         0.012 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
 ```
 
 ## Look-and-feel
+
+### Prompt
+
+I use the [Starship][starship] prompt. My [toml config is here][starship-toml]. This is
+what my prompt looks like:
+
+![zebrafish](https://raw.githubusercontent.com/mattmc3/zdotdir/resources/img/zebrafish.png)
 
 ### Fonts
 
@@ -98,7 +111,8 @@ brew install --cask font-sauce-code-pro-nerd-font
 
 ### Color schemes
 
-iTerm2 has some awesome [color schemes][iterm2-colors]. You can use them for more than just iTerm2.
+iTerm2 has some awesome [color schemes][iterm2-colors]. You can use them for more than
+just iTerm2.
 
 I use Space Gray:
 
@@ -108,14 +122,20 @@ I use Space Gray:
 
 ## Resources
 
+- [zshzoo][zshzoo]
+- [zebrafish][zebrafish]
 - [prezto][prezto]
-- [oh-my-zsh][omz]
+- [oh-my-zsh][ohmyzsh]
 - [supercharge your terminal with zsh][supercharge-zsh]
 
-[omz]:              https://github.com/ohmyzsh/ohmyzsh
-[supercharge-zsh]:  https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
-[nerd-fonts]:       https://github.com/ryanoasis/nerd-fonts
-[prezto]:           https://github.com/sorin-ionescu/prezto
-[zebrafish]:        https://github.com/zshzoo/zebrafish
+[dotfiles]:         https://dotfiles.github.io/
 [homebrew]:         https://brew.sh
 [iterm2-colors]:    https://github.com/mbadolato/iTerm2-Color-Schemes
+[nerd-fonts]:       https://github.com/ryanoasis/nerd-fonts
+[ohmyzsh]:          https://github.com/ohmyzsh/ohmyzsh
+[prezto]:           https://github.com/sorin-ionescu/prezto
+[starship-toml]:    https://github.com/mattmc3/zdotdir/blob/main/prompt/starship.toml
+[starship]:         https://starship.rs
+[supercharge-zsh]:  https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
+[zebrafish]:        https://github.com/mattmc3/zebrafish
+[zshzoo]:           https://github.com/zshzoo/zshzoo
