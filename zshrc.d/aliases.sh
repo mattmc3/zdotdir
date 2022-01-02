@@ -32,7 +32,7 @@ if [[ -n $ZSH_VERSION ]]; then
   alias fishconf='cd $HOME/.config/fish'
   alias xdot='cd $HOME/.config/xonsh'
   alias confd='cd $HOME/.config'
-  alias prj='cd $HOME/Projects'
+  alias proj='cd $HOME/Projects'
 
   # zsh pipes
   alias -g H='| head'
@@ -41,13 +41,19 @@ if [[ -n $ZSH_VERSION ]]; then
   alias -g S='| sort'
   alias -g L='| less'
   alias -g M='| more'
+
+  # echo $fpath
+  alias echofpath='for fp in $fpath; do echo $fp; done; unset fp'
 fi
+
+# echo $path
+alias echopath='echo $PATH | tr ":" "\n"'
 
 # mask built-ins with better defaults
 # alias cp='cp -i'
 # alias mv='mv -i'
 # alias rm='rm -i'
-alias ls='ls -GF'
+alias ls='ls -G'
 alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ping='ping -c 5'
 
