@@ -1,3 +1,3 @@
-for i in $(seq 1 10); do
-  /usr/bin/time zsh -i -c exit
+for i in $(seq 10); do
+  command time zsh -i -c exit
 done
