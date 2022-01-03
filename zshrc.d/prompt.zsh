@@ -1,15 +1,17 @@
-### Pure prompt (https://github.com/sindresorhus/pure)
+# prezto sorin prompt
+# zstyle ':prezto:module:editor:info:keymap:primary' format ' %F{5}%%%f'
+
+### pure prompt (https://github.com/sindresorhus/pure)
 # create a patch by changing the code (no need to commit)
 # and then running this command
 # $ git diff > some-changes.patch
-
-if [[ -d $ZDOTDIR/plugins/pure ]] &&
+if [[ -d $ZPLUGINDIR/pure ]] &&
    [[ -f $ZDOTDIR/misc/pure-less-spacious.patch ]] &&
-   [[ ! -f $ZDOTDIR/plugins/pure/pure-less-spacious.patch ]]
+   [[ ! -f $ZPLUGINDIR/pure/pure-less-spacious.patch ]]
 then
-  cp $ZDOTDIR/misc/pure-less-spacious.patch $ZDOTDIR/plugins/pure
+  cp $ZDOTDIR/misc/pure-less-spacious.patch $ZPLUGINDIR/pure
   echo "Patching pure prompt..."
-  git -C "$ZDOTDIR/plugins/pure" apply $ZDOTDIR/plugins/pure/pure-less-spacious.patch
+  git -C "$ZPLUGINDIR/pure" apply $ZPLUGINDIR/pure/pure-less-spacious.patch
 fi
 
 ### Starship prompt
