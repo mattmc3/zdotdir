@@ -43,13 +43,6 @@ EOF
 zsh
 ```
 
-## Frameworks
-
-I like [Prezto][prezto] a lot, but it wasn't quite fast enough for me
-so I took the best parts from it and other frameworks and made
-[ZshZoo][zshzoo]. This made my Zsh config lightning fast, and
-also lets me still pull other plugins to enhance my Zsh config.
-
 ## Performance
 
 A snappy shell is very important. My config includes a `zbench` alias
@@ -59,42 +52,57 @@ The latest benchmark run shows that we load a new shell pretty fast.
 
 ```zsh
 % # MacBook Air (M1, 2020)
-% alias zbench='for i in $(seq 10); do; /usr/bin/time zsh -i -c exit; done'
-% zbench
-        0.04 real         0.02 user         0.01 sys
-        0.02 real         0.01 user         0.01 sys
-        0.02 real         0.01 user         0.00 sys
-        0.02 real         0.01 user         0.00 sys
-        0.02 real         0.01 user         0.00 sys
-        0.02 real         0.01 user         0.01 sys
-        0.02 real         0.01 user         0.00 sys
-        0.02 real         0.01 user         0.00 sys
-        0.02 real         0.01 user         0.00 sys
-        0.02 real         0.01 user         0.01 sys
+% for i in $(seq 10); do; /usr/bin/time zsh -lic exit; done
+        0.08 real         0.04 user         0.03 sys
+        0.07 real         0.04 user         0.03 sys
+        0.07 real         0.04 user         0.03 sys
+        0.07 real         0.04 user         0.03 sys
+        0.07 real         0.04 user         0.03 sys
+        0.07 real         0.04 user         0.03 sys
+        0.07 real         0.04 user         0.03 sys
+        0.07 real         0.04 user         0.03 sys
+        0.07 real         0.04 user         0.03 sys
+        0.07 real         0.04 user         0.03 sys
 
-% # MacBook Pro 2.6 GHz 6-Core Intel Core i7
-% alias zbench='for i in $(seq 10); do; /usr/bin/time zsh -i -c exit; done'
-% zbench
-        0.08 real         0.03 user         0.012 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
+% # pure prompt
+% zsh-bench
+creates_tty=0
+has_compsys=1
+has_syntax_highlighting=1
+has_autosuggestions=1
+has_git_prompt=0
+first_prompt_lag_ms=100.919
+first_command_lag_ms=109.839
+command_lag_ms=50.802
+input_lag_ms=6.639
+exit_time_ms=79.399
+
+# prezto prompt
+creates_tty=0
+has_compsys=1
+has_syntax_highlighting=1
+has_autosuggestions=1
+has_git_prompt=0
+first_prompt_lag_ms=108.525
+first_command_lag_ms=117.335
+command_lag_ms=51.511
+input_lag_ms=4.731
+exit_time_ms=78.831
+
+# starship prompt
+creates_tty=0
+has_compsys=1
+has_syntax_highlighting=1
+has_autosuggestions=1
+has_git_prompt=1
+first_prompt_lag_ms=142.011
+first_command_lag_ms=148.699
+command_lag_ms=101.397
+input_lag_ms=7.485
+exit_time_ms=79.402
 ```
 
 ## Look-and-feel
-
-### Prompt
-
-I use the [Starship][starship] prompt. My [toml config is here][starship-toml]. This is
-what my prompt looks like:
-
-![zebrafish](https://raw.githubusercontent.com/mattmc3/zdotdir/resources/img/zebrafish.png)
 
 ### Fonts
 
@@ -124,15 +132,16 @@ I use Space Gray:
 
 - [zshzoo][zshzoo]
 - [zebrafish][zebrafish]
+- [zsh_unplugged][zsh_unplugged]
 - [prezto][prezto]
-- [oh-my-zsh][ohmyzsh]
+- [oh-my-zsh][oh-my-zsh]
 - [supercharge your terminal with zsh][supercharge-zsh]
 
 [dotfiles]:         https://dotfiles.github.io/
 [homebrew]:         https://brew.sh
 [iterm2-colors]:    https://github.com/mbadolato/iTerm2-Color-Schemes
 [nerd-fonts]:       https://github.com/ryanoasis/nerd-fonts
-[ohmyzsh]:          https://github.com/ohmyzsh/ohmyzsh
+[oh-my-zsh]:        https://github.com/ohmyzsh/ohmyzsh
 [prezto]:           https://github.com/sorin-ionescu/prezto
 [starship-toml]:    https://github.com/mattmc3/zdotdir/blob/main/prompt/starship.toml
 [starship]:         https://starship.rs
