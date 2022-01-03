@@ -42,5 +42,8 @@ plugin-clone $plugins
 # uncomment to source plugins manually, otherwise, use prezto to source them
 # plugin-source $plugins
 
+# do some manual stuff that prezto won't handle
 fpath+=$ZPLUGINDIR/pure
 path+=$ZPLUGINDIR/zsh-bench
+source $ZPLUGINDIR/zsh-defer/init.zsh
+zsh-defer source $ZPLUGINDIR/zsh-abbr/init.zsh
