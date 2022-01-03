@@ -6,30 +6,41 @@ plugins=(
   sindresorhus/pure
   romkatv/zsh-defer
 
-  # zshzoo plugins
-  zshzoo/setopts
-  zshzoo/history
-  zshzoo/keybindings
-  zshzoo/zstyle-completions
-  zshzoo/copier
-  zshzoo/macos
-  zshzoo/prj
-  zshzoo/magic-enter
-  zshzoo/zfishcmds
-  zshzoo/termtitle
+  # frameworks
+  sorin-ionescu/prezto
+  ohmyzsh/ohmyzsh
+
+  # plugins when not using prezto
+  # zshzoo/setopts
+  # zshzoo/history
+  # zshzoo/keybindings
+  # zshzoo/zstyle-completions
+  # zshzoo/copier
+  # zshzoo/macos
+  # zshzoo/magic-enter
+  # zshzoo/termtitle
+  # zsh-users/zsh-autosuggestions
+  # zsh-users/zsh-history-substring-search
 
   # 3rd party
-  zsh-users/zsh-autosuggestions
-  zsh-users/zsh-history-substring-search
   mattmc3/zman
   olets/zsh-abbr
   rupa/z
-  rummik/zsh-tailf
-  peterhurford/up.zsh
+  # rummik/zsh-tailf
+  # peterhurford/up.zsh
+
+  # repo-only plugins
+  romkatv/zsh-bench
+  mbadolato/iTerm2-Color-Schemes
 
   # load these last
   zshzoo/compinit
   zdharma-continuum/fast-syntax-highlighting
 )
 plugin-clone $plugins
-plugin-source $plugins
+
+# uncomment to source plugins manually, otherwise, use prezto to source them
+# plugin-source $plugins
+
+fpath+=$ZPLUGINDIR/pure
+path+=$ZPLUGINDIR/zsh-bench
