@@ -31,4 +31,5 @@ plugins=(
   zshzoo/compinit
   zdharma-continuum/fast-syntax-highlighting
 )
-plugin-load $plugins
+plugin-clone $plugins
+plugin-source $plugins
