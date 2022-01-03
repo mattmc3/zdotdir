@@ -26,9 +26,9 @@ if [[ -n $ZSH_VERSION ]]; then
   alias -g ......='../../../../..'
 
   alias zshrc='$VISUAL "${ZDOTDIR:-$HOME}"/.zshrc'
-  alias zbench='for i in $(seq 1 10); do; /usr/bin/time zsh -i -c exit; done'
+  alias zbench='for i in $(seq 10); do; /usr/bin/time zsh -lic exit; done'
   alias zprofrc="ZPROFRC=1 zsh"
-  alias zdot='cd $ZDOTDIR'
+  #alias zdot='cd $ZDOTDIR'
   alias fishconf='cd $HOME/.config/fish'
   alias xdot='cd $HOME/.config/xonsh'
   alias confd='cd $HOME/.config'
