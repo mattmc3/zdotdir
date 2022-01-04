@@ -5,18 +5,7 @@ for repo in $@; do
   plugin_dir=$ZPLUGINDIR/$plugin_name
   if [[ ! -d $plugin_dir ]]; then
     echo "Cloning $repo"
-    git clone -q --depth 1 --recursive --shallow-submodules https://github.com/$repo $plugin_dir
-
-    initfile=$plugin_dir/init.zsh
-    if [[ ! -e $initfile ]]; then
-      initfiles=(
-        $plugin_dir/$plugin_name.zsh(N)
-        $plugin_dir/$plugin_name.plugin.zsh(N)
-        $plugin_dir/*.plugin.{z,}sh(N)
-        $plugin_dir/*.{z,}sh{-theme,}(N)
-      )
-      [[ ${#initfiles[@]} -gt 0 ]] || { echo >&2 "Plugin has no init file '$repo'." && continue }
-      ln -s "${initfiles[1]}" "$initfile"
-    fi
+    git clone --quiet --depth 1 --recursive --shallow-submodules https://github.com/$repo $plugin_dir
+    [[ $? -eq 0 ]] || { echo >&2 "plugin-clone: error cloning '$repo'." && return 1 }
   fi
 done
