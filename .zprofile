@@ -58,3 +58,6 @@ path=(
 # )
 
 export SHELL_SESSIONS_DISABLE=1
+
+# My Zsh things
+ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/functions}
