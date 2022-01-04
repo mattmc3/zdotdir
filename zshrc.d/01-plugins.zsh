@@ -23,6 +23,8 @@ plugins=(
   # zsh-users/zsh-history-substring-search
 
   # 3rd party
+  zshzoo/prj
+  zshzoo/copier
   mattmc3/zman
   olets/zsh-abbr
   rupa/z
