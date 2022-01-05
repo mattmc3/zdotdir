@@ -25,3 +25,4 @@ plugins/
 .zprezto-contrib/
 *.local.zsh
 foo.*
+.zsh_plugins.zsh

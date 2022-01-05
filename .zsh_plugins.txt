@@ -1,0 +1,62 @@
+# Create plugins file for static sourcing:
+#
+# plugin-bundle < ${ZDOTDIR:-~}/.zsh_plugins.txt > ${ZDOTDIR:-~}/.zsh_plugins.zsh
+# -or-
+# envsubst < ${ZDOTDIR:-~}/.zsh_plugins.txt | plugin-bundle >${ZDOTDIR:-~}/.zsh_plugins.zsh
+#
+# if using antibody with static sourcing:
+#   when you change this file, delete the generated zsh_plugins.zsh file to
+#   regenerate the static zsh_plugins.zsh
+#
+# static code:
+# if [[ ! -f "$ZDOTDIR/.zsh_plugins.zsh" ]]; then
+#  envsubst < $ZDOTDIR/.zsh_plugins.txt | antibody bundle > $ZDOTDIR/.zsh_plugins.zsh
+#  sed -i '' "s|$HOME|\$HOME|g" $ZDOTDIR/.zsh_plugins.zsh
+# fi
+# source $ZDOTDIR/.zsh_plugins.zsh
+
+# frameworks
+sorin-ionescu/prezto kind:clone
+ohmyzsh/ohmyzsh kind:clone
+
+# prompts
+sindresorhus/pure
+miekg/lean kind:fpath
+
+# clone only plugins
+mbadolato/iTerm2-Color-Schemes kind:clone
+
+# path only plugins
+romkatv/zsh-bench kind:path
+
+# fish shell goodies in zsh
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+
+# oh-my-zsh lib
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+ohmyzsh/ohmyzsh path:lib/directories.zsh
+#ohmyzsh/ohmyzsh path:lib/termsupport.zsh
+#ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
+
+# omz plugins
+ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+
+# other plugins
+zsh-users/zsh-completions
+peterhurford/up.zsh
+rummik/zsh-tailf
+rupa/z
+mattmc3/zman
+zshzoo/prj
+olets/zsh-abbr
+mattmc3/zsh-safe-rm
+
+# local zsh settings
+$ZDOTDIR/zshrc.local.zsh
+
+# stuff that has to be last
+# zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
