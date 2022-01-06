@@ -23,7 +23,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 fi
 
-ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
+export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
