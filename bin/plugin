@@ -7,12 +7,29 @@
 
 ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME}/.zplugins}
 
+function _plugin-compile() {
+  local repo plugin f
+  autoload -U zrecompile
+  for repo in $ZPLUGINDIR/*/.git/..(/); do
+    plugin=${repo:A}
+    for f in "$plugin"/**/*.zwc(N) "$plugin"/**/*.zwc.old(N); do
+      command rm -f "$f"
+    done
+    for f in "$plugin"/**/*.zsh{,-theme}(N); do
+      zrecompile -pq "$f"
+    done
+  done
+}
+
 function _plugin-update() {
   local repo plugin
   for repo in $ZPLUGINDIR/*/.git/..(/); do
     plugin=${repo:A}
     () {
       echo "Updating ${plugin:t}"
+      for f in "$plugin"/**/*.zwc(N) "$plugin"/**/*.zwc.old(N); do
+        command rm -f "$f"
+      done
       command git -C "$plugin" pull --quiet --depth 1 --recurse-submodules --rebase --autostash
       echo "Done updating ${plugin:t}"
     } &
