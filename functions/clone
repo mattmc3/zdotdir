@@ -16,7 +16,7 @@ local giturl="github.com"
 local dest=${XDG_PROJECTS_HOME:-~/Projects}/$user/$repo
 
 if [[ ! -d $dest ]]; then
-  git clone "git@${giturl}:${user}/${repo}.git" "$dest"
+  git clone --recurse-submodules "git@${giturl}:${user}/${repo}.git" "$dest"
 else
   echo "No need to clone, that directory already exists."
   echo "Taking you there."
