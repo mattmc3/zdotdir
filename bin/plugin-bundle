@@ -82,7 +82,7 @@ function _plugin_bundle() {
       # remember, the same plugin can have multiple instructions
       # (ie: ohmyzsh/ohmyzsh path:lib/clipboard.zsh)
       if [[ -z "$repos[$plugin]" ]]; then
-        $repos[$plugin]=true
+        repos[$plugin]=true
         () { _plugin_clone $plugin $branch; } &
       fi
     fi
