@@ -51,6 +51,7 @@ path=(
   /opt/homebrew/{bin,sbin}
   $path
 )
+[[ -d $ZDOTDIR/bin ]] && path+=($ZDOTDIR/bin)
 
 # Set the list of directories that cd searches
 # cdpath=(
