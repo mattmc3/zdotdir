@@ -14,6 +14,17 @@ then
   git -C "$ZPLUGINDIR/pure" apply $ZPLUGINDIR/pure/pure-less-spacious.patch
 fi
 
+# show exit code on right
+precmd_pipestatus() {
+  local exitcodes="${(j.|.)pipestatus}"
+  if [[ "$exitcodes" != "0" ]]; then
+    RPROMPT="%F{$prompt_pure_colors[prompt:error]}[$exitcodes]%f"
+  else
+    RPROMPT=
+  fi
+}
+add-zsh-hook precmd precmd_pipestatus
+
 ### Starship prompt
 # command -v starship &>/dev/null || sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 # export STARSHIP_CONFIG=~/.config/starship/zsh.toml
