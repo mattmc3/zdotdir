@@ -18,3 +18,5 @@ fi
 # command -v starship &>/dev/null || sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 # export STARSHIP_CONFIG=~/.config/starship/zsh.toml
 # eval "$(starship init zsh)"
+
+# autoload -U promptinit && promptinit
