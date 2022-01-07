@@ -32,12 +32,17 @@ romkatv/zsh-bench kind:path
 # oh-my-zsh lib
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:lib/directories.zsh
+ohmyzsh/ohmyzsh path:lib/functions.zsh
 #ohmyzsh/ohmyzsh path:lib/termsupport.zsh
 #ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
 
 # omz plugins
 ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/copydir
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/macos
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 
 # other plugins
