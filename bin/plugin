@@ -5,18 +5,22 @@
 # plugin-bundle < ${ZDOTDIR:-~}/.zsh_plugins.txt >| ${ZDOTDIR:-~}/.zsh_plugins.zsh
 #
 
-# if stdin containts no data, there's nothing to do
-[[ ! -t 0 ]] || return
-
 ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME}/.zplugins}
 
-function _plugin_update() {
-  local repo=$1
-  local plugin=$ZPLUGINDIR/${repo:t}
-  command git -C "$plugin" pull --quiet --depth 1 --recurse-submodules --rebase --autostash
+function _plugin-update() {
+  local repo plugin
+  for repo in $ZPLUGINDIR/*/.git/..(/); do
+    plugin=${repo:A}
+    () {
+      echo "Updating ${plugin:t}"
+      command git -C "$plugin" pull --quiet --depth 1 --recurse-submodules --rebase --autostash
+      echo "Done updating ${plugin:t}"
+    } &
+  done
+  wait
 }
 
-function _plugin_clone() {
+function __plugin_clone() {
   local repo=$1
   local giturl=$repo
   local branch=$2
@@ -35,7 +39,7 @@ function _plugin_clone() {
   fi
 }
 
-function _plugin_initfile() {
+function __plugin_initfile() {
   local plugin_dir=$1
   local plugin_name=${plugin_dir:t}
   local initfiles
@@ -55,7 +59,10 @@ function _plugin_initfile() {
   done
 }
 
-function _plugin_bundle() {
+function _plugin-bundle() {
+  # if stdin containts no data, there's nothing to do
+  [[ ! -t 0 ]] || return 1
+
   local zsh_plugins=()
   typeset -A repos
   local data parts repo instructions plugin branch subpath
@@ -83,7 +90,7 @@ function _plugin_bundle() {
       # (ie: ohmyzsh/ohmyzsh path:lib/clipboard.zsh)
       if [[ -z "$repos[$plugin]" ]]; then
         repos[$plugin]=true
-        () { _plugin_clone $plugin $branch; } &
+        () { __plugin_clone $plugin $branch; } &
       fi
     fi
   done
@@ -127,11 +134,23 @@ function _plugin_bundle() {
     elif (( $instructions[(Ie)kind:path] )); then
       echo "export PATH=\"$plugin:\$PATH\""
     else
-      _plugin_initfile $plugin &>/dev/null
+      __plugin_initfile $plugin &>/dev/null
       [[ $? -eq 0 ]] || { echo "# ERROR: plugin init file not found '$plugin'." && continue }
       echo "fpath+=( $plugin )"
       echo "source $plugin/${plugin:t}.plugin.zsh"
     fi
   done
 }
-_plugin_bundle
+
+function _plugin() {
+  local cmd=$1
+  if (( $+functions[_plugin-${cmd}] )); then
+    shift
+    _plugin-${cmd} "$@"
+    return $?
+  else
+    echo >&2 "The plugin command doesn't exist: '$1'."
+    return 1
+  fi
+}
+_plugin $@
