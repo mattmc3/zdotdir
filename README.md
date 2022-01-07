@@ -148,3 +148,4 @@ I use Space Gray:
 [supercharge-zsh]:  https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
 [zebrafish]:        https://github.com/mattmc3/zebrafish
 [zshzoo]:           https://github.com/zshzoo/zshzoo
+[zsh_unplugged]:    https://github.com/mattmc3/zsh_unplugged
