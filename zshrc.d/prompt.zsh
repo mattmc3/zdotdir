@@ -31,3 +31,9 @@ add-zsh-hook precmd precmd_pipestatus
 # eval "$(starship init zsh)"
 
 # autoload -U promptinit && promptinit
+
+# general
+# https://unix.stackexchange.com/questions/685666/zsh-how-do-i-remove-block-prefixes-when-writing-multi-line-statements-in-intera
+# use 2 space indent for each new level
+PS2='${${${(%):-%_}//[^ ]}// /  }    '
+
