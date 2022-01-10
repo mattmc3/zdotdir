@@ -1,0 +1,46 @@
+# https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html#index-zparseopts
+# https://xpmo.gitlab.io/post/using-zparseopts/
+# string-match [(-a | --all)] [(-e | --entire)] [(-i | --ignore-case)] [(-r | --regex)] [(-n | --index)] [(-q | --quiet)] [(-v | --invert)] PATTERN [STRING...]
+
+local o_help o_all o_entire o_ignore_case o_regex o_index o_quiet o_invert
+
+zmodload zsh/zutil
+zmodload zsh/pcre
+
+zparseopts -D -F -K -- \
+    {h,-help}=o_help \
+    {a,-all}=o_all \
+    {e,-entire}=o_entire \
+    {i,-ignore-case}=o_ignore_case \
+    {r,-regex}=o_regex \
+    {n,-index}=o_index \
+    {q,-quiet}=o_quiet \
+    {v,-invert}=o_invert
+
+pattern=$1; shift
+if (( $#o_ignore_case )); then
+  pcre_compile -smx -i $pattern || return 1
+else
+  pcre_compile -smx $pattern || return 1
+fi
+
+local results=()
+local str idx len
+for str in $@; do
+  pcre_match -b -- $str
+  while [[ $? -eq 0 ]] do
+    idx=($=ZPCRE_OP)
+    if (( $#o_entire )); then
+      results+=$str
+    elif (( $#o_index )); then
+      (( len = idx[2] - idx[1] ))
+      results+="$idx[1] $len"
+    else
+      results+=$MATCH
+    fi
+    (( $#o_all )) || break
+    pcre_match -b -n $idx[2] -- $str
+  done
+done
+
+print -l $results
