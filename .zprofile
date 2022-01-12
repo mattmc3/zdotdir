@@ -3,6 +3,8 @@
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory
 # https://wiki.archlinux.org/index.php/XDG_user_directories
 
+export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
+
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
@@ -47,11 +49,11 @@ typeset -gU cdpath fpath mailpath path
 
 path=(
   ~/bin
+  ~/.config/zsh/bin
   /usr/local/{bin,sbin}
   /opt/homebrew/{bin,sbin}
   $path
 )
-[[ -d $ZDOTDIR/bin ]] && path+=($ZDOTDIR/bin)
 
 # Set the list of directories that cd searches
 # cdpath=(

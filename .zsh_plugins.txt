@@ -1,6 +1,6 @@
 # Create plugins file for static sourcing:
 #
-# plugin-bundle < ${ZDOTDIR:-~}/.zsh_plugins.txt > ${ZDOTDIR:-~}/.zsh_plugins.zsh
+# plugin bundle < ${ZDOTDIR:-~}/.zsh_plugins.txt >| ${ZDOTDIR:-~}/.zplugins/init.zsh
 # -or-
 # envsubst < ${ZDOTDIR:-~}/.zsh_plugins.txt | plugin-bundle >| ${ZDOTDIR:-~}/.zsh_plugins.zsh
 #
@@ -41,7 +41,7 @@ ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/copydir
 ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
-ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+# ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/macos
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 
