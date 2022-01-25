@@ -3,21 +3,19 @@
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory
 # https://wiki.archlinux.org/index.php/XDG_user_directories
 
-export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
-
-export XDG_CONFIG_HOME=~/.config
-export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.local/share
-export XDG_RUNTIME_DIR=~/.xdg
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg}
 
 if [[ "$OSTYPE" == darwin* ]]; then
-  export XDG_DESKTOP_DIR=~/Desktop
-  export XDG_DOCUMENTS_DIR=~/Documents
-  export XDG_DOWNLOAD_DIR=~/Downloads
-  export XDG_MUSIC_DIR=~/Music
-  export XDG_PICTURES_DIR=~/Pictures
-  export XDG_VIDEOS_DIR=~/Videos
-  export XDG_PROJECTS_DIR=~/Projects
+  export XDG_DESKTOP_DIR=${XDG_DESKTOP_DIR:-$HOME/Desktop}
+  export XDG_DOCUMENTS_DIR=${XDG_DOCUMENTS_DIR:-$HOME/Documents}
+  export XDG_DOWNLOAD_DIR=${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
+  export XDG_MUSIC_DIR=${XDG_MUSIC_DIR:-$HOME/Music}
+  export XDG_PICTURES_DIR=${XDG_PICTURES_DIR:-$HOME/Pictures}
+  export XDG_VIDEOS_DIR=${XDG_VIDEOS_DIR:-$HOME/Videos}
+  export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
 fi
 
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -65,3 +63,7 @@ export SHELL_SESSIONS_DISABLE=1
 # My Zsh vars
 export ZFUNCDIR=${ZFUNCDIR:-${ZDOTDIR:-$HOME/.config/zsh}/functions}
 export ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-~}/.zplugins}
+
+# set better plugin values
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+PURE_PROMPT_SYMBOL="%%"
