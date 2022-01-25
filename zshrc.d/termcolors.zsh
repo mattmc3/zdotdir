@@ -34,7 +34,7 @@ bg_colors=(
 )
 
 function showcolors() {
-  local color
+  local color effect
   for color in ${(ok)fg_colors}; do
     echo "${fg_colors[$color]}foreground $color${reset_color}"
   done
