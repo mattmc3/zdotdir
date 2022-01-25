@@ -13,4 +13,4 @@ setopt inc_append_history_time  # add time command ran to history
 alias history="fc -li"        # make the history command more useful
 
 # symlink history file
-[[ -L $ZDOTDIR/.zsh_history ]] || ln -s $HISTFILE $ZDOTDIR/.zsh_history
+[[ -L $ZDOTDIR/.zsh_history ]] || ln -sf $HISTFILE $ZDOTDIR/.zsh_history
