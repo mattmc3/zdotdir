@@ -21,7 +21,7 @@ zplugins/
 plugins/
 !functions/plugins
 !*functions/plugins
-!archive/**/plugins
+!**/archive/**/plugins
 .zplugins/
 .zprezto-contrib/
 *.local.zsh

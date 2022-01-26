@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 #
-# plugin-bundle
+# plugin
 # A simple antibody replacement: https://getantibody.github.io/
-# plugin-bundle < ${ZDOTDIR:-~}/.zsh_plugins.txt >| ${ZDOTDIR:-~}/.zsh_plugins.zsh
+# plugin bundle < ${ZDOTDIR:-~}/.zsh_plugins.txt >| ${ZDOTDIR:-~}/.zsh_plugins.zsh
 #
 
 ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME}/.zplugins}
