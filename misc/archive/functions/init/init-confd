@@ -1,8 +1,0 @@
-local confd files f
-confd=${ZDOTDIR:-${XDG_CONFIG_HOME:-~/.config}/zsh}/zshrc.d
-[[ -d $confd ]] || return 1
-files=("$confd"/*.{sh,zsh}(.N))
-for f in ${(o)files}; do
-  case ${f:t} in '~'*) continue;; esac
-  source "$f"
-done

@@ -1,8 +1,0 @@
-# load additional completions
-local compdir f
-compdir=${ZDOTDIR:-${XDG_CONFIG_HOME:-~/.config}/zsh}/completions
-[[ -d $compdir ]] || return 1
-fpath+=$compdir
-for f in "$compdir"/*.zsh(.N); do
-  source "$f"
-done
