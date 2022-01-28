@@ -1,7 +1,7 @@
-if [[ -n $1 ]]; then
+if [[ -z "$1" ]]; then
   >&2 echo "mkvenv: Usage - mkvenv <venv-name>" && return 1
-elif [[ -z $WORKON_HOME ]]; then
+elif [[ -z "$WORKON_HOME" ]]; then
   >&2 echo "mkvenv: \$WORKON_HOME not set" && return 1
 fi
-python3 -m venv "${WORKON_HOME}\${1}"
-workon "${1}"
+python3 -m venv "$WORKON_HOME/$1"
+workon "$1"
