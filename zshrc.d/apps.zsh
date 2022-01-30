@@ -1,6 +1,22 @@
 # apps -
 #   define aliases and variables for different apps
 
+# xdg
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg}
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  export XDG_DESKTOP_DIR=${XDG_DESKTOP_DIR:-$HOME/Desktop}
+  export XDG_DOCUMENTS_DIR=${XDG_DOCUMENTS_DIR:-$HOME/Documents}
+  export XDG_DOWNLOAD_DIR=${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
+  export XDG_MUSIC_DIR=${XDG_MUSIC_DIR:-$HOME/Music}
+  export XDG_PICTURES_DIR=${XDG_PICTURES_DIR:-$HOME/Pictures}
+  export XDG_VIDEOS_DIR=${XDG_VIDEOS_DIR:-$HOME/Videos}
+  export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
+fi
+
 # curl
 path=($path /usr/local/opt/curl/bin)
 
@@ -39,6 +55,10 @@ alias gor='go run'
 alias got='go test'
 alias gov='go vet'
 
+# gpg
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+alias gpg='gpg --homedir "$GNUPGHOME"'
+
 # groovy
 if [[ "$OSTYPE" == darwin* ]]; then
   export GROOVY_HOME=/usr/local/opt/groovy/libexec  # per homebrew
@@ -61,14 +81,30 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 alias setjavahome="export JAVA_HOME=\`/usr/libexec/java_home\`"
 
 # jupyter
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 JUPYTER_HOME="${JUPYTER_HOME:-$HOME/Projects/jupyter}"
 [[ -d $JUPYTER_HOME ]] || mkdir -p $JUPYTER_HOME
+
+# less
+export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 
 # lpass
 export LPASS_AGENT_TIMEOUT="${LPASS_AGENT_TIMEOUT:-0}"
 
 # nodejs
 path+=/usr/local/share/npm/bin
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node.js/repl_history
+
+# nuget
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+
+# postgres
+export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
+export PSQL_HISTORY="$XDG_CACHE_HOME/pg/psql_history"
+export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
+export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
 
 # python
 export WORKON_HOME="$XDG_DATA_HOME"/venvs
@@ -82,6 +118,9 @@ alias pyfind='find . -name "*.py"'
 alias pygrep='grep --include="*.py"'
 alias pyva="source .venv/bin/activate"
 
+# readline
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+
 # ruby
 # per homebrew:
 # If you need to have ruby first in your PATH, run:
@@ -94,7 +133,30 @@ alias pyva="source .venv/bin/activate"
 # For pkg-config to find ruby you may need to set:
 #   export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 path=($path /usr/local/opt/ruby/bin $GEM_HOME/ruby/3.0.0/bin)
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
+export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
+export GEM_HOME="$XDG_DATA_HOME"/gem
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
+
+# rust
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+# screen
+export SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
+
+# tmux
+export TMUX_CONFIG="$XDG_CONFIG_HOME"/tmux/tmux.conf
+alias tmux='tmux -f "$TMUX_CONFIG"'
 
 # todo-txt
 alias t="todo.sh"
 alias todos="$VISUAL $HOME/Desktop/todo.txt"
+
+# wget
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget/wget-hsts"'
+
+# z
+export _Z_DATA="$XDG_DATA_HOME/z/data"
