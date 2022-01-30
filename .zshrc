@@ -10,5 +10,9 @@ for f in $ZFUNCDIR/**/*(.N);        do autoload -Uz $f; done
 for f in $ZDOTDIR/zshrc.d/*.zsh(N); do source "$f";     done
 unset f
 
+# local settings
+[[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local
+[[ -f $ZDOTDIR/functions.local ]] && autoload-dir $ZDOTDIR/functions.local
+
 # done profiling
 [[ ${ZPROFRC:-0} -eq 0 ]] || { unset ZPROFRC && zprof }
