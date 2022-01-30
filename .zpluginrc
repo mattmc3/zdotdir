@@ -16,8 +16,8 @@ romkatv/zsh-bench kind:path
 
 # oh-my-zsh lib
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-ohmyzsh/ohmyzsh path:lib/directories.zsh
-ohmyzsh/ohmyzsh path:lib/functions.zsh
+#ohmyzsh/ohmyzsh path:lib/directories.zsh
+#ohmyzsh/ohmyzsh path:lib/functions.zsh
 #ohmyzsh/ohmyzsh path:lib/termsupport.zsh
 #ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
 
@@ -26,12 +26,14 @@ ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/copydir
 ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
-ohmyzsh/ohmyzsh path:plugins/macos
+#ohmyzsh/ohmyzsh path:plugins/macos
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/z
 
 # other plugins
 # zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
 romkatv/zsh-defer
 mattmc3/zsh-safe-rm
 

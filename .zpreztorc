@@ -24,16 +24,16 @@ zstyle ':prezto:load' pmodule-allow-overrides 'yes'
 # Set the Prezto modules to load (browse modules).
 # The order matters.
 mymodules=(
-  autosuggestions
+  #autosuggestions
   environment
   terminal
   editor
   history
   directory
-  spectrum
+  #spectrum
   utility
   completion
-  history-substring-search
+  #history-substring-search
   # prompt
   emacs
   git
