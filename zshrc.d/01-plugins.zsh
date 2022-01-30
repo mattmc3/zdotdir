@@ -9,3 +9,10 @@ if [[ ! -f $ZPLUGINDIR/init.zsh ]]; then
   sed -i '' "s|$HOME|\$HOME|g" $ZPLUGINDIR/init.zsh
 fi
 source $ZPLUGINDIR/init.zsh
+
+#ABBR_USER_ABBREVIATIONS_FILE=$ZDOTDIR/.zabbrs
+MAGIC_ENTER_GIT_COMMAND="git status -sb"
+MAGIC_ENTER_OTHER_COMMAND="ls -G"
+
+# fix prezto settings
+unalias man

@@ -13,6 +13,7 @@ then
   echo "Patching pure prompt..."
   git -C "$ZPLUGINDIR/pure" apply $ZPLUGINDIR/pure/pure-less-spacious.patch
 fi
+PURE_PROMPT_SYMBOL="%%"
 
 # show exit code on right
 precmd_pipestatus() {
@@ -36,4 +37,3 @@ add-zsh-hook precmd precmd_pipestatus
 # https://unix.stackexchange.com/questions/685666/zsh-how-do-i-remove-block-prefixes-when-writing-multi-line-statements-in-intera
 # use 2 space indent for each new level
 PS2='${${${(%):-%_}//[^ ]}// /  }    '
-
