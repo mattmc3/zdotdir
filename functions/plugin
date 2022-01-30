@@ -1,11 +1,15 @@
 #!/usr/bin/env zsh
 #
 # plugin
+#
 # A simple antibody replacement: https://getantibody.github.io/
-# plugin bundle < ${ZDOTDIR:-~}/.zsh_plugins.txt >| ${ZDOTDIR:-~}/.zsh_plugins.zsh
+# plugin bundle < ${ZDOTDIR:-~}/.zpluginrc >| $ZPLUGINDIR/init.zsh
 #
 
-ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME}/.zplugins}
+ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-~}/.zplugins}
+if [[ -z "$ZPLUGIN_RESET_ON_CHANGE" ]]; then
+  ZPLUGIN_RESET_ON_CHANGE=(${ZDOTDIR:-~}/.zpluginrc)
+fi
 
 function _plugin-compile() {
   local repo plugin f
@@ -22,6 +26,7 @@ function _plugin-compile() {
 }
 
 function _plugin-update() {
+  setopt local_options no_notify no_monitor
   local repo plugin
   for repo in $ZPLUGINDIR/*/.git/..(/); do
     plugin=${repo:A}
@@ -68,7 +73,7 @@ function __plugin_initfile() {
     $plugin_dir/*.{z,}sh{-theme,}(N)
   )
   if [[ ${#initfiles[@]} -eq 0 ]]; then
-    echo >&2 "No init file found '$1'." && return 1
+    >&2 echo "No init file found '$1'." && return 1
   fi
   local f
   for f in $plugin_dir/init.zsh $plugin_dir/$plugin_name.plugin.zsh; do
@@ -77,6 +82,7 @@ function __plugin_initfile() {
 }
 
 function _plugin-bundle() {
+  setopt local_options no_notify no_monitor
   # if stdin containts no data, there's nothing to do
   [[ ! -t 0 ]] || return 1
 
@@ -97,8 +103,8 @@ function _plugin-bundle() {
     plugin=$parts[1]
     instructions=(${parts[@]:1})
 
-    # if the plugin begins with a /, we assume it's on the file system and not a repo
     # for repos, we may need to clone before we can do other things
+    # for plugins with a leading slash assume it's a path instead of a repo
     if [[ $plugin != \/* ]]; then
       branch=$instructions[(r)branch:*]
       branch="${branch#*branch:}"
@@ -154,9 +160,58 @@ function _plugin-bundle() {
       __plugin_initfile $plugin &>/dev/null
       [[ $? -eq 0 ]] || { echo "# ERROR: plugin init file not found '$plugin'." && continue }
       echo "fpath+=( $plugin )"
-      echo "source $plugin/${plugin:t}.plugin.zsh"
+      if (( $instructions[(Ie)kind:defer] )); then
+        echo "zsh-defer source $plugin/${plugin:t}.plugin.zsh"
+      else
+        echo "source $plugin/${plugin:t}.plugin.zsh"
+      fi
     fi
   done
+}
+
+function _plugin-loadall() {
+  local plugin_init=$ZPLUGINDIR/init.zsh
+  [[ -f $plugin_init ]] || _plugin-reset
+  source $plugin_init
+}
+
+function _plugin-reset() {
+  # write init.zsh which drives the plugin management
+  [[ -d $ZPLUGINDIR ]] || mkdir -p $ZPLUGINDIR
+  echo "# generated file... do not modify!" >| $ZPLUGINDIR/init.zsh
+
+  # shameless copy from zgen
+  # https://github.com/tarjoilija/zgen/blob/0b669d2d0dcf788b4c81a7a30b4fa41dfbf7d1a7/zgen.zsh#L263-L284
+  local ages="$(stat -Lc "%Y" 2>/dev/null $ZPLUGIN_RESET_ON_CHANGE || \
+                stat -Lf "%m" 2>/dev/null $ZPLUGIN_RESET_ON_CHANGE)"
+  local shas="$(cksum ${ZPLUGIN_RESET_ON_CHANGE})"
+
+  local initcode=$(<<'EOS'
+# this file is generated!!! do not modify!!!
+# recompilation triggers
+
+read -rd '' ages <<AGES; read -rd '' shas <<SHAS
+{{ages}}
+AGES
+{{shas}}
+SHAS
+
+if [[ -n "$ZPLUGIN_RESET_ON_CHANGE" \
+      && "$(stat -Lc "%Y" 2>/dev/null $ZPLUGIN_RESET_ON_CHANGE || \
+            stat -Lf "%m"             $ZPLUGIN_RESET_ON_CHANGE)" != "$ages" \
+      && "$(cksum                     $ZPLUGIN_RESET_ON_CHANGE)" != "$shas" ]]
+then
+  echo 'plugin: file change detected in $ZPLUGIN_RESET_ON_CHANGE; resetting plugins files...'
+  plugin reset
+fi
+source $ZPLUGINDIR/bundle.zsh
+EOS
+)
+  initcode=${initcode:gs/{{ages}}/$ages}
+  initcode=${initcode:gs/{{shas}}/$shas}
+  echo "$initcode" >| $ZPLUGINDIR/init.zsh
+  # write out bundle.zsh which has the actual plugin instructions
+  plugin bundle < ${ZDOTDIR:-~}/.zpluginrc >| $ZPLUGINDIR/bundle.zsh
 }
 
 function _plugin() {
@@ -166,8 +221,8 @@ function _plugin() {
     _plugin-${cmd} "$@"
     return $?
   else
-    echo >&2 "The plugin command doesn't exist: '$1'."
+    >&2 echo "The plugin command doesn't exist: '$1'."
     return 1
   fi
 }
-_plugin $@
+_plugin "$@"
