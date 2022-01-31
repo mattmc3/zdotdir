@@ -3,16 +3,21 @@
 # prezto framework
 sorin-ionescu/prezto
 
+# load first
+romkatv/zsh-defer
+
 # prompts
 sindresorhus/pure
 miekg/lean kind:fpath
 
 # clone only plugins
 mbadolato/iTerm2-Color-Schemes kind:clone
-olets/zsh-abbr kind:clone
 
 # path only plugins
 romkatv/zsh-bench kind:path
+
+# defered load plugins
+olets/zsh-abbr kind:defer
 
 # oh-my-zsh lib
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
@@ -34,7 +39,6 @@ ohmyzsh/ohmyzsh path:plugins/z
 # zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
-romkatv/zsh-defer
 mattmc3/zsh-safe-rm
 
 # plugins where maybe I just include the snippet in zdotdir
