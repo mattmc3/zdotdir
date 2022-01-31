@@ -1,2 +1,2 @@
 # edit file or folder in IDE
-${VISUAL:-vim} $@
+${VISUAL:-vim} ${@:-.}
