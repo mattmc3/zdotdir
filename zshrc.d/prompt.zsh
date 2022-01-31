@@ -6,10 +6,10 @@
 # and then running this command
 # $ git diff > some-changes.patch
 if [[ -d $ZPLUGINDIR/pure ]] &&
-   [[ -f $ZDOTDIR/misc/pure-less-spacious.patch ]] &&
+   [[ -f $ZDOTDIR/patches/pure-less-spacious.patch ]] &&
    [[ ! -f $ZPLUGINDIR/pure/pure-less-spacious.patch ]]
 then
-  cp $ZDOTDIR/misc/pure-less-spacious.patch $ZPLUGINDIR/pure
+  cp $ZDOTDIR/patches/pure-less-spacious.patch $ZPLUGINDIR/pure
   echo "Patching pure prompt..."
   git -C "$ZPLUGINDIR/pure" apply $ZPLUGINDIR/pure/pure-less-spacious.patch
 fi
