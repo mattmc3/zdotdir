@@ -2,6 +2,10 @@
 
 My `$ZDOTDIR` [dotfiles] directory, which contains my zsh configuration.
 
+## My Terminal
+
+![My Terminal][zdotdir_gif]
+
 ## Installation
 
 It's a good idea to backup existing files first:
@@ -149,3 +153,4 @@ I use Space Gray:
 [zebrafish]:        https://github.com/mattmc3/zebrafish
 [zshzoo]:           https://github.com/zshzoo/zshzoo
 [zsh_unplugged]:    https://github.com/mattmc3/zsh_unplugged
+[zdotdir_gif]:      https://raw.githubusercontent.com/mattmc3/zdotdir/resources/img/zdotdir.gif
