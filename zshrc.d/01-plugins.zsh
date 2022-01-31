@@ -1,5 +1,5 @@
 # drive zsh with plugins
-# this uses a simple antibody replacement utility called "plugin" in $ZDOTDIR/bin
+# this uses a simple antibody replacement utility called "plugin" in $ZDOTDIR/functions
 ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-~}/.zplugins}
 path=($ZDOTDIR/bin $path)
 
@@ -15,4 +15,4 @@ MAGIC_ENTER_GIT_COMMAND="git status -sb"
 MAGIC_ENTER_OTHER_COMMAND="ls -G"
 
 # fix prezto settings
-unalias man
+(( ${+aliases[man]} )) && unalias man
