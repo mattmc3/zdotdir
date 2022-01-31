@@ -1,2 +1,2 @@
 emulate -L zsh
-cd $1 && ls -FG
+cd $1 && ls -G
