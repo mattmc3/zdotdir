@@ -3,12 +3,15 @@
 # plugin
 #
 # A simple antibody replacement: https://getantibody.github.io/
-# plugin bundle < ${ZDOTDIR:-~}/.zpluginrc >| $ZPLUGINDIR/init.zsh
+# plugin bundle < $ZPLUGIN_CONF >| $ZPLUGINDIR/init.zsh
 #
 
 ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-~}/.zplugins}
+if [[ -z "$ZPLUGIN_CONF" ]]; then
+  ZPLUGIN_CONF=${ZDOTDIR:-~}/plugin.conf
+fi
 if [[ -z "$ZPLUGIN_RESET_ON_CHANGE" ]]; then
-  ZPLUGIN_RESET_ON_CHANGE=(${ZDOTDIR:-~}/.zpluginrc)
+  ZPLUGIN_RESET_ON_CHANGE=($ZPLUGIN_CONF)
 fi
 
 function _plugin-compile() {
@@ -211,7 +214,7 @@ EOS
   initcode=${initcode:gs/{{shas}}/$shas}
   echo "$initcode" >| $ZPLUGINDIR/init.zsh
   # write out bundle.zsh which has the actual plugin instructions
-  plugin bundle < ${ZDOTDIR:-~}/.zpluginrc >| $ZPLUGINDIR/bundle.zsh
+  plugin bundle < $ZPLUGIN_CONF >| $ZPLUGINDIR/bundle.zsh
 }
 
 function _plugin() {
