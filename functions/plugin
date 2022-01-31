@@ -61,6 +61,9 @@ function __plugin_clone() {
       giturl=https://github.com/$repo
     fi
     command git clone $branch --quiet --depth 1 --recurse-submodules --shallow-submodules $giturl $plugin
+    if [[ -d $ZDOTDIR/patches/${repo:t} ]]; then
+      git -C "$plugin" am --quiet $ZDOTDIR/patches/${repo:t}/*.patch
+    fi
   fi
 }
 

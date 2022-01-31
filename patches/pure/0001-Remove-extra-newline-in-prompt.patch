@@ -1,5 +1,14 @@
+From 9dc676a7f62c51640e0369de5549d871d9166b01 Mon Sep 17 00:00:00 2001
+From: mattmc3 <mattmc3@gmail.com>
+Date: Mon, 31 Jan 2022 08:38:44 -0500
+Subject: [PATCH] Remove extra newline in prompt
+
+---
+ pure.zsh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/pure.zsh b/pure.zsh
-index 41aff3e..cc9ff87 100644
+index 39e3a23..5ba938f 100644
 --- a/pure.zsh
 +++ b/pure.zsh
 @@ -183,7 +183,7 @@ prompt_pure_preprompt_render() {
@@ -7,7 +16,10 @@ index 41aff3e..cc9ff87 100644
  	if [[ $1 == precmd ]]; then
  		# Initial newline, for spaciousness.
 -		print
-+		# print
++		#print
  	elif [[ $prompt_pure_last_prompt != $expanded_prompt ]]; then
  		# Redraw the prompt.
  		prompt_pure_reset_prompt
+-- 
+2.35.0
+

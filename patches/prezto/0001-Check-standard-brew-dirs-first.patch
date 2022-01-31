@@ -1,0 +1,31 @@
+From db7ea3b22353d388da78b74ba0d73e43001523d7 Mon Sep 17 00:00:00 2001
+From: mattmc3 <mattmc3@gmail.com>
+Date: Mon, 31 Jan 2022 08:16:16 -0500
+Subject: [PATCH] Check standard brew dirs first
+
+---
+ modules/completion/init.zsh | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/modules/completion/init.zsh b/modules/completion/init.zsh
+index fc5cfd4..dcdcd89 100644
+--- a/modules/completion/init.zsh
++++ b/modules/completion/init.zsh
+@@ -15,8 +15,12 @@ fi
+ fpath=(${0:h}/external/src $fpath)
+ 
+ # Add completion for keg-only brewed curl when available.
+-if (( $+commands[brew] )) \
+-      && [[ -d "${curl_prefix::="$(brew --prefix 2> /dev/null)"/opt/curl}" ]]; then
++if (( $+commands[brew] )) && {
++         [[ -d "${curl_prefix::=/opt/homebrew/opt/curl}" ]] ||
++         [[ -d "${curl_prefix::=/usr/local/opt/curl}" ]] ||
++         [[ -d "${curl_prefix::="$(brew --prefix 2> /dev/null)"/opt/curl}" ]]
++      }
++  then
+   fpath=($curl_prefix/share/zsh/site-functions $fpath)
+ fi
+ unset curl_prefix
+-- 
+2.35.0
+
