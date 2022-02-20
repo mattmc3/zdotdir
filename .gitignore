@@ -23,6 +23,7 @@ foo.*
 .zsh_plugins.zsh
 plugins/
 zplugins/
+.zcontribs/
 
 # frameworks
 .oh-my-zsh/
