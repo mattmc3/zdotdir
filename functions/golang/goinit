@@ -1,6 +1,0 @@
-appname="${1:-mynewapp}"
-gitpath="${2:-github.com/mattmc3}"
-mkdir -p "$appname/pkg" "$appname/bin" "$appname/src/$gitpath/$appname"
-export GOPATH="$(pwd)/$appname"
-echo $GOPATH
-$VISUAL "$GOPATH/src/$gitpath/$appname"

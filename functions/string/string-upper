@@ -1,5 +1,0 @@
-# https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion-Flags
-# (U) Convert all letters in the result to upper case.
-[[ $# -gt 0 ]] || return 1
-local args=("${(U)@}")
-printf '%s\n' $args

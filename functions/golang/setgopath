@@ -1,2 +1,0 @@
-export GOPATH="${1:-$PWD}"
-echo $GOPATH

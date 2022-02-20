@@ -1,6 +1,0 @@
-if [[ -n "$1" ]]; then
-  cd "$1"
-else
-  cd "$JUPYTER_HOME"
-fi
-jupyter notebook
