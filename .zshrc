@@ -68,6 +68,7 @@ prezto_modules=(
   history-substring-search
   prompt
   autosuggestions
+  emacs
   git
 
   # belak/prezto-contrib
@@ -81,8 +82,6 @@ prezto_modules=(
   colored-man-pages
   curl
   dotfiles
-  emacs
-  git
   golang
   gpg
   groovy
