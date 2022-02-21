@@ -31,4 +31,5 @@ zplugins/
 .omz/
 .zprezto-contrib/
 .zprezto/
+.zcontribs*/
 .zsh_custom/
