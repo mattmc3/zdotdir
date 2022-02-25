@@ -24,6 +24,7 @@ foo.*
 plugins/
 zplugins/
 .zcontribs/
+.zprezto-contribs/
 
 # frameworks
 .oh-my-zsh/
