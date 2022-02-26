@@ -5,7 +5,7 @@ alias zprofrc="ZPROFRC=1 zsh"
 omz_plugins=(
   extract
   lib/clipboard
-  copydir
+  copypath
   copybuffer
   copyfile
   macos
