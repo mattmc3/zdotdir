@@ -1,3 +1,0 @@
-for i in $(seq 10); do
-  command time zsh -i -c exit
-done

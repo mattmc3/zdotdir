@@ -23,14 +23,16 @@ function plugin-load() {
   done
 }
 myplugins=(
-  zshzoo/zephyr
+  #zshzoo/zephyr
   zshzoo/magic-enter
   zshzoo/macos
   zshzoo/prj
   joshskidmore/zsh-fzf-history-search
+  rummik/zsh-tailf
+  peterhurford/up.zsh
   rupa/z
 )
-#source ~/Projects/zshzoo/zephyr/zephyr.zsh
+source ~/Projects/zshzoo/zephyr/zephyr.zsh
 plugin-load $myplugins
 prompt pure
 
