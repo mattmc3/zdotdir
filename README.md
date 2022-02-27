@@ -57,16 +57,16 @@ The latest benchmark run shows that we load a new shell pretty fast.
 ```zsh
 % # MacBook Air (M1, 2020)
 % for i in $(seq 10); do; /usr/bin/time zsh -lic exit; done
-        0.08 real         0.04 user         0.03 sys
-        0.07 real         0.04 user         0.03 sys
-        0.07 real         0.04 user         0.03 sys
-        0.07 real         0.04 user         0.03 sys
-        0.07 real         0.04 user         0.03 sys
-        0.07 real         0.04 user         0.03 sys
-        0.07 real         0.04 user         0.03 sys
-        0.07 real         0.04 user         0.03 sys
-        0.07 real         0.04 user         0.03 sys
-        0.07 real         0.04 user         0.03 sys
+        0.09 real         0.04 user         0.03 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
+        0.06 real         0.03 user         0.02 sys
 
 % # pure prompt
 % zsh-bench
@@ -75,23 +75,11 @@ has_compsys=1
 has_syntax_highlighting=1
 has_autosuggestions=1
 has_git_prompt=0
-first_prompt_lag_ms=100.919
-first_command_lag_ms=109.839
-command_lag_ms=50.802
-input_lag_ms=6.639
-exit_time_ms=79.399
-
-# prezto prompt
-creates_tty=0
-has_compsys=1
-has_syntax_highlighting=1
-has_autosuggestions=1
-has_git_prompt=0
-first_prompt_lag_ms=108.525
-first_command_lag_ms=117.335
-command_lag_ms=51.511
-input_lag_ms=4.731
-exit_time_ms=78.831
+first_prompt_lag_ms=87.728
+first_command_lag_ms=97.234
+command_lag_ms=53.010
+input_lag_ms=7.122
+exit_time_ms=60.351
 
 # starship prompt
 creates_tty=0
@@ -99,11 +87,11 @@ has_compsys=1
 has_syntax_highlighting=1
 has_autosuggestions=1
 has_git_prompt=1
-first_prompt_lag_ms=142.011
-first_command_lag_ms=148.699
-command_lag_ms=101.397
-input_lag_ms=7.485
-exit_time_ms=79.402
+first_prompt_lag_ms=122.021
+first_command_lag_ms=166.538
+command_lag_ms=128.913
+input_lag_ms=7.091
+exit_time_ms=61.084
 ```
 
 ## Look-and-feel
