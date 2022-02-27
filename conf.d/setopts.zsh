@@ -1,4 +1,4 @@
-# fix prezto settings to what I prefer
+# additional settings
 setopt emacs                  # use emacs keybindings in the shell
 setopt glob_dots              # include dotfiles when globbing
 setopt emacs                  # use emacs keybindings in the shell

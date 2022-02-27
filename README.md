@@ -123,7 +123,7 @@ I use Space Gray:
 ## Resources
 
 - [zshzoo][zshzoo]
-- [zebrafish][zebrafish]
+- [zephyr][zephyr]
 - [zsh_unplugged][zsh_unplugged]
 - [prezto][prezto]
 - [oh-my-zsh][oh-my-zsh]
@@ -138,7 +138,7 @@ I use Space Gray:
 [starship-toml]:    https://github.com/mattmc3/zdotdir/blob/main/prompt/starship.toml
 [starship]:         https://starship.rs
 [supercharge-zsh]:  https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
-[zebrafish]:        https://github.com/mattmc3/zebrafish
+[zephyr]:           https://github.com/zshzoo/zephyr
 [zshzoo]:           https://github.com/zshzoo/zshzoo
 [zsh_unplugged]:    https://github.com/mattmc3/zsh_unplugged
 [zdotdir_gif]:      https://raw.githubusercontent.com/mattmc3/zdotdir/resources/img/zdotdir.gif
