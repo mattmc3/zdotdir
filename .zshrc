@@ -30,7 +30,7 @@ myplugins=(
   joshskidmore/zsh-fzf-history-search
   rupa/z
 )
-source ~/Projects/zshzoo/zephyr/zephyr.zsh
+#source ~/Projects/zshzoo/zephyr/zephyr.zsh
 plugin-load $myplugins
 prompt pure
 
