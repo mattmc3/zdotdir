@@ -2,105 +2,37 @@
 [[ ${ZPROFRC:-0} -eq 0 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-omz_plugins=(
-  extract
-  lib/clipboard
-  copypath
-  copybuffer
-  copyfile
-  macos
-  magic-enter
-  z
+# clone a plugin, identify its init file, source it, and add it to your fpath
+function plugin-load() {
+  local repo plugin_name plugin_dir initfile initfiles
+  ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/.zplugins}
+  for repo in $@; do
+    plugin_name=${repo:t}
+    plugin_dir=$ZPLUGINDIR/$plugin_name
+    initfile=$plugin_dir/$plugin_name.plugin.zsh
+    if [[ ! -d $plugin_dir ]]; then
+      echo "Cloning $repo"
+      git clone --quiet --depth 1 --recursive --shallow-submodules https://github.com/$repo $plugin_dir
+    fi
+    if [[ ! -e $initfile ]]; then
+      initfiles=($plugin_dir/*.plugin.{z,}sh(N) $plugin_dir/*.{z,}sh{-theme,}(N))
+      [[ ${#initfiles[@]} -gt 0 ]] && ln -sf "${initfiles[1]}" "$initfile"
+    fi
+    fpath+=$plugin_dir
+    source $initfile
+  done
+}
+myplugins=(
+  zshzoo/zephyr
+  zshzoo/magic-enter
+  zshzoo/macos
+  zshzoo/prj
+  joshskidmore/zsh-fzf-history-search
+  rupa/z
 )
-
-prezto_modules=(
-  # do these first
-  _init
-
-  # zprezto built-ins
-  environment
-  terminal
-  editor
-  history
-  directory
-  spectrum
-  utility
-  history-substring-search
-  prompt
-  autosuggestions
-  emacs
-  git
-
-  # belak/prezto-contrib
-  clipboard
-  elapsed-time
-
-  # my zprezto-contribs
-  xdg-basedirs
-  abbreviations
-  aliases
-  colored-man-pages
-  curl
-  dotfiles
-  fzf-history-search
-  golang
-  gpg
-  groovy
-  homebrew
-  iwd
-  java
-  jupyter
-  less
-  lpass
-  macos
-  node
-  nuget
-  prj
-  python
-  readline
-  ruby
-  rust
-  shell-safe-rm
-  string
-  tmux
-  todo-txt
-  wget
-  zfunctions
-  zsh-bench
-  zopts
-
-  # load these last
-  completion
-  ohmyzsh
-  fast-syntax-highlighting
-)
-
-# setup prezto and tell it about our contribs
-ZPREZTODIR=$ZDOTDIR/.zprezto
-declare -A repos
-repos=(
-  https://github.com/sorin-ionescu/prezto $ZDOTDIR/.zprezto
-  https://github.com/belak/prezto-contrib $ZDOTDIR/.zprezto-contribs
-  git@github.com:mattmc3/prezto-chango    $ZDOTDIR/.zcontribs-custom
-)
-for repo dirname in ${(kv)repos}; do
-  if [[ ! -d $dirname ]]; then
-    git clone --depth 1 --quiet --recurse-submodules --shallow-submodules \
-    $repo $dirname
-  fi
-done
-unset repo dirname repos
-
-# this can go in .zpreztorc, or in .zshrc if you don't want an extra file
-# for prezto configs
-zstyle ':prezto:load' pmodule $prezto_modules
-zstyle ':prezto:load' pmodule-dirs $ZDOTDIR/.zprezto-contribs $ZDOTDIR/.zcontribs-custom
-zstyle ':prezto:load' pmodule-allow-overrides 'yes'
-zstyle ':prezto:module:prompt' theme 'pure'
-zstyle ':prezto:module:git:alias' skip 'yes'
-zstyle ':prezto:module:utility' correct 'no'
-zstyle ':omz:load' plugins $omz_plugins
-source $ZPREZTODIR/init.zsh
+source ~/Projects/zshzoo/zephyr/zephyr.zsh
+plugin-load $myplugins
+prompt pure
 
 # local settings
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local

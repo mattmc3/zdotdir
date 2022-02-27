@@ -1,5 +1,4 @@
 ~*
-.*history
 .cache
 .zcompcache/
 .zcompdump*
@@ -13,24 +12,4 @@
 .zsh_history
 .zhistory
 foo.*
-
-# plugins
-.antibody/
-.antigen
-.zgen
-.zplugins
 .zplugins/
-.zsh_plugins.zsh
-plugins/
-zplugins/
-.zcontribs/
-.zprezto-contribs/
-
-# frameworks
-.oh-my-zsh/
-.ohmyzsh/
-.omz/
-.zprezto-contrib/
-.zprezto/
-.zcontribs*/
-.zsh_custom/
