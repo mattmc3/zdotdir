@@ -13,3 +13,4 @@
 .zhistory
 foo.*
 .zplugins/
+.zephyr/

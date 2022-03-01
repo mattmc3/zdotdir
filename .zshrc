@@ -17,7 +17,7 @@ zplugins=(
   joshskidmore/zsh-fzf-history-search
 )
 zstyle ':zephyr:load' additional-plugins $zplugins
-zstyle ':zephyr:plugin:prompt' theme 'purez'
+zstyle ':zephyr:plugin:prompt' theme 'pure'
 #zstyle ':zephyr:plugin:syntax-highlighting' defer 'no'
 source ${ZDOTDIR:-~}/.zephyr/zephyr.zsh
 #source ~/Projects/zshzoo/zephyr/zephyr.zsh
