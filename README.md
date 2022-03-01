@@ -57,41 +57,41 @@ The latest benchmark run shows that we load a new shell pretty fast.
 ```zsh
 % # MacBook Air (M1, 2020)
 % for i in $(seq 10); do; /usr/bin/time zsh -lic exit; done
-        0.09 real         0.04 user         0.03 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
-        0.06 real         0.03 user         0.02 sys
+        0.07 real         0.03 user         0.03 sys
+        0.04 real         0.02 user         0.02 sys
+        0.04 real         0.02 user         0.02 sys
+        0.04 real         0.02 user         0.02 sys
+        0.04 real         0.02 user         0.02 sys
+        0.04 real         0.02 user         0.02 sys
+        0.04 real         0.02 user         0.02 sys
+        0.04 real         0.02 user         0.02 sys
+        0.04 real         0.02 user         0.02 sys
+        0.04 real         0.02 user         0.02 sys
 
 % # pure prompt
 % zsh-bench
 creates_tty=0
 has_compsys=1
-has_syntax_highlighting=1
+has_syntax_highlighting=0
 has_autosuggestions=1
 has_git_prompt=0
-first_prompt_lag_ms=87.728
-first_command_lag_ms=97.234
-command_lag_ms=53.010
-input_lag_ms=7.122
-exit_time_ms=60.351
+first_prompt_lag_ms=76.833
+first_command_lag_ms=83.861
+command_lag_ms=53.048
+input_lag_ms=7.643
+exit_time_ms=46.827
 
 # starship prompt
 creates_tty=0
 has_compsys=1
-has_syntax_highlighting=1
+has_syntax_highlighting=0
 has_autosuggestions=1
 has_git_prompt=1
-first_prompt_lag_ms=122.021
-first_command_lag_ms=166.538
-command_lag_ms=128.913
-input_lag_ms=7.091
-exit_time_ms=61.084
+first_prompt_lag_ms=111.166
+first_command_lag_ms=117.233
+command_lag_ms=90.644
+input_lag_ms=5.374
+exit_time_ms=47.434
 ```
 
 ## Look-and-feel
