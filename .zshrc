@@ -8,18 +8,37 @@ alias zprofrc="ZPROFRC=1 zsh"
 # order matters
 zplugins=(
   # 3rd party plugins
+  mattmc3/zman
   zshzoo/magic-enter
   zshzoo/macos
   rummik/zsh-tailf
   peterhurford/up.zsh
   rupa/z
-  zshzoo/prj
-  joshskidmore/zsh-fzf-history-search
+
+  # zephyr built-in plugins
+  environment
+  terminal
+  editor
+  history
+  directory
+  utility
+  prompt
+  zfunctions
+  confd
+  completions
+  history-substring-search
+  autosuggestions
 )
-zstyle ':zephyr:load' additional-plugins $zplugins
-#zstyle ':zephyr:plugin:syntax-highlighting' defer 'no'
+deferplugins=(
+  olets/zsh-abbr
+  zdharma-continuum/fast-syntax-highlighting
+)
+
+zstyle ':zephyr:load' plugins $zplugins
+zstyle ':zephyr:defer' plugins $deferplugins
 source ${ZDOTDIR:-~}/.zephyr/zephyr.zsh
 #source ~/Projects/zshzoo/zephyr/zephyr.zsh
+prompt pure
 
 # local settings
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local
