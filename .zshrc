@@ -33,12 +33,17 @@ deferplugins=(
   olets/zsh-abbr
   zdharma-continuum/fast-syntax-highlighting
 )
+promptplugins=(
+  romkatv/powerlevel10k
+  miekg/lean
+  # 'dracula/zsh name:dracula'
+)
 
 zstyle ':zephyr:load' plugins $zplugins
 zstyle ':zephyr:defer' plugins $deferplugins
+zstyle ':zephyr:prompt' plugins $promptplugins
 source ${ZDOTDIR:-~}/.zephyr/zephyr.zsh
 #source ~/Projects/zshzoo/zephyr/zephyr.zsh
-prompt pure
 
 # local settings
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local
