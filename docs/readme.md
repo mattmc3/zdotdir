@@ -19,6 +19,27 @@ If you want to run a totally clean environment, you can with with `env -i`.
 env -i zsh -dfi
 ```
 
+## $0
+
+`${BASH_SOURCE[0]` is `${(%):-%x}}` in Zsh
+
+For example:
+
+```zsh
+# $ZDOTDIR/functions/foo
+#functon foo {
+
+# prints foo
+echo $0
+
+# prints $ZDOTDIR/functions/foo
+echo ${(%):-%x}
+
+#}
+```
+
+- [See here](https://stackoverflow.com/questions/9901210/bash-source0-equivalent-in-zsh)
+
 ## String functions
 
 If you want to replace '~' with '$HOME' in a variable, you can do this:
