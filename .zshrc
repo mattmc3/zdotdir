@@ -5,45 +5,10 @@ alias zprofrc="ZPROFRC=1 zsh"
 [[ -d ${ZDOTDIR:-~}/.zephyr ]] ||
   git clone https://github.com/zshzoo/zephyr ${ZDOTDIR:-~}/.zephyr
 
-# order matters
-zplugins=(
-  # 3rd party plugins
-  mattmc3/zman
-  zshzoo/magic-enter
-  zshzoo/macos
-  rummik/zsh-tailf
-  peterhurford/up.zsh
-  rupa/z
-
-  # zephyr built-in plugins
-  environment
-  terminal
-  editor
-  history
-  directory
-  utility
-  prompt
-  zfunctions
-  confd
-  completions
-  history-substring-search
-  autosuggestions
-)
-deferplugins=(
-  olets/zsh-abbr
-  zdharma-continuum/fast-syntax-highlighting
-)
-promptplugins=(
-  romkatv/powerlevel10k
-  miekg/lean
-  # 'dracula/zsh name:dracula'
-)
-
-zstyle ':zephyr:load' plugins $zplugins
-zstyle ':zephyr:defer' plugins $deferplugins
-zstyle ':zephyr:prompt' plugins $promptplugins
 source ${ZDOTDIR:-~}/.zephyr/zephyr.zsh
 #source ~/Projects/zshzoo/zephyr/zephyr.zsh
+zephyr init
+#prompt pure
 
 # local settings
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local

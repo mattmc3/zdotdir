@@ -1,0 +1,43 @@
+# Note: order matters
+
+#
+# External plugins
+#
+
+mattmc3/zman
+zshzoo/magic-enter
+zshzoo/macos
+rummik/zsh-tailf     name:tailf
+peterhurford/up.zsh  name:up
+rupa/z
+
+# deferred
+olets/zsh-abbr  kind:defer
+zdharma-continuum/fast-syntax-highlighting  kind:defer
+
+# utilities
+romkatv/zsh-bench        kind:path
+
+# prompts
+sindresorhus/pure        kind:prompt
+# romkatv/powerlevel10k  kind:prompt
+# dracula/zsh            kind:prompt name:dracula
+
+
+#
+# Zephyr built-ins
+#
+
+environment
+terminal
+editor
+history
+directory
+utility
+prompt
+zfunctions
+confd
+completions
+#syntax-highlighting
+history-substring-search
+autosuggestions
