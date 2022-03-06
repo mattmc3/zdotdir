@@ -1,0 +1,46 @@
+# Note: order matters
+
+#
+# Regular Plugins
+#
+
+mattmc3/zman
+zshzoo/magic-enter
+zshzoo/macos
+rummik/zsh-tailf
+peterhurford/up.zsh
+rupa/z
+
+#
+# Oh-My-Zsh Plugins
+#
+
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+ohmyzsh/ohmyzsh path:lib/directories.zsh
+ohmyzsh/ohmyzsh path:lib/termsupport.zsh
+ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
+
+ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+
+#
+# Deferred Plugins
+#
+
+olets/zsh-abbr kind:defer
+zdharma-continuum/fast-syntax-highlighting kind:defer
+
+#
+# Utilities
+#
+
+romkatv/zsh-bench kind:path
+
+#
+# Prompts
+#
+
+miekg/lean             kind:fpath
+sindresorhus/pure      kind:fpath
+romkatv/powerlevel10k  kind:fpath
+#dracula/zsh            kind:fpath name:dracula
