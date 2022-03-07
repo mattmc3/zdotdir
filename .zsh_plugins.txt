@@ -2,12 +2,19 @@
 sindresorhus/pure kind:fpath
 
 # core plugins
-zshzoo/zephyr
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/terminal
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/utility
+mattmc3/zephyr path:plugins/prompt
 
 # regular plugins
 mattmc3/zman
 zshzoo/magic-enter
 zshzoo/macos
+joshskidmore/zsh-fzf-history-search
 rupa/z
 
 # omz plugins
@@ -28,6 +35,11 @@ zdharma-continuum/fast-syntax-highlighting kind:defer
 
 # utilities
 romkatv/zsh-bench kind:path
+
+# core plugins
+mattmc3/zephyr path:plugins/zfunctions
+mattmc3/zephyr path:plugins/confd
+mattmc3/zephyr path:plugins/completions
 
 # zsh users
 zsh-users/zsh-completions
