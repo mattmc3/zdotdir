@@ -2,13 +2,11 @@
 sindresorhus/pure kind:fpath
 
 # core plugins
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/utility
 mattmc3/zephyr path:plugins/environment
 mattmc3/zephyr path:plugins/terminal
-mattmc3/zephyr path:plugins/editor
-mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/directory
-mattmc3/zephyr path:plugins/utility
-mattmc3/zephyr path:plugins/prompt
 
 # regular plugins
 mattmc3/zman
@@ -39,9 +37,11 @@ romkatv/zsh-bench kind:path
 # core plugins
 mattmc3/zephyr path:plugins/zfunctions
 mattmc3/zephyr path:plugins/confd
+
+# completions
+zsh-users/zsh-completions
 mattmc3/zephyr path:plugins/completions
 
 # zsh users
-zsh-users/zsh-completions
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-autosuggestions

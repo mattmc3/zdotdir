@@ -3,10 +3,13 @@
 alias zprofrc="ZPROFRC=1 zsh"
 
 # antidote plugin manager
-[[ -d ${ZDOTDIR:-~}/.antidote ]] ||
+if [[ ! -d ${ZDOTDIR:-~}/.antidote ]]; then
   git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
+  [[ -f ${ZDOTDIR:-~}/.zsh_plugins.zsh ]] && rm ${ZDOTDIR:-~}/.zsh_plugins.zsh
+fi
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
+# antidote config
 ANTIDOTE_HOME=${ZDOTDIR:-~}/.antidote/.cache
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 
