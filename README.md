@@ -6,6 +6,17 @@ My `$ZDOTDIR` [dotfiles] directory, which contains my zsh configuration.
 
 ![My Terminal][zdotdir_gif]
 
+## My setup
+
+Plugin manager:
+- [antidote](https://github.com/mattmc3/antidote)
+
+Framework:
+- [zephyr](https://github.com/mattmc3/zephyr)
+
+Plugins:
+- See my [.zsh_plugins](https://github.com/mattmc3/zdotdir/blob/main/.zsh_plugins.txt) file
+
 ## Installation
 
 It's a good idea to backup existing files first:
@@ -70,28 +81,17 @@ The latest benchmark run shows that we load a new shell pretty fast.
 
 % # pure prompt
 % zsh-bench
+==> benchmarking login shell of user matt ...
 creates_tty=0
 has_compsys=1
 has_syntax_highlighting=0
 has_autosuggestions=1
 has_git_prompt=0
-first_prompt_lag_ms=76.833
-first_command_lag_ms=83.861
-command_lag_ms=53.048
-input_lag_ms=7.643
-exit_time_ms=46.827
-
-# starship prompt
-creates_tty=0
-has_compsys=1
-has_syntax_highlighting=0
-has_autosuggestions=1
-has_git_prompt=1
-first_prompt_lag_ms=111.166
-first_command_lag_ms=117.233
-command_lag_ms=90.644
-input_lag_ms=5.374
-exit_time_ms=47.434
+first_prompt_lag_ms=67.080
+first_command_lag_ms=73.171
+command_lag_ms=52.357
+input_lag_ms=9.217
+exit_time_ms=43.031
 ```
 
 ## Look-and-feel
@@ -122,23 +122,27 @@ I use Space Gray:
 
 ## Resources
 
-- [zshzoo][zshzoo]
+- [antidote][antidote]
 - [zephyr][zephyr]
+- [zshzoo][zshzoo]
 - [zsh_unplugged][zsh_unplugged]
 - [prezto][prezto]
 - [oh-my-zsh][oh-my-zsh]
 - [supercharge your terminal with zsh][supercharge-zsh]
+- [awesome zsh][awesome-zsh-plugins]
 
-[dotfiles]:         https://dotfiles.github.io/
-[homebrew]:         https://brew.sh
-[iterm2-colors]:    https://github.com/mbadolato/iTerm2-Color-Schemes
-[nerd-fonts]:       https://github.com/ryanoasis/nerd-fonts
-[oh-my-zsh]:        https://github.com/ohmyzsh/ohmyzsh
-[prezto]:           https://github.com/sorin-ionescu/prezto
-[starship-toml]:    https://github.com/mattmc3/zdotdir/blob/main/prompt/starship.toml
-[starship]:         https://starship.rs
-[supercharge-zsh]:  https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
-[zephyr]:           https://github.com/zshzoo/zephyr
-[zshzoo]:           https://github.com/zshzoo/zshzoo
-[zsh_unplugged]:    https://github.com/mattmc3/zsh_unplugged
-[zdotdir_gif]:      https://raw.githubusercontent.com/mattmc3/zdotdir/resources/img/zdotdir.gif
+[antidote]:             https://github.com/mattmc3/antidote
+[awesome-zsh-plugins]:  https://github.com/unixorn/awesome-zsh-plugins
+[dotfiles]:             https://dotfiles.github.io/
+[homebrew]:             https://brew.sh
+[iterm2-colors]:        https://github.com/mbadolato/iTerm2-Color-Schemes
+[nerd-fonts]:           https://github.com/ryanoasis/nerd-fonts
+[oh-my-zsh]:            https://github.com/ohmyzsh/ohmyzsh
+[prezto]:               https://github.com/sorin-ionescu/prezto
+[starship-toml]:        https://github.com/mattmc3/zdotdir/blob/main/prompt/starship.toml
+[starship]:             https://starship.rs
+[supercharge-zsh]:      https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
+[zdotdir_gif]:          https://raw.githubusercontent.com/mattmc3/zdotdir/resources/img/zdotdir.gif
+[zephyr]:               https://github.com/zshzoo/zephyr
+[zsh_unplugged]:        https://github.com/mattmc3/zsh_unplugged
+[zshzoo]:               https://github.com/zshzoo/zshzoo
