@@ -1,3 +1,6 @@
+# setopt PROMPT_SUBST  # expand parameters in prompt variables
+
+# autoload -Uz promptinit && promptinit
 prompt pure
 
 # show exit code on right

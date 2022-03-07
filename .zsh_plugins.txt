@@ -1,46 +1,35 @@
-# Note: order matters
+# prompts
+sindresorhus/pure kind:fpath
 
-#
-# Regular Plugins
-#
+# core plugins
+zshzoo/zephyr
 
+# regular plugins
 mattmc3/zman
 zshzoo/magic-enter
 zshzoo/macos
-rummik/zsh-tailf
-peterhurford/up.zsh
 rupa/z
 
-#
-# Oh-My-Zsh Plugins
-#
+# omz plugins
+# ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+# ohmyzsh/ohmyzsh path:lib/directories.zsh
+# ohmyzsh/ohmyzsh path:lib/termsupport.zsh
+# ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
 
-ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-ohmyzsh/ohmyzsh path:lib/directories.zsh
-ohmyzsh/ohmyzsh path:lib/termsupport.zsh
-ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
+#ohmyzsh/ohmyzsh path:plugins/dash
+#ohmyzsh/ohmyzsh path:plugins/macos
+#ohmyzsh/ohmyzsh path:plugins/magic-enter
+#ohmyzsh/ohmyzsh path:plugins/extract
+#ohmyzsh/ohmyzsh path:plugins/z
 
-ohmyzsh/ohmyzsh path:plugins/extract
-ohmyzsh/ohmyzsh path:plugins/colored-man-pages
-
-#
-# Deferred Plugins
-#
-
+# deferred plugins
 olets/zsh-abbr kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
-#
-# Utilities
-#
-
+# utilities
 romkatv/zsh-bench kind:path
 
-#
-# Prompts
-#
-
-miekg/lean             kind:fpath
-sindresorhus/pure      kind:fpath
-romkatv/powerlevel10k  kind:fpath
-#dracula/zsh            kind:fpath name:dracula
+# zsh users
+zsh-users/zsh-completions
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-autosuggestions

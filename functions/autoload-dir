@@ -1,8 +1,6 @@
-if [[ ! -d "$1" ]]; then
-  echo >&2 "Function directory not found: $1" && return 1
-fi
+[[ -d "$1" ]] || return 1
 fpath+="$1"
 local fn
-for fn in "$1"/**/*(.N); do
-  autoload -Uz "$fn"
+for fn in "$1"/*(.N); do
+  autoload -Uz $fn
 done

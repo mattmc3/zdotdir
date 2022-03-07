@@ -16,3 +16,4 @@ foo.*
 .zephyr/
 functions/foo
 .antidote/
+.zsh_plugins.zsh

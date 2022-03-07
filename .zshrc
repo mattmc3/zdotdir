@@ -2,13 +2,23 @@
 [[ ${ZPROFRC:-0} -eq 0 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-[[ -d ${ZDOTDIR:-~}/.zephyr ]] ||
-  git clone https://github.com/zshzoo/zephyr ${ZDOTDIR:-~}/.zephyr
+# antidote plugin manager
+[[ -d ${ZDOTDIR:-~}/.antidote ]] ||
+  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-~}/.antidote
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
-source ${ZDOTDIR:-~}/.zephyr/zephyr.zsh
-#source ~/Projects/zshzoo/zephyr/zephyr.zsh
-zephyr init
-#prompt pure
+ANTIDOTE_HOME=${ZDOTDIR:-~}/.antidote/.cache
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+
+# antidote dynamic
+# source <(antidote init)
+# antidote bundle < ${ZDOTDIR:-~}/.zsh_plugins.txt
+
+# antidote static
+if [[ ! -f ${ZDOTDIR:-~}/.zsh_plugins.zsh ]]; then
+  antidote bundle < ${ZDOTDIR:-~}/.zsh_plugins.txt > ${ZDOTDIR:-~}/.zsh_plugins.zsh
+fi
+source ${ZDOTDIR:-~}/.zsh_plugins.zsh
 
 # local settings
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local
