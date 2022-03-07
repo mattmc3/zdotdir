@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 local now f
 now=$(date +"%Y%m%d-%H%M%S")
 for f in "$@"; do

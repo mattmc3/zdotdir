@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 tmp1=$(mktemp)
 tmp2=$(mktemp)
 zsh -df -c "set -o" >| $tmp1

@@ -1,2 +1,3 @@
+#!/usr/bin/env zsh
 emulate -L zsh
 cd $1 && ls -G

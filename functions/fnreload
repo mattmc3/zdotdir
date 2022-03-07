@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/functions}
 local fn
 for fn in $ZFUNCDIR/**/*(.); do

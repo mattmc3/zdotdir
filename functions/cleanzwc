@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 if [[ -z "$ZDOTDIR" ]] || [[ ! -d "$ZDOTDIR" ]]; then
   echo "\$ZDOTDIR not set or does not exist" >&2
   return 1

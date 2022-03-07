@@ -1,2 +1,3 @@
+#!/usr/bin/env zsh
 local shellname=$(ps -p $$ -ocomm=)
 echo ${shellname#*-}

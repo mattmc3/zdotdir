@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # clone a git repo
 if [[ -z "$1" ]]; then
 	echo "What git repo do you want?" >&2

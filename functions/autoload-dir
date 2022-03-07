@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 [[ -d "$1" ]] || return 1
 fpath+="$1"
 local fn

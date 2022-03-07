@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
   echo "rmzwc"
   echo "  removes zcompiled files"
