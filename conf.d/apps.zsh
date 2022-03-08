@@ -125,6 +125,9 @@ export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 # per homebrew:
 # If you need to have ruby first in your PATH, run:
 #   echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc
+if [[ -d "/opt/homebrew/opt/ruby/bin" ]]; then
+  export PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/3.1.0/bin:$PATH"
+fi
 
 # For compilers to find ruby you may need to set:
 #   export LDFLAGS="-L/usr/local/opt/ruby/lib"
