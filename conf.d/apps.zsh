@@ -24,9 +24,12 @@ path=($path /usr/local/opt/curl/bin)
 export DOTFILES=~/.config/dotfiles
 alias dotf='cd "$DOTFILES"'
 alias dotfed='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
+path=($path $DOTFILES/home/pybin)
 
 # emacs
-path=($path ~/.emacs.d/bin ~/.config/emacs/bin)
+for p in ~/.emacs.d/bin ~/.config/emacs/bin; do
+  [[ ! -d "$p" ]] || path=($path $p)
+done
 
 # git
 alias get="git"
