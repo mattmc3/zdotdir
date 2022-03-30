@@ -1,50 +1,12 @@
-# prompts
-#sindresorhus/pure kind:fpath
-mattmc3/zephyr path:plugins/prompt
-
-# zephyr plugins
-mattmc3/zephyr path:functions kind:fpath
-mattmc3/zephyr path:plugins/editor
-mattmc3/zephyr path:plugins/utility
-mattmc3/zephyr path:plugins/environment
-mattmc3/zephyr path:plugins/terminal
-mattmc3/zephyr path:plugins/directory
-mattmc3/zephyr path:plugins/history
-mattmc3/zephyr path:plugins/magic-enter
-mattmc3/zephyr path:plugins/macos
-
-# regular plugins
+# plugins
 mattmc3/zman
 joshskidmore/zsh-fzf-history-search
 rupa/z
+zshzoo/magic-enter
+
+# ohmyzsh
 ohmyzsh/ohmyzsh path:plugins/extract
-
-# omz plugins
-# ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-# ohmyzsh/ohmyzsh path:lib/directories.zsh
-# ohmyzsh/ohmyzsh path:lib/termsupport.zsh
-# ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
-
-#ohmyzsh/ohmyzsh path:plugins/dash
-#ohmyzsh/ohmyzsh path:plugins/macos
-#ohmyzsh/ohmyzsh path:plugins/magic-enter
-#ohmyzsh/ohmyzsh path:plugins/z
 
 # deferred plugins
 olets/zsh-abbr kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
-
-# utilities
-# romkatv/zsh-bench kind:path
-
-# core plugins
-mattmc3/zephyr path:plugins/zfunctions
-mattmc3/zephyr path:plugins/confd
-
-# completions
-# zsh-users/zsh-completions
-mattmc3/zephyr path:plugins/completions
-
-# zsh users
-mattmc3/zephyr path:plugins/history-substring-search
-mattmc3/zephyr path:plugins/autosuggestions
