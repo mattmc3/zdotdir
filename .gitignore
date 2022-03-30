@@ -18,3 +18,4 @@ functions/foo
 .antidote/
 .zsh_plugins.zsh
 plugins/
+.plugins/
