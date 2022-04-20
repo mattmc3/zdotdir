@@ -13,9 +13,9 @@ zephyr_plugins=(
   history
   directory
   utility
+  prompt
   zfunctions
   confd
-  prompt
   completions
   autosuggestions
   #syntax-highlighting
