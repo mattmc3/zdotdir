@@ -9,7 +9,15 @@ if [[ ! $ZDOTDIR/.zsh_plugins.zsh -nt $ZDOTDIR/.zsh_plugins.txt ]]; then
   (
     source $ZDOTDIR/.antidote/antidote.zsh
     function _antidote_friendlyname {
-      echo $(antidote home)/${${1%.git}:t}
+      repo=$1
+      bundle=${repo%.git}
+      bundle=${bundle:gs/\:/\/}
+      local parts=(${(@s:/:)bundle})
+      if [[ $#parts -gt 1 ]]; then
+        echo $(antidote-home)/${parts[-2]}/${parts[-1]}
+      else
+        echo $(antidote-home)/$bundle
+      fi
     }
     antidote bundle <$ZDOTDIR/.zsh_plugins.txt >$ZDOTDIR/.zsh_plugins.zsh
   )
