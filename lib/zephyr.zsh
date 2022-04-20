@@ -1,6 +1,6 @@
-ZEPHYR_HOME=${ZDOTDIR:-~}/.zephyr
+ZEPHYR_HOME=${ZDOTDIR:-~}/zephyr
 [[ -e $ZEPHYR_HOME ]] || \
-  git clone --depth=1 https://github.com/mattmc3/zephyr $ZEPHYR_HOME
+  git clone --depth=1 git@github.com:mattmc3/zephyr $ZEPHYR_HOME
 #ZEPHYR_HOME=~/Projects/mattmc3/zephyr
 
 zstyle ':zephyr:plugins:syntax-highlighting' use-fast-syntax-highlighting yes
