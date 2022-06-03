@@ -53,8 +53,8 @@ alias echopath='echo $PATH | tr ":" "\n"'
 # alias cp='cp -i'
 # alias mv='mv -i'
 # alias rm='rm -i'
-alias ls='ls -G'
-alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
+#alias ls='ls -G'
+#alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ping='ping -c 5'
 
 # be safe
