@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-print -l ${(k)functions[(I)[^_]*]} | sort
