@@ -1,16 +1,38 @@
 # prompts
 sindresorhus/pure kind:fpath
 
-# plugins
+# utility plugins
+romkatv/zsh-bench kind:path
+
+# core plugins
+zsh-users/zsh-completions
+mattmc3/zephyr
+
+# regular plugins
 mattmc3/zman
 mattmc3/zsh-safe-rm
 joshskidmore/zsh-fzf-history-search
-rupa/z
-zshzoo/macos
-zshzoo/magic-enter
+mattmc3/zshrc.d
+mattmc3/zfunctions
+trystan2k/zsh-tab-title
 
-# ohmyzsh
+# deferred plugins
+olets/zsh-abbr kind:defer
+zdharma-continuum/fast-syntax-highlighting kind:defer
+
+# ohmyzsh plugins
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/dash
 ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+ohmyzsh/ohmyzsh path:plugins/macos
+ohmyzsh/ohmyzsh path:plugins/z
+
+# prezto plugins
+# sorin-ionescu/prezto path:modules/directory
+# sorin-ionescu/prezto path:modules/editor
+# sorin-ionescu/prezto path:modules/terminal
 
 # final
-mattmc3/zfish
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-autosuggestions
