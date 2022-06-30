@@ -161,8 +161,5 @@ alias todos="$VISUAL $HOME/Desktop/todo.txt"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget/wget-hsts"'
 
-# z
-export _Z_DATA="$XDG_DATA_HOME/z/data"
-
 # clear dupes
 typeset -gU cdpath fpath mailpath path
