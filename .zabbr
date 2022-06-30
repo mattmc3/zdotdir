@@ -1,5 +1,4 @@
 abbr -="cd -"
-abbr dotf="cd \$DOTFILES"
 abbr dotfl="cd \$DOTFILES.local"
 abbr fconf="cd ~/.config/fish"
 abbr fdot="cd ~/.config/fish"

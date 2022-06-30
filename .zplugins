@@ -1,12 +1,16 @@
+# prompts
+sindresorhus/pure kind:fpath
+
 # plugins
 mattmc3/zman
+mattmc3/zsh-safe-rm
 joshskidmore/zsh-fzf-history-search
 rupa/z
+zshzoo/macos
 zshzoo/magic-enter
 
 # ohmyzsh
 ohmyzsh/ohmyzsh path:plugins/extract
 
-# deferred plugins
-olets/zsh-abbr kind:defer
-zdharma-continuum/fast-syntax-highlighting kind:defer
+# final
+mattmc3/zfish

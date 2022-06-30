@@ -1,3 +1,7 @@
+#
+# .zprofile
+#
+
 # XDG
 # https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory
