@@ -12,10 +12,10 @@ Plugin manager:
 - [antidote](https://github.com/mattmc3/antidote)
 
 Framework:
-- [zephyr](https://github.com/mattmc3/zephyr)
+- [zfish](https://github.com/mattmc3/zfish)
 
 Plugins:
-- See my [.zsh_plugins](https://github.com/mattmc3/zdotdir/blob/main/.zsh_plugins.txt) file
+- See my [.zplugins](https://github.com/mattmc3/zdotdir/blob/main/.zplugins) file
 
 ## Installation
 
@@ -24,13 +24,9 @@ It's a good idea to backup existing files first:
 ```zsh
 setopt extended_glob
 zfiles=(
-  ${ZDOTDIR:-~}/.zlogin(.N)
-  ${ZDOTDIR:-~}/.zlogout(.N)
-  ${ZDOTDIR:-~}/.zpreztorc(.N)
+  ${ZDOTDIR:-~}/.zsh*(.N)
+  ${ZDOTDIR:-~}/.zlog*(.N)
   ${ZDOTDIR:-~}/.zprofile(.N)
-  ${ZDOTDIR:-~}/.zsh_history(.N)
-  ${ZDOTDIR:-~}/.zshenv(.N)
-  ${ZDOTDIR:-~}/.zshrc(.N)
 )
 mkdir -p ~/.bak
 for zfile in $zfiles; do
