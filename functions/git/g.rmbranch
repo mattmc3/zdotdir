@@ -1,6 +1,0 @@
-if [[ ! -n "$1" ]]; then
-  >&2 echo "FAIL: No branch name specified"
-  return 1
-fi
-git push origin --delete "$1"
-git branch -D "$1"
