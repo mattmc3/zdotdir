@@ -43,6 +43,9 @@ export EDITOR='nvim'
 export VISUAL='code'
 export PAGER='less'
 
+# use `< file` to quickly view the contents of any file.
+[[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
+
 export TZ="America/New_York"
 export LANG="en_US.UTF-8"
 export LANGUAGE="en"
