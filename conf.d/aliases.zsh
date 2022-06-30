@@ -56,8 +56,8 @@ alias mkdir="mkdir -p"
 alias ping='ping -c 5'
 alias type="type -a"
 
-GREP_EXCL=(.bzr CVS .git .hg .svn .idea .tox .vscode)
-alias grep="${aliases[grep]:-grep} --color=auto --exclude-dir={\${(j.,.)GREP_EXCL}}"
+#GREP_EXCL=(.bzr CVS .git .hg .svn .idea .tox .vscode)
+#alias grep="${aliases[grep]:-grep} --color=auto --exclude-dir={\${(j.,.)GREP_EXCL}}"
 
 # single character shortcuts - be sparing!
 alias _='sudo'
