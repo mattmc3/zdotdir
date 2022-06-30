@@ -1,6 +1,6 @@
 # Plugin setup
 
-### ohmyzsh/ohmyzsh: {{{
+#region: ohmyzsh/ohmyzsh
 # using omz without sourcing its lib requires a few helpers
 alias open_command=open
 
@@ -11,26 +11,26 @@ else
   MAGIC_ENTER_OTHER_COMMAND='ls --color=auto'
 fi
 MAGIC_ENTER_GIT_COMMAND="$MAGIC_ENTER_OTHER_COMMAND && git status -sb"
-### }}}
+#endregion
 
-### zsh-users/zsh-autosuggestions: {{{
+#region: zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 if [[ -n "$key_info" ]]; then
   # vi
   bindkey -M viins "$key_info[Control]F" vi-forward-word
   bindkey -M viins "$key_info[Control]E" vi-add-eol
 fi
-### }}}
+#endregion
 
-### rupa/z: {{{
+#region: rupa/z
 export _Z_DATA="$XDG_DATA_HOME/z/data"
-### }}}
+#endregion
 
-### olets/zsh-abbr: {{{
+#region: olets/zsh-abbr
 ABBR_USER_ABBREVIATIONS_FILE=$ZDOTDIR/.zabbr
-### }}}
+#endregion
 
-### zsh-users/zsh-history-substring-search: {{{
+#region: zsh-users/zsh-history-substring-search
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=magenta,fg=white,bold'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
 
@@ -51,4 +51,4 @@ if [[ -n "$key_info" ]]; then
 
   unset keymap
 fi
-### }}}
+#endregion
