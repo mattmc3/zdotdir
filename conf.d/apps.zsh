@@ -20,12 +20,6 @@ fi
 # curl
 path=($path /usr/local/opt/curl/bin)
 
-# dotfiles
-export DOTFILES=~/.config/dotfiles
-alias dotf='cd "$DOTFILES"'
-alias dotfed='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
-# path=($path $DOTFILES/home/pybin)
-
 # emacs
 for p in ~/.emacs.d/bin ~/.config/emacs/bin; do
   [[ ! -d "$p" ]] || path=($path $p)
