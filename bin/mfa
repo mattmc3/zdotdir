@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-0=${(%):-%x}
-python3 ${0:h}/py/mfa.py $@
