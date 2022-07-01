@@ -12,7 +12,7 @@ Plugin manager:
 - [antidote](https://github.com/mattmc3/antidote)
 
 Framework:
-- [zfish](https://github.com/mattmc3/zfish)
+- [zephyr](https://github.com/mattmc3/zephyr)
 
 Plugins:
 - See my [.zplugins](https://github.com/mattmc3/zdotdir/blob/main/.zplugins) file
