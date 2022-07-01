@@ -14,16 +14,18 @@ mattmc3/zsh-safe-rm
 joshskidmore/zsh-fzf-history-search
 mattmc3/zshrc.d
 mattmc3/zfunctions
-trystan2k/zsh-tab-title
+olets/zsh-window-title
 
 # deferred plugins
 olets/zsh-abbr kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
 # ohmyzsh plugins
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/dash
 ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/macos
 ohmyzsh/ohmyzsh path:plugins/z
