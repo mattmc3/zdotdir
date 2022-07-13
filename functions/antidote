@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Lazy-load wrapper for antidote
+##? Lazy-load wrapper for antidote.
 
 if [[ ! -f ${ZDOTDIR:-~}/.antidote/antidote.zsh ]]; then
   echo >&2 "Antidote not found."

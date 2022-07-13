@@ -1,2 +1,5 @@
 #!/usr/bin/env zsh
+
+##? Show all extensions in current folder structure.
+
 find . -not \( -path '*/.git/*' -prune \) -type f -name '*.*' | sed 's|.*\.|\.|' | sort | uniq -c

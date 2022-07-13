@@ -1,4 +1,7 @@
 #!/usr/bin/env zsh
+
+##? autoload all function files in specified directory.
+
 [[ -d "$1" ]] || return 1
 fpath+="$1"
 local fn
