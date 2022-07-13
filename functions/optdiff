@@ -1,4 +1,8 @@
 #!/usr/bin/env zsh
+
+# show the differences between Zsh default options and the options set in the current
+# interactive shell session
+
 tmp1=$(mktemp)
 tmp2=$(mktemp)
 zsh -df -c "set -o" >| $tmp1
