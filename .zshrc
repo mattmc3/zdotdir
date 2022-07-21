@@ -2,8 +2,13 @@
 [[ ${ZPROFRC:-0} -eq 0 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
+# p10k instant prompt (should stay close to the top of .zshrc)
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # drive config with antidote
-ANTIDOTE_HOME=$ZDOTDIR/.antidote/.plugins
+ANTIDOTE_HOME=$ZDOTDIR/.plugins
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 
 # load antidote
@@ -17,8 +22,11 @@ if [[ ! $ZDOTDIR/.zplugins.zsh -nt $ZDOTDIR/.zplugins ]]; then
 fi
 source $ZDOTDIR/.zplugins.zsh
 
+# to customize prompt, run `p10k configure` or edit .p10k.zsh.
+[[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh
+
 # local settings
-[[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local
+[[ ! -f $DOTFILES.local/zsh/zshrc_local.zsh ]] || source $DOTFILES.local/zsh/zshrc_local.zsh
 
 # done profiling
 [[ ${ZPROFRC:-0} -eq 0 ]] || { unset ZPROFRC && zprof }

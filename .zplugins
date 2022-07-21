@@ -1,5 +1,6 @@
 # prompts
-sindresorhus/pure kind:fpath
+#sindresorhus/pure kind:fpath
+romkatv/powerlevel10k
 
 # utility plugins
 romkatv/zsh-bench kind:path
@@ -9,12 +10,15 @@ zsh-users/zsh-completions
 mattmc3/zephyr
 
 # regular plugins
+mattmc3/zsh-xdg-basedir
 mattmc3/zman
+mattmc3/zfishutils
 mattmc3/zsh-safe-rm
 joshskidmore/zsh-fzf-history-search
 mattmc3/zshrc.d
 mattmc3/zfunctions
 olets/zsh-window-title
+rupa/z
 
 # deferred plugins
 olets/zsh-abbr kind:defer
@@ -22,13 +26,11 @@ zdharma-continuum/fast-syntax-highlighting kind:defer
 
 # ohmyzsh plugins
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/dash
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/macos
-ohmyzsh/ohmyzsh path:plugins/z
 
 # prezto plugins
 # sorin-ionescu/prezto path:modules/directory
