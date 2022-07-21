@@ -2,18 +2,9 @@
 # .zprofile
 #
 
-# XDG
-# https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-# https://wiki.archlinux.org/index.php/XDG_Base_Directory
-# https://wiki.archlinux.org/index.php/XDG_user_directories
+export DOTFILES=~/.config/dotfiles
 
-export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
-
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
-export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
-export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
-export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg}
-
+# macOS
 if [[ "$OSTYPE" == darwin* ]]; then
   export XDG_DESKTOP_DIR=${XDG_DESKTOP_DIR:-$HOME/Desktop}
   export XDG_DOCUMENTS_DIR=${XDG_DOCUMENTS_DIR:-$HOME/Documents}
@@ -22,9 +13,11 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export XDG_PICTURES_DIR=${XDG_PICTURES_DIR:-$HOME/Pictures}
   export XDG_VIDEOS_DIR=${XDG_VIDEOS_DIR:-$HOME/Videos}
   export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
-fi
-
-if [[ "$OSTYPE" == darwin* ]]; then
+  if [[ -d /opt/homebrew ]]; then
+    export HOMEBREW_PREFIX=/opt/homebrew
+  else
+    export HOMEBREW_PREFIX=/usr/local
+  fi
   export BROWSER='open'
 fi
 
@@ -55,10 +48,17 @@ export LC_ALL="en_US.UTF-8"
 typeset -gU cdpath fpath mailpath path
 
 path=(
-  ~/bin
-  ~/.config/zsh/bin
-  /usr/local/{bin,sbin}
-  /opt/homebrew/{bin,sbin}
+  ~/bin(/N)
+  $HOMEBREW_PREFIX/{bin,sbin}(/N)
+  /usr/local/{bin,sbin}(/N)
+  ~/.emacs.d/bin(/N)
+  ~/.config/emacs/bin(/N)
+  $HOMEBREW_PREFIX/opt/curl/bin(/N)
+  $HOMEBREW_PREFIX/opt/go/libexec/bin(/N)
+  $HOMEBREW_PREFIX/opt/ruby/bin(/N)
+  $HOMEBREW_PREFIX/lib/ruby/gems/3.1.0/bin(/N)
+  ~/.gem/ruby/3.1.0/bin(/N)
+  $HOMEBREW_PREFIX/share/npm/bin(/N)
   $path
 )
 
