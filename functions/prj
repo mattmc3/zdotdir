@@ -35,7 +35,11 @@ if [[ ! -d $project_dir ]]; then
   return 1
 fi
 
-local projects=($project_dir/**/.git/..)
+local projects=(
+  $project_dir/*/.git/..
+  $project_dir/*/*/.git/..
+)
+
 # absolute path with project dir prefix stripped
 projects=(${${projects:a}#*$project_dir/})
 
