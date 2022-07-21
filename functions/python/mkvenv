@@ -2,7 +2,7 @@
 
 ##? Make a Python virtual environment with `python3 -m venv`.
 
-local WORKON_HOME=${WORKON_HOME:-${XDG_DATA_HOME:-$JUPYTER_HOME/.local/share}/venvs}
+local WORKON_HOME=${WORKON_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/venvs}
 if [[ -z "$1" ]]; then
   >&2 echo "mkvenv: Usage - mkvenv <venv-name>" && return 1
 elif [[ -z "$WORKON_HOME" ]]; then
