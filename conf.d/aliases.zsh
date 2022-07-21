@@ -1,6 +1,4 @@
-#
-# aliases.zsh
-#
+### aliases.zsh
 
 # https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789#.vh7hhm6th
 # https://github.com/webpro/dotfiles/blob/master/system/.alias
@@ -81,8 +79,8 @@ alias ldot='ls -ld .*'
 alias quit='exit'
 
 # tools
-alias te="$EDITOR"
-alias ide="$VISUAL"
+alias te='${EDITOR:-vim}'
+alias ide='${VISUAL:-vim}'
 
 # network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -110,3 +108,29 @@ alias urldecode='python3 -c "import sys, urllib.parse as ul; \
     print(ul.unquote_plus(sys.argv[1]))"'
 alias urlencode='python3 -c "import sys, urllib.parse as ul; \
     print (ul.quote_plus(sys.argv[1]))"'
+
+# set initial working directory
+IWD=${IWD:-PWD}
+alias iwd='echo $IWD'
+alias cdiwd='cd "$IWD"'
+
+# dotfiles
+alias dotf='cd "$DOTFILES"'
+alias dotfed='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
+
+# java
+alias setjavahome="export JAVA_HOME=\`/usr/libexec/java_home\`"
+
+# python
+alias py2='python2'
+alias py3='python3'
+alias py='python3'
+alias pip2update="pip2 list --outdated | cut -d ' ' -f1 | xargs -n1 pip2 install -U"
+alias pip3update="pip3 list --outdated | cut -d ' ' -f1 | xargs -n1 pip3 install -U"
+alias pyfind='find . -name "*.py"'
+alias pygrep='grep --include="*.py"'
+alias pyva="source .venv/bin/activate"
+
+# todo-txt
+alias t="todo.sh"
+alias todos="$VISUAL $HOME/Desktop/todo.txt"
