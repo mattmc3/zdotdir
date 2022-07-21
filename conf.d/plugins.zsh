@@ -25,10 +25,6 @@ if [[ -n "$key_info" ]]; then
 fi
 #endregion
 
-#region: rupa/z
-export _Z_DATA="$XDG_DATA_HOME/z/data"
-#endregion
-
 #region: olets/zsh-abbr
 ABBR_USER_ABBREVIATIONS_FILE=$ZDOTDIR/.zabbr
 #endregion
