@@ -48,7 +48,7 @@ export LC_ALL="en_US.UTF-8"
 typeset -gU cdpath fpath mailpath path
 
 path=(
-  ~/bin(/N)
+  ~/bin(N)
   $HOMEBREW_PREFIX/{bin,sbin}(N)
   /usr/local/{bin,sbin}(N)
   ~/.emacs.d/bin(N)
