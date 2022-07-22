@@ -49,16 +49,16 @@ typeset -gU cdpath fpath mailpath path
 
 path=(
   ~/bin(/N)
-  $HOMEBREW_PREFIX/{bin,sbin}(/N)
-  /usr/local/{bin,sbin}(/N)
-  ~/.emacs.d/bin(/N)
-  ~/.config/emacs/bin(/N)
-  $HOMEBREW_PREFIX/opt/curl/bin(/N)
-  $HOMEBREW_PREFIX/opt/go/libexec/bin(/N)
-  $HOMEBREW_PREFIX/opt/ruby/bin(/N)
-  $HOMEBREW_PREFIX/lib/ruby/gems/3.1.0/bin(/N)
-  ~/.gem/ruby/3.1.0/bin(/N)
-  $HOMEBREW_PREFIX/share/npm/bin(/N)
+  $HOMEBREW_PREFIX/{bin,sbin}(N)
+  /usr/local/{bin,sbin}(N)
+  ~/.emacs.d/bin(N)
+  ~/.config/emacs/bin(N)
+  $HOMEBREW_PREFIX/opt/curl/bin(N)
+  $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
+  $HOMEBREW_PREFIX/opt/ruby/bin(N)
+  $HOMEBREW_PREFIX/lib/ruby/gems/3.1.0/bin(N)
+  ~/.gem/ruby/3.1.0/bin(N)
+  $HOMEBREW_PREFIX/share/npm/bin(N)
   $path
 )
 
