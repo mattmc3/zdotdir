@@ -20,15 +20,48 @@ $ echo ${#str}
 26
 ```
 
+## Pad/Trim
+
+Left pad a string with the [l expansion flag][2].
+Right pad a string with the [r expansion flag][2].
+This is similar to `string pad` in [fish][pad].
+
+```zsh
+$ str="abc"
+$ echo ${(l(10)(-))str}
+-------abc
+$ echo ${(r(10)(ABC))str}
+abcABCABCA
+```
+
+The docs can be confusing. They show the syntax as `l:expr::string1::string2:`, which
+uses colons instead of the more readable parens. Don't be confused by the double colon,
+which is really just the closing/opening combo `)(`. If you choose to follow the docs,
+the syntax looks like this:
+
+```zsh
+$ str="abc"
+$ echo ${(r:10::-:)str}
+abc-------
+```
+
 ## Substring
 
-Get a substing from string with comma indexing `[,]`.
+Get a substing from string with comma indexing `[start,end]`.
 This is similar to `string sub` in [fish][sub].
 
 ```zsh
 $ str="abcdefghijklmnopqrstuvwxyz"
 $ echo ${str[3,6]}
 cdef
+```
+
+You can also use the `${var:offset:length}` syntax:
+
+```zsh
+$ str="abcdefghijklmnopqrstuvwxyz"
+$ echo ${str:3:6}
+defghi
 ```
 
 ## Repeat
