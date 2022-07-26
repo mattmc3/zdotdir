@@ -45,6 +45,14 @@ $ echo ${(r:10::-:)str}
 abc-------
 ```
 
+Trim requires the use of `sed`. This is similar to `string trim` in [fish][trim].
+
+```zsh
+$ str="   \t\t\t   abc   \t\t\t   "
+$ echo "$str" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
+abc
+```
+
 ## Substring
 
 Get a substing from string with comma indexing `[start,end]`.
@@ -62,6 +70,8 @@ You can also use the `${var:offset:length}` syntax:
 $ str="abcdefghijklmnopqrstuvwxyz"
 $ echo ${str:3:6}
 defghi
+$ echo ${str:(-4)}
+wxyz
 ```
 
 ## Repeat
@@ -71,7 +81,8 @@ This is similar to `string repeat` in [fish][repeat].
 
 ```zsh
 $ str="abc"
-$ printf "$str%.0s" {1..3}
+$ abc3=$(printf "$str%.0s" {1..3})
+$ echo $abc3
 abcabcabc
 ```
 
@@ -194,7 +205,7 @@ fi
 
 ## TODO
 
-Collect, pad, replace, trim.
+Collect, replace, trim.
 
 ### string trim
 str="   \t\t\t   abc   \t\t\t   "
