@@ -207,11 +207,6 @@ fi
 
 Collect, replace, trim.
 
-### string trim
-str="   \t\t\t   abc   \t\t\t   "
-echo "$str" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
-
-
 [1]: https://zsh.sourceforge.io/Doc/Release/Expansion.html#Modifiers
 [2]: https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion-Flags
 [3]: https://zsh.sourceforge.io/Doc/Release/Zsh-Modules.html#The-zsh_002fpcre-Module
