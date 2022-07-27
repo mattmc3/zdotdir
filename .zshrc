@@ -9,14 +9,16 @@ fi
 
 # drive config with antidote
 ANTIDOTE_HOME=$ZDOTDIR/.plugins
+#ANTIDOTE_DIR=$ZDOTDIR/.antidote
+ANTIDOTE_DIR=~/Projects/mattmc3/antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 
 # load antidote
 if [[ ! $ZDOTDIR/.zplugins.zsh -nt $ZDOTDIR/.zplugins ]]; then
-  [[ -e $ZDOTDIR/.antidote ]] \
-    || git clone --depth=1 https://github.com/mattmc3/antidote.git $ZDOTDIR/.antidote
+  [[ -e $ANTIDOTE_DIR ]] \
+    || git clone --depth=1 https://github.com/mattmc3/antidote.git $ANTIDOTE_DIR
   (
-    source $ZDOTDIR/.antidote/antidote.zsh
+    source $ANTIDOTE_DIR/antidote.zsh
     antidote bundle <$ZDOTDIR/.zplugins >$ZDOTDIR/.zplugins.zsh
   )
 fi
