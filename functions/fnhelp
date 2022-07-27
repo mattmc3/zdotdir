@@ -1,14 +1,11 @@
 #!/usr/bin/env zsh
 
-##? fnhelp
-##?    use '##?' comments in function files as help docs.
+##? fnhelp - use '##?' comments in function files as help docs.
 ##?
-##? usage:
-##?   fnhelp <func>
+##? usage: fnhelp <func>
 
-if [[ ! -f $ZDOTDIR/functions/$1 ]]; then
-  echo >&2 "Function not found '$1'."
-  return 1
+local ZFUNCDIR="${ZFUNCDIR:-${ZDOTDIR:-~/.config/zsh}/functions}"
+if [[ ! -f "$ZFUNCDIR/$1" ]]; then
+  echo >&2 "fnhelp: function not found '$1'." && return 1
 fi
-
-command grep "^##?" "$ZDOTDIR/functions/$1" | cut -c 5-
+command grep "^##?" "$ZFUNCDIR/$1" | cut -c 5-
