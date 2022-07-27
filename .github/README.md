@@ -64,16 +64,16 @@ The latest benchmark run shows that we load a new shell pretty fast.
 ```zsh
 % # MacBook Air (M1, 2020)
 % for i in $(seq 10); do; /usr/bin/time zsh -lic exit; done
-        0.07 real         0.03 user         0.03 sys
+        0.06 real         0.03 user         0.02 sys
+        0.04 real         0.02 user         0.01 sys
+        0.04 real         0.02 user         0.01 sys
+        0.04 real         0.02 user         0.01 sys
+        0.04 real         0.02 user         0.01 sys
+        0.04 real         0.02 user         0.01 sys
         0.04 real         0.02 user         0.02 sys
-        0.04 real         0.02 user         0.02 sys
-        0.04 real         0.02 user         0.02 sys
-        0.04 real         0.02 user         0.02 sys
-        0.04 real         0.02 user         0.02 sys
-        0.04 real         0.02 user         0.02 sys
-        0.04 real         0.02 user         0.02 sys
-        0.04 real         0.02 user         0.02 sys
-        0.04 real         0.02 user         0.02 sys
+        0.04 real         0.02 user         0.01 sys
+        0.04 real         0.02 user         0.01 sys
+        0.04 real         0.02 user         0.01 sys
 
 % # pure prompt
 % zsh-bench
@@ -83,11 +83,11 @@ has_compsys=1
 has_syntax_highlighting=0
 has_autosuggestions=1
 has_git_prompt=0
-first_prompt_lag_ms=67.080
-first_command_lag_ms=73.171
-command_lag_ms=52.357
-input_lag_ms=9.217
-exit_time_ms=43.031
+first_prompt_lag_ms=24.480
+first_command_lag_ms=93.093
+command_lag_ms=60.182
+input_lag_ms=7.144
+exit_time_ms=41.945
 ```
 
 ## Look-and-feel
