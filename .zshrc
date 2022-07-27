@@ -9,8 +9,8 @@ fi
 
 # drive config with antidote
 ANTIDOTE_HOME=$ZDOTDIR/.plugins
-#ANTIDOTE_DIR=$ZDOTDIR/.antidote
-ANTIDOTE_DIR=~/Projects/mattmc3/antidote
+ANTIDOTE_DIR=$ZDOTDIR/.antidote
+#ANTIDOTE_DIR=~/Projects/mattmc3/antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 
 # load antidote
