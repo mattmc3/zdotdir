@@ -1,8 +1,10 @@
 # Zsh Options
 
 Set options with `setopt`, unset with `unsetopt`. Options can take a `NO_` prefix as
-well (eg: `setopt NO_BEEP` is the same as `unsetopt BEEP`). Asterisk (\*) indicates the
-option is on by default for native zsh.
+well (eg: `setopt NO_BEEP` is the same as `unsetopt BEEP`). You can view set options via
+the `set -o` command. You can see only enabled options with `set -o | grep 'on$'`.
+
+Asterisk (\*) indicates the option is on by default for native zsh.
 
 | Option                   | Short Description                       |
 | ------------------------ | --------------------------------------- |
