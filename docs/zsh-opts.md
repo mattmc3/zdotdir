@@ -6,151 +6,151 @@ the `set -o` command. You can see only enabled options with `set -o | grep 'on$'
 
 Asterisk (\*) indicates the option is on by default for native zsh.
 
-| Option                   | Short Description                       |
-| ------------------------ | --------------------------------------- |
-| \*[ALIASES]              | Expand aliases                          |
-| [ALL_EXPORT]             | Export all variables to environment     |
-| \*[ALWAYS_LAST_PROMPT]   | Completion lists after prompt           |
-| [ALWAYS_TO_END]          | On completion go to end of word         |
-| \*[APPEND_HISTORY]       | History appends to existing file        |
-| [AUTO_CD]                | Directory as command does `cd`          |
-| [AUTO_CONTINUE]          | Jobs are continued when `disown`ed      |
-| \*[AUTO_LIST]            | List ambiguous completions              |
-| \*[AUTO_MENU]            | Menu complete after two tabs            |
-| [AUTO_NAME_DIRS]         | Variables always can be %~ abbrevs      |
-| \*[AUTO_PARAM_KEYS]      | Magic completion for parameters         |
-| \*[AUTO_PARAM_SLASH]     | `$dirname` completes with `/`           |
-| [AUTO_PUSHD]             | `cd` uses directory stack too           |
-| \*[AUTO_REMOVE_SLASH]    | Trailing `/` in completion removed      |
-| [AUTO_RESUME]            | `cmd` can resume job `%cmd`             |
-| \*[BAD_PATTERN]          | Errors on pattern syntax; else literal  |
-| \*[BANG_HIST]            | `!` style history allowed               |
-| \*[BARE_GLOB_QUAL]       | Glob qualifiers with bare parens        |
-| [BASH_AUTO_LIST]         | List completions on second tab          |
-| \*[BEEP]                 | Beep on all errors                      |
-| \*[BG_NICE]              | Background jobs at lower priority       |
-| [BRACE_CCL]              | `X{ab}` expands to `Xa` `Xb`            |
-| [BSD_ECHO]               | No echo escapes unless `-e` given       |
-| \*[CASE_GLOB]            | Glob case sensitively                   |
-| [C_BASES]                | Output hexadecimal with `0x`            |
-| [CDABLE_VARS]            | `cd var` works if `$var` is directory   |
-| [CHASE_DOTS]             | Resolve `..` in `cd`                    |
-| [CHASE_LINKS]            | Resolve symbolic links in `cd`          |
-| \*[CHECK_JOBS]           | Check jobs before exiting shell         |
-| \*[CLOBBER]              | Allow redirections to overwrite         |
-| [COMPLETE_ALIASES]       | Completion uses unexpanded aliases      |
-| [COMPLETE_IN_WORD]       | Completion works inside words           |
-| [CORRECT]                | Correct spelling of commands            |
-| [CORRECT_ALL]            | Correct spelling of all arguments       |
-| [CSH_JUNKIE_HISTORY]     | Single `!` for previous command         |
-| [CSH_JUNKIE_LOOPS]       | `list; end` for `do...done`             |
-| [CSH_JUNKIE_QUOTES]      | No newlines in quotes                   |
-| [CSH_NULLCMD]            | Redirections with no commands fail      |
-| [CSH_NULL_GLOB]          | One glob must succeed, failures go      |
-| [DVORAK]                 | Dvorak keyboard for correction          |
-| [EMACS]                  | Same as `bindkey -e`                    |
-| \*[EQUALS]               | Expand `=cmd` to `/path/to/cmd`         |
-| [ERR_EXIT]               | Exit shell on non-zero status           |
-| [ERR_RETURN]             | Return from function instead            |
-| \*[EVAL_LINE_NO]         | `$LINENO` counts inside `eval` code     |
-| \*[EXEC]                 | Execute commands                        |
-| [EXTENDED_GLOB]          | See globbing section above              |
-| [EXTENDED_HISTORY]       | Timestamps saved to history file        |
-| \*[FLOW_CONTROL]         | Use `^S/^Q` style flow control          |
-| \*[FUNCTION_ARGZER0]     | `$0` in function is its name            |
-| \*[GLOB]                 | Use globbing as described above         |
-| \*[GLOBAL_EXPORT]        | Exported variables not made local       |
-| \*[GLOBAL_RCS]           | Execute `/etc/z*` files                 |
-| [GLOB_ASSIGN]            | `var=*` expands, assigns array          |
-| [GLOB_COMPLETE]          | Patterns are active in completion       |
-| [GLOB_DOTS]              | Patterns may match leading dots         |
-| [GLOB_SUBST]             | Substituted characters may glob         |
-| \*[HASH_CMDS]            | Store command location for speed        |
-| \*[HASH_DIRS]            | Store for all commands in dir           |
-| \*[HASH_LIST_ALL]        | Store all on first completion           |
-| [HIST_ALLOW_CLOBBER]     | On clobber error, up arrow to retry     |
-| \*[HIST_BEEP]            | Beep when going beyond history          |
-| [HIST_EXPIRE_DUPS_FIRST] | Duplicate history entries lost first    |
-| [HIST_FIND_NO_DUPS]      | History search finds once only          |
-| [HIST_IGNORE_ALL_DUPS]   | Remove all earlier duplicate lines      |
-| [HIST_IGNORE_DUPS]       | Remove duplicate of previous line       |
-| [HIST_IGNORE_SPACE]      | Don’t store lines starting with space   |
-| [HIST_NO_FUNCTIONS]      | Don’t store shell functions             |
-| [HIST_NO_STORE]          | Don’t store `history` and `fc`          |
-| [HIST_REDUCE_BLANKS]     | Trim multiple insignificant blanks      |
-| [HIST_SAVE_NO_DUPS]      | Remove duplicates when saving           |
-| [HIST_VERIFY]            | Show `!` history line for editing       |
-| \*[HUP]                  | Send SIGHUP to proceses on exit         |
-| [IGNORE_BRACES]          | Don’t use {a,b} expansions              |
-| [IGNORE_EOF]             | Ignore `^D` (`stty eof` char)           |
-| [INC_APPEND_HISTORY]     | Save history line by line               |
-| [INTERACTIVE]            | Shell is interactive                    |
-| [INTERACTIVE_COMMENTS]   | `#` on interactive line for comment     |
-| [KSH_ARRAYS]             | Indexing etc. for arrays like ksh       |
-| [KSH_AUTOLOAD]           | Function file includes function name    |
-| [KSH_GLOB]               | See globbing above                      |
-| [KSH_OPTION_PRINT]       | Show all options plus on or off         |
-| [KSH_TYPESET]            | No word splitting in`typeset` etc.      |
-| \*[LIST_AMBIGUOUS]       | List completions when ambiguous         |
-| \*[LIST_BEEP]            | Beep on ambiguous completion            |
-| [LIST_PACKED]            | More compact completion lists           |
-| [LIST_ROWS_FIRST]        | List completions across                 |
-| \*[LIST_TYPES]           | File types listed in completion         |
-| [LOCAL_OPTIONS]          | Options reset on function return        |
-| [LOCAL_TRAPS]            | Traps reset on function return          |
-| [LOGIN]                  | Shell is login shell                    |
-| [LONG_LIST_JOBS]         | More verbose listing of jobs            |
-| [MAGIC_EQUAL_SUBST]      | Special expansion after all `=`         |
-| [MAIL_WARNING]           | Warn if mail file timestamp changed     |
-| [MARK_DIRS]              | Append `/` to globbed directories       |
-| [MENU_COMPLETE]          | Cycle through ambiguous matches         |
-| [MONITOR]                | Shell has job control enabled           |
-| \*[MULTIOS]              | Multiple redirections are special       |
-| \*[NOMATCH]              | Error if glob fails to match            |
-| \*[NOTIFY]               | Asynchronous job control messages       |
-| [NULL_GLOB]              | Failed globs are removed from line      |
-| [NUMERIC_GLOB_SORT]      | Numbers in globs sorted numerically     |
-| [OCTAL_ZEROES]           | Leading zeros in integers force octal   |
-| [OVERSTRIKE]             | Start line editor in overstrike mode    |
-| [PATH_DIRS]              | `dir/cmd` can be found in `$PATH`       |
-| [POSIX_BUILTINS]         | Illogical command behaviour             |
-| [PRINT_EIGHT_BIT]        | Print all 8-bit characters directly     |
-| [PRINT_EXIT_VALUE]       | Return status printed unless zero       |
-| [PRIVILEGED]             | Special behaviour on setuid/setgid      |
-| [PROMPT_BANG]            | Special treatment of `!` in prompt      |
-| \*[PROMPT_CR]            | Prompt always at start of line          |
-| \*[PROMPT_PERCENT]       | `%` escapes expanded in prompts         |
-| [PROMPT_SUBST]           | `$` expansion etc. in prompts           |
-| [PUSHD_IGNORE_DUPS]      | Don’t push dir multiply on stack        |
-| [PUSHD_MINUS]            | Reverse sense of `–` and `+` in `pushd` |
-| [PUSHD_SILENT]           | No non-err messages from `pushd`        |
-| [PUSHD_TO_HOME]          | `pushd` with no argument goes to `~`    |
-| [RC_EXPAND_PARAM]        | `X$array` gives `Xelt1` `Xelt2` etc.    |
-| [RC_QUOTES]              | `''` inside single quotes gives `'`     |
-| \*[RCS]                  | Run startup files                       |
-| [REC_EXACT]              | Exact completion matches are good       |
-| [RESTRICTED]             | Shell has restricted capabilities       |
-| [RM_STAR_SILENT]         | Don’t warn on `rm *`                    |
-| [RM_STAR_WAIT]           | Wait before asking if `rm *` is OK      |
-| [SHARE_HISTORY]          | Save and restore history per line       |
-| [SH_FILE_EXPANSION]      | `~` etc. expansion done early           |
-| [SH_GLOB]                | Disables non-extended zsh globs         |
-| [SHIN_STDIN]             | Shell input comes from stdin            |
-| [SH_NULL_CMD]            | Commandless redirections like `sh`      |
-| [SH_OPTION_LETTERS]      | Single letter options are like `sh`     |
-| \*[SHORT_LOOPS]          | `for words; list` works                 |
-| [SH_WORD_SPLIT]          | Split non-array variables yuckily       |
-| [SINGLE_COMMAND]         | Execute one command then exit           |
-| [SINGLE_LINE_ZLE]        | Line editing on single line (bad tty)   |
-| [SUN_KEYBOARD_HACK]      | Unmatched `\`` at end of line ignored   |
-| [TRANSIENT_RPROMPT]      | Right prompt goes away after edit       |
-| [TRAPS_ASYNC]            | Traps may run when `wait`ing            |
-| [TYPESET_SILENT]         | Silent on `typeset foo`                 |
-| \*[UNSET]                | Unset variables OK, treat as empty      |
-| [VERBOSE]                | Output commands to be executed          |
-| [VI]                     | Same as `bindkey -v`                    |
-| [XTRACE]                 | Show trace of execution with `$PS4`     |
-| [ZLE]                    | Line editor used to input lines         |
+| Option                   | Short Description                        |
+| ------------------------ | ---------------------------------------- |
+| \*[ALIASES]              | Expand aliases                           |
+| [ALL_EXPORT]             | Export all variables to environment      |
+| \*[ALWAYS_LAST_PROMPT]   | Completion lists after prompt            |
+| [ALWAYS_TO_END]          | On completion go to end of word          |
+| \*[APPEND_HISTORY]       | History appends to existing file         |
+| [AUTO_CD]                | Directory as command does `cd`           |
+| [AUTO_CONTINUE]          | Jobs are continued when `disown`ed       |
+| \*[AUTO_LIST]            | List ambiguous completions               |
+| \*[AUTO_MENU]            | Menu complete after two tabs             |
+| [AUTO_NAME_DIRS]         | Variables always can be %~ abbrevs       |
+| \*[AUTO_PARAM_KEYS]      | Magic completion for parameters          |
+| \*[AUTO_PARAM_SLASH]     | `$dirname` completes with `/`            |
+| [AUTO_PUSHD]             | `cd` uses directory stack too            |
+| \*[AUTO_REMOVE_SLASH]    | Trailing `/` in completion removed       |
+| [AUTO_RESUME]            | `cmd` can resume job `%cmd`              |
+| \*[BAD_PATTERN]          | Errors on pattern syntax; else literal   |
+| \*[BANG_HIST]            | `!` style history allowed                |
+| \*[BARE_GLOB_QUAL]       | Glob qualifiers with bare parens         |
+| [BASH_AUTO_LIST]         | List completions on second tab           |
+| \*[BEEP]                 | Beep on all errors                       |
+| \*[BG_NICE]              | Background jobs at lower priority        |
+| [BRACE_CCL]              | `X{ab}` expands to `Xa` `Xb`             |
+| [BSD_ECHO]               | No echo escapes unless `-e` given        |
+| \*[CASE_GLOB]            | Glob case sensitively                    |
+| [C_BASES]                | Output hexadecimal with `0x`             |
+| [CDABLE_VARS]            | `cd var` works if `$var` is directory    |
+| [CHASE_DOTS]             | Resolve `..` in `cd`                     |
+| [CHASE_LINKS]            | Resolve symbolic links in `cd`           |
+| \*[CHECK_JOBS]           | Check jobs before exiting shell          |
+| \*[CLOBBER]              | Allow redirections to overwrite          |
+| [COMPLETE_ALIASES]       | Completion uses unexpanded aliases       |
+| [COMPLETE_IN_WORD]       | Completion works inside words            |
+| [CORRECT]                | Correct spelling of commands             |
+| [CORRECT_ALL]            | Correct spelling of all arguments        |
+| [CSH_JUNKIE_HISTORY]     | Single `!` for previous command          |
+| [CSH_JUNKIE_LOOPS]       | `list; end` for `do...done`              |
+| [CSH_JUNKIE_QUOTES]      | No newlines in quotes                    |
+| [CSH_NULLCMD]            | Redirections with no commands fail       |
+| [CSH_NULL_GLOB]          | One glob must succeed, failures go       |
+| [DVORAK]                 | Dvorak keyboard for correction           |
+| [EMACS]                  | Same as `bindkey -e`                     |
+| \*[EQUALS]               | Expand `=cmd` to `/path/to/cmd`          |
+| [ERR_EXIT]               | Exit shell on non-zero status            |
+| [ERR_RETURN]             | Return from function instead             |
+| \*[EVAL_LINE_NO]         | `$LINENO` counts inside `eval` code      |
+| \*[EXEC]                 | Execute commands                         |
+| [EXTENDED_GLOB]          | See globbing section above               |
+| [EXTENDED_HISTORY]       | Timestamps saved to history file         |
+| \*[FLOW_CONTROL]         | Use `^S/^Q` style flow control           |
+| \*[FUNCTION_ARGZER0]     | `$0` in function is its name             |
+| \*[GLOB]                 | Use globbing as described above          |
+| \*[GLOBAL_EXPORT]        | Exported variables not made local        |
+| \*[GLOBAL_RCS]           | Execute `/etc/z*` files                  |
+| [GLOB_ASSIGN]            | `var=*` expands, assigns array           |
+| [GLOB_COMPLETE]          | Patterns are active in completion        |
+| [GLOB_DOTS]              | Patterns may match leading dots          |
+| [GLOB_SUBST]             | Substituted characters may glob          |
+| \*[HASH_CMDS]            | Store command location for speed         |
+| \*[HASH_DIRS]            | Store for all commands in dir            |
+| \*[HASH_LIST_ALL]        | Store all on first completion            |
+| [HIST_ALLOW_CLOBBER]     | On clobber error, up arrow to retry      |
+| \*[HIST_BEEP]            | Beep when going beyond history           |
+| [HIST_EXPIRE_DUPS_FIRST] | Duplicate history entries lost first     |
+| [HIST_FIND_NO_DUPS]      | History search finds once only           |
+| [HIST_IGNORE_ALL_DUPS]   | Remove all earlier duplicate lines       |
+| [HIST_IGNORE_DUPS]       | Remove duplicate of previous line        |
+| [HIST_IGNORE_SPACE]      | Don’t store lines starting with space    |
+| [HIST_NO_FUNCTIONS]      | Don’t store shell functions              |
+| [HIST_NO_STORE]          | Don’t store `history` and `fc`           |
+| [HIST_REDUCE_BLANKS]     | Trim multiple insignificant blanks       |
+| [HIST_SAVE_NO_DUPS]      | Remove duplicates when saving            |
+| [HIST_VERIFY]            | Show `!` history line for editing        |
+| \*[HUP]                  | Send SIGHUP to proceses on exit          |
+| [IGNORE_BRACES]          | Don’t use {a,b} expansions               |
+| [IGNORE_EOF]             | Ignore `^D` (`stty eof` char)            |
+| [INC_APPEND_HISTORY]     | Save history line by line                |
+| [INTERACTIVE]            | Shell is interactive                     |
+| [INTERACTIVE_COMMENTS]   | `#` on interactive line for comment      |
+| [KSH_ARRAYS]             | Indexing etc. for arrays like ksh        |
+| [KSH_AUTOLOAD]           | Function file includes function name     |
+| [KSH_GLOB]               | See globbing above                       |
+| [KSH_OPTION_PRINT]       | Show all options plus on or off          |
+| [KSH_TYPESET]            | No word splitting in`typeset` etc.       |
+| \*[LIST_AMBIGUOUS]       | List completions when ambiguous          |
+| \*[LIST_BEEP]            | Beep on ambiguous completion             |
+| [LIST_PACKED]            | More compact completion lists            |
+| [LIST_ROWS_FIRST]        | List completions across                  |
+| \*[LIST_TYPES]           | File types listed in completion          |
+| [LOCAL_OPTIONS]          | Options reset on function return         |
+| [LOCAL_TRAPS]            | Traps reset on function return           |
+| [LOGIN]                  | Shell is login shell                     |
+| [LONG_LIST_JOBS]         | More verbose listing of jobs             |
+| [MAGIC_EQUAL_SUBST]      | Special expansion after all `=`          |
+| [MAIL_WARNING]           | Warn if mail file timestamp changed      |
+| [MARK_DIRS]              | Append `/` to globbed directories        |
+| [MENU_COMPLETE]          | Cycle through ambiguous matches          |
+| [MONITOR]                | Shell has job control enabled            |
+| \*[MULTIOS]              | Multiple redirections are special        |
+| \*[NOMATCH]              | Error if glob fails to match             |
+| \*[NOTIFY]               | Asynchronous job control messages        |
+| [NULL_GLOB]              | Failed globs are removed from line       |
+| [NUMERIC_GLOB_SORT]      | Numbers in globs sorted numerically      |
+| [OCTAL_ZEROES]           | Leading zeros in integers force octal    |
+| [OVERSTRIKE]             | Start line editor in overstrike mode     |
+| [PATH_DIRS]              | `dir/cmd` can be found in `$PATH`        |
+| [POSIX_BUILTINS]         | Illogical command behaviour              |
+| [PRINT_EIGHT_BIT]        | Print all 8-bit characters directly      |
+| [PRINT_EXIT_VALUE]       | Return status printed unless zero        |
+| [PRIVILEGED]             | Special behaviour on setuid/setgid       |
+| [PROMPT_BANG]            | Special treatment of `!` in prompt       |
+| \*[PROMPT_CR]            | Prompt always at start of line           |
+| \*[PROMPT_PERCENT]       | `%` escapes expanded in prompts          |
+| [PROMPT_SUBST]           | `$` expansion etc. in prompts            |
+| [PUSHD_IGNORE_DUPS]      | Don’t push dir multiply on stack         |
+| [PUSHD_MINUS]            | Reverse sense of `–` and `+` in `pushd`  |
+| [PUSHD_SILENT]           | No non-err messages from `pushd`         |
+| [PUSHD_TO_HOME]          | `pushd` with no argument goes to `~`     |
+| [RC_EXPAND_PARAM]        | `X$array` gives `Xelt1` `Xelt2` etc.     |
+| [RC_QUOTES]              | `''` inside single quotes gives `'`      |
+| \*[RCS]                  | Run startup files                        |
+| [REC_EXACT]              | Exact completion matches are good        |
+| [RESTRICTED]             | Shell has restricted capabilities        |
+| [RM_STAR_SILENT]         | Don’t warn on `rm *`                     |
+| [RM_STAR_WAIT]           | Wait before asking if `rm *` is OK       |
+| [SHARE_HISTORY]          | Save and restore history per line        |
+| [SH_FILE_EXPANSION]      | `~` etc. expansion done early            |
+| [SH_GLOB]                | Disables non-extended zsh globs          |
+| [SHIN_STDIN]             | Shell input comes from stdin             |
+| [SH_NULL_CMD]            | Commandless redirections like `sh`       |
+| [SH_OPTION_LETTERS]      | Single letter options are like `sh`      |
+| \*[SHORT_LOOPS]          | `for words; list` works                  |
+| [SH_WORD_SPLIT]          | Split non-array variables yuckily        |
+| [SINGLE_COMMAND]         | Execute one command then exit            |
+| [SINGLE_LINE_ZLE]        | Line editing on single line (bad tty)    |
+| [SUN_KEYBOARD_HACK]      | Unmatched `` ` `` at end of line ignored |
+| [TRANSIENT_RPROMPT]      | Right prompt goes away after edit        |
+| [TRAPS_ASYNC]            | Traps may run when `wait`ing             |
+| [TYPESET_SILENT]         | Silent on `typeset foo`                  |
+| \*[UNSET]                | Unset variables OK, treat as empty       |
+| [VERBOSE]                | Output commands to be executed           |
+| [VI]                     | Same as `bindkey -v`                     |
+| [XTRACE]                 | Show trace of execution with `$PS4`      |
+| [ZLE]                    | Line editor used to input lines          |
 
 
 [ALIASES]:                 https://zsh.sourceforge.io/Doc/Release/Options.html#index-ALIASES
