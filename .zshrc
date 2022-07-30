@@ -1,4 +1,3 @@
-autoload -Uz compinit promptinit
-compinit
-promptinit
-prompt walters
+autoload -Uz compinit && compinit
+autoload -Uz promptinit && promptinit
+prompt fade
