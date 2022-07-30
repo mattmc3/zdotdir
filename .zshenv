@@ -1,5 +1,5 @@
 # ~/.zshenv should only be a one-liner that sources this file
-# echo "export ZDOTDIR=~/.zsh; [ -f $ZDOTDIR/.zshenv ] && . $ZDOTDIR/.zshenv" >| ~/.zshenv
+# echo 'export ZDOTDIR=~/.zsh; [ -f $ZDOTDIR/.zshenv ] && . $ZDOTDIR/.zshenv' >| ~/.zshenv
 
 # set XDG dirs
 export XDG_CONFIG_HOME=~/.config
