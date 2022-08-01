@@ -3,3 +3,7 @@
 .zcompdump*
 .zsh_history
 .zsh_sessions/
+.zplugins.zsh
+.antidote/
+.plugins/
+.zplugins/
