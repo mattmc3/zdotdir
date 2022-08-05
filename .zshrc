@@ -11,18 +11,18 @@ fi
 zstyle ':zephyr:*:*' use-xdg-basedirs 'yes'
 
 # drive config with antidote
-ANTIDOTE_HOME=$ZDOTDIR/.plugins
+ANTIDOTE_HOME=$ZDOTDIR/.zplugins
 ANTIDOTE_DIR=$ZDOTDIR/.antidote
 #ANTIDOTE_DIR=~/Projects/mattmc3/antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 
 # load antidote
-if [[ ! $ZDOTDIR/.zplugins.zsh -nt $ZDOTDIR/.zplugins ]]; then
+if [[ ! $ZDOTDIR/.zplugins.zsh -nt $ZDOTDIR/.zplugins.txt ]]; then
   [[ -e $ANTIDOTE_DIR ]] \
     || git clone --depth=1 https://github.com/mattmc3/antidote.git $ANTIDOTE_DIR
   (
     source $ANTIDOTE_DIR/antidote.zsh
-    antidote bundle <$ZDOTDIR/.zplugins >$ZDOTDIR/.zplugins.zsh
+    antidote bundle <$ZDOTDIR/.zplugins.txt >$ZDOTDIR/.zplugins.zsh
   )
 fi
 source $ZDOTDIR/.zplugins.zsh
