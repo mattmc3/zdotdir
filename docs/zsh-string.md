@@ -136,7 +136,7 @@ This is similar to `string split` in [fish][split].
 
 - `@`: Preserves empty elements. _"In double quotes, array elements are put into separate words"_.
 - `p`: Use print syntax. _"Recognize the same escape sequences as the print."_
-- `s`: Split. _"Force field splitting at the separator string."
+- `s`: Split. _"Force field splitting at the separator string."_
 
 ```zsh
 $ str="a:b::c"
