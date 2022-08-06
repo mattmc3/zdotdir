@@ -134,14 +134,17 @@ abc\x00def\x00ghi
 Split strings with the [s expansion flag][2].
 This is similar to `string split` in [fish][split].
 
+- `@`: Preserves empty elements. _"In double quotes, array elements are put into separate words"_.
+- `p`: Use print syntax. _"Recognize the same escape sequences as the print."_
+- `s`: Split. _"Force field splitting at the separator string."
+
 ```zsh
-$ str="a:b:c"
+$ str="a:b::c"
 $ sep=:
-$ echo ${(ps.$sep.)str}
-a b c
-$ printf '%s\n' ${(ps.$sep.)str}
+$ printf '%s\n' "${(@ps.$sep.)str}"
 a
 b
+
 c
 ```
 
