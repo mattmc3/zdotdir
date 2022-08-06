@@ -7,7 +7,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# zsyles
+# Zephyr zstyles
 zstyle ':zephyr:*:*' use-xdg-basedirs 'yes'
 
 # drive config with antidote
@@ -15,6 +15,7 @@ ANTIDOTE_HOME=$ZDOTDIR/.zplugins
 ANTIDOTE_DIR=$ZDOTDIR/.antidote
 #ANTIDOTE_DIR=~/Projects/mattmc3/antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
+zstyle ':antidote:bundle' file $ZDOTDIR/.zplugins.txt
 
 # load antidote
 if [[ ! $ZDOTDIR/.zplugins.zsh -nt $ZDOTDIR/.zplugins.txt ]]; then
