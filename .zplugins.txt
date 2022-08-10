@@ -12,7 +12,7 @@ mattmc3/zephyr
 # regular plugins
 mattmc3/zsh-xdg-basedir
 mattmc3/zman
-mattmc3/zfishutils
+#mattmc3/zfishutils
 mattmc3/zsh-safe-rm
 joshskidmore/zsh-fzf-history-search
 mattmc3/zshrc.d
