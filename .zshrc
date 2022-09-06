@@ -26,6 +26,7 @@ if [[ ! $ZDOTDIR/.zplugins.zsh -nt $ZDOTDIR/.zplugins.txt ]]; then
     antidote bundle <$ZDOTDIR/.zplugins.txt >$ZDOTDIR/.zplugins.zsh
   )
 fi
+autoload -Uz $ANTIDOTE_DIR/functions/antidote
 source $ZDOTDIR/.zplugins.zsh
 
 # to customize prompt, run `p10k configure` or edit .p10k.zsh.
