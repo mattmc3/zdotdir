@@ -1,0 +1,98 @@
+function _plugin_compile {
+  local repo file plugin_dir
+  for repo in $@; do
+    plugin_dir=$ZPLUGINDIR/${repo:t}
+    for file in "${plugin_dir}"/**/*.zsh(|-theme)(N.) \
+                "${plugin_dir}"/**/prompt_*_setup(N.)
+    do
+      # Only zcompile if there isn't already a .zwc file or the .zwc is outdated,
+      # and never compile zsh-syntax-highlighting's test data
+      if [[ -s $file && ! ${file}.zwc -nt $file &&
+            $file != */test-data/* ]]
+      then
+        if [[ ${file:t} == prompt_*_setup ||
+              ${file:t} == _* ]]; then
+          # Autoloadable functions
+          builtin zcompile -Uz "$file"
+        else
+          # Scripts to be sourced
+          builtin zcompile -R "$file"
+        fi
+      fi
+    done
+  done
+}
+
+function _plugin_clone {
+  local repo plugin_dir initfile
+  local -a initfiles
+  for repo in $@; do
+    plugin_dir=$ZPLUGINDIR/${repo:t}
+    initfile=$plugin_dir/${repo:t}.plugin.zsh
+    if [[ ! -d $plugin_dir ]]; then
+      echo "Cloning $repo..."
+      git clone --quiet --depth 1 --recursive --shallow-submodules https://github.com/$repo $plugin_dir
+      _plugin_compile $repo
+    fi
+    if [[ ! -e $initfile ]]; then
+      initfiles=($plugin_dir/*.plugin.{z,}sh(N) $plugin_dir/*.{z,}sh{-theme,}(N))
+      [[ $#initfiles -gt 0 ]] && ln -sf $initfiles[1] $initfile
+    fi
+  done
+}
+
+function _plugin_load {
+  local repo plugin_dir initfile o_kind=(zsh) o_path=(.)
+  zparseopts -D -F -K -- \
+    {k,-kind}:=o_kind \
+    {p,-path}:=o_path ||
+    return 1
+
+  # strip '=' or ':' from beginning of arg values
+  local re='^[=:]?(.+)$'
+  [[ $o_kind[-1] =~ $re ]] && o_kind[-1]=$match
+  [[ $o_path[-1] =~ $re ]] && o_path[-1]=$match
+
+  for repo in $@; do
+    plugin_dir=$ZPLUGINDIR/${repo:t}/${o_path[-1]}
+    plugin_dir=${plugin_dir:A}
+    [[ -d $plugin_dir ]] || _plugin_clone $repo
+
+    if [[ "$o_kind[-1]" == path ]]; then
+      export PATH="$plugin_dir:$PATH"
+      return
+    fi
+
+    initfile=($plugin_dir/${plugin_dir:t}.plugin.zsh(N))
+    initfile=$initfile[-1]
+    case "$o_kind[-1]" in
+      zsh)
+        fpath+=($plugin_dir)
+        source $initfile
+        ;;
+      fpath)
+        fpath+=($plugin_dir)
+        ;;
+      defer)
+        (( $+functions[zsh-defer] )) || _plugin_load romkatv/zsh-defer
+        fpath+=($plugin_dir)
+        zsh-defer source $initfile
+        ;;
+      *)
+        echo >&2 "Unexpected arg value '$o_kind'."
+        return 1
+        ;;
+    esac
+  done
+}
+
+function _plugin {
+  if (( $+functions[_plugin_${1}] )); then
+    local cmd=$1; shift
+    _plugin_${cmd} "$@"
+    return $?
+  else
+    echo >&2 "plugin: command not found '${1}'" && return 1
+  fi
+}
+_plugin "$@"
