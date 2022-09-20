@@ -54,6 +54,9 @@ $ZDOTDIR/plugins/python
 # safe-rm
 mattmc3/zsh-safe-rm
 
+# string
+$ZDOTDIR/plugins/string
+
 # syntax-highlighting
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
