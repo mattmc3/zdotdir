@@ -14,14 +14,6 @@ alias -g G='| grep -E'
 alias -g S='| sort'
 alias -g L='| less'
 alias -g M='| more'
-alias -g ..2='../..'
-alias -g ..3='../../..'
-alias -g ..4='../../../..'
-alias -g ..5='../../../../..'
-alias -g ..6='../../../../../..'
-alias -g ..7='../../../../../../..'
-alias -g ..8='../../../../../../../..'
-alias -g ..9='../../../../../../../../..'
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
@@ -32,9 +24,6 @@ alias _=sudo
 alias l=ls
 
 # mask built-ins with better defaults
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
 alias mkdir='mkdir -p'
 alias ping='ping -c 5'
 alias type='type -a'
@@ -44,7 +33,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 else
   alias ls="ls --color=auto"
 fi
-alias grep="grep --color=auto --exclude-dir={CVS,.git,.hg,.svn}"
+alias grep="grep --color=auto --exclude-dir={.git,.svn}"
 
 # more ways to ls
 alias ll='ls -lh'
@@ -81,7 +70,7 @@ alias urlencode='python3 -c "import sys, urllib.parse as ul; \
 
 # history
 # list the ten most used commands
-alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
+alias history-stat="\\history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 alias history="fc -li"
 
 # misc
@@ -98,11 +87,6 @@ alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 
 # auto-orient images based on exif tags
 alias autorotate="jhead -autorot"
-
-# set initial working directory
-IWD=${IWD:-PWD}
-alias iwd='echo $IWD'
-alias cdiwd='cd "$IWD"'
 
 # dotfiles
 alias dotf='cd "$DOTFILES"'
