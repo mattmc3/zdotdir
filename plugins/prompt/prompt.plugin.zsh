@@ -1,10 +1,12 @@
 0=${(%):-%x}
 
+setopt PROMPT_SUBST
+autoload -Uz promptinit && promptinit
+
 ZSH_THEME=p10k
 
 if [[ $ZSH_THEME == pure ]]; then
   # expand parameters in prompt variables
-  setopt PROMPT_SUBST
   prompt pure
 
   PURE_PROMPT_SYMBOL="%%"

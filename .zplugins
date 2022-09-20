@@ -1,93 +1,47 @@
-# abbreviations
-olets/zsh-abbr kind:defer
-$ZDOTDIR/plugins/abbreviations
+# zephyr plugins
+mattmc3/zephyr path:plugins/autosuggestions
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/utility
+mattmc3/zephyr path:plugins/zfunctions
 
-# autosuggestions
-zsh-users/zsh-autosuggestions
-$ZDOTDIR/plugins/autosuggestions
-
-# colorize-man
-$ZDOTDIR/plugins/colorize-man
-
-# directory
-$ZDOTDIR/plugins/directory
-
-# environment
-$ZDOTDIR/plugins/environment
-
-# fancy-ctrl-z
+# local plugins
 $ZDOTDIR/plugins/fancy-ctrl-z
-
-# golang
 $ZDOTDIR/plugins/golang
-
-# groovy
 $ZDOTDIR/plugins/groovy
-
-# homebrew
 $ZDOTDIR/plugins/homebrew
-
-# editor
-belak/zsh-utils path:editor
-
-# history
-belak/zsh-utils path:history
-
-# lpass
 $ZDOTDIR/plugins/lpass
-
-# macos
-zshzoo/macos
-
-# macos
-zshzoo/magic-enter
+$ZDOTDIR/plugins/python
+$ZDOTDIR/plugins/string
 
 # prompt
 sindresorhus/pure     kind:fpath
 romkatv/powerlevel10k kind:fpath
-belak/zsh-utils       path:prompt
 $ZDOTDIR/plugins/prompt
 
-# python
-$ZDOTDIR/plugins/python
-
-# safe-rm
+# general plugins
+zshzoo/macos
+zshzoo/magic-enter
 mattmc3/zsh-safe-rm
-
-# string
-$ZDOTDIR/plugins/string
-
-# syntax-highlighting
-zdharma-continuum/fast-syntax-highlighting kind:defer
-
-# terminal
 olets/zsh-window-title
-
-# utility
-belak/zsh-utils path:utility
-
-# xdg
 mattmc3/zsh-xdg-basedir
+mattmc3/zman
 
-# zbench
-romkatv/zsh-bench kind:path
+# deferred plugins
+olets/zsh-abbr kind:defer
+$ZDOTDIR/plugins/abbreviations
+zdharma-continuum/fast-syntax-highlighting kind:defer
 
 # z
 rupa/z
 $ZDOTDIR/plugins/z
 
-# zfunctions
-mattmc3/zfunctions
-
-# zman
-mattmc3/zman
-
 ### ^^^ ###
 
 # completions
-zsh-users/zsh-completions
-belak/zsh-utils path:completion
-$ZDOTDIR/plugins/completions
+mattmc3/zephyr path:plugins/completions
 
 # history-substring-search
 zsh-users/zsh-history-substring-search
