@@ -1,42 +1,90 @@
-# prompts
-#sindresorhus/pure kind:fpath
-romkatv/powerlevel10k
-
-# utility plugins
-romkatv/zsh-bench kind:path
-
-# core plugins
-zsh-users/zsh-completions
-mattmc3/zephyr
-
-# regular plugins
-mattmc3/zsh-xdg-basedir
-mattmc3/zman
-#mattmc3/zfishutils
-mattmc3/zsh-safe-rm
-joshskidmore/zsh-fzf-history-search
-mattmc3/zshrc.d
-mattmc3/zfunctions
-olets/zsh-window-title
-rupa/z
-
-# deferred plugins
+# abbreviations
 olets/zsh-abbr kind:defer
+$ZDOTDIR/plugins/abbreviations
+
+# autosuggestions
+zsh-users/zsh-autosuggestions
+$ZDOTDIR/plugins/autosuggestions
+
+# colorize-man
+$ZDOTDIR/plugins/colorize-man
+
+# directory
+$ZDOTDIR/plugins/directory
+
+# environment
+$ZDOTDIR/plugins/environment
+
+# fancy-ctrl-z
+$ZDOTDIR/plugins/fancy-ctrl-z
+
+# golang
+$ZDOTDIR/plugins/golang
+
+# groovy
+$ZDOTDIR/plugins/groovy
+
+# homebrew
+$ZDOTDIR/plugins/homebrew
+
+# editor
+belak/zsh-utils path:editor
+
+# history
+belak/zsh-utils path:history
+
+# lpass
+$ZDOTDIR/plugins/lpass
+
+# macos
+zshzoo/macos
+
+# macos
+zshzoo/magic-enter
+
+# prompt
+sindresorhus/pure     kind:fpath
+romkatv/powerlevel10k kind:fpath
+belak/zsh-utils       path:prompt
+$ZDOTDIR/plugins/prompt
+
+# python
+$ZDOTDIR/plugins/python
+
+# safe-rm
+mattmc3/zsh-safe-rm
+
+# syntax-highlighting
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
-# ohmyzsh plugins
-ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-ohmyzsh/ohmyzsh path:plugins/dash
-ohmyzsh/ohmyzsh path:plugins/extract
-ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
-ohmyzsh/ohmyzsh path:plugins/magic-enter
-ohmyzsh/ohmyzsh path:plugins/macos
+# terminal
+olets/zsh-window-title
 
-# prezto plugins
-# sorin-ionescu/prezto path:modules/directory
-# sorin-ionescu/prezto path:modules/editor
-# sorin-ionescu/prezto path:modules/terminal
+# utility
+belak/zsh-utils path:utility
 
-# final
+# xdg
+mattmc3/zsh-xdg-basedir
+
+# zbench
+romkatv/zsh-bench kind:path
+
+# z
+rupa/z
+$ZDOTDIR/plugins/z
+
+# zfunctions
+mattmc3/zfunctions
+
+# zman
+mattmc3/zman
+
+### ^^^ ###
+
+# completions
+zsh-users/zsh-completions
+belak/zsh-utils path:completion
+$ZDOTDIR/plugins/completions
+
+# history-substring-search
 zsh-users/zsh-history-substring-search
-zsh-users/zsh-autosuggestions

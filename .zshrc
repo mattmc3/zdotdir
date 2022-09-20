@@ -7,11 +7,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Zephyr zstyles
-zstyle ':zephyr:*:*' use-xdg-basedirs 'yes'
+# autoload functions
+autoload -Uz $ZDOTDIR/functions/autoload-dir
+autoload-dir $ZDOTDIR/functions
 
 # drive config with antidote
-ANTIDOTE_HOME=$ZDOTDIR/.zplugins
+ANTIDOTE_HOME=$ZDOTDIR/plugins/.external
 ANTIDOTE_DIR=$ZDOTDIR/.antidote
 #ANTIDOTE_DIR=~/Projects/mattmc3/antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
@@ -23,11 +24,14 @@ if [[ ! $ZDOTDIR/.zplugins.zsh -nt $ZDOTDIR/.zplugins.txt ]]; then
     || git clone --depth=1 https://github.com/mattmc3/antidote.git $ANTIDOTE_DIR
   (
     source $ANTIDOTE_DIR/antidote.zsh
-    antidote bundle <$ZDOTDIR/.zplugins.txt >$ZDOTDIR/.zplugins.zsh
+    envsubst <$ZDOTDIR/.zplugins.txt | antidote bundle >$ZDOTDIR/.zplugins.zsh
   )
 fi
 autoload -Uz $ANTIDOTE_DIR/functions/antidote
 source $ZDOTDIR/.zplugins.zsh
+
+bindkey -e  # emacs
+source $ZDOTDIR/.zaliases
 
 # to customize prompt, run `p10k configure` or edit .p10k.zsh.
 [[ ! -f ${ZDOTDIR:-~}/.p10k.zsh ]] || source ${ZDOTDIR:-~}/.p10k.zsh

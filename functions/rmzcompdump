@@ -3,7 +3,7 @@
 ##? remove zcompdump file to reset completions
 
 local f
-for f in ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump*(.N); do
+for f in ${XDG_CACHE_HOME:-~/.cache}/zsh/*compdump*(.N); do
   echo "Removing $f..."
   rm -f $f
 done

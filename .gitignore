@@ -10,6 +10,7 @@
 .zsh_history
 .zsh_plugins.zsh
 .zsh_sessions/
+.external/
 *.cache
 *.bak
 *.local
