@@ -1,0 +1,2 @@
+local sep=$1; shift
+echo ${(pj.$sep.)@}
