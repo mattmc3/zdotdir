@@ -15,7 +15,7 @@ Framework:
 - [zephyr](https://github.com/mattmc3/zephyr)
 
 Plugins:
-- See my [.zplugins.txt](https://github.com/mattmc3/zdotdir/blob/main/.zplugins.txt) file
+- See my [.zplugins](https://github.com/mattmc3/zdotdir/blob/main/.zplugins) file
 
 ## Installation
 
