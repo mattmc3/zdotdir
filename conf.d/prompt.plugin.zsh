@@ -3,7 +3,7 @@
 setopt PROMPT_SUBST
 autoload -Uz promptinit && promptinit
 
-ZSH_THEME=p10k
+ZSH_THEME=pure
 
 if [[ $ZSH_THEME == pure ]]; then
   # expand parameters in prompt variables

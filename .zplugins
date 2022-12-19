@@ -18,7 +18,6 @@ $ZDOTDIR/plugins/string
 # prompt
 sindresorhus/pure     kind:fpath
 romkatv/powerlevel10k kind:fpath
-$ZDOTDIR/plugins/prompt
 
 # framework plugins
 ohmyzsh/ohmyzsh path:plugins/extract
