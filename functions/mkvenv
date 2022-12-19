@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 ##? Make a Python virtual environment with `python3 -m venv`.
 
 local WORKON_HOME=${WORKON_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/venvs}
@@ -10,3 +8,5 @@ elif [[ -z "$WORKON_HOME" ]]; then
 fi
 python3 -m venv "$WORKON_HOME/$1"
 workon "$1"
+
+# vim: ft=zsh

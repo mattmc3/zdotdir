@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 ##? Open a Jupyter notebook.
 
 if [[ -n "$1" ]]; then
@@ -10,3 +8,5 @@ else
   cd "$JUPYTER_HOME"
 fi
 jupyter notebook
+
+# vim: ft=zsh

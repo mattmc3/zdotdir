@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 ##? Work on (activate) a Python venv.
 
 local WORKON_HOME=${WORKON_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/venvs}
@@ -11,3 +9,5 @@ elif [[ ! -d "$WORKON_HOME" ]]; then
   >&2 echo "\$WORKON_HOME directory not found: $WORKON_HOME" && return 1
 fi
 source "$WORKON_HOME/$1/bin/activate"
+
+# vim: ft=zsh
