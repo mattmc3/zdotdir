@@ -16,8 +16,7 @@ $ZDOTDIR/plugins/python
 $ZDOTDIR/plugins/string
 
 # prompt
-sindresorhus/pure     kind:fpath
-romkatv/powerlevel10k kind:fpath
+sindresorhus/pure kind:fpath
 
 # framework plugins
 ohmyzsh/ohmyzsh path:plugins/extract
