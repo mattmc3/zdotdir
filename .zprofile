@@ -1,5 +1,5 @@
 #
-# .zprofile
+# Executes commands at login pre-zshrc.
 #
 
 export DOTFILES=~/.config/dotfiles

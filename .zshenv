@@ -1,5 +1,5 @@
 #
-# .zshenv
+# Defines environment variables.
 #
 
 # ~/.zshenv should only be a one-liner that sources this file

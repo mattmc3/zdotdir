@@ -1,3 +1,7 @@
+#
+# Executes commands at the start of an interactive session.
+#
+
 # load zprof first if we need to profile
 [[ ${ZPROFRC:-0} -eq 0 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
