@@ -1,5 +1,5 @@
 #
-# aliases
+# Aliases
 #
 
 # https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789#.vh7hhm6th
@@ -14,6 +14,14 @@ alias -g G='| grep -E'
 alias -g S='| sort'
 alias -g L='| less'
 alias -g M='| more'
+alias -g ..2='../..'
+alias -g ..3='../../..'
+alias -g ..4='../../../..'
+alias -g ..5='../../../../..'
+alias -g ..6='../../../../../..'
+alias -g ..7='../../../../../../..'
+alias -g ..8='../../../../../../../..'
+alias -g ..9='../../../../../../../../..'
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
@@ -21,9 +29,45 @@ alias -g ......='../../../../..'
 
 # single character shortcuts - be sparing!
 alias _=sudo
+alias d='dirs -v'
 alias l=ls
+alias o='open'
+
+# Common commands everywhere
+if [[ "$OSTYPE" == darwin* ]]; then
+  # if there's ever a Linux command that should work on MacOS,
+  # put it here
+elif [[ "$OSTYPE" == cygwin* ]]; then
+  alias open='cygstart'
+  alias pbcopy='tee > /dev/clipboard'
+  alias pbpaste='cat /dev/clipboard'
+elif [[ "$OSTYPE" == linux-android ]]; then
+  alias open='termux-open'
+  alias pbcopy='termux-clipboard-set'
+  alias pbpaste='termux-clipboard-get'
+else
+  alias open='xdg-open'
+
+  if [[ -n $DISPLAY ]]; then
+    if (( $+commands[xclip] )); then
+      alias pbcopy='xclip -selection clipboard -in'
+      alias pbpaste='xclip -selection clipboard -out'
+    elif (( $+commands[xsel] )); then
+      alias pbcopy='xsel --clipboard --input'
+      alias pbpaste='xsel --clipboard --output'
+    fi
+  else
+    if (( $+commands[wl-copy] && $+commands[wl-paste] )); then
+      alias pbcopy='wl-copy'
+      alias pbpaste='wl-paste'
+    fi
+  fi
+fi
 
 # mask built-ins with better defaults
+# alias cp='cp -i'
+# alias mv='mv -i'
+# alias rm='rm -i'
 alias mkdir='mkdir -p'
 alias ping='ping -c 5'
 alias type='type -a'
@@ -31,7 +75,7 @@ alias vi=vim
 if [[ "$OSTYPE" == darwin* ]]; then
   alias ls="ls -G"
 else
-  alias ls="ls --color=auto"
+  alias ls="ls --group-directories-first --color=auto"
 fi
 alias grep="grep --color=auto --exclude-dir={.git,.svn}"
 
@@ -70,7 +114,7 @@ alias urlencode='python3 -c "import sys, urllib.parse as ul; \
 
 # history
 # list the ten most used commands
-alias history-stat="\\history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
+alias history-stat="command history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 alias history="fc -li"
 
 # misc
@@ -88,12 +132,28 @@ alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 # auto-orient images based on exif tags
 alias autorotate="jhead -autorot"
 
+# set initial working directory
+IWD=${IWD:-$PWD}
+alias iwd='echo $IWD'
+alias cdiwd='cd "$IWD"'
+
 # dotfiles
 alias dotf='cd "$DOTFILES"'
 alias dotfed='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
 
 # java
 alias setjavahome="export JAVA_HOME=\`/usr/libexec/java_home\`"
+
+# python
+alias py2='python2'
+alias py3='python3'
+alias py='python3'
+alias pip2update="pip2 list --outdated | cut -d ' ' -f1 | xargs -n1 pip2 install -U"
+alias pip3update="pip3 list --outdated | cut -d ' ' -f1 | xargs -n1 pip3 install -U"
+alias pipup="pip3 list --outdated | cut -d ' ' -f1 | xargs -n1 pip3 install -U"
+alias pyfind='find . -name "*.py"'
+alias pygrep='grep --include="*.py"'
+alias pyva="source .venv/bin/activate"
 
 # todo-txt
 alias t="todo.sh"
@@ -103,3 +163,9 @@ alias todos="$VISUAL $HOME/Desktop/todo.txt"
 if [[ "$OSTYPE" == darwin* ]]; then
   alias code="open -b com.microsoft.VSCode"
 fi
+
+# Load more specific zsh 'run-help' function.
+(( $+aliases[run-help] )) && unalias run-help && autoload -Uz run-help
+alias help=run-help
+
+# vim: ft=zsh
