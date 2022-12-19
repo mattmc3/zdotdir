@@ -28,15 +28,12 @@ mattmc3/zsh-safe-rm
 olets/zsh-window-title
 mattmc3/zsh-xdg-basedir
 mattmc3/zman
+rupa/z
 
 # deferred plugins
 olets/zsh-abbr kind:defer
 $ZDOTDIR/plugins/abbreviations
 zdharma-continuum/fast-syntax-highlighting kind:defer
-
-# z
-rupa/z
-$ZDOTDIR/plugins/z
 
 ### ^^^ ###
 
