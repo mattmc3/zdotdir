@@ -1,6 +1,6 @@
 # config ohmyzsh
 
-ZSH=$ZPLUGINDIR/ohmyzsh/ohmyzsh
+ZSH=$ANTIDOTE_HOME/ohmyzsh/ohmyzsh
 
 MAGIC_ENTER_GIT_COMMAND='git status -sb'
 if [[ "$OSTYPE" == darwin* ]]; then
