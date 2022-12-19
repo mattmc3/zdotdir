@@ -1,5 +1,4 @@
 # zephyr plugins
-mattmc3/zephyr path:plugins/autosuggestions
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/environment
 mattmc3/zephyr path:plugins/editor
@@ -40,5 +39,6 @@ zdharma-continuum/fast-syntax-highlighting kind:defer
 # completions
 mattmc3/zephyr path:plugins/completions
 
-# history-substring-search
+# zsh-users
+zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
