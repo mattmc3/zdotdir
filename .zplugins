@@ -8,7 +8,6 @@ mattmc3/zephyr path:plugins/utility
 mattmc3/zephyr path:plugins/zfunctions
 
 # local plugins
-$ZDOTDIR/plugins/fancy-ctrl-z
 $ZDOTDIR/plugins/golang
 $ZDOTDIR/plugins/groovy
 $ZDOTDIR/plugins/homebrew
@@ -24,9 +23,10 @@ $ZDOTDIR/plugins/prompt
 # framework plugins
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+
 # general plugins
 zshzoo/macos
-zshzoo/magic-enter
 mattmc3/zsh-safe-rm
 olets/zsh-window-title
 mattmc3/zsh-xdg-basedir
