@@ -1,0 +1,22 @@
+emulate -L zsh; setopt local_options extended_glob
+if ! (( $+functions[string-${1}] )); then
+  echo >&2 "string: Subcommand '${1}' is not valid."
+  return 2
+fi
+
+local cmd=$1; shift
+
+# collect stdin (ie: <redirected, piped|)
+if [[ ! -t 0 ]]; then
+  local -a piped=()
+  local data
+  while IFS= read -r data || [[ -n "$data" ]]; do
+    piped+=($data)
+  done
+  set -- "$@" "${piped[@]}"
+fi
+
+string-${cmd} "$@"
+return $?
+
+# vim: ft=zsh

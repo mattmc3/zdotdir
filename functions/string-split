@@ -3,3 +3,5 @@ local s
 for s in "${(ps.$sep.)@}"; do
   echo $s
 done
+
+# vim: ft=zsh
