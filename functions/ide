@@ -1,3 +1,4 @@
-#!/usr/bin/env zsh
 # edit file or folder in IDE
 ${VISUAL:-vim} ${@:-.}
+
+# vim: ft=zsh

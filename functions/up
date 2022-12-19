@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 ##? up - go up any number of directories
 ##?
 ##? usage:
@@ -21,3 +19,5 @@ else
   cd $balloons
 fi
 # }
+
+# vim: ft=zsh

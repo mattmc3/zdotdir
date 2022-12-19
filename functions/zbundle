@@ -1,2 +1,3 @@
-#!/usr/bin/env zsh
 antidote bundle < ${ZDOTDIR:-~}/.zsh_plugins.txt >| ${ZDOTDIR:-~}/.zsh_plugins.zsh
+
+# vim: ft=zsh

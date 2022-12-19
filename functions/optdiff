@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # show the differences between Zsh default options and the options set in the current
 # interactive shell session
 
@@ -9,3 +7,5 @@ zsh -df -c "set -o" >| $tmp1
 set -o >| $tmp2
 diff --changed-group-format='%<' --unchanged-group-format='' $tmp2 $tmp1
 rm $tmp1 $tmp2
+
+# vim: ft=zsh

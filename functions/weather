@@ -1,3 +1,4 @@
-#!/usr/bin/env zsh
 # What is the weather?
 curl "http://wttr.in/$1"
+
+# vim: ft=zsh

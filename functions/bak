@@ -1,4 +1,3 @@
-#!/usr/bin/env zsh
 local now f
 now=$(date +"%Y%m%d-%H%M%S")
 for f in "$@"; do
@@ -8,3 +7,5 @@ for f in "$@"; do
   fi
   cp -R "$f" "$f".$now.bak
 done
+
+# vim: ft=zsh

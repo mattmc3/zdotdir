@@ -1,4 +1,3 @@
-#!/usr/bin/env zsh
 if [[ ! -d "$1" ]]; then
   echo >&2 "Config directory not found: $1" && return 1
 fi
@@ -10,3 +9,5 @@ for f in ${(o)files}; do
   case ${f:t} in '~'*) continue;; esac
   source $f
 done
+
+# vim: ft=zsh

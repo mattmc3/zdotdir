@@ -1,7 +1,8 @@
-#!/usr/bin/env zsh
 ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/functions}
 local fn
 for fn in $ZFUNCDIR/**/*(.); do
   unfunction "${fn:t}" &>/dev/null
   autoload -Uz "$fn"
 done
+
+# vim: ft=zsh

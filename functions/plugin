@@ -96,3 +96,5 @@ function _plugin {
   fi
 }
 _plugin "$@"
+
+# vim: ft=zsh
