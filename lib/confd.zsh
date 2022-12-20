@@ -1,4 +1,10 @@
-export ZSHRCD=${ZSHRCD:-${ZDOTDIR:-~/.config/zsh}/conf.d}
+typeset -a _confd=(
+  ${ZDOTDIR:-~}/.zshrc.d(N/)
+  ${ZDOTDIR:-~}/zshrc.d(N/)
+  ${ZDOTDIR:-~/.config/zsh}/conf.d(N/)
+)
+export ZSHRCD=${_confd[1]}
+unset _confd
 
 function source-dir {
   [[ -d "$1" ]] || return 1
