@@ -16,6 +16,7 @@ unset _fnfile
 
 # core
 source $ZDOTDIR/lib/directory.zsh
+source $ZDOTDIR/lib/editor.zsh
 source $ZDOTDIR/lib/history.zsh
 
 # use antidote for plugins
@@ -37,14 +38,14 @@ fi
 autoload -Uz $ANTIDOTE_DIR/functions/antidote
 source $ZDOTDIR/.zplugins.zsh
 
-### conf.d
+# conf.d
 for _confd in "$ZDOTDIR"/conf.d/*.zsh(N); do
   [[ ${_confd:t} != '~'* ]] || continue
   source "$_confd"
 done
 unset _confd
 
-bindkey -e  # emacs
+# aliases
 source $ZDOTDIR/.zaliases
 
 # local settings
