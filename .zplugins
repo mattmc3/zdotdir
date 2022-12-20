@@ -24,7 +24,6 @@ ohmyzsh/ohmyzsh path:plugins/magic-enter
 zshzoo/macos
 mattmc3/zsh-safe-rm
 olets/zsh-window-title
-mattmc3/zsh-xdg-basedir
 mattmc3/zman
 rupa/z
 
