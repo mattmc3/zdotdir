@@ -3,7 +3,6 @@ mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/environment
 mattmc3/zephyr path:plugins/editor
 mattmc3/zephyr path:plugins/history
-mattmc3/zephyr path:plugins/utility
 
 # local plugins
 $ZDOTDIR/plugins/golang
@@ -25,6 +24,9 @@ mattmc3/zsh-safe-rm
 olets/zsh-window-title
 mattmc3/zman
 rupa/z
+
+# utility plugins
+romkatv/zsh-bench kind:path
 
 # deferred plugins
 olets/zsh-abbr kind:defer
