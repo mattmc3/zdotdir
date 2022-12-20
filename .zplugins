@@ -1,5 +1,4 @@
 # zephyr plugins
-mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/environment
 mattmc3/zephyr path:plugins/editor
 
