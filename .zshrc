@@ -7,8 +7,12 @@
 alias zprofrc="ZPROFRC=1 zsh"
 
 # autoload functions
-autoload -Uz $ZDOTDIR/functions/autoload-dir
-autoload-dir $ZDOTDIR/functions
+export ZFUNCDIR=${ZDOTDIR:-~/.config/zsh}/functions
+fpath=($fpath $ZFUNCDIR(/N))
+for _fnfile in $ZFUNCDIR/*(.N); do
+  autoload -Uz "${_fnfile:t}"
+done
+unset _fnfile
 
 # drive config with antidote
 ANTIDOTE_HOME=$ZDOTDIR/plugins/.external
