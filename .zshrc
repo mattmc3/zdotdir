@@ -14,7 +14,10 @@ for _fnfile in $ZFUNCDIR/*(.N); do
 done
 unset _fnfile
 
-# drive config with antidote
+# core
+source $ZDOTDIR/lib/history.zsh
+
+# use antidote for plugins
 ANTIDOTE_HOME=$ZDOTDIR/plugins/.external
 ANTIDOTE_DIR=$ZDOTDIR/.antidote
 #ANTIDOTE_DIR=~/Projects/mattmc3/antidote

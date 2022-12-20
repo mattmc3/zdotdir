@@ -2,7 +2,6 @@
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/environment
 mattmc3/zephyr path:plugins/editor
-mattmc3/zephyr path:plugins/history
 
 # local plugins
 $ZDOTDIR/plugins/golang
