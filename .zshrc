@@ -17,6 +17,7 @@ unset _fnfile
 # core
 source $ZDOTDIR/lib/directory.zsh
 source $ZDOTDIR/lib/editor.zsh
+source $ZDOTDIR/lib/environment.zsh
 source $ZDOTDIR/lib/history.zsh
 
 # use antidote for plugins
