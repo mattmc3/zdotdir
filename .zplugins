@@ -35,6 +35,7 @@ zdharma-continuum/fast-syntax-highlighting kind:defer
 ### ^^^ ###
 
 # completions
+zsh-users/zsh-completions
 mattmc3/zephyr path:plugins/completions
 
 # zsh-users
