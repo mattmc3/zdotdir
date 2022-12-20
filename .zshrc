@@ -13,24 +13,9 @@ source $ZDOTDIR/lib/editor.zsh
 source $ZDOTDIR/lib/environment.zsh
 source $ZDOTDIR/lib/history.zsh
 
-# use antidote for plugins
-ANTIDOTE_HOME=$ZDOTDIR/.plugins
-ANTIDOTE_DIR=$ZDOTDIR/.antidote
-#ANTIDOTE_DIR=~/Projects/mattmc3/antidote
-zstyle ':antidote:bundle' use-friendly-names 'yes'
-zstyle ':antidote:bundle' file $ZDOTDIR/.zplugins
-
-# load antidote
-if [[ ! $ZDOTDIR/.zplugins.zsh -nt $ZDOTDIR/.zplugins ]]; then
-  [[ -e $ANTIDOTE_DIR ]] \
-    || git clone --depth=1 https://github.com/mattmc3/antidote.git $ANTIDOTE_DIR
-  (
-    source $ANTIDOTE_DIR/antidote.zsh
-    envsubst <$ZDOTDIR/.zplugins | antidote bundle >$ZDOTDIR/.zplugins.zsh
-  )
-fi
-autoload -Uz $ANTIDOTE_DIR/functions/antidote
-source $ZDOTDIR/.zplugins.zsh
+# plugins
+source $ZDOTDIR/lib/antidote.zsh
+# source $ZDOTDIR/lib/unplugged.zsh
 
 # conf.d
 source $ZDOTDIR/lib/confd.zsh
