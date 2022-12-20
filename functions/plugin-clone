@@ -1,0 +1,22 @@
+# https://github.com/mattmc3/zsh_unplugged
+
+emulate -L zsh; setopt local_options extended_glob no_monitor
+local repo plugdir initfile
+ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
+for repo in $@; do
+  plugdir=$ZPLUGINDIR/${repo:t}
+  initfile=$plugdir/${repo:t}.plugin.zsh
+  if [[ ! -d $plugdir ]]; then
+    echo "Cloning $repo..."
+    () {
+      git clone -q --depth 1 --recursive --shallow-submodules https://github.com/$repo $plugdir
+      if [[ ! -e $initfile ]]; then
+        local -a initfiles=($plugdir/*.plugin.{z,}sh(N) $plugdir/*.{z,}sh{-theme,}(N))
+        (( $#initfiles )) && ln -sf "${initfiles[1]}" "$initfile"
+      fi
+    } &
+  fi
+done
+wait
+
+# vim: ft=zsh
