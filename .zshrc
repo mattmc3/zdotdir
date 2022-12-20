@@ -14,11 +14,11 @@ source $ZDOTDIR/lib/environment.zsh
 source $ZDOTDIR/lib/history.zsh
 
 # use antidote for plugins
-ANTIDOTE_HOME=$ZDOTDIR/plugins/.external
+ANTIDOTE_HOME=$ZDOTDIR/.plugins
 ANTIDOTE_DIR=$ZDOTDIR/.antidote
 #ANTIDOTE_DIR=~/Projects/mattmc3/antidote
 zstyle ':antidote:bundle' use-friendly-names 'yes'
-zstyle ':antidote:bundle' file $ZDOTDIR/.zplugins.txt
+zstyle ':antidote:bundle' file $ZDOTDIR/.zplugins
 
 # load antidote
 if [[ ! $ZDOTDIR/.zplugins.zsh -nt $ZDOTDIR/.zplugins ]]; then
