@@ -1,3 +1,7 @@
+#
+# Autoload files as zsh functions from a directory.
+#
+
 export ZFUNCDIR=${ZDOTDIR:-~/.config/zsh}/functions
 
 function autoload-dir {

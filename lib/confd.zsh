@@ -1,3 +1,7 @@
+#
+# Source zsh files in a conf.d directory.
+#
+
 typeset -a _confd=(
   ${ZDOTDIR:-~}/.zshrc.d(N/)
   ${ZDOTDIR:-~}/zshrc.d(N/)

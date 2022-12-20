@@ -1,4 +1,7 @@
-# use antidote for plugins
+#
+# Handle plugins using antidote.
+#
+
 ANTIDOTE_HOME=$ZDOTDIR/.antidote/.plugins
 ANTIDOTE_DIR=$ZDOTDIR/.antidote
 #ANTIDOTE_DIR=~/Projects/mattmc3/antidote

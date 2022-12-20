@@ -1,3 +1,7 @@
+#
+# Handle plugins using zsh_unplugged.
+#
+
 export ZPLUGINDIR=${ZDOTDIR:-~}/.unplugged
 
 #region: clone plugins

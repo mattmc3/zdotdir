@@ -1,4 +1,8 @@
 #
+# Set zsh prompt.
+#
+
+#
 # Options
 #
 
