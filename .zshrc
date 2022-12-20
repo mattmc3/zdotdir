@@ -40,11 +40,7 @@ autoload -Uz $ANTIDOTE_DIR/functions/antidote
 source $ZDOTDIR/.zplugins.zsh
 
 # conf.d
-for _confd in "$ZDOTDIR"/conf.d/*.zsh(N); do
-  [[ ${_confd:t} != '~'* ]] || continue
-  source "$_confd"
-done
-unset _confd
+source $ZDOTDIR/lib/confd.zsh
 
 # aliases
 source $ZDOTDIR/.zaliases
