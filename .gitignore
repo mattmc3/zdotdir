@@ -1,6 +1,8 @@
 .antidote/
 .cache/
+.external/
 .plugins/
+.unplugged/
 .zplugins/
 .zcompcache/
 .zcompdump*
@@ -10,7 +12,6 @@
 .zsh_history
 .zsh_plugins.zsh
 .zsh_sessions/
-.external/
 *.cache
 *.bak
 *.local
