@@ -1,6 +1,5 @@
 # zephyr plugins
 mattmc3/zephyr path:plugins/environment
-mattmc3/zephyr path:plugins/editor
 
 # local plugins
 $ZDOTDIR/plugins/golang
