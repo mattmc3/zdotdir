@@ -38,6 +38,9 @@ source $ZDOTDIR/lib/confd.zsh
 # aliases
 source $ZDOTDIR/.zaliases
 
+# completions
+source $ZDOTDIR/lib/completion.zsh
+
 # local settings
 [[ ! -f $DOTFILES.local/zsh/zshrc_local.zsh ]] || source $DOTFILES.local/zsh/zshrc_local.zsh
 

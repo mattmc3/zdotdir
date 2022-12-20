@@ -1,6 +1,3 @@
-# zephyr plugins
-mattmc3/zephyr path:plugins/environment
-
 # local plugins
 $ZDOTDIR/plugins/golang
 $ZDOTDIR/plugins/groovy
@@ -31,10 +28,7 @@ zdharma-continuum/fast-syntax-highlighting kind:defer
 
 ### ^^^ ###
 
-# completions
-zsh-users/zsh-completions
-mattmc3/zephyr path:plugins/completions
-
 # zsh-users
+zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
