@@ -35,6 +35,9 @@ source $ZDOTDIR/.zplugins.zsh
 # conf.d
 source $ZDOTDIR/lib/confd.zsh
 
+# prompt
+source $ZDOTDIR/lib/prompt.zsh
+
 # aliases
 source $ZDOTDIR/.zaliases
 
