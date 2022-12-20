@@ -6,15 +6,8 @@
 [[ ${ZPROFRC:-0} -eq 0 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-# autoload functions
-export ZFUNCDIR=${ZDOTDIR:-~/.config/zsh}/functions
-fpath=($fpath $ZFUNCDIR(/N))
-for _fnfile in $ZFUNCDIR/*(.N); do
-  autoload -Uz "${_fnfile:t}"
-done
-unset _fnfile
-
 # core
+source $ZDOTDIR/lib/zfunctions.zsh
 source $ZDOTDIR/lib/directory.zsh
 source $ZDOTDIR/lib/editor.zsh
 source $ZDOTDIR/lib/environment.zsh
