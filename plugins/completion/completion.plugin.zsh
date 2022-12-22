@@ -7,5 +7,8 @@ fpath=(
   $ZPLUGINDIR/.external/zsh-completion/src
   $fpath
 )
+
 source $ZPLUGINDIR/.external/zsh-utils/completion/completion.plugin.zsh
 compstyle zshzoo
+
+zstyle ':completion:*:*:git:*' script $ZPLUGINDIR/.external/git/git-completion.bash

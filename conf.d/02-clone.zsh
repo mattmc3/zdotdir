@@ -57,13 +57,15 @@ unset _repos
 
 #region Git
 
+# https://www.oliverspryn.com/blog/adding-git-completion-to-zsh
+
 _gitdir=${ZDOTDIR:-${XDG_CONFIG_HOME:-~/.config}/zsh}/plugins/.external/git
 if [[ ! -d $_gitdir ]]; then
   mkdir -p $_gitdir
 
   # Download the latest git completion scripts
   curl -fsSL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o $_gitdir/git-completion.bash
-  curl -fsSL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh $_gitdir/_git
+  curl -fsSL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh -o $_gitdir/_git
 fi
 
 #endregion
