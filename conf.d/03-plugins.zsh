@@ -8,7 +8,6 @@ ZSH_PROMPT=pure
 plugins=(
   abbreviations
   autosuggestions
-  colored-man-pages
   directory
   editor
   extract
