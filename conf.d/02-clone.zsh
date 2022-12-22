@@ -31,7 +31,7 @@ unset _repos
 
 # https://www.oliverspryn.com/blog/adding-git-completion-to-zsh
 
-_gitdir=${ZDOTDIR:-${XDG_CONFIG_HOME:-~/.config}/zsh}/plugins/.external/git
+_gitdir=$ZPLUGINDIR/git
 if [[ ! -d $_gitdir ]]; then
   mkdir -p $_gitdir
 
