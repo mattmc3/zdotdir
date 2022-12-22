@@ -27,7 +27,7 @@ setopt extended_glob
   fpath=($zhome/completions(-/FN) $fpath)
 
   # Set aliases.
-  source $ZDOTDIR/.zalias
+  source $ZDOTDIR/lib/alias.zsh
 
   # conf.d
   local rcfile
