@@ -8,16 +8,16 @@ My `$ZDOTDIR` [dotfiles] directory, which contains my zsh configuration.
 
 ## My setup
 
-Plugin manager:
-- [antidote](https://github.com/mattmc3/antidote)
+I like my Zsh to behave like [Fish][fish], so there's a lot of features that will be very familiar to other Fish users.
 
-Framework:
-- [zephyr](https://github.com/mattmc3/zephyr)
-
-Plugins:
-- See my [.zplugins](https://github.com/mattmc3/zdotdir/blob/main/.zplugins) file
+- A functions directory for my custom functions
+- A completions directory for my custom functions
+- A conf.d directory so that .zshrc isn't a cluttered mess
+- A plugins directory similar to [oh-my-zsh] for adding/removing shell features
 
 ## Installation
+
+Since this is my personal `$ZDOTDIR`, this installation procedure is mostly for my personal use.
 
 It's a good idea to backup existing files first:
 
@@ -118,6 +118,7 @@ I use Space Gray:
 
 ## Resources
 
+- [fish][fish]
 - [antidote][antidote]
 - [zephyr][zephyr]
 - [zshzoo][zshzoo]
@@ -129,6 +130,7 @@ I use Space Gray:
 
 [antidote]:             https://github.com/mattmc3/antidote
 [awesome-zsh-plugins]:  https://github.com/unixorn/awesome-zsh-plugins
+[fish]:                 https://fishshell.com
 [dotfiles]:             https://dotfiles.github.io/
 [homebrew]:             https://brew.sh
 [iterm2-colors]:        https://github.com/mbadolato/iTerm2-Color-Schemes
