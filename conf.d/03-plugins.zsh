@@ -1,21 +1,31 @@
 #
-# Handle plugins using antidote.
+# Load plugins.
 #
 
-ANTIDOTE_HOME=$ZDOTDIR/.zplugins
-ANTIDOTE_DIR=$ZDOTDIR/.antidote
-#ANTIDOTE_DIR=~/Projects/mattmc3/antidote
-zstyle ':antidote:bundle' use-friendly-names 'yes'
-zstyle ':antidote:bundle' file $ZDOTDIR/.zplugins.txt
+ZPLUGINDIR=$ZDOTDIR/plugins
+ZSH_PROMPT=pure
 
-# load antidote
-if [[ ! $ZDOTDIR/.zplugins.zsh -nt $ZDOTDIR/.zplugins.txt ]]; then
-  [[ -e $ANTIDOTE_DIR ]] \
-    || git clone --depth=1 https://github.com/mattmc3/antidote.git $ANTIDOTE_DIR
-  (
-    source $ANTIDOTE_DIR/antidote.zsh
-    envsubst <$ZDOTDIR/.zplugins.txt | antidote bundle >$ZDOTDIR/.zplugins.zsh
-  )
-fi
-autoload -Uz $ANTIDOTE_DIR/functions/antidote
-source $ZDOTDIR/.zplugins.zsh
+plugins=(
+  abbreviations
+  autosuggestions
+  colored-man-pages
+  directory
+  editor
+  fancy-ctrl-z
+  history
+  magic-enter
+  prompt
+  utilities
+  z
+
+  # load last
+  zopts
+  completion
+  syntax-highlighting
+  history-substring-search
+)
+
+for _p in $plugins; do
+  source $ZPLUGINDIR/${_p}/${_p}.plugin.zsh
+done
+unset _p

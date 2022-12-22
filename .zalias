@@ -82,6 +82,7 @@ alias ldot='ls -ld .*'
 # fix typos
 alias quit='exit'
 alias cd..='cd ..'
+alias zz='exit'
 
 # tar
 alias tarls="tar -tvf"

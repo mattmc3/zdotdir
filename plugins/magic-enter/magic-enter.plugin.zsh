@@ -1,6 +1,5 @@
-# config ohmyzsh
-
-ZSH=$ANTIDOTE_HOME/ohmyzsh/ohmyzsh
+: ${ZSH:=$ZPLUGINDIR/.external/ohmyzsh}
+source $ZSH/plugins/magic-enter/magic-enter.plugin.zsh
 
 MAGIC_ENTER_GIT_COMMAND='git status -sb'
 if [[ "$OSTYPE" == darwin* ]]; then

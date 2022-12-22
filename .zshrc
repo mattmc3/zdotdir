@@ -19,6 +19,9 @@ setopt extended_glob
   # Allow user completions.
   fpath=($zhome/completions(-/FN) $fpath)
 
+  # Set aliases.
+  source $ZDOTDIR/.zalias
+
   # conf.d
   local rcfile
   for rcfile in $zhome/conf.d/*.zsh(.N); do

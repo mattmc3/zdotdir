@@ -1,5 +1,5 @@
 #
-# Set Zsh options.
+# Set my preferred Zsh options.
 #
 
 # https://zsh.sourceforge.io/Doc/Release/Options.html
