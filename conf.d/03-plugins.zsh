@@ -14,6 +14,7 @@ plugins=(
   extract
   fancy-ctrl-z
   history
+  macos
   magic-enter
   prompt
   utility

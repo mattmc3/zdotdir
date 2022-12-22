@@ -1,0 +1,3 @@
+find "${@:-.}" -type f -name .DS_Store -delete
+
+# vim: ft=zsh
