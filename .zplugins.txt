@@ -1,6 +1,11 @@
 # prompt
 sindresorhus/pure kind:fpath
 
+# core
+#belak/zsh-utils path:history
+belak/zsh-utils path:editor
+#belak/zsh-utils path:prompt
+
 # framework plugins
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
@@ -22,7 +27,10 @@ zdharma-continuum/fast-syntax-highlighting kind:defer
 
 ### ^^^ ###
 
-# zsh-users
+# completions
 zsh-users/zsh-completions
+belak/zsh-utils path:completion
+
+# zsh-users
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search

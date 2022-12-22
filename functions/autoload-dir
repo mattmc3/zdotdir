@@ -1,0 +1,8 @@
+[[ -d "$1" ]] || return 1
+fpath=("$1" $fpath)
+local fn
+for fn in "$1"/*(.N); do
+  autoload -Uz $fn
+done
+
+# vim: ft=zsh
