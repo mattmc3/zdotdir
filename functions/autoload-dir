@@ -2,6 +2,7 @@
 fpath=("$1" $fpath)
 local fn
 for fn in "$1"/*(.N); do
+  [[ ${fn:t} != '_'* ]] || continue
   autoload -Uz $fn
 done
 
