@@ -10,6 +10,8 @@ _zopts=(
   PUSHD_MINUS             # Swap meanings of +/- in dirstack to be more natural.
   PUSHD_SILENT            # Do not print the dirstack after pushd/popd.
   PUSHD_TO_HOME           # pushd with no args goes to home.
+  NO_PUSHD_IGNORE_DUPS    # Allow duplicates in the stack.
+
 
   # completion
   ALWAYS_TO_END           # Move cursor to the end of a completed word.
