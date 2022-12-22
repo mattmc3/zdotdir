@@ -3,7 +3,7 @@
 #
 
 ZPLUGINDIR=$ZDOTDIR/plugins
-ZSH_PROMPT=pure
+ZSH_PROMPT=powerlevel10k
 
 plugins=(
   abbreviations

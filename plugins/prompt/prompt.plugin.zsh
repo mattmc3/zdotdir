@@ -42,7 +42,7 @@ if [[ $ZSH_PROMPT == pure ]]; then
   }
   add-zsh-hook precmd precmd_pipestatus
 
-elif [[ $ZSH_PROMPT == p10k ]]; then
+elif [[ $ZSH_PROMPT == powerlevel10k ]]; then
   source ${0:A:h}/p10k.zsh
 fi
 
