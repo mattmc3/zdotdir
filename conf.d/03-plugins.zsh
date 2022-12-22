@@ -6,22 +6,25 @@ ZPLUGINDIR=$ZDOTDIR/plugins
 ZSH_PROMPT=powerlevel10k
 
 plugins=(
-  abbreviations
-  autosuggestions
+  # essential
   directory
   editor
+  history
+  prompt
+  utility
+
+  # plugins
+  autosuggestions
   extract
   fancy-ctrl-z
-  history
   macos
   magic-enter
-  prompt
   python
   string
-  utility
   z
 
   # load last
+  abbreviations
   zopts
   completion
   syntax-highlighting
