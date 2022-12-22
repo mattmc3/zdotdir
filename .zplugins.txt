@@ -1,3 +1,5 @@
+# vim: ft=zsh
+
 # prompt
 sindresorhus/pure kind:fpath
 
@@ -13,7 +15,7 @@ ohmyzsh/ohmyzsh path:plugins/magic-enter
 
 # general plugins
 zshzoo/macos
-mattmc3/zsh-safe-rm
+# mattmc3/zsh-safe-rm
 olets/zsh-window-title
 mattmc3/zman
 rupa/z
