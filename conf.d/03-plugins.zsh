@@ -17,6 +17,7 @@ plugins=(
   macos
   magic-enter
   prompt
+  string
   utility
   z
 
