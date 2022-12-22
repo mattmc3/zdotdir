@@ -11,6 +11,7 @@ plugins=(
   colored-man-pages
   directory
   editor
+  extract
   fancy-ctrl-z
   history
   magic-enter
