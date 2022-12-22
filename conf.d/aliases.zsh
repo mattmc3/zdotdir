@@ -14,18 +14,13 @@ alias -g G='| grep -E'
 alias -g S='| sort'
 alias -g L='| less'
 alias -g M='| more'
-alias -g ..2='../..'
-alias -g ..3='../../..'
-alias -g ..4='../../../..'
-alias -g ..5='../../../../..'
-alias -g ..6='../../../../../..'
-alias -g ..7='../../../../../../..'
-alias -g ..8='../../../../../../../..'
-alias -g ..9='../../../../../../../../..'
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
+
+# '..n' goes up n directories
+for _i ({1..9}) alias "$_i"="cd +${_i}"; unset _i
 
 # single character shortcuts - be sparing!
 alias _=sudo
