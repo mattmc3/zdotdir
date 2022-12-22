@@ -15,7 +15,7 @@ plugins=(
   history
   magic-enter
   prompt
-  utilities
+  utility
   z
 
   # load last
