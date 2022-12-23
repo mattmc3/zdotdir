@@ -91,6 +91,9 @@ alias untar="tar -xf"
 # date/time
 alias timestamp="date '+%Y-%m-%d %H:%M:%S'"
 alias datestamp="date '+%Y-%m-%d'"
+alias isodate="date +%Y-%m-%dT%H:%M:%S%z"
+alias utc="date -u +%Y-%m-%dT%H:%M:%SZ"
+alias unixepoch="date +%s"
 
 # find
 alias fd='find . -type d -name'
