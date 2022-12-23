@@ -22,6 +22,7 @@ plugins=(
   magic-enter
   python
   string
+  sudo
   z
 
   # load last
