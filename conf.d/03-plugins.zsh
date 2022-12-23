@@ -15,6 +15,7 @@ plugins=(
 
   # plugins
   autosuggestions
+  clipboard
   extract
   fancy-ctrl-z
   macos
