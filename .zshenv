@@ -27,19 +27,6 @@ export EDITOR="${EDITOR:-vim}"
 export VISUAL="${VISUAL:-nano}"
 export PAGER="${PAGER:-less}"
 
-# Set the default Less options.
-# Mouse-wheel scrolling is disabled with -X (disable screen clearing)
-export LESS='-g -i -M -R -S -w -z-4'
-
-# Set the Less input preprocessor.
-# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system
-if (( $#commands[(i)lesspipe(|.sh)] )); then
-  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
-fi
-
-# Use `< file` to quickly view the contents of any file.
-[[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
-
 # Regional settings.
 export TZ="America/New_York"
 export LANG="en_US.UTF-8"
@@ -54,8 +41,29 @@ typeset -gU cdpath fpath mailpath path
 #   $cdpath
 # )
 
+# Set the list of directories that Zsh searches for programs.
+path=(
+  $HOME/{,s}bin(N)
+  /opt/{homebrew,local}/{,s}bin(N)
+  /usr/local/{,s}bin(N)
+  $path
+)
+
+# Set the default Less options.
+# Mouse-wheel scrolling is disabled with -X (disable screen clearing)
+export LESS='-g -i -M -R -S -w -z-4'
+
+# Set the Less input preprocessor.
+# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system
+if (( $#commands[(i)lesspipe(|.sh)] )); then
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
 # macOS
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER="${BROWSER:-open}"
   export SHELL_SESSIONS_DISABLE=1
 fi
+
+# Use `< file` to quickly view the contents of any file.
+[[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
