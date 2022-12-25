@@ -58,9 +58,11 @@ zstyle ':completion::complete:*' cache-path "$XDG_CACHE_HOME/zsh/compcache"
 autoload -Uz compinit
 _comp_files=($ZSH_COMPDUMP(Nmh-20))
 if (( $#_comp_files )); then
-  compinit -i -C -d "$ZSH_COMPDUMP"
+  compinit -C -d "$ZSH_COMPDUMP"
 else
   compinit -i -d "$ZSH_COMPDUMP"
+  # Keep $_zcompdump younger than cache time even if it isn't regenerated.
+  touch "$_zcompdump"
 fi
 
 # Compile compdump, if modified, in background to increase startup speed.
