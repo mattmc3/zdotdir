@@ -9,6 +9,7 @@
 #
 
 setopt AUTO_PUSHD            # Push the old directory onto the stack on cd.
+setopt PUSHD_MINUS           # Swap meanings of +/- in dirstack to be more natural.
 setopt PUSHD_SILENT          # Do not print the directory stack after pushd or popd.
 setopt PUSHD_TO_HOME         # Push to home directory when no argument is given.
 setopt CDABLE_VARS           # Change directory to a path stored in a variable.
@@ -24,4 +25,10 @@ setopt NO_PUSHD_IGNORE_DUPS  # Allow duplicates in the stack.
 
 alias -- -='cd -'
 alias dirh='dirs -v'
-for _idx ({1..9}) alias "$_idx"="cd +${_idx}"; unset _idx
+for _idx ({1..9}) alias "$_idx"="cd -${_idx}"
+_balloons=(..)
+for _idx ({1..9}); do
+  alias -g "..${_idx}"="${(j:/:)_balloons}"
+  _balloons+=..
+done
+unset _idx _balloons
