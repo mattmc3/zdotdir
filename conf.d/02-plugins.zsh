@@ -22,11 +22,16 @@ plugins=(
   extract
   fancy-ctrl-z
   macos
-  magic-enter
   python
   string
   sudo
   z
+
+  # omz plugins
+  fancy-ctrl-z
+  magic-enter
+  sudo
+
 
   # load last
   abbreviations
