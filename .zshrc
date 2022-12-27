@@ -16,24 +16,14 @@ setopt extended_glob
 # Use a zsh home other than $HOME.
 zhome=${ZDOTDIR:-${XDG_CONFIG_HOME:-~/.config}/zsh}
 
-# Autoload functions dir.
-export ZFUNCDIR=$zhome/functions
-[[ -d $ZFUNCDIR ]] || mkdir -p $ZFUNCDIR
-fpath=($ZFUNCDIR $fpath)
-autoload -Uz autoload-dir
-autoload-dir $ZFUNCDIR
-
-# Allow user completions.
-fpath=($zhome/completions(-/FN) $fpath)
-
-# Set aliases.
-source $zhome/lib/alias.zsh
-
 # conf.d
 for rcfile in $zhome/conf.d/*.zsh(.N); do
   [[ ${rcfile:t} != '~'* ]] || continue
   source "$rcfile"
 done
+
+# Set aliases.
+source $zhome/lib/alias.zsh
 
 # Cleanup
 unset zhome rcfile
