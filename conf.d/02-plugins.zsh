@@ -19,8 +19,6 @@ plugins=(
   # plugins
   autosuggestions
   clipboard
-  extract
-  fancy-ctrl-z
   macos
   python
   string
@@ -28,10 +26,10 @@ plugins=(
   z
 
   # omz plugins
+  extract
   fancy-ctrl-z
   magic-enter
   sudo
-
 
   # load last
   abbreviations
@@ -43,9 +41,11 @@ plugins=(
 
 source $ZEPHYR_HOME/zephyr.zsh
 
-# set prompt and emacs keybindings
+# set prompt
 prompt powerlevel10k
 source $ZDOTDIR/lib/p10k.zsh
+
+# Use Emacs keys.
 bindkey -e
 
 # Set plugin variables.

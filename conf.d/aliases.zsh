@@ -16,16 +16,14 @@ alias -g L='| less'
 alias -g M='| more'
 alias -g ...='../..'
 alias -g ....='../../..'
-alias -g .....='../../../..'
-alias -g ......='../../../../..'
-
-# setup 'cd ..2' aliases
-typeset -a _dotdot=('..')
-for _idx ({1..9}); do
-  alias -g ..${_idx}="${(j:/:)_dotdot}"
-  _dotdot+=('..')
-done
-unset _idx _dotdot
+alias -g ..2='../..'
+alias -g ..3='../../..'
+alias -g ..4='../../../..'
+alias -g ..5='../../../../..'
+alias -g ..6='../../../../../..'
+alias -g ..7='../../../../../../..'
+alias -g ..8='../../../../../../../..'
+alias -g ..9='../../../../../../../../..'
 
 # single character shortcuts - be sparing!
 alias -- -='cd -'
