@@ -1,4 +1,0 @@
-#compdef fnhelp
-
-# show files in the functions dir (exclude dirs)
-_path_files -W "$ZDOTDIR/functions" -g "**/*(.)"
