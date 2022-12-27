@@ -39,7 +39,8 @@ plugins=(
 source $ZEPHYR_HOME/zephyr.zsh
 
 # set prompt and emacs keybindings
-prompt pure
+prompt powerlevel10k
+source $ZDOTDIR/lib/p10k.zsh
 bindkey -e
 
 # Set plugin variables.
