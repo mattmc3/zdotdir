@@ -8,6 +8,7 @@ ZEPHYR_HOME=$ZDOTDIR/.zephyr
 plugins=(
   # core
   zfunctions
+  environment
   colors
   directory
   editor
