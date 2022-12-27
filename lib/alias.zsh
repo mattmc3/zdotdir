@@ -19,12 +19,17 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
 
-# '..n' goes up n directories
-for _i ({1..9}) alias "$_i"="cd +${_i}"; unset _i
+# setup 'cd ..2' aliases
+typeset -a _dotdot=('..')
+for _idx ({1..9}); do
+  alias -g ..${_idx}="${(j:/:)_dotdot}"
+  _dotdot+=('..')
+done
+unset _idx _dotdot
 
 # single character shortcuts - be sparing!
+alias -- -='cd -'
 alias _=sudo
-alias d='dirs -v'
 alias l=ls
 alias o='open'
 
@@ -74,6 +79,10 @@ else
 fi
 alias grep="grep --color=auto --exclude-dir={.git,.svn}"
 
+# dirs
+alias dirh='dirs -v'
+for _idx ({1..9}) alias "$_idx"="cd -${_idx}"
+
 # more ways to ls
 alias ll='ls -lh'
 alias la='ls -lAh'
@@ -114,7 +123,7 @@ alias urlencode='python3 -c "import sys, urllib.parse as ul; \
 # history
 # list the ten most used commands
 alias history-stat="command history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
-alias history="fc -li"
+alias hist="fc -li"
 
 # misc
 alias please=sudo
@@ -133,8 +142,7 @@ alias autorotate="jhead -autorot"
 
 # set initial working directory
 IWD=${IWD:-$PWD}
-alias iwd='echo $IWD'
-alias cdiwd='cd "$IWD"'
+alias iwd='cd $IWD'
 
 # dotfiles
 alias dotf='cd "$DOTFILES"'
