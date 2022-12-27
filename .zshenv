@@ -1,9 +1,10 @@
-#
+###
 # Define Zsh environment variables.
-#
+###
 
-# ~/.zshenv needs to remain, but it can source this file
-# echo ". ~/.config/zsh/.zshenv" > ~/.zshenv
+# Even with `$ZDOTDIR` set ~/.zshenv needs to remain.
+# But, you can symlink it to this file
+# ln -s ~/.config/zsh/.zshenv ~/.zshenv
 
 export ZDOTDIR=${ZDOTDIR:-~/.config/zsh}
 
