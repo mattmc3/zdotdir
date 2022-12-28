@@ -13,7 +13,6 @@ plugins=(
   directory
   editor
   history
-  prompt
   utility
 
   # plugins
@@ -34,16 +33,19 @@ plugins=(
   # load last
   abbreviations
   zopts
-  completion
+  #prompt
+  completions
   syntax-highlighting
   history-substring-search
 )
-
 source $ZEPHYR_HOME/zephyr.zsh
 
-# set prompt
-prompt powerlevel10k
+# Set prompt.
+source $ZEPHYR_HOME/.external/powerlevel10k/powerlevel10k.zsh-theme
 source $ZDOTDIR/lib/p10k.zsh
+
+# Set completion style.
+compstyle zephyr
 
 # Use Emacs keys.
 bindkey -e
