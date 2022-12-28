@@ -42,17 +42,31 @@ export LPASS_AGENT_TIMEOUT="${LPASS_AGENT_TIMEOUT:-0}"
 #endregion
 
 # Set $PATH.
+
 path=(
-  ~/bin(N)
-  $HOMEBREW_PREFIX/{bin,sbin}(N)
-  /usr/local/{bin,sbin}(N)
-  ~/.emacs.d/bin(N)
-  ~/.config/emacs/bin(N)
+  $HOME/{,s}bin(N)
+  /opt/{homebrew,local}/{,s}bin(N)
+  /usr/local/{,s}bin(N)
+  $path
+)
+
+path=(
+  # core
+  $HOME/{,s}bin(N)
+  /opt/{homebrew,local}/{,s}bin(N)
+  /usr/local/{,s}bin(N)
+
+  # emacs
+  $HOME/.emacs.d/bin(N)
+  $HOME/.config/emacs/bin(N)
+
+  # apps
   $HOMEBREW_PREFIX/opt/curl/bin(N)
   $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
   $HOMEBREW_PREFIX/opt/ruby/bin(N)
   $HOMEBREW_PREFIX/lib/ruby/gems/3.1.0/bin(N)
-  ~/.gem/ruby/3.1.0/bin(N)
+  $HOME/.gem/ruby/*/bin(N)
   $HOMEBREW_PREFIX/share/npm/bin(N)
+
   $path
 )
