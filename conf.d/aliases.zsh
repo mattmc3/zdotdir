@@ -1,11 +1,81 @@
-#
-# Aliases
-#
+###
+# My aliases
+###
 
 # https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789#.vh7hhm6th
 # https://github.com/webpro/dotfiles/blob/master/system/.alias
 # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
+
+#region Zephyr
+
+# Only use these aliases if not using Zephyr
+if [[ -z "$ZEPHYR_HOME" ]]; then
+  #
+  # Directory
+  #
+
+  alias -- -='cd -'
+  alias dirh='dirs -v'
+  for _idx ({1..9}) alias "$_idx"="cd -${_idx}"
+  alias -g ..1='..'
+  alias -g ..2='../..'
+  alias -g ..3='../../..'
+  alias -g ..4='../../../..'
+  alias -g ..5='../../../../..'
+  alias -g ..6='../../../../../..'
+  alias -g ..7='../../../../../../..'
+  alias -g ..8='../../../../../../../..'
+  alias -g ..9='../../../../../../../../..'
+
+  #
+  # History
+  #
+
+  alias history-stat="command history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
+  alias hist='fc -li'
+
+  #
+  # Utility
+  #
+
+  # Common commands everywhere
+  if [[ "$OSTYPE" == darwin* ]]; then
+    # if there's ever a Linux command that should work on MacOS,
+    # put it here
+  elif [[ "$OSTYPE" == cygwin* ]]; then
+    alias open='cygstart'
+    alias pbcopy='tee > /dev/clipboard'
+    alias pbpaste='cat /dev/clipboard'
+  elif [[ "$OSTYPE" == linux-android ]]; then
+    alias open='termux-open'
+    alias pbcopy='termux-clipboard-set'
+    alias pbpaste='termux-clipboard-get'
+  else
+    alias open='xdg-open'
+
+    if [[ -n $DISPLAY ]]; then
+      if (( $+commands[xclip] )); then
+        alias pbcopy='xclip -selection clipboard -in'
+        alias pbpaste='xclip -selection clipboard -out'
+      elif (( $+commands[xsel] )); then
+        alias pbcopy='xsel --clipboard --input'
+        alias pbpaste='xsel --clipboard --output'
+      fi
+    else
+      if (( $+commands[wl-copy] && $+commands[wl-paste] )); then
+        alias pbcopy='wl-copy'
+        alias pbpaste='wl-paste'
+      fi
+    fi
+  fi
+
+  # Load more specific zsh 'run-help' function.
+  (( $+aliases[run-help] )) && unalias run-help && autoload -Uz run-help
+  alias help=run-help
+fi
+
+#endregion
 
 # zsh suffix aliases
 alias -g H='| head'
@@ -14,53 +84,11 @@ alias -g G='| grep -E'
 alias -g S='| sort'
 alias -g L='| less'
 alias -g M='| more'
-alias -g ...='../..'
-alias -g ....='../../..'
-alias -g ..2='../..'
-alias -g ..3='../../..'
-alias -g ..4='../../../..'
-alias -g ..5='../../../../..'
-alias -g ..6='../../../../../..'
-alias -g ..7='../../../../../../..'
-alias -g ..8='../../../../../../../..'
-alias -g ..9='../../../../../../../../..'
 
 # single character shortcuts - be sparing!
-alias -- -='cd -'
 alias _=sudo
 alias l=ls
 alias o='open'
-
-# Common commands everywhere
-if [[ "$OSTYPE" == darwin* ]]; then
-  # if there's ever a Linux command that should work on MacOS,
-  # put it here
-elif [[ "$OSTYPE" == cygwin* ]]; then
-  alias open='cygstart'
-  alias pbcopy='tee > /dev/clipboard'
-  alias pbpaste='cat /dev/clipboard'
-elif [[ "$OSTYPE" == linux-android ]]; then
-  alias open='termux-open'
-  alias pbcopy='termux-clipboard-set'
-  alias pbpaste='termux-clipboard-get'
-else
-  alias open='xdg-open'
-
-  if [[ -n $DISPLAY ]]; then
-    if (( $+commands[xclip] )); then
-      alias pbcopy='xclip -selection clipboard -in'
-      alias pbpaste='xclip -selection clipboard -out'
-    elif (( $+commands[xsel] )); then
-      alias pbcopy='xsel --clipboard --input'
-      alias pbpaste='xsel --clipboard --output'
-    fi
-  else
-    if (( $+commands[wl-copy] && $+commands[wl-paste] )); then
-      alias pbcopy='wl-copy'
-      alias pbpaste='wl-paste'
-    fi
-  fi
-fi
 
 # mask built-ins with better defaults
 # alias cp='cp -i'
@@ -76,10 +104,6 @@ else
   alias ls="ls --group-directories-first --color=auto"
 fi
 alias grep="grep --color=auto --exclude-dir={.git,.svn}"
-
-# dirs
-alias dirh='dirs -v'
-for _idx ({1..9}) alias "$_idx"="cd -${_idx}"
 
 # more ways to ls
 alias ll='ls -lh'
@@ -117,11 +141,6 @@ alias urldecode='python3 -c "import sys, urllib.parse as ul; \
     print(ul.unquote_plus(sys.argv[1]))"'
 alias urlencode='python3 -c "import sys, urllib.parse as ul; \
     print (ul.quote_plus(sys.argv[1]))"'
-
-# history
-# list the ten most used commands
-alias history-stat="command history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
-alias hist="fc -li"
 
 # misc
 alias please=sudo
@@ -168,9 +187,5 @@ alias todos="$VISUAL $HOME/Desktop/todo.txt"
 if [[ "$OSTYPE" == darwin* ]]; then
   alias code="open -b com.microsoft.VSCode"
 fi
-
-# Load more specific zsh 'run-help' function.
-(( $+aliases[run-help] )) && unalias run-help && autoload -Uz run-help
-alias help=run-help
 
 # vim: ft=zsh
