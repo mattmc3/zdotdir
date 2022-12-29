@@ -1,3 +1,0 @@
-brew leaves | xargs -n1 brew desc
-
-# vim: ft=zsh
