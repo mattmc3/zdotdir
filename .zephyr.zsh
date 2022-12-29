@@ -26,7 +26,7 @@
 
 # Set the Zephyr plugins to load (browse plugins).
 # The order matters.
-# zstyle ':zephyr:load' plugin \
+# zstyle ':zephyr:load' plugins \
 #   'environment' \
 #   'terminal' \
 #   'editor' \
@@ -37,6 +37,33 @@
 #   'completion' \
 #   'history-substring-search' \
 #   'prompt'
+
+my_plugins=(
+  zfunctions
+  environment
+  color
+  directory
+  editor
+  history
+  utility
+
+  # plugins
+  autosuggestions
+  clipboard
+  macos
+  python
+  string
+  z
+
+  # load last
+  abbreviations
+  zopts
+  #prompt
+  completion
+  syntax-highlighting
+  history-substring-search
+)
+zstyle ':zephyr:load' plugins $my_plugins
 
 #
 # Autosuggestions
