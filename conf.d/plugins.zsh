@@ -41,7 +41,7 @@ if [[ -n "$key_info" ]]; then
 fi
 
 # zsh-utils
-compstyle_zshzoo_setup
+# compstyle_zshzoo_setup
 
 # rupa/z or agkozak/zsh-z
 _Z_DATA=${XDG_DATA_HOME:-~/.local/share}/z/data

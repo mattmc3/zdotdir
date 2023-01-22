@@ -1,10 +1,10 @@
-# https://unix.stackexchange.com/questions/685666/zsh-how-do-i-remove-block-prefixes-when-writing-multi-line-statements-in-intera
-# use 2 space indent for each new level
-PS2='${${${(%):-%_}//[^ ]}// /  }    '
-
 # Pure prompt
 PURE_PROMPT_SYMBOL="%%"
 prompt pure
+
+# https://unix.stackexchange.com/questions/685666/zsh-how-do-i-remove-block-prefixes-when-writing-multi-line-statements-in-intera
+# use 2 space indent for each new level
+PS2='${${${(%):-%_}//[^ ]}// /  }    '
 
 # show exit code on right
 function precmd_pipestatus {
