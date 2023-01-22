@@ -8,6 +8,7 @@ zsh-users/zsh-completions path:src kind:fpath
 romkatv/zsh-bench kind:path
 
 # framework plugins
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/magic-enter
