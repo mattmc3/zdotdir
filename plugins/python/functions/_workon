@@ -1,3 +1,0 @@
-#compdef workon
-
-_files -W "$WORKON_HOME"

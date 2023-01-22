@@ -6,8 +6,8 @@
 export DOTFILES=${DOTFILES:-~/.config/dotfiles}
 
 # editors
-export EDITOR=nvim
-export VISUAL=code
+export EDITOR=vim
+export VISUAL=vim
 
 # homebrew
 if [[ "$OSTYPE" == darwin* ]] && (( $+commands[brew] )); then
@@ -36,20 +36,9 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export GROOVY_TURN_OFF_JAVA_WARNINGS="true"
 fi
 
-# lpass
-export LPASS_AGENT_TIMEOUT="${LPASS_AGENT_TIMEOUT:-0}"
-
 #endregion
 
 # Set $PATH.
-
-path=(
-  $HOME/{,s}bin(N)
-  /opt/{homebrew,local}/{,s}bin(N)
-  /usr/local/{,s}bin(N)
-  $path
-)
-
 path=(
   # core
   $HOME/{,s}bin(N)
@@ -64,7 +53,7 @@ path=(
   $HOMEBREW_PREFIX/opt/curl/bin(N)
   $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
   $HOMEBREW_PREFIX/opt/ruby/bin(N)
-  $HOMEBREW_PREFIX/lib/ruby/gems/3.1.0/bin(N)
+  $HOMEBREW_PREFIX/lib/ruby/gems/*/bin(N)
   $HOME/.gem/ruby/*/bin(N)
   $HOMEBREW_PREFIX/share/npm/bin(N)
 

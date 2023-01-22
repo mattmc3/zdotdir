@@ -1,0 +1,12 @@
+###
+# .zstylerc - zstyle settings for features/plugins that need them.
+###
+
+#
+# Editor
+#
+
+# Set this to whatever you want to use to edit a command
+zstyle :zle:edit-command-line editor hx
+
+# vim: ft=zsh

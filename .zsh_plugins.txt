@@ -1,0 +1,32 @@
+# prompts
+sindresorhus/pure kind:fpath
+
+# extra completions
+zsh-users/zsh-completions path:src kind:fpath
+
+# utility plugins
+romkatv/zsh-bench kind:path
+
+# framework plugins
+ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+
+# general plugins
+mattmc3/zman
+agkozak/zsh-z
+
+# core plugins
+belak/zsh-utils path:editor
+belak/zsh-utils path:history
+belak/zsh-utils path:prompt
+belak/zsh-utils path:utility
+belak/zsh-utils path:completion
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+
+# deferred plugins
+olets/zsh-abbr kind:defer
+zdharma-continuum/fast-syntax-highlighting kind:defer
+
+# vim: ft=zsh
