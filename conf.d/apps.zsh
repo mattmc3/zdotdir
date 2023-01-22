@@ -1,13 +1,9 @@
 ###
-# Setup environment.
+# Setup environment for various apps
 ###
 
 # dotfiles
 export DOTFILES=${DOTFILES:-~/.config/dotfiles}
-
-# editors
-export EDITOR=vim
-export VISUAL=vim
 
 # homebrew
 if [[ "$OSTYPE" == darwin* ]] && (( $+commands[brew] )); then
