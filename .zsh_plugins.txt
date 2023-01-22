@@ -26,7 +26,7 @@ zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 
 # deferred plugins
-olets/zsh-abbr kind:defer
+# olets/zsh-abbr kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
 # vim: ft=zsh
