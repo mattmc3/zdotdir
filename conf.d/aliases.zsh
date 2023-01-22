@@ -183,9 +183,4 @@ alias pyva="source .venv/bin/activate"
 alias t="todo.sh"
 alias todos="$VISUAL $HOME/Desktop/todo.txt"
 
-# vscode
-if [[ "$OSTYPE" == darwin* ]]; then
-  alias code="open -b com.microsoft.VSCode"
-fi
-
 # vim: ft=zsh
