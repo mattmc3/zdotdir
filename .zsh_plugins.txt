@@ -18,11 +18,21 @@ mattmc3/zman
 agkozak/zsh-z
 
 # core plugins
-belak/zsh-utils path:editor
-belak/zsh-utils path:history
-belak/zsh-utils path:prompt
-belak/zsh-utils path:utility
-belak/zsh-utils path:completion
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/prompt
+mattmc3/zephyr path:plugins/utility
+mattmc3/zephyr path:plugins/completion
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/macos
+mattmc3/zephyr path:plugins/brew
+mattmc3/zephyr path:plugins/color
+
+# belak/zsh-utils path:editor
+# belak/zsh-utils path:history
+# belak/zsh-utils path:prompt
+# belak/zsh-utils path:utility
+# belak/zsh-utils path:completion
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 
