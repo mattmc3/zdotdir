@@ -1,10 +1,7 @@
-# https://github.com/sorin-ionescu/prezto/blob/master/modules/directory/init.zsh
 #
 # Sets directory options and defines directory aliases.
 #
-# Authors:
-#   James Cox <james@imaj.es>
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+# https://github.com/sorin-ionescu/prezto/blob/master/modules/directory/init.zsh
 #
 
 #
