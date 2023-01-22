@@ -4,7 +4,7 @@
 alias zprofrc="ZPROFRC=1 zsh"
 
 # Zstyles
-[[ -f $ZDOTDIR/.zstylerc ]] && source $ZDOTDIR/.zstylerc
+[[ -f $ZDOTDIR/.zstyles ]] && source $ZDOTDIR/.zstyles
 
 # Autoload functions directory.
 fpath=($ZDOTDIR/functions $fpath)
