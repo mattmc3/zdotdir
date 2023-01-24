@@ -38,15 +38,15 @@ zle -N self-insert url-quote-magic
 
 # macOS utils everywhere
 if [[ "$OSTYPE" == cygwin* ]]; then
-  (( $+functions[open] )) || alias open='cygstart'
+  (( $+commands[open] )) || alias open='cygstart'
   alias pbcopy='tee > /dev/clipboard'
   alias pbpaste='cat /dev/clipboard'
 elif [[ "$OSTYPE" == linux-android ]]; then
-  (( $+functions[open] )) || alias open='termux-open'
+  (( $+commands[open] )) || alias open='termux-open'
   alias pbcopy='termux-clipboard-set'
   alias pbpaste='termux-clipboard-get'
 elif [[ "$OSTYPE" != darwin* ]]; then
-  (( $+functions[open] )) || alias open='xdg-open'
+  (( $+commands[open] )) || alias open='xdg-open'
   if [[ -n $DISPLAY ]]; then
     if (( $+commands[xclip] )); then
       alias pbcopy='xclip -selection clipboard -in'
