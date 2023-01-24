@@ -1,0 +1,6 @@
+if ! [[ -f $ZDOTDIR/.antidote/antidote.zsh ]]; then
+  echo >&2 "Antidote not found '$ZDOTDIR/.antidote/antidote.zsh'."
+  return 1
+fi
+source $ZDOTDIR/.antidote/antidote.zsh
+antidote "$@"
