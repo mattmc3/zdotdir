@@ -63,6 +63,10 @@ elif [[ "$OSTYPE" != darwin* ]]; then
   fi
 fi
 
+(( $+commands[envsubst] )) || function envsubst {
+  python -c 'import os,sys;[sys.stdout.write(os.path.expandvars(l)) for l in sys.stdin]'
+}
+
 # Load more specific 'run-help' function from $fpath.
 (( $+aliases[run-help] )) && unalias run-help && autoload -Uz run-help
 alias help=run-help
