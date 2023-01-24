@@ -1,3 +1,7 @@
+###
+# history - Set Zsh history options.
+###
+
 #
 # Options
 #
@@ -26,8 +30,8 @@ setopt $zopts_history
 
 HISTFILE=${XDG_DATA_HOME:=~/.local/share}/zsh/history
 [[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
-SAVEHIST=10000
-HISTSIZE=10000
+HISTSIZE=5000   # max history in session
+SAVEHIST=10000  # max entries in HISTFILE
 
 #
 # Aliases
