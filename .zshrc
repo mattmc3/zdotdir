@@ -2,6 +2,9 @@
 [[ ${ZPROFRC:-0} -eq 0 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
+# zsh options
+setopt extended_glob
+
 # zstyles
 [[ -f $ZDOTDIR/.zstyles ]] && source $ZDOTDIR/.zstyles
 
@@ -20,16 +23,16 @@ ANTIDOTE_HOME=$ZDOTDIR/plugins/.external
   git clone --depth=1 https://github.com/mattmc3/antidote.git $ZDOTDIR/.antidote
 
 # Generate a static plugin file.
-zsh_plugins=$ZDOTDIR/.zsh_plugins.txt
-if [[ ! ${zsh_plugins:r}.zsh -nt ${zsh_plugins} ]]; then
+zsh_plugins=$ZDOTDIR/.zplugins
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins} ]]; then
   (
     source $ZDOTDIR/.antidote/antidote.zsh
-    envsubst <${zsh_plugins} | antidote bundle >${zsh_plugins:r}.zsh
+    envsubst <${zsh_plugins} | antidote bundle >${zsh_plugins}.zsh
   )
 fi
 
 # source the static plugins file
-source ${zsh_plugins:r}.zsh
+source ${zsh_plugins}.zsh
 
 #endregion
 
