@@ -10,15 +10,6 @@ alias zprofrc="ZPROFRC=1 zsh"
 fpath=($ZDOTDIR/functions $fpath)
 autoload -Uz $fpath[1]/*(.:t)
 
-# Use antidote plugins to drive config
-[[ -d ${ZDOTDIR:-~}/.antidote ]] ||
-  git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
-source ${ZDOTDIR:-~}/.antidote/antidote.zsh
-antidote load
-
-# Zsh options
-setopt extended_glob no_beep no_hist_beep
-
 # Source eveything in conf.d
 for _rcfile in $ZDOTDIR/conf.d/*.zsh(.N); do
   source "$_rcfile"
