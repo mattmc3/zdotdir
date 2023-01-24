@@ -1,4 +1,5 @@
 # prompts
+$ZDOTDIR/plugins/p10k-instaprompt
 sindresorhus/pure kind:fpath
 romkatv/powerlevel10k
 
@@ -8,7 +9,16 @@ zsh-users/zsh-completions path:src kind:fpath
 # utility plugins
 romkatv/zsh-bench kind:path
 
-# framework plugins
+# core plugins
+$ZDOTDIR/plugins/environment
+$ZDOTDIR/plugins/history
+$ZDOTDIR/plugins/directory
+$ZDOTDIR/plugins/color
+$ZDOTDIR/plugins/utility
+$ZDOTDIR/plugins/brew
+# $ZDOTDIR/plugins/macos
+
+# OMZ plugins
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
@@ -17,25 +27,21 @@ ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 
+# Prezto plugins
+sorin-ionescu/prezto path:modules/editor
+sorin-ionescu/prezto path:modules/terminal
+
 # general plugins
 mattmc3/zman
 agkozak/zsh-z
-
-# core plugins
-zsh-users/zsh-completions path:src kind:fpath
-sorin-ionescu/prezto path:modules/environment
-sorin-ionescu/prezto path:modules/directory
-sorin-ionescu/prezto path:modules/helper
-sorin-ionescu/prezto path:modules/osx
-sorin-ionescu/prezto path:modules/editor
-sorin-ionescu/prezto path:modules/utility
-sorin-ionescu/prezto path:modules/terminal
-sorin-ionescu/prezto path:modules/completion
 zsh-users/zsh-history-substring-search
 
 # deferred plugins
 # olets/zsh-abbr kind:defer
 zsh-users/zsh-autosuggestions kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
+
+# final plugins
+$ZDOTDIR/plugins/completion
 
 # vim: ft=zsh
