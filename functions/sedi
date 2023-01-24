@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+#function sedi {
+if sed --version &>/dev/null; then
+  # GNU
+  sed -i -- "$@"
+else
+  # macOS/BSD
+  sed -i "" "$@"
+fi
+#}
