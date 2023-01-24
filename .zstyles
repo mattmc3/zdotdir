@@ -3,8 +3,17 @@
 ###
 
 #
+# Antidote
+#
+
+zstyle ':antidote:bundle' use-friendly-names 'yes'
+
+#
 # Editor
 #
+
+# Expand ... to ../..
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Set this to whatever you want to use to edit a command
 zstyle :zle:edit-command-line editor hx
