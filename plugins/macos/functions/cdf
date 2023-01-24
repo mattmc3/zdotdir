@@ -1,0 +1,4 @@
+##? cdf - Change to the current Finder directory.
+cd "$(pfd)"
+
+# vim: ft=zsh
