@@ -1,0 +1,3 @@
+#!/bin/zsh
+##? brewup - `brew update && brew upgrade`
+brew update && brew upgrade
