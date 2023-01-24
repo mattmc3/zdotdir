@@ -1,4 +1,3 @@
-#!/bin/zsh
 export ZDOTDIR=${ZDOTDIR:-~/.zsh}
 
 export XDG_CONFIG_HOME=~/.config
@@ -10,3 +9,5 @@ export XDG_RUNTIME_DIR=~/.xdg
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s $ZDOTDIR/.zprofile ]]; then
   . $ZDOTDIR/.zprofile
 fi
+
+# vim: ft=zsh

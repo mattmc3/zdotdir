@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 ##? funced - edit the function specified
 
 #function funced {
@@ -58,3 +56,5 @@ else
 fi
 
 #}
+
+# vim: ft=zsh

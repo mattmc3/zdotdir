@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 #
 # Options
 #
@@ -24,3 +22,5 @@ if [[ ${ZSH_THEME} == powerlevel10k ]]; then
 elif [[ ${ZSH_THEME} == pure ]]
   # TODO
 fi
+
+# vim: ft=zsh

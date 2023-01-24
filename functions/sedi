@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 #function sedi {
 if sed --version &>/dev/null; then
   # GNU
@@ -9,3 +7,5 @@ else
   sed -i "" "$@"
 fi
 #}
+
+# vim: ft=zsh

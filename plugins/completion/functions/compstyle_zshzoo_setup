@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # Defaults.
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
@@ -72,3 +70,5 @@ zstyle ':completion:*:*:kill:*' insert-ids single
 zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
+
+# vim: ft=zsh

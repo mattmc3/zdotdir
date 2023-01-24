@@ -1,3 +1,4 @@
-#!/bin/zsh
 ##? brew-desc - Show descriptions of brew installs.
 brew leaves | xargs brew desc --eval-all
+
+# vim: ft=zsh

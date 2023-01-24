@@ -1,4 +1,3 @@
-#!/bin/zsh
 setopt local_options extended_glob
 
 local o_force=()
@@ -31,3 +30,5 @@ fi
     zcompile "$ZSH_COMPDUMP"
   fi
 ) &!
+
+# vim: ft=zsh

@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 ##? funcsave - save a function to $ZFUNCDIR for lazy loading
 
 #function funcsave {
@@ -23,3 +21,5 @@ autoload +X "$1" > /dev/null
 type -f "$1" | awk 'NR>2 {print prev} {gsub(/^\t/, "", $0); prev=$0}' >| "$ZFUNCDIR/$1"
 
 #}
+
+# vim: ft=zsh

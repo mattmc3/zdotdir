@@ -1,4 +1,3 @@
-#!/bin/zsh
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
@@ -22,3 +21,5 @@ export LESS='-g -i -M -R -S -w -z-4'
 
 # Use `< file` to quickly view the contents of any file.
 READNULLCMD=$PAGER
+
+# vim: ft=zsh
