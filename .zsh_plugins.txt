@@ -16,7 +16,11 @@ $ZDOTDIR/plugins/directory
 $ZDOTDIR/plugins/color
 $ZDOTDIR/plugins/utility
 $ZDOTDIR/plugins/brew
-# $ZDOTDIR/plugins/macos
+$ZDOTDIR/plugins/macos
+
+# Prezto plugins
+sorin-ionescu/prezto path:modules/editor
+sorin-ionescu/prezto path:modules/terminal
 
 # OMZ plugins
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
@@ -26,10 +30,6 @@ ohmyzsh/ohmyzsh path:plugins/copypath
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/magic-enter
-
-# Prezto plugins
-sorin-ionescu/prezto path:modules/editor
-sorin-ionescu/prezto path:modules/terminal
 
 # general plugins
 mattmc3/zman
