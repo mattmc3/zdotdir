@@ -1,2 +1,2 @@
 # vscode
-open -b com.microsoft.VSCode
+open -b com.microsoft.VSCode $@
