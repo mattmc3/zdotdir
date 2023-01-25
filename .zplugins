@@ -11,7 +11,7 @@ romkatv/zsh-bench kind:path
 
 # core plugins
 $ZDOTDIR/plugins/environment
-$ZDOTDIR/plugins/history
+#$ZDOTDIR/plugins/history
 $ZDOTDIR/plugins/directory
 $ZDOTDIR/plugins/color
 $ZDOTDIR/plugins/utility
@@ -42,6 +42,7 @@ zsh-users/zsh-autosuggestions kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
 # final plugins
+$ZDOTDIR/plugins/confd
 $ZDOTDIR/plugins/completion
 
 # vim: ft=zsh

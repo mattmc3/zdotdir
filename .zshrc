@@ -16,6 +16,7 @@ done
 unset funcdir
 
 #region antidote
+
 ANTIDOTE_HOME=$ZDOTDIR/plugins/.external
 
 # Clone antidote if necessary.
