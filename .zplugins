@@ -13,10 +13,11 @@ romkatv/zsh-bench kind:path
 $ZDOTDIR/plugins/environment
 #$ZDOTDIR/plugins/history
 $ZDOTDIR/plugins/directory
-$ZDOTDIR/plugins/color
-$ZDOTDIR/plugins/utility
 $ZDOTDIR/plugins/brew
-$ZDOTDIR/plugins/macos
+$ZDOTDIR/plugins/color
+$ZDOTDIR/plugins/macos conditional:is-macos
+$ZDOTDIR/plugins/utility
+$ZDOTDIR/plugins/xdg-basedir
 
 # Prezto plugins
 sorin-ionescu/prezto path:modules/editor
