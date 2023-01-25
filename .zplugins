@@ -16,6 +16,7 @@ $ZDOTDIR/plugins/directory
 $ZDOTDIR/plugins/brew
 $ZDOTDIR/plugins/color
 $ZDOTDIR/plugins/macos conditional:is-macos
+$ZDOTDIR/plugins/python
 $ZDOTDIR/plugins/utility
 $ZDOTDIR/plugins/xdg-basedir
 

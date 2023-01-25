@@ -1,0 +1,12 @@
+##? Make a Python virtual environment with `python3 -m venv`.
+
+local WORKON_HOME=${WORKON_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/venvs}
+if [[ -z "$1" ]]; then
+  >&2 echo "mkvenv: Usage - mkvenv <venv-name>" && return 1
+elif [[ -z "$WORKON_HOME" ]]; then
+  >&2 echo "mkvenv: \$WORKON_HOME not set" && return 1
+fi
+python3 -m venv "$WORKON_HOME/$1"
+workon "$1"
+
+# vim: ft=zsh

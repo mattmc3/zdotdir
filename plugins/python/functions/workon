@@ -1,0 +1,13 @@
+##? Work on (activate) a Python venv.
+
+local WORKON_HOME=${WORKON_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/venvs}
+if [[ -z "$1" ]]; then
+  >&2 echo "Expecting workon project name" && return 1
+elif [[ -z "$WORKON_HOME" ]]; then
+  >&2 echo "\$WORKON_HOME not set" && return 1
+elif [[ ! -d "$WORKON_HOME" ]]; then
+  >&2 echo "\$WORKON_HOME directory not found: $WORKON_HOME" && return 1
+fi
+source "$WORKON_HOME/$1/bin/activate"
+
+# vim: ft=zsh
