@@ -12,15 +12,16 @@ setopt $zopts_prompt
 # Init
 #
 
+fpath=(${0:A:h}/functions $fpath)
+autoload -Uz $fpath[1]/*(.:t)
+
 autoload -Uz promptinit && promptinit
 
-: ${ZSH_THEME:=powerlevel10k}
-prompt ${ZSH_THEME}
+zstyle -s ':zshzoo:plugin:prompt' theme 'theme_name' ||
+  theme_name=${ZSH_THEME:-pure}
 
-if [[ ${ZSH_THEME} == powerlevel10k ]]; then
-  source ${0:A:h}/p10k.zsh
-elif [[ ${ZSH_THEME} == pure ]]
-  # TODO
-fi
+prompt $theme_name
+
+unset theme_name
 
 # vim: ft=zsh

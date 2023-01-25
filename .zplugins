@@ -1,7 +1,7 @@
 # prompts
 $ZDOTDIR/plugins/p10k-instaprompt
-sindresorhus/pure kind:fpath
-romkatv/powerlevel10k
+sindresorhus/pure kind:clone
+romkatv/powerlevel10k kind:clone
 
 # extra completions
 zsh-users/zsh-completions path:src kind:fpath
@@ -44,6 +44,7 @@ zsh-users/zsh-autosuggestions kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
 # final plugins
+$ZDOTDIR/plugins/prompt
 $ZDOTDIR/plugins/confd
 $ZDOTDIR/plugins/completion
 

@@ -1,0 +1,349 @@
+#compdef starship
+
+autoload -U is-at-least
+
+_starship() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+":: :_starship_commands" \
+"*::: :->starship" \
+&& ret=0
+    case $state in
+    (starship)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:starship-command-$line[1]:"
+        case $line[1] in
+            (init)
+_arguments "${_arguments_options[@]}" \
+'--print-full-init[Print the main initialization script (as opposed to the init stub)]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':shell -- The name of the currently running shell
+Currently supported options: bash, zsh, fish, powershell, ion, elvish, tcsh, nu, xonsh:_files' \
+&& ret=0
+;;
+(prompt)
+_arguments "${_arguments_options[@]}" \
+'-s+[The status code of the previously run command]' \
+'--status=[The status code of the previously run command]' \
+'*--pipestatus=[Status codes from a command pipeline]' \
+'-w+[The width of the current interactive terminal.]' \
+'--terminal-width=[The width of the current interactive terminal.]' \
+'-p+[The path that the prompt should render for.]' \
+'--path=[The path that the prompt should render for.]' \
+'-P+[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
+'--logical-path=[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
+'-d+[The execution duration of the last command, in milliseconds]' \
+'--cmd-duration=[The execution duration of the last command, in milliseconds]' \
+'-k+[The keymap of fish/zsh]' \
+'--keymap=[The keymap of fish/zsh]' \
+'-j+[The number of currently running jobs]' \
+'--jobs=[The number of currently running jobs]' \
+'--right[Print the right prompt (instead of the standard left prompt)]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(module)
+_arguments "${_arguments_options[@]}" \
+'-s+[The status code of the previously run command]' \
+'--status=[The status code of the previously run command]' \
+'*--pipestatus=[Status codes from a command pipeline]' \
+'-w+[The width of the current interactive terminal.]' \
+'--terminal-width=[The width of the current interactive terminal.]' \
+'-p+[The path that the prompt should render for.]' \
+'--path=[The path that the prompt should render for.]' \
+'-P+[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
+'--logical-path=[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
+'-d+[The execution duration of the last command, in milliseconds]' \
+'--cmd-duration=[The execution duration of the last command, in milliseconds]' \
+'-k+[The keymap of fish/zsh]' \
+'--keymap=[The keymap of fish/zsh]' \
+'-j+[The number of currently running jobs]' \
+'--jobs=[The number of currently running jobs]' \
+'-l[List out all supported modules]' \
+'--list[List out all supported modules]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':name -- The name of the module to be printed:_files' \
+&& ret=0
+;;
+(configure)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::name -- Configuration key to edit:_files' \
+'::value -- Value to place into that key:_files' \
+&& ret=0
+;;
+(config)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+'::name -- Configuration key to edit:_files' \
+'::value -- Value to place into that key:_files' \
+&& ret=0
+;;
+(print-config)
+_arguments "${_arguments_options[@]}" \
+'-d[Print the default instead of the computed config]' \
+'--default[Print the default instead of the computed config]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(toggle)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':name -- The name of the module to be toggled:_files' \
+':key -- The key of the config to be toggled:_files' \
+&& ret=0
+;;
+(bug-report)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(time)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(explain)
+_arguments "${_arguments_options[@]}" \
+'-s+[The status code of the previously run command]' \
+'--status=[The status code of the previously run command]' \
+'*--pipestatus=[Status codes from a command pipeline]' \
+'-w+[The width of the current interactive terminal.]' \
+'--terminal-width=[The width of the current interactive terminal.]' \
+'-p+[The path that the prompt should render for.]' \
+'--path=[The path that the prompt should render for.]' \
+'-P+[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
+'--logical-path=[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
+'-d+[The execution duration of the last command, in milliseconds]' \
+'--cmd-duration=[The execution duration of the last command, in milliseconds]' \
+'-k+[The keymap of fish/zsh]' \
+'--keymap=[The keymap of fish/zsh]' \
+'-j+[The number of currently running jobs]' \
+'--jobs=[The number of currently running jobs]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(timings)
+_arguments "${_arguments_options[@]}" \
+'-s+[The status code of the previously run command]' \
+'--status=[The status code of the previously run command]' \
+'*--pipestatus=[Status codes from a command pipeline]' \
+'-w+[The width of the current interactive terminal.]' \
+'--terminal-width=[The width of the current interactive terminal.]' \
+'-p+[The path that the prompt should render for.]' \
+'--path=[The path that the prompt should render for.]' \
+'-P+[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
+'--logical-path=[The logical path that the prompt should render for. This path should be a virtual/logical representation of the PATH argument.]' \
+'-d+[The execution duration of the last command, in milliseconds]' \
+'--cmd-duration=[The execution duration of the last command, in milliseconds]' \
+'-k+[The keymap of fish/zsh]' \
+'--keymap=[The keymap of fish/zsh]' \
+'-j+[The number of currently running jobs]' \
+'--jobs=[The number of currently running jobs]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+':shell -- the shell to generate completions for:(zsh bash fish powershell elvish)' \
+&& ret=0
+;;
+(session)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_starship_commands] )) ||
+_starship_commands() {
+    local commands; commands=(
+        "init:Prints the shell function used to execute starship" \
+"prompt:Prints the full starship prompt" \
+"module:Prints a specific prompt module" \
+"config:Edit the starship configuration" \
+"print-config:Prints the computed starship configuration" \
+"toggle:Toggle a given starship module" \
+"bug-report:Create a pre-populated GitHub issue with information about your configuration" \
+"time:Prints time in milliseconds" \
+"explain:Explains the currently showing modules" \
+"timings:Prints timings of all active modules" \
+"completions:Generate starship shell completions for your shell to stdout" \
+"session:Generate random session key" \
+"help:Prints this message or the help of the given subcommand(s)" \
+    )
+    _describe -t commands 'starship commands' commands "$@"
+}
+(( $+functions[_starship__bug-report_commands] )) ||
+_starship__bug-report_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship bug-report commands' commands "$@"
+}
+(( $+functions[_starship__completions_commands] )) ||
+_starship__completions_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship completions commands' commands "$@"
+}
+(( $+functions[_starship__config_commands] )) ||
+_starship__config_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship config commands' commands "$@"
+}
+(( $+functions[_configure_commands] )) ||
+_configure_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'configure commands' commands "$@"
+}
+(( $+functions[_starship__configure_commands] )) ||
+_starship__configure_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship configure commands' commands "$@"
+}
+(( $+functions[_starship__explain_commands] )) ||
+_starship__explain_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship explain commands' commands "$@"
+}
+(( $+functions[_starship__help_commands] )) ||
+_starship__help_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship help commands' commands "$@"
+}
+(( $+functions[_starship__init_commands] )) ||
+_starship__init_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship init commands' commands "$@"
+}
+(( $+functions[_starship__module_commands] )) ||
+_starship__module_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship module commands' commands "$@"
+}
+(( $+functions[_starship__print-config_commands] )) ||
+_starship__print-config_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship print-config commands' commands "$@"
+}
+(( $+functions[_starship__prompt_commands] )) ||
+_starship__prompt_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship prompt commands' commands "$@"
+}
+(( $+functions[_starship__session_commands] )) ||
+_starship__session_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship session commands' commands "$@"
+}
+(( $+functions[_starship__time_commands] )) ||
+_starship__time_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship time commands' commands "$@"
+}
+(( $+functions[_starship__timings_commands] )) ||
+_starship__timings_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship timings commands' commands "$@"
+}
+(( $+functions[_starship__toggle_commands] )) ||
+_starship__toggle_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'starship toggle commands' commands "$@"
+}
+
+_starship "$@"
