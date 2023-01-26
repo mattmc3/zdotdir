@@ -1,5 +1,5 @@
 0=${(%):-%x}
-export STARSHIP_CONFIG=${0:A:h:h}/lib/zsh.toml
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
+source <(starship init zsh --print-full-init)
 
 # vim: ft=zsh

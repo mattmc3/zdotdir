@@ -15,12 +15,15 @@ setopt $zopts_prompt
 fpath=(${0:A:h}/functions $fpath)
 autoload -Uz $fpath[1]/*(.:t)
 
-autoload -Uz promptinit && promptinit
+if zstyle -s ':zshzoo:plugin:prompt:starship' config _toml; then
+  export STARSHIP_CONFIG=${0:A:h}/themes/${_toml}.toml
+fi
+unset _toml
 
 zstyle -s ':zshzoo:plugin:prompt' theme 'theme_name' ||
   theme_name=${ZSH_THEME:-pure}
 
-prompt $theme_name
+prompt_${theme_name}_setup
 
 unset theme_name
 

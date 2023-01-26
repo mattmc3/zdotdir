@@ -1,6 +1,6 @@
 0=${(%):-%x}
 
-source ${0:A:h:h}/lib/p10k.zsh
+source ${0:A:h:h}/themes/p10k.zsh
 source ${0:A:h:h:h}/.external/romkatv/powerlevel10k/powerlevel10k.zsh-theme
 
 # vim: ft=zsh
