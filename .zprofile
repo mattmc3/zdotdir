@@ -75,24 +75,3 @@ fi
 
 # use `< file` to quickly view the contents of any file.
 [[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
-
-export TZ="America/New_York"
-export LANGUAGE="en"
-export LC_ALL="en_US.UTF-8"
-
-path=(
-  $path
-  ~/.emacs.d/bin(N)
-  ~/.config/emacs/bin(N)
-  $HOMEBREW_PREFIX/opt/curl/bin(N)
-  $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
-  $HOMEBREW_PREFIX/opt/ruby/bin(N)
-  $HOMEBREW_PREFIX/lib/ruby/gems/3.1.0/bin(N)
-  ~/.gem/ruby/3.1.0/bin(N)
-  $HOMEBREW_PREFIX/share/npm/bin(N)
-)
-
-export SHELL_SESSIONS_DISABLE=1
-export DOTFILES=~/.config/dotfiles
-export ZFUNCDIR=${ZFUNCDIR:-${ZDOTDIR:-$HOME/.config/zsh}/functions}
-export ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-~}/.zplugins}
