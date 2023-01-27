@@ -1,0 +1,8 @@
+emulate -L zsh; setopt $_string_funcopts
+local str newstr exitcode=1
+for str in "$@"; do
+  newstr="${(U)str}"
+  [[ "$str" != "$newstr" ]] && exitcode=0
+  echo $newstr
+done
+return $exitcode

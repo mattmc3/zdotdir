@@ -1,0 +1,8 @@
+emulate -L zsh; setopt $_string_funcopts
+local s len exitcode=1
+for s in "$@"; do
+  len="${#s}"
+  [[ $len -eq 0 ]] || exitcode=0
+  echo "$len"
+done
+return $exitcode
