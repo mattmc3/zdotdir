@@ -15,6 +15,10 @@ setopt $zopts_prompt
 fpath=(${0:A:h}/functions $fpath)
 autoload -Uz $fpath[1]/*(.:t)
 
+# Use 2 space indent for each new level. Prompts can override this, but this is a
+# better default than what Zsh uses.
+PS2='${${${(%):-%_}//[^ ]}// /  }    '
+
 if zstyle -s ':zshzoo:plugin:prompt:starship' config _toml; then
   export STARSHIP_CONFIG=${0:A:h}/themes/${_toml}.toml
 fi
