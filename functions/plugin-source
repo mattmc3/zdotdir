@@ -1,3 +1,4 @@
+##? plugin-source - source a plugin's init file
 # https://github.com/mattmc3/zsh_unplugged
 
 local plugdir

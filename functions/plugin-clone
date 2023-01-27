@@ -1,9 +1,10 @@
+##? plugin-clone - clone a zsh plugin
 # https://github.com/mattmc3/zsh_unplugged
 
 emulate -L zsh; setopt local_options extended_glob no_monitor
 local repo plugdir initfile
 ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
-for repo in $@; do
+for repo in ${(u)@}; do
   plugdir=$ZPLUGINDIR/${repo:t}
   initfile=$plugdir/${repo:t}.plugin.zsh
   if [[ ! -d $plugdir ]]; then

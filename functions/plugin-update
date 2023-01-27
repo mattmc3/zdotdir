@@ -1,0 +1,12 @@
+##? plugin-update - update plugins
+emulate -L zsh; setopt local_options extended_glob glob_dots no_monitor
+ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
+local d
+for d in $ZPLUGINDIR/**/.git(N/); do
+  local url=$(git -C "${d:A:h}" config remote.origin.url)
+  echo "Updating ${url:h:t}/${url:t}..."
+  command git -C "${d:A:h}" pull --quiet --ff --depth 1 --rebase --autostash &
+done
+wait
+date '+%Y-%m-%d %H:%M:%S' >"$ZPLUGINDIR/.lastupdated"
+echo "Update complete."

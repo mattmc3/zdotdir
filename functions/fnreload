@@ -1,6 +1,9 @@
-ZFUNCDIR=${ZFUNCDIR:-$ZDOTDIR/functions}
+##? fnreload - reload all my zsh functions
+
+0=${(%):-%x}
+local funcdir="${0:h}"
 local fn
-for fn in $ZFUNCDIR/**/*(.); do
+for fn in $funcdir/**/*(.); do
   unfunction "${fn:t}" &>/dev/null
   autoload -Uz "$fn"
 done

@@ -1,4 +1,4 @@
-# PRJ: project jumper
+##? prj - project jumper
 if ! command -v fzf >/dev/null; then
   echo "fzf command not found" >&2
   return 1

@@ -1,3 +1,5 @@
+##? autoload-dir - autoload all function files in specified directory.
+
 [[ -d "$1" ]] || return 1
 fpath=("$1" $fpath)
 local fn

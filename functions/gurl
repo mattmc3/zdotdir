@@ -1,4 +1,5 @@
-# make a URL for git
+##? gurl - make a URL for git
+
 local parts url user
 parts=(${(@s:/:)1})
 
