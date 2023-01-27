@@ -17,6 +17,9 @@ alias o='open'
 alias ping='ping -c 5'
 alias vi=vim
 
+GREP_EXCL=(.bzr CVS .git .hg .svn .idea .tox)
+alias grep="${aliases[grep]:-grep} --exclude-dir={\${(j.,.)GREP_EXCL}}"
+
 # more ways to ls
 alias ll='ls -lh'
 alias la='ls -lAh'
