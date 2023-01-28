@@ -10,4 +10,4 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s $ZDOTDIR/.zprofile ]]; then
   . $ZDOTDIR/.zprofile
 fi
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

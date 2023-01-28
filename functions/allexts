@@ -2,4 +2,4 @@
 
 find . -not \( -path '*/.git/*' -prune \) -type f -name '*.*' | sed 's|.*\.|\.|' | sort | uniq -c
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

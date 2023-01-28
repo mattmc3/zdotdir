@@ -1,4 +1,4 @@
 ##? showfiles - Show hidden dotfiles in Finder.
 defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

@@ -1,4 +1,4 @@
 ##? pushdf - Push the current Finder directory to the dirstack.
 pushd "$(pfd)"
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

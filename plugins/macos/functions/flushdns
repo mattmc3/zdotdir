@@ -1,4 +1,4 @@
 ##? flushdns - Flush the DNS cache.
 dscacheutil -flushcache && sudo killall -HUP mDNSResponder
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

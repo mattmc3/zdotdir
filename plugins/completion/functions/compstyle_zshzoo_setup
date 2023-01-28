@@ -71,4 +71,4 @@ zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

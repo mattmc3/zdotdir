@@ -2,4 +2,4 @@
 #eval "$(starship init zsh)"
 source <(starship init zsh --print-full-init)
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

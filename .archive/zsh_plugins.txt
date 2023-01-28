@@ -15,4 +15,4 @@ mattmc3/zephyr path:plugins/completion
 mattmc3/zephyr path:plugins/autosuggest
 mattmc3/zephyr path:plugins/history-substring-search
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

@@ -9,4 +9,4 @@ fi
 python3 -m venv "$WORKON_HOME/$1"
 workon "$1"
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

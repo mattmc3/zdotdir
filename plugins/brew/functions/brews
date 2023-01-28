@@ -10,4 +10,4 @@ echo "${blue}==>${off} ${bold}Formulae${off}"
 echo "${formulae}" | sed "s/^\(.*\):\(.*\)$/\1${blue}\2${off}/"
 echo "\n${blue}==>${off} ${bold}Casks${off}\n${casks}"
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

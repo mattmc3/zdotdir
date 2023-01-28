@@ -22,4 +22,4 @@ export LESS='-g -i -M -R -S -w -z-4'
 # Use `< file` to quickly view the contents of any file.
 READNULLCMD=$PAGER
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

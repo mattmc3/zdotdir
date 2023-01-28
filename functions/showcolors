@@ -50,4 +50,4 @@ done
 printf "%1s %-25s %-25s\n" "" "normal" "tput sgr0"
 # }
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

@@ -3,4 +3,4 @@
 # for fun, rename with: noext -exec mv '{}' '{}.sql' \;
 find . -not \( -path '*/.git/*' -prune \) -type f ! -name '*.*'
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

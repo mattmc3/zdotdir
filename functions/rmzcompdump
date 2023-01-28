@@ -6,4 +6,4 @@ for f in ${XDG_CACHE_HOME:-~/.cache}/zsh/*compdump*(.N); do
   rm -f $f
 done
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

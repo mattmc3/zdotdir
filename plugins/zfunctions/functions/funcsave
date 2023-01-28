@@ -22,4 +22,4 @@ type -f "$1" | awk 'NR>2 {print prev} {gsub(/^\t/, "", $0); prev=$0}' >| "$ZFUNC
 
 #}
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

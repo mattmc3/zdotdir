@@ -10,4 +10,4 @@ elif [[ ! -d "$WORKON_HOME" ]]; then
 fi
 source "$WORKON_HOME/$1/bin/activate"
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

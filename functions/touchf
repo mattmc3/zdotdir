@@ -3,4 +3,4 @@ if [[ -n "$1" ]] && [[ ! -f "$1" ]]; then
   mkdir -p "$1:h" && touch "$1"
 fi
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

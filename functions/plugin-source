@@ -10,4 +10,4 @@ for plugdir in $@; do
   (( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
 done
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

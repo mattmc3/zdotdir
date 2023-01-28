@@ -25,4 +25,4 @@ zstyle :zle:edit-command-line editor hx
 zstyle ':zshzoo:plugin:prompt' theme 'starship'
 zstyle ':zshzoo:plugin:prompt:starship' config 'prezto'
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

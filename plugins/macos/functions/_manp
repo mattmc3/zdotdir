@@ -4,4 +4,4 @@
 # completions for manp match man
 _man
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

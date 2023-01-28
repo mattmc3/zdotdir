@@ -7,4 +7,4 @@ set -o >| $tmp2
 diff --changed-group-format='%<' --unchanged-group-format='' $tmp2 $tmp1
 rm $tmp1 $tmp2
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

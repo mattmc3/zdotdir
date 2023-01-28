@@ -51,4 +51,4 @@ source $zsh_plugins
 [[ ${ZPROFRC:-0} -eq 0 ]] || { unset ZPROFRC && zprof }
 true
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

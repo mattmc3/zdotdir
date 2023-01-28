@@ -30,4 +30,4 @@ fi
 url="${url}${parts[3]}/${parts[4]}.git"
 echo $url
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

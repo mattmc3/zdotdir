@@ -6,4 +6,4 @@ if ! (( $# )); then
 fi
 mandoc -T pdf "$(/usr/bin/man -w $@)" | open -fa Preview
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

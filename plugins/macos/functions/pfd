@@ -6,4 +6,4 @@ osascript 2> /dev/null <<EOF
   end tell
 EOF
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

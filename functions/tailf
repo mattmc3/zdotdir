@@ -4,4 +4,4 @@ tail -f $2 | while read j; do
   nl="\n"
 done
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

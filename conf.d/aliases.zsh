@@ -98,4 +98,4 @@ alias pyva="source .venv/bin/activate"
 alias t="todo.sh"
 alias todos="$VISUAL $HOME/Desktop/todo.txt"
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

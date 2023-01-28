@@ -8,4 +8,4 @@ for fn in "$1"/*(.N); do
   autoload -Uz $fn
 done
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

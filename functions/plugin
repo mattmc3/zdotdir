@@ -10,4 +10,4 @@ function _plugin {
 }
 _plugin "$@"
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

@@ -31,4 +31,4 @@ prompt_${theme_name}_setup
 
 unset theme_name
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et

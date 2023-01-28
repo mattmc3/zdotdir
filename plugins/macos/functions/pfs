@@ -9,4 +9,4 @@ osascript 2>&1 <<EOF
   end if
 EOF
 
-# vim: ft=zsh
+# vim: ft=zsh sw=2 ts=2 et
