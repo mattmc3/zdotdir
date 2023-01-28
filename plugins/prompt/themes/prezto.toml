@@ -4,7 +4,7 @@ add_newline = false
 format = """$python$directory$character"""
 
 # move the rest of the prompt to the right
-right_format = """$status$cmd_duration$all"""
+right_format = """$status$all$git_branch$git_status"""
 
 [character]
 success_symbol = "[❯](red)[❯](yellow)[❯](green)"
@@ -15,7 +15,7 @@ vicmd_symbol = "[❮](green)[❮](yellow)[❮](red)"
 format = '\($virtualenv\) '
 
 [directory]
-style = "blue"
+style = "cyan"
 truncation_length = 1
 truncation_symbol = ""
 fish_style_pwd_dir_length = 1
