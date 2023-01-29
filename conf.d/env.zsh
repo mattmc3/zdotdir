@@ -2,27 +2,11 @@
 # Setup environment.
 ###
 
-# Many of these apps use XDG locations
-# XDG basedir support outlined here:
-# https://wiki.archlinux.org/index.php/XDG_Base_Directory
-
-# antidote
-[[ -n "$ANTIDOTE_HOME" ]] || ANTIDOTE_HOME="$(antidote home)"
-
-# autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
-
-# brew (brew shellenv)
-if (( $+commands[brew] )); then
-  export HOMEBREW_NO_ANALYTICS=1
-  [[ -n "$HOMEBREW_PREFIX" ]] || HOMEBREW_PREFIX=$(brew --prefix)
-fi
-
 # dotfiles
 export DOTFILES=${DOTFILES:-~/.config/dotfiles}
 
 # editors
-export EDITOR=hx
+export EDITOR=vim
 export VISUAL=code
 
 # go
@@ -35,17 +19,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export GROOVY_TURN_OFF_JAVA_WARNINGS="true"
 fi
 
-# history-substring-search
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=magenta,fg=white,bold'
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
-
-# magic-enter
-MAGIC_ENTER_GIT_COMMAND='git status -sb'
-MAGIC_ENTER_OTHER_COMMAND='ls'
-
-# ohmyzsh
-ZSH=$ANTIDOTE_HOME/ohmyzsh/ohmyzsh
-
 # perl
 # if [[ "$OSTYPE" == darwin* ]]; then
 #   # eval "$(perl -I$XDG_DATA_HOME/perl5/lib/perl5 -Mlocal::lib=$XDG_DATA_HOME/perl5)"
@@ -56,9 +29,6 @@ ZSH=$ANTIDOTE_HOME/ohmyzsh/ohmyzsh
 #     cpan local::lib
 #   fi
 # fi
-
-# zsh-abbr
-ABBR_USER_ABBREVIATIONS_FILE=$ZDOTDIR/.zabbr
 
 # Set $PATH.
 path=(

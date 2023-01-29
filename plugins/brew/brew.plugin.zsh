@@ -6,6 +6,8 @@
 # - https://github.com/sorin-ionescu/prezto/tree/master/modules/homebrew
 ###
 
+export HOMEBREW_NO_ANALYTICS=1
+
 _brewcmd=brew
 if (( ! $+commands[brew] )); then
   if [[ -x /opt/homebrew/bin/brew ]]; then

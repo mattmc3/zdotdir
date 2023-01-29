@@ -1,4 +1,0 @@
-#compdef funchelp
-
-# show files in the functions dir (exclude dirs)
-_path_files -W "$ZFUNCDIR" -g "**/*(.)"

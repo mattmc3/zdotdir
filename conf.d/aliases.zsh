@@ -8,10 +8,22 @@
 # - https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
 #####
 
+# directory aliases
+alias -- -='cd -'
+alias dirh='dirs -v'
+dotdot=".."
+for index ({1..9}); do
+  alias "$index"="cd +${index}"
+  alias -g "..$index"="$dotdot"
+  dotdot+='/..'
+done
+unset index dotdot
+
 # single character shortcuts - be sparing!
 alias _=sudo
 alias l=ls
-alias o='open'
+alias o=open
+alias g=git
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
