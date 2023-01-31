@@ -7,6 +7,7 @@
 #
 
 zstyle ':antidote:bundle' use-friendly-names 'yes'
+zstyle ":antidote:plugin:*" defer-options '-p'
 
 #
 # Editor
