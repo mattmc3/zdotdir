@@ -38,7 +38,7 @@ zsh_plugins=${ZDOTDIR:-~}/.zplugins.zsh
 [[ -f ${zsh_plugins:r}.txt ]] || touch ${zsh_plugins:r}.txt
 
 # Lazy-load antidote.
-fpath+=(${ZDOTDIR:-~}/.antidote)
+fpath+=(${ZDOTDIR:-~}/.antidote/functions)
 autoload -Uz $fpath[-1]/antidote
 
 # Generate static file in a subshell when .zsh_plugins.txt is updated.
