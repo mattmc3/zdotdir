@@ -14,7 +14,7 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg}
 
 for xdgdir in XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_RUNTIME_DIR; do
-  [[ -e ${(P)xdgdir} ]] || echo mkdir -p ${(P)xdgdir}
+  [[ -e ${(P)xdgdir} ]] || mkdir -p ${(P)xdgdir}
 done
 
 #
