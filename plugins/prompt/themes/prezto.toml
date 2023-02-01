@@ -15,7 +15,7 @@ vicmd_symbol = "[❮](green)[❮](yellow)[❮](red)"
 format = '\($virtualenv\) '
 
 [directory]
-style = "cyan"
+style = "blue"
 truncation_length = 1
 truncation_symbol = ""
 fish_style_pwd_dir_length = 1
