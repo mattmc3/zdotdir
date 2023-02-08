@@ -1,21 +1,21 @@
 # initial plugins
 #$ZDOTDIR/plugins/p10k-instaprompt
-mattmc3/zfunctions
+mattmc3/zephyr path:plugins/zfunctions
 
 # prompt plugins
 sindresorhus/pure kind:clone
 romkatv/powerlevel10k kind:clone
-$ZDOTDIR/plugins/prompt
+mattmc3/zephyr path:plugins/prompt
 
 # utility plugins
 romkatv/zsh-bench kind:path
 
 # my plugins
 $ZDOTDIR/plugins/brew
-$ZDOTDIR/plugins/color
-$ZDOTDIR/plugins/macos conditional:is-macos
+# $ZDOTDIR/plugins/color
+# $ZDOTDIR/plugins/macos conditional:is-macos
 $ZDOTDIR/plugins/python
-$ZDOTDIR/plugins/utility
+#$ZDOTDIR/plugins/utility
 $ZDOTDIR/plugins/xdg-basedir
 
 # OMZ plugins
@@ -30,13 +30,21 @@ ohmyzsh/ohmyzsh path:plugins/magic-enter
 # Prezto plugins
 # sorin-ionescu/prezto path:modules/helper/functions kind:autoload
 # sorin-ionescu/prezto path:modules/helper
-sorin-ionescu/prezto path:modules/environment
-sorin-ionescu/prezto path:modules/terminal
-sorin-ionescu/prezto path:modules/editor
+# sorin-ionescu/prezto path:modules/environment
+# sorin-ionescu/prezto path:modules/terminal
+# sorin-ionescu/prezto path:modules/editor
 
 # zsh-utils plugins
-belak/zsh-utils path:utility
-belak/zsh-utils path:history
+# belak/zsh-utils path:utility
+# belak/zsh-utils path:history
+# belak/zsh-utils path:editor
+
+# Zephyr plugins
+mattmc3/zephyr path:plugins/utility
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/macos conditional:is-macos
 
 # general plugins
 peterhurford/up.zsh
@@ -46,7 +54,7 @@ agkozak/zsh-z
 
 # completion plugins
 zsh-users/zsh-completions path:src kind:fpath
-belak/zsh-utils path:completion
+mattmc3/zephyr path:plugins/completion
 
 # deferred plugins
 # olets/zsh-abbr kind:defer
@@ -54,7 +62,7 @@ zsh-users/zsh-autosuggestions kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
 # final plugins
-mattmc3/zshrc.d
+mattmc3/zephyr path:plugins/confd
 zsh-users/zsh-history-substring-search
 
 # vim: ft=zsh sw=2 ts=2 et

@@ -1,5 +1,0 @@
-0=${(%):-%x}
-#eval "$(starship init zsh)"
-source <(starship init zsh --print-full-init)
-
-# vim: ft=zsh sw=2 ts=2 et

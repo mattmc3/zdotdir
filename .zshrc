@@ -10,8 +10,9 @@ alias zprofrc="ZPROFRC=1 zsh"
 # Essentials
 #
 
-# If my .zshrc breaks after this, I need at least this much to work.
-[[ -f $ZDOTDIR/lib/zsh-essentials.zsh ]] && source $ZDOTDIR/lib/zsh-essentials.zsh
+# Don't trust plugin managers to load this because if my .zshrc breaks after this, I'd
+# like at least this much to work.
+[[ -f $ZDOTDIR/plugins/essentials/essentials.plugin.zsh ]] && . $ZDOTDIR/plugins/essentials/essentials.plugin.zsh
 
 
 #
