@@ -6,8 +6,9 @@
 # Antidote
 #
 
+zstyle ':antidote:bundle' file ${ZDOTDIR:-~}/.zplugins.txt
 zstyle ':antidote:bundle' use-friendly-names 'yes'
-zstyle ":antidote:plugin:*" defer-options '-p'
+zstyle ':antidote:plugin:*' defer-options '-p'
 
 #
 # Editor
