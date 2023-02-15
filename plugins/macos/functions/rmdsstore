@@ -1,4 +1,0 @@
-##? rmdsstore - Remove .DS_Store files recursively in a directory.
-find "${@:-.}" -type f -name .DS_Store -delete
-
-# vim: ft=zsh sw=2 ts=2 et

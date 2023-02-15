@@ -1,4 +1,0 @@
-##? peek - Take a quick look at a file using an appropriate viewer
-(( $# > 0 )) && qlmanage -p $* &>/dev/null &
-
-# vim: ft=zsh sw=2 ts=2 et

@@ -11,11 +11,7 @@ mattmc3/zephyr path:plugins/prompt
 romkatv/zsh-bench kind:path
 
 # my plugins
-$ZDOTDIR/plugins/brew
-# $ZDOTDIR/plugins/color
-# $ZDOTDIR/plugins/macos conditional:is-macos
 $ZDOTDIR/plugins/python
-#$ZDOTDIR/plugins/utility
 $ZDOTDIR/plugins/xdg-basedir
 
 # OMZ plugins

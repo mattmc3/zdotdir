@@ -1,4 +1,0 @@
-##? ofd - Open the current directory in Finder
-open "$PWD"
-
-# vim: ft=zsh sw=2 ts=2 et
