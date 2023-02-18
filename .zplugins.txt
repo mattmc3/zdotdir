@@ -41,6 +41,7 @@ mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/editor
 mattmc3/zephyr path:plugins/color
 mattmc3/zephyr path:plugins/macos conditional:is-macos
+mattmc3/zephyr path:plugins/homebrew
 
 # general plugins
 peterhurford/up.zsh
