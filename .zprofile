@@ -79,4 +79,7 @@ fi
 # Use `< file` to quickly view the contents of any file.
 [[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
 
+# Make Apple Terminal behave
+export SHELL_SESSIONS_DISABLE=1
+
 # vim: ft=zsh sw=2 ts=2 et
