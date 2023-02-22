@@ -1,13 +1,14 @@
+.antidote
 .antidote/
 .cache/
 .external/
 .plugins/
 .unplugged/
-.zplugins/
 .zcompcache/
 .zcompdump*
 .zdirs
 .zhistory
+.zplugins/
 .zplugins/
 .zsh_history
 .zsh_plugins.zsh
