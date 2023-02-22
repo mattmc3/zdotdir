@@ -11,6 +11,7 @@ mattmc3/zephyr path:plugins/prompt
 romkatv/zsh-bench kind:path
 
 # my plugins
+$ZDOTDIR/plugins/brew
 $ZDOTDIR/plugins/python
 $ZDOTDIR/plugins/xdg-basedir
 
