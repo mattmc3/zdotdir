@@ -1,6 +1,6 @@
 abbr -="cd -"
 abbr brewup="brew update && brew upgrade && brew cleanup"
-abbr dotfl="cd \$DOTFILES.local"
+abbr dotfl="cd \$DOTFILES/local"
 abbr fconf="cd ~/.config/fish"
 abbr fdot="cd ~/.config/fish"
 abbr gad="git add"
