@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? fnreload - reload all my zsh functions
 
 0=${(%):-%x}
@@ -7,5 +8,3 @@ for fn in $funcdir/**/*(.); do
   unfunction "${fn:t}" &>/dev/null
   autoload -Uz "$fn"
 done
-
-# vim: ft=zsh sw=2 ts=2 et

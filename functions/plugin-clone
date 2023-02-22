@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? plugin-clone - clone a zsh plugin
 # https://github.com/mattmc3/zsh_unplugged
 
@@ -19,5 +20,3 @@ for repo in ${(u)@}; do
   fi
 done
 wait
-
-# vim: ft=zsh sw=2 ts=2 et

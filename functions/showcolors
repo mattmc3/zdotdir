@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? showcolors - display colors and color codes
 ##?
 ##? usage: showcolors
@@ -49,5 +50,3 @@ for name in ${(kno)effects}; do
 done
 printf "%1s %-25s %-25s\n" "" "normal" "tput sgr0"
 # }
-
-# vim: ft=zsh sw=2 ts=2 et

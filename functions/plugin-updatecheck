@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? plugin-updatecheck - check whether plugins have been updated recently
 #function plugin-updatecheck {
 emulate -L zsh; setopt local_options extended_glob

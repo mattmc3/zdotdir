@@ -8,5 +8,3 @@ elif [[ -z "$WORKON_HOME" ]]; then
 fi
 python3 -m venv "$WORKON_HOME/$1"
 workon "$1"
-
-# vim: ft=zsh sw=2 ts=2 et

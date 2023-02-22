@@ -1,3 +1,2 @@
+#!/bin/zsh
 ##? pmodload - empty function for prezto compatibility
-
-# vim: ft=zsh sw=2 ts=2 et

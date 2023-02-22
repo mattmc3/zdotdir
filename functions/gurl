@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? gurl - make a URL for git
 
 local parts url user
@@ -29,5 +30,3 @@ else
 fi
 url="${url}${parts[3]}/${parts[4]}.git"
 echo $url
-
-# vim: ft=zsh sw=2 ts=2 et

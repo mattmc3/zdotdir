@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? autoload-dir - autoload all function files in specified directory.
 
 [[ -d "$1" ]] || return 1
@@ -7,5 +8,3 @@ for fn in "$1"/*(.N); do
   [[ ${fn:t} != '_'* ]] || continue
   autoload -Uz $fn
 done
-
-# vim: ft=zsh sw=2 ts=2 et

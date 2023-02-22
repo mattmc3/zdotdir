@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? source-dir - source all zsh files in a dir
 if [[ ! -d "$1" ]]; then
   echo >&2 "Config directory not found: $1" && return 1

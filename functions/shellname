@@ -1,4 +1,3 @@
+#!/bin/zsh
 local shellname=$(ps -p $$ -ocomm=)
 echo ${shellname#*-}
-
-# vim: ft=zsh sw=2 ts=2 et

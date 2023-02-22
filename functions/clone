@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? clone - clone a git repo
 if [[ -z "$1" ]]; then
   echo "What git repo do you want?" >&2
@@ -22,5 +23,3 @@ else
   echo "Taking you there."
 fi
 cd $dest
-
-# vim: ft=zsh sw=2 ts=2 et

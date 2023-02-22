@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? prj - project jumper
 if ! command -v fzf >/dev/null; then
   echo "fzf command not found" >&2
@@ -48,5 +49,3 @@ local selection=$(printf "%s\n" ${projects[@]} | fzf --layout=reverse-list --que
 if [[ -n $selection ]] && [[ -d $project_dir/$selection ]]; then
   cd $project_dir/$selection
 fi
-
-# vim: ft=zsh sw=2 ts=2 et

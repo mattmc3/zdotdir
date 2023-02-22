@@ -1,3 +1,4 @@
+#!/bin/zsh
 #
 # .zprofile - Zsh file loaded on login.
 #
@@ -81,5 +82,3 @@ fi
 
 # Make Apple Terminal behave
 export SHELL_SESSIONS_DISABLE=1
-
-# vim: ft=zsh sw=2 ts=2 et

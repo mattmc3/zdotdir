@@ -1,4 +1,3 @@
+#!/bin/zsh
 ##? ide - edit file or folder in IDE
 ${VISUAL:-vim} ${@:-.}
-
-# vim: ft=zsh sw=2 ts=2 et

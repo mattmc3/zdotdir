@@ -1,3 +1,4 @@
+#!/bin/zsh
 if [[ -o interactive ]]; then
   echo "interactive shell"
 else
@@ -9,5 +10,3 @@ if [[ -o login ]]; then
 else
   echo "not login shell"
 fi
-
-# vim: ft=zsh sw=2 ts=2 et

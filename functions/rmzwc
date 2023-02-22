@@ -1,3 +1,4 @@
+#!/bin/zsh
 if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
   echo "rmzwc"
   echo "  removes zcompiled files"
@@ -22,5 +23,3 @@ fi
 find "$HOME" -maxdepth 1 -type f \( -name "*.zwc" -o -name "*.zwc.old" \) $findprint $finddel
 find . -maxdepth 1 -type f \( -name "*.zwc" -o -name "*.zwc.old" \) $findprint $finddel
 unset findargs
-
-# vim: ft=zsh sw=2 ts=2 et

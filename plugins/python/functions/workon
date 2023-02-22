@@ -9,5 +9,3 @@ elif [[ ! -d "$WORKON_HOME" ]]; then
   >&2 echo "\$WORKON_HOME directory not found: $WORKON_HOME" && return 1
 fi
 source "$WORKON_HOME/$1/bin/activate"
-
-# vim: ft=zsh sw=2 ts=2 et

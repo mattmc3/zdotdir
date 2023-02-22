@@ -1,3 +1,4 @@
+#!/bin/zsh
 ###
 # .zstylerc - zstyle settings for features/plugins that need them.
 ###
@@ -19,5 +20,3 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Set this to whatever you want to use to edit a command
 zstyle :zle:edit-command-line editor hx
-
-# vim: ft=zsh sw=2 ts=2 et

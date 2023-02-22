@@ -8,5 +8,3 @@ else
   cd "$JUPYTER_HOME"
 fi
 jupyter notebook
-
-# vim: ft=zsh sw=2 ts=2 et

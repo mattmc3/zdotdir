@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? plugin-update - update plugins
 emulate -L zsh; setopt local_options extended_glob glob_dots no_monitor
 ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}

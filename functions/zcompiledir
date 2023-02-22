@@ -1,3 +1,4 @@
+#!/bin/zsh
 emulate -L zsh; setopt localoptions extendedglob globdots globstarshort nullglob rcquotes
 autoload -U zrecompile
 
@@ -17,5 +18,3 @@ else
     echo "compiling $f" && zrecompile -pq "$f"
   done
 fi
-
-# vim: ft=zsh sw=2 ts=2 et

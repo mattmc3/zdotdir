@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? plugin-source - source a plugin's init file
 # https://github.com/mattmc3/zsh_unplugged
 
@@ -9,5 +10,3 @@ for plugdir in $@; do
   local initfile=$plugdir/${plugdir:t}.plugin.zsh
   (( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
 done
-
-# vim: ft=zsh sw=2 ts=2 et
