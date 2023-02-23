@@ -1,0 +1,7 @@
+#!/bin/zsh
+#
+# Zsh-Utils
+#
+
+# The belek/zsh-utils completion plugin also introduces compstyles. Let's use that!
+(( ! $+functions[compstyle_zshzoo_setup] )) || compstyle_zshzoo_setup
