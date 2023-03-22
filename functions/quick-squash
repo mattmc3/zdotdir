@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+
+#get number of commits to squash
+squashCount=$1
+#regular expression to verify that squash number is an integer
+regex='^[0-9]+$'
+
+echo "---------------------------------"
+echo "Will squash $squashCount commits"
+echo "Commit message will be '$commitMsg'"
+
+echo "...validating input"
+if ! [[ $squashCount =~ $regex ]]
+then
+    echo "Squash count must be an integer."
+elif [ -z "$commitMsg" ]
+then
+    echo "Invalid commit message.  Make sure string is not empty"
+else
+    echo "...input looks good"
+    echo "...proceeding to squash"
+    git reset --soft HEAD~$squashCount
+    git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{$squashCount})"
+    echo "...done"
+fi
+
+echo
+exit 0
