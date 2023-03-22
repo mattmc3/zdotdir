@@ -1,0 +1,72 @@
+# NPR: Create a new project
+# Assume the project to be a python project
+if ! command -v fzf >/dev/null; then
+  echo "fzf command not found" >&2
+  return 1
+fi
+
+local query=()
+local project_dir=${XDG_PROJECTS_DIR:-$HOME/Projects}
+local template_dir=${TEMPLATE_DIR:-$HOME/.cookiecutters}
+
+if [[ ! -d $project_dir ]]; then
+  echo >&2 "prj: Project home directory not found '$project_dir'"
+  return 1
+fi
+
+if [[ ! -d $template_dir ]]; then
+  echo >&2 "prj: Template home directory not found '$template_dir'"
+  return 1
+fi
+
+local templates=(
+  $template_dir/*/
+)
+
+# print $templates
+for template in $templates; do
+  echo $template
+done
+
+# absolute path with template dir prefix stripped
+templates=(${${templates:a}#*$template_dir/})
+
+
+# fzf a template
+local selection=$(printf "%s\n" ${templates[@]} | fzf --layout=reverse-list --query=$query)
+
+# check if selection is empty, if so, ask for a project name
+# if no project name is given, exit
+if [[ -z $selection ]]; then
+  echo >&2 "prj: No template selected. Creating an empty project."
+  read "name?Project name: "
+  if [[ -z $name ]]; then
+    echo >&2 "prj: No project name given"
+    echo >&2 "prj: Aborting..."
+    return 1
+  fi
+fi
+
+cd $project_dir
+# store all current directories in local variable current_projects
+local current_projects=($project_dir/*/)
+# if [[ -z $selection ]]; then
+#   echo >&2 "prj: No template selected. Aborting..."
+#   return 1
+# fi
+
+if [[ -v selection ]]; then
+  cookiecutter $selection
+fi
+# the new project is the one that is now a directory of project_dir, but no
+# element of current_projects
+local new_project=(${${current_projects:#$project_dir/*/}:#$current_projects})
+if [[ -z $new_project ]]; then
+  echo >&2 "prj: No new project created"
+  echo >&2 "prj: Aborting..."
+  return 1
+fi
+echo "prj: Created new project $new_project"
+cd $new_project
+
+# vim: ft=zsh
