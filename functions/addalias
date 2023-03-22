@@ -1,0 +1,5 @@
+#addalias: appends alias to aliases.zsh
+echo alias $1="'$2'"  >> '${EDITOR:-lvim} "${ZDOTDIR:-$HOME}"/conf.d/aliases.zsh'
+source "${ZDOTDIR:-$HOME}"/cond.f/aliases.zsh
+
+# vim: ft=zsh
