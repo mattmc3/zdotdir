@@ -1,0 +1,22 @@
+#! bin/zsh
+## SET-THEME: Used to set the prompt theme
+## Themes may be 'fancy' or 'default' or path to starhip config file
+##
+## Usage: set-theme fancy
+
+# check arguments
+# argument needs to be either 'fancy' or 'default'
+if [[ $# -ne 1 ]]; then
+  echo >&2 "set-theme: Invalid number of arguments"
+  echo >&2 "set-theme: Usage: set-theme fancy"
+  return 1
+fi
+
+# replace line setting config in .zstyle using sed
+sed -i 's/zstyle ":zephyr:plugin:prompt:starship" config .*/zstyle ":zephyr:plugin:prompt:starship" config "'$1'"/' $ZDOTDIR/.zstyles 
+
+# reload starship using zephyr
+[[ -f $ZDOTDIR/.zstyles ]] && source $ZDOTDIR/.zstyles
+source $ANTIDOTE_HOME/mattmc3/zephyr/plugins/prompt/prompt.plugin.zsh
+
+# vim: ft=zsh
