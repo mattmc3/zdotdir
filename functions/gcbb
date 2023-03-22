@@ -1,0 +1,20 @@
+# gcbb: checks out a new branch and bumps the version
+# Usage: gcbb <branch-name>
+#check if an argument was passed
+if [ $# -eq 0 ]
+then
+    echo "No arguments supplied"
+    return 1
+fi
+git checkout -b $1
+# check if the branch was created
+if [ $? -eq 0 ]
+then
+    echo "Branch $1 created"
+else
+    echo "Branch $1 already exists"
+    return 1
+fi
+bump
+
+# vim: ft=zsh
