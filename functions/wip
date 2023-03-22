@@ -1,0 +1,9 @@
+#WIP: pushes all unstaged files to repo
+# good for the end of the working day
+local current_branch=$(git rev-parse --abbrev-ref HEAD)
+echo "$current_branch" 
+# git add -A
+# git commit -m":construction: Push at the end of the day"
+# git push origin 
+
+# vim: ft=zsh
