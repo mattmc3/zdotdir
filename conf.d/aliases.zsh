@@ -8,7 +8,26 @@
 # - https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
 #####
 
+# special
+
+alias nv="nvim"
+alias lv="lvim"
+alias cdj="rgf"
+alias zalias='${EDITOR:-lvim} "${ZDOTDIR:-$HOME}"/conf.d/aliases.zsh; source "${ZDOTDIR:-$HOME}"/conf.d/aliases.zsh'
+alias zfunc='function f(){ ${EDITOR:-lvim} "${ZDOTDIR:-$HOME}"/functions/${1};};f'
+alias zfdir='cd $ZFUNCDIR'
+alias kgsk="git squash"
+alias gsk="function f(){ squash $1 $2; };f"
+alias nvinit='${EDITOR:-lvim} "${NVIMCONFIG:-$HOME/.config/nvim}"/init.vim'
+alias lvinit='${EDITOR:-lvim} "${LVIMCONFIG:-$HOME/.config/lvim}"/config.lua'
+alias lvdot='cd ${LVIMCONFIG:-$HOME/.config/lvim}'
+alias ep='explorer.exe .'
+alias delzone='find . -name "*:Zone.Identifier" -type f -delete'
+
 # directory aliases
+
+alias md="mkdir -p"
+alias rd="rmdir"
 alias -- -='cd -'
 alias dirh='dirs -v'
 dotdot=".."
