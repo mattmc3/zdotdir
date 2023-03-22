@@ -20,3 +20,11 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Set this to whatever you want to use to edit a command
 zstyle :zle:edit-command-line editor hx
+
+#
+# Starship
+#
+
+# Theme
+zstyle ":zephyr:plugin:prompt" theme 'starship'
+zstyle ":zephyr:plugin:prompt:starship" config 'fancy'
