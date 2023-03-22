@@ -54,6 +54,13 @@ EOF
 zsh
 ```
 
+or simply via the installer
+
+```shell
+curl -Ls https://raw.githubusercontent.com/NicDom/zdotdir/main/installer | bash
+```
+
+
 ## Performance
 
 A snappy shell is very important. My config includes a `zbench` alias
