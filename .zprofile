@@ -38,6 +38,7 @@ export PAGER="${PAGER:-less}"
 # Regional Settings
 #
 
+export TZ="Germany/Berlin"
 export LANG="${LANG:-en_US.UTF-8}"
 
 #
@@ -60,6 +61,9 @@ path=(
   /usr/local/{,s}bin(N)
   $path
 )
+
+path+=("/mnt/c/Users/ndges/AppData/Local/Programs/Microsoft VS Code/bin")
+path+=("/mnt/c/Windows/SysWow64")
 
 #
 # Less
