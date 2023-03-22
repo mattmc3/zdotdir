@@ -1,0 +1,13 @@
+# WPRJ Switch to project and run node and spawn shell
+# switch to project via prj and give all arguments to that function
+# get current directory
+local dir=$(pwd)
+# try to switch to project
+prj $@
+# if we are in the same directory, we failed to switch to project
+if [[ $dir == $(pwd) ]]; then
+    return 1
+fi
+nvm use node
+poetry shell
+# vim: ft=zsh
