@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+export ZDOTDIR=~/.config/zsh
+
+# check if $ZDOTDIR exists, if so ask user if they want to overwrite it
+# if not create a backup of the current $ZDOTDIR
+if [[ -d $ZDOTDIR ]]; then
+  read -p "Do you want to overwrite $ZDOTDIR? [y/N] " -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    rm -rf $ZDOTDIR
+  else
+    now=$(date +"%Y%m%d_%H%M%S")
+    echo "Backing up $ZDOTDIR to $ZDOTDIR.$now.bak"
+    mv $ZDOTDIR $ZDOTDIR.$now.bak
+  fi
+fi
+
+# clone zdotdir
+git clone --recursive https://github.com/NicDom/zdotdir.git $ZDOTDIR
+
+# check if ~/.config/starship exists
+if [[ ! -d ~/.config/starship ]]; then
+  mkdir -p ~/.config/starship
+fi
+
+# copy contents of $ZDOTDIR/starship to ~/.config/starship
+cp -r $ZDOTDIR/starship/* ~/.config/starship
+
+# remove $ZDOTDIR/starship
+rm -rf $ZDOTDIR/starship
+
+cat <<'EOF' >|~/.zshenv
+export ZDOTDIR=~/.config/zsh
+[[ -f $ZDOTDIR/.zshenv ]] && . $ZDOTDIR/.zshenv
+EOF
+
+# remove git files
+# rm -rf $ZDOTDIR/.git*
