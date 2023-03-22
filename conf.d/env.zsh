@@ -5,9 +5,13 @@
 # dotfiles
 export DOTFILES=${DOTFILES:-~/.config/dotfiles}
 
+
 # editors
 export EDITOR=vim
 export VISUAL=code
+
+export NVIMCONFIG=${NVIMCONFIG:-~/.config/nvim}
+export LVIMCONFIG=${LVIMCONFIG:-~/.config/lvim}
 
 # go
 export GLOBALGOPATH=$HOME/Projects/golang
