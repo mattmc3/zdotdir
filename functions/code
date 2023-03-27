@@ -1,3 +1,0 @@
-#!/bin/zsh
-# vscode
-open -b com.microsoft.VSCode $@
