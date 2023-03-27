@@ -14,6 +14,7 @@ romkatv/zsh-bench kind:path
 $ZDOTDIR/plugins/brew
 # $ZDOTDIR/plugins/python
 $ZDOTDIR/plugins/xdg-basedir
+$ZDOTDIR/plugins/zssh
 
 # OMZ plugins
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
