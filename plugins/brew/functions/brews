@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? brews - Show brewed formulae.
 local formulae="$(brew leaves | xargs brew deps --installed --for-each)"
 local casks="$(brew list --cask 2>/dev/null)"

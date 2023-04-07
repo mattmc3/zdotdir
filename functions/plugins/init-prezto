@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-# empty function for prezto compatibility
-function pmodload {
-}

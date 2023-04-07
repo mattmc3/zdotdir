@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? Open a Jupyter notebook.
 
 if [[ -n "$1" ]]; then

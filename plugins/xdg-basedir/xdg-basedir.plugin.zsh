@@ -76,7 +76,3 @@ alias tmux="${aliases[tmux]:-tmux} -f \"\$TMUX_CONFIG\""
 export WGETRC="${WGETRC:-$XDG_CONFIG_HOME/wget/wgetrc}"
 [[ -f $WGETRC ]] || { mkdir -p $WGETRC:h && touch $WGETRC }
 alias wget="${aliases[wget]:-wget} --hsts-file=\"\$XDG_CACHE_HOME/wget/wget-hsts\""
-
-# z
-export _Z_DATA="${_Z_DATA:-$XDG_DATA_HOME/z/data}"
-[[ -f $_Z_DATA ]] || { mkdir -p "$_Z_DATA:h" && touch "$_Z_DATA" }

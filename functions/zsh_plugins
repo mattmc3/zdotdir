@@ -1,0 +1,11 @@
+function zsh_plugins {
+  # Clone antidote if necessary.
+  [[ -e $ZDOTDIR/.antidote ]] ||
+    git clone --depth=1 https://github.com/mattmc3/antidote.git $ZDOTDIR/.antidote
+
+  # Setup antidote.
+  ANTIDOTE_HOME=$ZDOTDIR/plugins/.external
+  source $ZDOTDIR/.antidote/antidote.zsh
+  antidote load
+}
+zsh_plugins "$@"

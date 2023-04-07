@@ -1,0 +1,39 @@
+# initial plugins
+$ZDOTDIR/plugins/p10k-instaprompt
+
+# utility plugins
+romkatv/zsh-bench kind:path
+
+# custom plugins
+$ZDOTDIR/plugins/brew
+$ZDOTDIR/plugins/python
+$ZDOTDIR/plugins/xdg-basedir
+
+# OMZ plugins
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+ohmyzsh/ohmyzsh path:plugins/copyfile
+ohmyzsh/ohmyzsh path:plugins/copypath
+ohmyzsh/ohmyzsh path:plugins/extract
+#ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+
+# prompt plugins
+romkatv/powerlevel10k
+$ZDOTDIR/plugins/p10k
+
+# general plugins
+mattmc3/zman
+agkozak/zsh-z
+
+# completion plugins
+zsh-users/zsh-completions
+mattmc3/zephyr path:plugins/completion
+
+# deferred plugins
+olets/zsh-abbr kind:defer
+zsh-users/zsh-autosuggestions kind:defer
+zdharma-continuum/fast-syntax-highlighting kind:defer
+zsh-users/zsh-history-substring-search kind:defer
+
+# vim: ft=zsh sw=2 ts=2 et

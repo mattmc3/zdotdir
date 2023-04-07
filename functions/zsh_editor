@@ -1,0 +1,146 @@
+function zsh_editor {
+  [[ "$TERM" != 'dumb' ]] || return 1
+
+  setopt NO_FLOW_CONTROL    # Allow the usage of ^Q/^S in the context of zsh.
+
+  # Treat these characters as part of a word.
+  WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
+
+  # Use human-friendly identifiers.
+  zmodload zsh/terminfo
+  typeset -gA key_info
+
+  key_info=(
+    # Modifiers
+    'Control'      '\C-'
+    'Escape'       '\e'
+    'Meta'         '\M-'
+
+    # Basic keys
+    'Backspace'    "^?"
+    'Delete'       "^[[3~"
+    'F1'           "$terminfo[kf1]"
+    'F2'           "$terminfo[kf2]"
+    'F3'           "$terminfo[kf3]"
+    'F4'           "$terminfo[kf4]"
+    'F5'           "$terminfo[kf5]"
+    'F6'           "$terminfo[kf6]"
+    'F7'           "$terminfo[kf7]"
+    'F8'           "$terminfo[kf8]"
+    'F9'           "$terminfo[kf9]"
+    'F10'          "$terminfo[kf10]"
+    'F11'          "$terminfo[kf11]"
+    'F12'          "$terminfo[kf12]"
+    'Insert'       "$terminfo[kich1]"
+    'Home'         "$terminfo[khome]"
+    'PageUp'       "$terminfo[kpp]"
+    'End'          "$terminfo[kend]"
+    'PageDown'     "$terminfo[knp]"
+    'Up'           "$terminfo[kcuu1]"
+    'Left'         "$terminfo[kcub1]"
+    'Down'         "$terminfo[kcud1]"
+    'Right'        "$terminfo[kcuf1]"
+    'BackTab'      "$terminfo[kcbt]"
+  )
+
+  # Mod plus another key
+  key_info+=(
+    'AltLeft'         "${key_info[Escape]}${key_info[Left]} \e[1;3D"
+    'AltRight'        "${key_info[Escape]}${key_info[Right]} \e[1;3C"
+    'ControlLeft'     '\e[1;5D \e[5D \e\e[D \eOd'
+    'ControlRight'    '\e[1;5C \e[5C \e\e[C \eOc'
+    'ControlPageUp'   '\e[5;5~'
+    'ControlPageDown' '\e[6;5~'
+  )
+
+  # Enables terminal application mode
+  function zle-line-init {
+    # The terminal must be in application mode when ZLE is active for $terminfo
+    # values to be valid.
+    if (( $+terminfo[smkx] )); then
+      # Enable terminal application mode.
+      echoti smkx
+    fi
+  }
+  zle -N zle-line-init
+
+  # Disables terminal application mode
+  function zle-line-finish {
+    # The terminal must be in application mode when ZLE is active for $terminfo
+    # values to be valid.
+    if (( $+terminfo[rmkx] )); then
+      # Disable terminal application mode.
+      echoti rmkx
+    fi
+  }
+  zle -N zle-line-finish
+
+  # Resets the prompt when the keymap changes
+  function zle-keymap-select {
+    zle update-cursor-style
+
+    zle reset-prompt
+    zle -R
+  }
+  zle -N zle-keymap-select
+
+  # Expand .... to ../..
+  function expand-dot-to-parent-directory-path {
+    if [[ $LBUFFER = *.. ]]; then
+      LBUFFER+='/..'
+    else
+      LBUFFER+='.'
+    fi
+  }
+  zle -N expand-dot-to-parent-directory-path
+
+  # Set ctrl-z as bg/fg toggle
+  function symmetric-ctrl-z {
+    if [[ $#BUFFER -eq 0 ]]; then
+      BUFFER=" fg"
+      zle accept-line -w
+    else
+      zle push-input -w
+      zle clear-screen -w
+    fi
+  }
+  zle -N symmetric-ctrl-z
+
+  # Reset to default key bindings
+  bindkey -d
+
+  # Global keybinds
+  local -A global_keybinds
+  global_keybinds=(
+    "$key_info[Home]"      beginning-of-line
+    "$key_info[End]"       end-of-line
+    "$key_info[Delete]"    delete-char
+    "$key_info[Backspace]" backward-delete-char
+    "$key_info[Control]W"  backward-kill-word
+    '.'                    expand-dot-to-parent-directory-path
+  )
+
+  # Special case for ControlLeft and ControlRight because they have multiple
+  # possible binds.
+  for key in "${(s: :)key_info[ControlLeft]}" "${(s: :)key_info[AltLeft]}"; do
+    bindkey -M emacs "$key" emacs-backward-word
+  done
+  for key in "${(s: :)key_info[ControlRight]}" "${(s: :)key_info[AltRight]}"; do
+    bindkey -M emacs "$key" emacs-forward-word
+  done
+
+  # Apply key binds to the emacs keymap
+  for key bind in ${(kv)global_keybinds}; do
+    bindkey -M emacs "$key" "$bind"
+  done
+
+  # Do not expand .... to ../.. during incremental search.
+  bindkey -M isearch . self-insert 2> /dev/null
+
+  # C-z bg/fg toggle
+  bindkey '^Z' symmetric-ctrl-z
+
+  # Emacs keybindings
+  bindkey -e
+}
+zsh_editor "$@"

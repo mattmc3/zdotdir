@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? Work on (activate) a Python venv.
 
 local WORKON_HOME=${WORKON_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/venvs}

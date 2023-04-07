@@ -1,3 +1,4 @@
+#!/bin/zsh
 ##? Clean common python cache files.
 
 find "${@:-.}" -type f -name "*.py[co]" -delete

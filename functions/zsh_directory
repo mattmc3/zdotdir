@@ -1,0 +1,38 @@
+function zsh_directory {
+  local zopts=(
+    # 16.2.1 Changing Directories
+    auto_cd                 # if a command isn't valid, but is a directory, cd to that dir.
+    auto_pushd              # make cd push the old directory onto the dirstack.
+    cdable_vars             # change directory to a path stored in a variable.
+    pushd_ignore_dups       # don’t push multiple copies of the same directory onto the dirstack.
+    pushd_minus             # exchanges meanings of +/- when navigating the dirstack.
+    pushd_silent            # do not print the directory stack after pushd or popd.
+    pushd_to_home           # push to home directory when no argument is given.
+
+    # 16.2.3 Expansion and Globbing
+    extended_glob           # Use extended globbing syntax.
+    glob_dots               # Don't hide dotfiles from glob patterns.
+
+    # 16.2.6 Input/Output
+    NO_clobber              # Don't overwrite files with >. Use >| to bypass.
+
+    # 16.2.9 Scripts and Functions
+    multios                 # Write to multiple descriptors.
+  )
+  setopt $zopts
+
+  alias -- -='cd -'
+  alias dirh='dirs -v'
+
+  # set dirstack aliases (eg: "-2"="cd -2")
+  local index
+  for index ({1..9}) alias "$index"="cd +${index}"
+
+  # set backref aliases (eg: "..3"="../../..")
+  local dotdots=".."
+  for index ({1..9}); do
+    alias -g "..$index"="$dotdots"
+    dotdots+='/..'
+  done
+}
+zsh_directory "$@"

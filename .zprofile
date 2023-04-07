@@ -80,5 +80,5 @@ fi
 # Use `< file` to quickly view the contents of any file.
 [[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
 
-# Make Apple Terminal behave
+# Make Apple Terminal behave.
 export SHELL_SESSIONS_DISABLE=1
