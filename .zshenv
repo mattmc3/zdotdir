@@ -1,23 +1,10 @@
 #!/bin/zsh
-#
-# .zshenv - Zsh environment file, loaded always.
-#
-# NOTE: .zshenv has to live at ~/.zshenv, not in $ZDOTDIR! You can get around this by
-# symlinking .zshenv from your $ZDOTDIR: `ln -sf $ZDOTDIR/.zshenv ~/.zshenv`
-#
+##? .zshenv - Zsh environment file, loaded always.
 
-#
-# ZDOTDIR
-#
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+export ZDOTDIR=${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}
 
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-${HOME}/.config}
-export ZDOTDIR=${ZDOTDIR:-${XDG_CONFIG_HOME}/zsh}
-
-#
-# .zprofile
-#
-
-# We use .zprofile for everything else (load for non-login, non-interactive shells).
+# Use .zprofile for remaining environment.
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi

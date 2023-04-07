@@ -94,18 +94,6 @@ function zsh_editor {
   }
   zle -N expand-dot-to-parent-directory-path
 
-  # Set ctrl-z as bg/fg toggle
-  function symmetric-ctrl-z {
-    if [[ $#BUFFER -eq 0 ]]; then
-      BUFFER=" fg"
-      zle accept-line -w
-    else
-      zle push-input -w
-      zle clear-screen -w
-    fi
-  }
-  zle -N symmetric-ctrl-z
-
   # Reset to default key bindings
   bindkey -d
 
@@ -136,9 +124,6 @@ function zsh_editor {
 
   # Do not expand .... to ../.. during incremental search.
   bindkey -M isearch . self-insert 2> /dev/null
-
-  # C-z bg/fg toggle
-  bindkey '^Z' symmetric-ctrl-z
 
   # Emacs keybindings
   bindkey -e

@@ -1,7 +1,5 @@
 #!/bin/zsh
-#
-# .zshrc - Run on interactive Zsh session.
-#
+##? .zshrc - Run on interactive Zsh session.
 
 # Load zprof first if we need to profile.
 [[ ${ZPROFRC:-0} -eq 0 ]] || zmodload zsh/zprof
@@ -16,31 +14,14 @@ fi
 # Load zstyles.
 [[ -f $ZDOTDIR/.zstyles ]] && source $ZDOTDIR/.zstyles
 
-# Use functions dir like Fish.
-for _fndir in $ZDOTDIR/functions(/N) $ZDOTDIR/functions/*(/N); do
-  fpath=($_fndir $fpath)
-  autoload -Uz $fpath[1]/*(.:t)
-done
-unset _fndir
+# Clone antidote if necessary.
+[[ -e $ZDOTDIR/.antidote ]] ||
+  git clone --depth=1 https://github.com/mattmc3/antidote.git $ZDOTDIR/.antidote
 
-# Use completions dir like Fish.
-fpath=($ZDOTDIR/completions(/N) $fpath)
-
-# setup Zsh
-zsh_plugins
-zsh_color
-zsh_directory
-zsh_editor
-zsh_history
-zsh_utilities
-zsh_completion
-zsh_compstyle
-
-# Source anything in conf.d like Fish.
-for _rcfile in $ZDOTDIR/conf.d/*.{z,}sh(N); do
-  source $_rcfile
-done
-unset _rcfile
+# Setup antidote plugins.
+ANTIDOTE_HOME=$ZDOTDIR/.antidote/.plugins
+source $ZDOTDIR/.antidote/antidote.zsh
+antidote load
 
 # Local settings/overrides.
 [[ -f $ZDOTDIR/.zshrc_local ]] && $ZDOTDIR/.zshrc_local

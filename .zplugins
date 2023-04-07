@@ -1,4 +1,5 @@
 # utility plugins
+romkatv/zsh-defer
 romkatv/zsh-bench kind:path
 
 # OMZ plugins
@@ -6,9 +7,21 @@ ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/copypath
-ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/magic-enter
+
+# Zephyr
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/terminal
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/utility
+mattmc3/zephyr path:plugins/homebrew
+mattmc3/zephyr path:plugins/zfunctions
+mattmc3/zephyr path:plugins/macos conditional:is-macos
+mattmc3/zephyr path:plugins/confd
 
 # prompt plugins
 romkatv/powerlevel10k
