@@ -4,7 +4,7 @@ function zsh_plugins {
     git clone --depth=1 https://github.com/mattmc3/antidote.git $ZDOTDIR/.antidote
 
   # Setup antidote.
-  ANTIDOTE_HOME=$ZDOTDIR/plugins/.external
+  ANTIDOTE_HOME=$ZDOTDIR/.antidote/.plugins
   source $ZDOTDIR/.antidote/antidote.zsh
   antidote load
 }

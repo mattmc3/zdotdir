@@ -1,13 +1,5 @@
-# initial plugins
-$ZDOTDIR/plugins/p10k-instaprompt
-
 # utility plugins
 romkatv/zsh-bench kind:path
-
-# custom plugins
-$ZDOTDIR/plugins/brew
-$ZDOTDIR/plugins/python
-$ZDOTDIR/plugins/xdg-basedir
 
 # OMZ plugins
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
@@ -15,12 +7,11 @@ ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/copypath
 ohmyzsh/ohmyzsh path:plugins/extract
-#ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 
 # prompt plugins
 romkatv/powerlevel10k
-$ZDOTDIR/plugins/p10k
 
 # general plugins
 mattmc3/zman

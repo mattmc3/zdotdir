@@ -1,8 +1,3 @@
-0=${(%):-%N}
-
-fpath=(${0:A:h}/functions $fpath)
-autoload -Uz $fpath[1]/*(.:t)
-
 export WORKON_HOME="$XDG_DATA_HOME/venvs"
 [[ -d "$WORKON_HOME" ]] || mkdir -p "$WORKON_HOME"
 
