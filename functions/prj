@@ -36,8 +36,12 @@ fi
 
 local projects=(
   $project_dir/*/.git/..
-  $project_dir/*/*/.git/..
+  # $project_dir/*/*/.git/..
 )
+
+if ! [[ -n $project_dir/*/*/.git ]]; then
+  projects+=($project_dir/*/*/.git/..)
+fi
 
 # absolute path with project dir prefix stripped
 projects=(${${projects:a}#*$project_dir/})
