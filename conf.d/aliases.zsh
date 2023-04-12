@@ -21,6 +21,7 @@ alias gsk="function f(){ squash $1 $2; };f"
 alias nvinit='${EDITOR:-lvim} "${NVIMCONFIG:-$HOME/.config/nvim}"/init.vim'
 alias lvinit='${EDITOR:-lvim} "${LVIMCONFIG:-$HOME/.config/lvim}"/config.lua'
 alias lvdot='cd ${LVIMCONFIG:-$HOME/.config/lvim}'
+alias nvdot='cd ${NVIMCONFIG:-Home/.config/nvim}'
 alias ep='explorer.exe .'
 alias delzone='find . -name "*:Zone.Identifier" -type f -delete'
 
@@ -127,5 +128,7 @@ alias pygrep='grep --include="*.py"'
 alias pyva="source .venv/bin/activate"
 
 # todo-txt
-alias t="todo.sh"
+alias t="todo"
+alias tad="todo add"
+alias ton="todo done"
 alias todos="$VISUAL $HOME/Desktop/todo.txt"
