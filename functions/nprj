@@ -39,17 +39,29 @@ local selection=$(printf "%s\n" ${templates[@]} | fzf --layout=reverse-list --qu
 # if no project name is given, exit
 if [[ -z $selection ]]; then
   echo >&2 "prj: No template selected. Creating an empty project."
-  read "name?Project name: "
+  # name = $(read -p "Project name: ")
+  vared -p "Project name: " -c name
   if [[ -z $name ]]; then
     echo >&2 "prj: No project name given"
     echo >&2 "prj: Aborting..."
+    unset name
     return 1
+  else
+    mkdir $project_dir/$name
+    cd $project_dir/$name
+    echo 🎉 Created new project $name
+    unset name
+    return 0
   fi
 fi
 
 cd $project_dir
 # store all current directories in local variable current_projects
 local current_projects=($project_dir/*/)
+touch current_projects
+for project in $current_projects; do
+  echo $project >> current_projects
+done
 # if [[ -z $selection ]]; then
 #   echo >&2 "prj: No template selected. Aborting..."
 #   return 1
@@ -60,13 +72,19 @@ if [[ -v selection ]]; then
 fi
 # the new project is the one that is now a directory of project_dir, but no
 # element of current_projects
-local new_project=(${${current_projects:#$project_dir/*/}:#$current_projects})
+touch new_projects
+for project in $project_dir/*/; do
+  echo $project >> new_projects
+done
+# get new project by comparing the two files
+local new_project=$(diff current_projects new_projects | grep ">" | cut -d " " -f 2)
+rm current_projects new_projects
 if [[ -z $new_project ]]; then
   echo >&2 "prj: No new project created"
   echo >&2 "prj: Aborting..."
   return 1
 fi
-echo "prj: Created new project $new_project"
 cd $new_project
+echo "🎉 prj: Created new project $new_project"
 
 # vim: ft=zsh
