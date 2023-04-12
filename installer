@@ -18,10 +18,8 @@ fi
 # clone zdotdir
 git clone --recursive https://github.com/NicDom/zdotdir.git $ZDOTDIR
 
-# check if ~/.config/starship exists
-if [[ ! -d ~/.config/starship ]]; then
-  mkdir -p ~/.config/starship
-fi
+# create ~/.config/starship
+mkdir -p ~/.config/starship
 
 # copy contents of $ZDOTDIR/starship to ~/.config/starship
 cp -r $ZDOTDIR/starship/* ~/.config/starship
@@ -33,6 +31,11 @@ cat <<'EOF' >|~/.zshenv
 export ZDOTDIR=~/.config/zsh
 [[ -f $ZDOTDIR/.zshenv ]] && . $ZDOTDIR/.zshenv
 EOF
+
+# clone todo.zsh and add it to $ZDOTDIR/functions
+git clone https://github.com/MrOnak/cli_todo.git $ZDOTDIR/todo
+mv $ZDOTDIR/todo/todo.zsh $ZDOTDIR/functions/todo
+rm -rf $ZDOTDIR/todo
 
 # remove git files
 # rm -rf $ZDOTDIR/.git*
