@@ -5,12 +5,6 @@
 [[ ${ZPROFRC:-0} -eq 0 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-# Load P10 instaprompt next.
-[[ ${ZPROFRC:-0} -eq 0 ]] || typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Load zstyles.
 [[ -f $ZDOTDIR/.zstyles ]] && source $ZDOTDIR/.zstyles
 
@@ -18,10 +12,15 @@ fi
 [[ -e $ZDOTDIR/.antidote ]] ||
   git clone --depth=1 https://github.com/mattmc3/antidote.git $ZDOTDIR/.antidote
 
-# Setup antidote plugins.
-ANTIDOTE_HOME=$ZDOTDIR/.antidote/.plugins
-source $ZDOTDIR/.antidote/antidote.zsh
-antidote load
+# Setup antidote.
+ANTIDOTE_HOME=$ZDOTDIR/plugins/.external
+ZPREZTODIR=$ANTIDOTE_HOME/sorin-ionescu/prezto
+zplugins=$ZDOTDIR/.zplugins
+if [[ ! ${zplugins}.zsh -nt $zplugins ]]; then
+  source ~/Projects/mattmc3/antidote/antidote.zsh
+  (antidote bundle < $zplugins >| ${zplugins}.zsh)
+fi
+source ${zplugins}.zsh
 
 # Local settings/overrides.
 [[ -f $ZDOTDIR/.zshrc_local ]] && $ZDOTDIR/.zshrc_local

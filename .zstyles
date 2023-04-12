@@ -1,7 +1,5 @@
 #!/bin/zsh
-###
-# .zstylerc - zstyle settings for features/plugins that need them.
-###
+### .zstyles - zstyle settings for features/plugins that need them.
 
 #
 # Antidote
@@ -10,14 +8,36 @@
 zstyle ':antidote:bundle' file ${ZDOTDIR:-~}/.zplugins
 zstyle ':antidote:static' file ${ZDOTDIR:-~}/.zplugins.zsh
 zstyle ':antidote:bundle' use-friendly-names 'yes'
-zstyle ':antidote:plugin:*' defer-options '-p'
+#zstyle ':antidote:plugin:*' defer-options '-p'
+
+
+#
+# Prezto
+#
+
+zstyle ':prezto:*:*' color 'yes'
+
+#
+# Autosuggestions
+#
+
+zstyle ':prezto:module:autosuggestions:color' found 'fg=60'
+
+#
+# History
+#
+
+zstyle ':prezto:module:history' histfile ${XDG_DATA_HOME:=$HOME/.local/share}/zsh/history
 
 #
 # Editor
 #
 
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':prezto:module:editor' key-bindings 'emacs'
+
 # Expand ... to ../..
-# zstyle ':prezto:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Set this to whatever you want to use to edit a command
 zstyle :zle:edit-command-line editor hx
