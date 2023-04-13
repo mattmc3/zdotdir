@@ -39,6 +39,7 @@ sorin-ionescu/prezto path:modules/osx conditional:is-darwin
 # sindresorhus/pure kind:fpath
 # romkatv/powerlevel10k
 # $ZDOTDIR/plugins/p10k
+$ZDOTDIR/plugins/prompt
 sorin-ionescu/prezto path:modules/prompt autoload:functions
 
 # programming

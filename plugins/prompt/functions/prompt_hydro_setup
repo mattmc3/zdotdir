@@ -1,0 +1,13 @@
+if ! command -v starship &>/dev/null; then
+  echo >&2 "Starship prompt not installed. See https://starship.rs"
+  echo >&2 "Or, simply run the installer or use your OS package manager."
+  echo >&2 'curl -sS https://starship.rs/install.sh | sh'
+  return 1
+fi
+
+0=${(%):-%x}
+export STARSHIP_CONFIG="${0:A:h:h}/themes/hydro.toml"
+#eval "$(starship init zsh)"
+source <(starship init zsh --print-full-init)
+
+# vim: ft=zsh sw=2 ts=2 et
