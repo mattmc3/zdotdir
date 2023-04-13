@@ -1,5 +1,5 @@
 # init
-$ZDOTDIR/plugins/p10k-instaprompt
+# $ZDOTDIR/plugins/p10k-instaprompt
 romkatv/zsh-defer
 mattmc3/zfunctions
 sorin-ionescu/prezto path:modules/helper autoload:functions
@@ -22,6 +22,9 @@ ohmyzsh/ohmyzsh path:plugins/magic-enter
 sorin-ionescu/prezto path:modules/environment
 sorin-ionescu/prezto path:runcoms/zprofile
 
+# git
+sorin-ionescu/prezto path:modules/git autoload:functions
+
 # history
 sorin-ionescu/prezto path:modules/history
 
@@ -34,8 +37,9 @@ sorin-ionescu/prezto path:modules/osx conditional:is-darwin
 # prompt
 # romkatv/powerlevel10k kind:fpath
 # sindresorhus/pure kind:fpath
-romkatv/powerlevel10k
-$ZDOTDIR/plugins/p10k
+# romkatv/powerlevel10k
+# $ZDOTDIR/plugins/p10k
+sorin-ionescu/prezto path:modules/prompt autoload:functions
 
 # programming
 $ZDOTDIR/plugins/python autoload:functions

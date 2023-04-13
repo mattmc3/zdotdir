@@ -16,8 +16,9 @@ alias zprofrc="ZPROFRC=1 zsh"
 ANTIDOTE_HOME=$ZDOTDIR/plugins/.external
 ZPREZTODIR=$ANTIDOTE_HOME/sorin-ionescu/prezto
 zplugins=$ZDOTDIR/.zplugins
+source $ZDOTDIR/.antidote/antidote.zsh
+#source ~/Projects/mattmc3/antidote/antidote.zsh
 if [[ ! ${zplugins}.zsh -nt $zplugins ]]; then
-  source ~/Projects/mattmc3/antidote/antidote.zsh
   (antidote bundle < $zplugins >| ${zplugins}.zsh)
 fi
 source ${zplugins}.zsh

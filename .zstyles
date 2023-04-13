@@ -8,7 +8,7 @@
 zstyle ':antidote:bundle' file ${ZDOTDIR:-~}/.zplugins
 zstyle ':antidote:static' file ${ZDOTDIR:-~}/.zplugins.zsh
 zstyle ':antidote:bundle' use-friendly-names 'yes'
-#zstyle ':antidote:plugin:*' defer-options '-p'
+zstyle ':antidote:plugin:*' defer-options '-p'
 
 
 #
@@ -22,6 +22,12 @@ zstyle ':prezto:*:*' color 'yes'
 #
 
 zstyle ':prezto:module:autosuggestions:color' found 'fg=60'
+
+#
+# Git
+#
+
+zstyle ':prezto:module:git:alias' skip 'yes'
 
 #
 # History
@@ -41,3 +47,12 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Set this to whatever you want to use to edit a command
 zstyle :zle:edit-command-line editor hx
+
+#
+# Prompt
+#
+
+# Set the prompt theme to load.
+# Setting it to 'random' loads a random theme.
+# Auto set to 'off' on dumb terminals.
+zstyle ':prezto:module:prompt' theme 'sorin'
