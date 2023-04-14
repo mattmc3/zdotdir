@@ -1,6 +1,4 @@
-###
-# Setup environment.
-###
+### environment - Setup environment.
 
 # dotfiles
 export DOTFILES=${DOTFILES:-~/.config/dotfiles}
@@ -51,3 +49,13 @@ path=(
 
   $path
 )
+
+# magic-enter
+MAGIC_ENTER_GIT_COMMAND='git status -sb'
+MAGIC_ENTER_OTHER_COMMAND='ls'
+
+# olets/zsh-abbr
+ABBR_USER_ABBREVIATIONS_FILE=$ZDOTDIR/.zabbr
+
+# agkozak/zsh-z
+ZSHZ_DATA=${XDG_DATA_HOME:=$HOME/.local/share}/z/data

@@ -21,6 +21,8 @@ ohmyzsh/ohmyzsh path:plugins/magic-enter
 # environment
 sorin-ionescu/prezto path:modules/environment
 sorin-ionescu/prezto path:runcoms/zprofile
+$ZDOTDIR/plugins/environment
+$ZDOTDIR/plugins/xdg
 
 # git
 sorin-ionescu/prezto path:modules/git autoload:functions
@@ -54,9 +56,6 @@ ohmyzsh/ohmyzsh path:plugins/extract
 romkatv/zsh-bench kind:path
 mattmc3/zman
 agkozak/zsh-z
-
-# confd
-mattmc3/zshrc.d
 
 # completions
 sorin-ionescu/prezto path:modules/completion
