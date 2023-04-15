@@ -1,7 +1,7 @@
 # init
 # $ZDOTDIR/plugins/p10k-instaprompt
+$ZDOTDIR/functions kind:autoload
 romkatv/zsh-defer
-mattmc3/zfunctions
 sorin-ionescu/prezto path:modules/helper autoload:functions
 
 # clipboard
