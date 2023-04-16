@@ -24,6 +24,7 @@ alias lvdot='cd ${LVIMCONFIG:-$HOME/.config/lvim}'
 alias nvdot='cd ${NVIMCONFIG:-Home/.config/nvim}'
 alias ep='explorer.exe .'
 alias delzone='find . -name "*:Zone.Identifier" -type f -delete'
+alias lg='lazygit'
 
 # directory aliases
 
