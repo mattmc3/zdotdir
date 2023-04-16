@@ -23,7 +23,7 @@ if [[ ! ${zplugins}.zsh -nt $zplugins ]]; then
 fi
 source ${zplugins}.zsh
 
-# Load zstyles.
+# Load aliases.
 [[ -f $ZDOTDIR/.zaliases ]] && source $ZDOTDIR/.zaliases
 
 # Local settings/overrides.
