@@ -11,7 +11,7 @@ format = """$all$directory$git_branch${custom.git_status_dirty}$git_status$chara
 right_format = """$cmd_duration$status"""
 
 [character]
-success_symbol = "[❯](green)"
+success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
 vicmd_symbol = "[❮](cyan)"
 
@@ -28,11 +28,11 @@ fish_style_pwd_dir_length = 1
 # right prompt uses left space padding
 [git_branch]
 format = '[$branch]($style)'
-style = 'purple'
+style = 'green'
 
 [git_status]
 format = "[($ahead_behind$stashed)]($style) "
-style = "purple"
+style = "cyan"
 stashed = "≡"
 ahead = "⇡${count}"
 behind = "⇣${count}"

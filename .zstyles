@@ -58,5 +58,5 @@ zstyle :zle:edit-command-line editor vim
 zstyle ':prezto:module:prompt' theme 'hydro'
 
 # My prompt
-zstyle ':zsh:prompt' theme pure
+zstyle ':zsh:prompt' theme starship
 zstyle ':zsh:prompt' config hydro
