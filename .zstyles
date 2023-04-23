@@ -46,7 +46,7 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Set this to whatever you want to use to edit a command
-zstyle :zle:edit-command-line editor hx
+zstyle :zle:edit-command-line editor vim
 
 #
 # Prompt
@@ -56,3 +56,7 @@ zstyle :zle:edit-command-line editor hx
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
 zstyle ':prezto:module:prompt' theme 'hydro'
+
+# My prompt
+zstyle ':zsh:prompt' theme pure
+zstyle ':zsh:prompt' config hydro
