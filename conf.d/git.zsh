@@ -2,6 +2,9 @@
 # git
 #
 
+# References
+# - https://www.oliverspryn.com/blog/adding-git-completion-to-zsh
+
 function update_git_completions {
   # Download the git scripts
   local giturl=https://raw.githubusercontent.com/git/git/master/contrib/completion
