@@ -1,0 +1,24 @@
+#!/bin/zsh
+0=${(%):-%x}
+
+if ! (( $+commands[starship] )); then
+  if (( $+commands[brew] )); then
+    command brew install starship
+  else
+    echo >&2 "Starship prompt not installed. See https://starship.rs"
+    return 1
+  fi
+fi
+
+# Set the config
+local _prompt_config
+zstyle -s ':zsh:prompt' config _prompt_config
+if [[ -n "$_prompt_config" ]]; then
+  _prompt_config=$ZDOTDIR/themes/${_prompt_config}.toml
+  [[ -f $_prompt_config ]] && export STARSHIP_CONFIG=$_prompt_config
+fi
+
+#eval "$(starship init zsh)"
+source <(starship init zsh --print-full-init)
+
+# vim: ft=zsh sw=2 ts=2 et

@@ -1,4 +1,6 @@
 #!/bin/zsh
+
+# mock prezto
 function pmodload {
   # no-op
 }
