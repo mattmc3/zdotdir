@@ -6,7 +6,7 @@
 (( $+commands[brew] )) || return 1
 
 # Setup cache dir.
-_cache_dir=${XDG_CACHE_HOME:=$HOME/.cache}/zsh
+_cache_dir=${XDG_CACHE_HOME:=$HOME/.cache}/zsh/brew
 [[ -d $_cache_dir ]] || mkdir -p $_cache_dir
 
 # Generate a new cache file daily.
