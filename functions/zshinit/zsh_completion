@@ -1,4 +1,7 @@
-function zsh_completion {
+#!/bin/zsh
+
+##? zsh_completion - set zsh built-in completion system
+#function zsh_completion {
   local zopts=(
     # 16.2.2 Completion
     always_to_end           # Move cursor to the end of a completed word.
@@ -19,10 +22,10 @@ function zsh_completion {
   setopt $zopts
 
   # Allow custom completions directory.
-  fpath=($ZDOTDIR/completions(/N) $fpath)
+  fpath=(${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}/completions(/N) $fpath)
 
   # Zsh compdump file.
-  : ${ZSH_COMPDUMP:=${XDG_CACHE_HOME:=$HOME/.cache}/zsh/zcompdump}
+  : ${ZSH_COMPDUMP:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump}
   [[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
 
   # Load and initialize the completion system ignoring insecure directories with a
@@ -44,5 +47,4 @@ function zsh_completion {
       zcompile "$ZSH_COMPDUMP"
     fi
   } &!
-}
-zsh_completion "$@"
+#}

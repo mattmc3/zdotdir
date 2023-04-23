@@ -1,4 +1,7 @@
-function zsh_compstyle {
+#!/bin/zsh
+
+##? zsh_compstyle - set zstyle completion styles
+#function zsh_compstyle {
   # Defaults.
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
   zstyle ':completion:*:default' list-prompt '%S%M matches%s'
@@ -65,5 +68,4 @@ function zsh_compstyle {
   zstyle ':completion:*:manuals'    separate-sections true
   zstyle ':completion:*:manuals.*'  insert-sections   true
   zstyle ':completion:*:man:*'      menu yes select
-}
-zsh_compstyle "$@"
+#}

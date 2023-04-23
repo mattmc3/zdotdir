@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+##? zsh_confd - use a Fish-like conf.d directory for sourcing configs.
+#function zsh_confd {
+  local zfile
+  for zfile in $ZDOTDIR/conf.d/*.zsh(N); do
+    [[ $zfile:t != '~'* ]] || continue
+    . $zfile
+  done
+#}

@@ -1,6 +1,11 @@
-function zsh_history {
-  local zopts=(
-    # 16.2.4 History
+#!/bin/zsh
+
+##? zsh_history - set zsh history options and variables
+#function zsh_history {
+  # References:
+  # - https://github.com/sorin-ionescu/prezto/tree/master/modules/history
+  local histopts=(
+    # 16.2.4 History        - https://zsh.sourceforge.io/Doc/Release/Options.html#History
     bang_hist               # Treat the '!' character specially during expansion.
     extended_history        # Write the history file in the ':start:elapsed;command' format.
     hist_expire_dups_first  # Expire a duplicate event first when trimming history.
@@ -15,17 +20,14 @@ function zsh_history {
     NO_hist_beep            # Don't beep when accessing non-existent history.
     NO_share_history        # Don't share history between all sessions.
   )
-  setopt $zopts
+  setopt $histopts
 
   # $HISTFILE belongs in the data home, not with zsh configs
   HISTFILE=${XDG_DATA_HOME:=$HOME/.local/share}/zsh/history
   [[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
 
-  # you can set $SAVEHIST and $HISTSIZE to anything greater than the ZSH defaults
+  # You can set $SAVEHIST and $HISTSIZE to anything greater than the ZSH defaults
   # (1000 and 2000 respectively), but if not we make them way bigger.
-  [[ $SAVEHIST -gt 1000 ]] || SAVEHIST=20000
-  [[ $HISTSIZE -gt 2000 ]] || HISTSIZE=100000
-
-  alias hist='fc -li'
-}
-zsh_history "$@"
+  [[ $SAVEHIST -gt 1000 ]] || SAVEHIST=10000
+  [[ $HISTSIZE -gt 2000 ]] || HISTSIZE=10000
+#}
