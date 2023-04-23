@@ -1,8 +1,6 @@
-# init
-# $ZDOTDIR/plugins/p10k-instaprompt
-$ZDOTDIR/functions kind:autoload
-romkatv/zsh-defer
-sorin-ionescu/prezto path:modules/helper autoload:functions
+#
+# .zplugins - antidote plugins file
+#
 
 # clipboard
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
@@ -10,66 +8,39 @@ ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/copypath
 
-# directory
-sorin-ionescu/prezto path:modules/directory
-
-# editor
-sorin-ionescu/prezto path:modules/editor
-ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
-ohmyzsh/ohmyzsh path:plugins/magic-enter
-
-# environment
-sorin-ionescu/prezto path:modules/environment
-sorin-ionescu/prezto path:runcoms/zprofile
-$ZDOTDIR/plugins/environment
-$ZDOTDIR/plugins/xdg
-
-# git
-sorin-ionescu/prezto path:modules/git autoload:functions
-
-# history
-sorin-ionescu/prezto path:modules/history
-
-# homebrew
-$ZDOTDIR/plugins/homebrew
-
-# macOS
-sorin-ionescu/prezto path:modules/osx conditional:is-darwin
-
-# prompt
-# romkatv/powerlevel10k kind:fpath
-# sindresorhus/pure kind:fpath
-# romkatv/powerlevel10k
-# $ZDOTDIR/plugins/p10k
-$ZDOTDIR/plugins/prompt
-sorin-ionescu/prezto path:modules/prompt autoload:functions
-
-# programming
-$ZDOTDIR/plugins/python autoload:functions
-
 # terminal
 sorin-ionescu/prezto path:modules/terminal
 
+# keybinds
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+sorin-ionescu/prezto path:modules/editor
+
+# my custom plugins
+#$ZDOTDIR/plugins/homebrew
+#$ZDOTDIR/plugins/python
+
+# macOS
+zshzoo/macos conditional:is-macos
+
 # utilities
-belak/zsh-utils path:utility
 ohmyzsh/ohmyzsh path:plugins/extract
 romkatv/zsh-bench kind:path
 mattmc3/zman
+#rupa/z
 agkozak/zsh-z
+
+# prompts
+sindresorhus/pure kind:fpath
 
 # completions
 sorin-ionescu/prezto path:modules/completion
 
-# autosuggestions
-sorin-ionescu/prezto path:modules/autosuggestions
-
-# syntax-highlighting
-zdharma-continuum/fast-syntax-highlighting kind:defer
-
-# abbreviations
+# deferred plugins
 olets/zsh-abbr kind:defer
-
-# history-substring-search
-sorin-ionescu/prezto path:modules/history-substring-search
+zdharma-continuum/fast-syntax-highlighting kind:defer
+#zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions kind:defer
+zsh-users/zsh-history-substring-search kind:defer
 
 # vim: ft=zsh sw=2 ts=2 et
