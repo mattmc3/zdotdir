@@ -1,4 +1,6 @@
-[[ -f $ZDOTDIR/.zstyles ]] && source $ZDOTDIR/.zstyles
+#
+# zshinit
+#
 
 local prompt_theme
 zstyle -s ':zsh:prompt' theme prompt_theme

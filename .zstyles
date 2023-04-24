@@ -52,6 +52,12 @@ zstyle :zle:edit-command-line editor vim
 # Prompt
 #
 
-# Set my preferred prompt
-zstyle ':zsh:prompt' theme powerlevel10k
-zstyle ':zsh:prompt' config pure
+# Set prompt
+zstyle ':zsh:prompt' theme starship
+
+# Config starship prompt
+zstyle ':zsh:prompt:starship' config hydro
+
+# Config powerlevel10k prompt
+zstyle ':zsh:prompt:powerlevel10k' config lean
+zstyle ':zsh:prompt:powerlevel10k' instant-prompt on

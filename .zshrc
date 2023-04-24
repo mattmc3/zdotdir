@@ -5,8 +5,12 @@
 [[ -z "$ZPROFRC" ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-# p10 insta-prompt
-source $ZDOTDIR/plugins/p10k-instaprompt/p10k-instaprompt.plugin.zsh
+# zstyle config
+[[ -f $ZDOTDIR/.zstyles ]] && source $ZDOTDIR/.zstyles
+
+# libs
+for zfile in $ZDOTDIR/lib/*.zsh(.N); source $zfile
+unset zfile
 
 # init functions
 fpath+=($ZDOTDIR/functions/zshinit)

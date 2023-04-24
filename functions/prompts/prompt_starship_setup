@@ -11,11 +11,11 @@ if ! (( $+commands[starship] )); then
 fi
 
 # Set the config
-local _prompt_config
-zstyle -s ':zsh:prompt' config _prompt_config
-if [[ -n "$_prompt_config" ]]; then
-  _prompt_config=$ZDOTDIR/themes/${_prompt_config}.toml
-  [[ -f $_prompt_config ]] && export STARSHIP_CONFIG=$_prompt_config
+local prompt_config
+zstyle -s ':zsh:prompt:starship' config prompt_config
+if [[ -n "$prompt_config" ]]; then
+  prompt_config=$ZDOTDIR/themes/${prompt_config}.toml
+  [[ -f $prompt_config ]] && export STARSHIP_CONFIG=$prompt_config
 fi
 
 #eval "$(starship init zsh)"
