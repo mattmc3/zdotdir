@@ -32,6 +32,7 @@ agkozak/zsh-z
 
 # prompts
 sindresorhus/pure kind:fpath
+romkatv/powerlevel10k kind:fpath
 
 # completions
 sorin-ionescu/prezto path:modules/completion

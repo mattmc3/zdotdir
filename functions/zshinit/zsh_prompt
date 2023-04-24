@@ -9,5 +9,20 @@
   # Options
   setopt PROMPT_SUBST  # expand parameters in prompt variables
   autoload -Uz promptinit && promptinit
-  (( ! $# )) || prompt $@
+
+  # Set the prompt theme
+  if (( $# )); then
+    prompt $@
+
+    # Set the prompt config
+    local prompt_config
+    zstyle -s ':zsh:prompt' config prompt_config
+    if [[ "$1" == "powerlevel10k" ]] && [[ -n "$prompt_config" ]]; then
+      prompt_config=$ZDOTDIR/themes/${prompt_config}.p10k.zsh
+
+      # To customize prompt, run `p10k configure` or edit ${ZDOTDIR:-~}/.p10k.zsh.
+      [[ -f $prompt_config ]] || prompt_config=${ZDOTDIR:-~}/.p10k.zsh
+      source $prompt_config
+    fi
+  fi
 #}
