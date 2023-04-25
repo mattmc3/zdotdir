@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Load antidote for plugin management.
 local zplugins=$ZDOTDIR/.zplugins
 export ANTIDOTE_HOME=${XDG_DATA_HOME:-~/.local/share}/antidote

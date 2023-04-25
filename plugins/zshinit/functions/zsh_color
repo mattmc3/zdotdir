@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 function zsh_color {
   local prefix cache
 
