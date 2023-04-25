@@ -53,11 +53,12 @@ zstyle :zle:edit-command-line editor vim
 #
 
 # Set prompt
-zstyle ':zsh:prompt' theme starship
+#zstyle ':zephyr:plugin:prompt' theme starship
+#zstyle ':zephyr:plugin:prompt:starship' config hydro
 
-# Config starship prompt
-zstyle ':zsh:prompt:starship' config hydro
+# Config pure prompt
+# zstyle ':zsh:prompt:starship' config hydro
 
 # Config powerlevel10k prompt
-zstyle ':zsh:prompt:powerlevel10k' config lean
-zstyle ':zsh:prompt:powerlevel10k' instant-prompt on
+# zstyle ':zsh:prompt:powerlevel10k' config lean
+# zstyle ':zsh:prompt:powerlevel10k' instant-prompt on

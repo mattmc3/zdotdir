@@ -12,9 +12,11 @@ alias zprofrc="ZPROFRC=1 zsh"
 for zfile in $ZDOTDIR/lib/*.zsh(.N); source $zfile
 unset zfile
 
-# init functions
-fpath+=($ZDOTDIR/functions/zshinit)
-autoload -Uz zshinit && zshinit
+# Load aliases.
+[[ -f $ZDOTDIR/.zaliases ]] && source $ZDOTDIR/.zaliases
+
+# Local settings/overrides.
+[[ -f $ZDOTDIR/.zshrc_local ]] && $ZDOTDIR/.zshrc_local
 
 # Done profiling.
 [[ -z "$ZPROFRC" ]] || zprof

@@ -2,46 +2,94 @@
 # .zplugins - antidote plugins file
 #
 
-# clipboard
-ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-ohmyzsh/ohmyzsh path:plugins/copybuffer
-ohmyzsh/ohmyzsh path:plugins/copyfile
-ohmyzsh/ohmyzsh path:plugins/copypath
+# Zephyr core
+mattmc3/zephyr path:plugins/zfunctions
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/environment
 
-# terminal
-sorin-ionescu/prezto path:modules/terminal
+# Prompt
+sindresorhus/pure kind:fpath
+romkatv/powerlevel10k kind:fpath
+mattmc3/zephyr path:plugins/prompt
 
-# keybinds
+# editor
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/magic-enter
-sorin-ionescu/prezto path:modules/editor
+mattmc3/zephyr path:plugins/editor
 
 # my custom plugins
-#$ZDOTDIR/plugins/homebrew
-#$ZDOTDIR/plugins/python
-
-# macOS
-zshzoo/macos conditional:is-macos
+$ZDOTDIR/plugins/python
 
 # utilities
-ohmyzsh/ohmyzsh path:plugins/extract
+mattmc3/zephyr path:plugins/clipboard
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/homebrew
+mattmc3/zephyr path:plugins/macos conditional:is-macos
+mattmc3/zephyr path:plugins/utility
 romkatv/zsh-bench kind:path
 mattmc3/zman
 #rupa/z
 agkozak/zsh-z
 
-# prompts
-sindresorhus/pure kind:fpath
-romkatv/powerlevel10k kind:fpath
-
 # completions
-sorin-ionescu/prezto path:modules/completion
+mattmc3/zephyr path:plugins/confd
+mattmc3/zephyr path:plugins/completion post:compstyle_zephyr_setup
 
 # deferred plugins
 olets/zsh-abbr kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
-#zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search kind:defer
+
+#
+# Alternatives
+#
+
+# Pre-reqs
+# sorin-ionescu/prezto path:modules/helper autoload:functions
+
+# Alt clipboard
+# ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+# ohmyzsh/ohmyzsh path:plugins/copybuffer
+# ohmyzsh/ohmyzsh path:plugins/copyfile
+# ohmyzsh/ohmyzsh path:plugins/copypath
+
+# Alt editor
+# ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+# ohmyzsh/ohmyzsh path:plugins/magic-enter
+# sorin-ionescu/prezto path:modules/editor
+
+# Alt environment
+# sorin-ionescu/prezto path:modules/environment
+# sorin-ionescu/prezto path:runcoms/zprofrc
+
+# Alt history
+# belak/zsh-utils path:history
+# sorin-ionescu/prezto path:modules/history
+
+# Alt macOS
+# zshzoo/macos conditional:is-macos
+# sorin-ionescu/prezto path:modules/osx autoload:functions conditional:is-macos
+# ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
+
+# Alt prompts
+# belak/zsh-utils path:prompt
+# sorin-ionescu/prezto path:modules/prompt
+# sindresorhus/pure kind:fpath
+# romkatv/powerlevel10k kind:fpath
+
+# Alt terminal
+# sorin-ionescu/prezto path:modules/terminal
+
+# Alt utility
+# sorin-ionescu/prezto path:modules/utility
+# belak/zsh-utils path:utility
+# ohmyzsh/ohmyzsh path:plugins/extract
+
+# Alt syntax-highlighting
+# zsh-users/zsh-syntax-highlighting
+
+# Alt z
+# rupa/z
 
 # vim: ft=zsh sw=2 ts=2 et
