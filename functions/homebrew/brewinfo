@@ -1,5 +1,0 @@
-#!/bin/zsh
-##? brewinfo - Show descriptions of brew installs
-#function brewinfo {
-  brew leaves | xargs brew desc --eval-all
-#}
