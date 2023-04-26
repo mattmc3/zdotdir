@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+##
+# Interactive search.
+#
+
+
+export FZF_DEFAULT_COMMAND="fd -t f -- ''"
+selected=$(
+  fzf \
+    --ansi \
+    --delimiter : \
+    --bind "f12:execute-silent:(code -g $PWD/{1..3})" \
+    --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
+    --preview 'bat -n --color=always {}'
+)
+
+local IDE="code"
+local usage="Usage: $0 [-e] [-d <dir>]"
+
+# set optional flag -e to use $EDITOR for opening
+while getopts ":ed:h" opt; do
+  case $opt in
+    e)
+      IDE="$EDITOR"
+      ;;
+    d)
+      cd "${OPTARG}" || exit
+      ;;
+    h)
+      printf "%s\n" "$usage"
+      exit 0
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+
+[[ -n $selected ]] && $IDE "$PWD"/"$selected"
