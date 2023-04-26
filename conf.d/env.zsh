@@ -12,6 +12,7 @@ export VISUAL=code
 
 export NVIMCONFIG=${NVIMCONFIG:-~/.config/nvim}
 export LVIMCONFIG=${LVIMCONFIG:-~/.config/lvim}
+export ASTROUSERCONFIG=${ASTROUSERCONFIG:-~NVIMCONFIG/lua/user}
 
 # go
 export GLOBALGOPATH=$HOME/Projects/golang
