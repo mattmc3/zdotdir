@@ -7,7 +7,7 @@ export DOTFILES=${DOTFILES:-~/.config/dotfiles}
 
 
 # editors
-export EDITOR=vim
+export EDITOR=nvim
 export VISUAL=code
 
 export NVIMCONFIG=${NVIMCONFIG:-~/.config/nvim}
