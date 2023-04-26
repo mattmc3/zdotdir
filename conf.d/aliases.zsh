@@ -25,6 +25,9 @@ alias nvdot='cd ${NVIMCONFIG:-Home/.config/nvim}'
 alias ep='explorer.exe .'
 alias delzone='find . -name "*:Zone.Identifier" -type f -delete'
 alias lg='lazygit'
+alias cdn="fuzzy-edit"
+alias fo="fuzzy-edit -e"
+alias fe="fuzzy-edit -e"
 
 # directory aliases
 
