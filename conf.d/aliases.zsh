@@ -80,7 +80,7 @@ alias utc="date -u +%Y-%m-%dT%H:%M:%SZ"
 alias unixepoch="date +%s"
 
 # find
-alias fd='find . -type d -name'
+alias fdir='find . -type d -name'
 alias ff='find . -type f -name'
 
 # disk usage
