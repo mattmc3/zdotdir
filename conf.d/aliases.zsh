@@ -139,3 +139,8 @@ alias t="todo"
 alias tad="todo add"
 alias ton="todo done"
 alias todos="$VISUAL $HOME/Desktop/todo.txt"
+
+# user specific aliases and functions
+if [[ -f "$USER_CONFIG/aliases.zsh" ]]; then
+  source "$USER_CONFIG/aliases.zsh"
+fi

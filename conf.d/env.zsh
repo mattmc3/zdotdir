@@ -5,6 +5,8 @@
 # dotfiles
 export DOTFILES=${DOTFILES:-~/.config/dotfiles}
 
+# user specific
+export USER_CONFIG=${USER_CONFIG:-~/.config/.zsh_user}
 
 # editors
 export EDITOR=nvim
