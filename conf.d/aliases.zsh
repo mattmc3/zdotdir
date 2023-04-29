@@ -29,6 +29,7 @@ alias lg='lazygit'
 alias cdn="fuzzy-edit"
 alias fo="fuzzy-edit -e"
 alias fe="fuzzy-edit -e"
+alias tardir="tar -zcvf"
 
 # directory aliases
 
