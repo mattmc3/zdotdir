@@ -1,0 +1,21 @@
+# tard: Tar a given directory
+# Usage: tard path/of/dir
+
+local dir=$1
+local tarfile="$dir.tar.gz"
+
+# Check if the tar file already exists
+if [ -e "$tarfile" ]; then
+  read "override?File $tarfile already exists. Do you want to override it? [y/n] "
+  if [[ "$override" != "y" ]]; then
+    echo "Aborted."
+    return
+  fi
+fi
+
+# Create the tar file
+tar -zvcf "$tarfile" "$dir"
+
+echo "Created $tarfile"
+
+# vim: ft=zsh
