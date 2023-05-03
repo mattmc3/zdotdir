@@ -1,0 +1,31 @@
+# bump: Bump the version of the current package using poetry
+# Usage: bump [major|minor|patch]
+# Default is patch
+local version=${1:-patch}
+# check if poetry is installed
+if ! command -v poetry >/dev/null; then
+  echo "poetry command not found" >&2
+  return 1
+fi
+# check if git is installed
+if ! command -v git >/dev/null; then
+  echo "git command not found" >&2
+  return 1
+fi
+# check if git is in a git repo
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "git not in a git repo" >&2
+  return 1
+fi
+# check if version is valid
+if ! [[ $version =~ ^(major|minor|patch)$ ]]; then
+  echo "invalid version '$version'" >&2
+  return 1
+fi
+# bump version
+poetry version $version
+# commit version bump 
+git add pyproject.toml
+git commit -m ":bookmark: Bumps version to $(poetry version | cut -d' ' -f2)"
+
+# vim: ft=zsh
