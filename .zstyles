@@ -53,8 +53,8 @@ zstyle :zle:edit-command-line editor vim
 #
 
 # Set prompt
-#zstyle ':zephyr:plugin:prompt' theme starship
-#zstyle ':zephyr:plugin:prompt:starship' config hydro
+zstyle ':zsh_custom:plugin:prompt' theme starship
+zstyle ':zsh_custom:plugin:prompt:starship' config mmc
 
 # Config pure prompt
 # zstyle ':zsh:prompt:starship' config hydro

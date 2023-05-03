@@ -10,7 +10,7 @@ mattmc3/zephyr path:plugins/environment
 # Prompt
 sindresorhus/pure kind:fpath
 romkatv/powerlevel10k kind:fpath
-mattmc3/zephyr path:plugins/prompt
+$ZDOTDIR/plugins/prompt
 
 # editor
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
