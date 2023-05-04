@@ -5,7 +5,7 @@ format = """$python$directory$character"""
 
 # move the rest of the prompt to the right
 #right_format = """$status$git_branch${custom.git_status_dirty}$git_status"""
-right_format = """$git_status${custom.git_status_dirty}"""
+right_format = """$status$cmd_duration$git_branch$git_status${custom.git_status_dirty}"""
 
 [character]
 success_symbol = "[❯](purple)[❯](cyan)"
