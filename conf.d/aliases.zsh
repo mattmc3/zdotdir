@@ -33,6 +33,8 @@ alias vi=vim
 GREP_EXCL=(.bzr CVS .git .hg .svn .idea .tox)
 alias grep="${aliases[grep]:-grep} --exclude-dir={\${(j.,.)GREP_EXCL}}"
 
+alias gpg="${aliases[gpg]:-gpg} --homedir \"\$GNUPGHOME\""
+
 # more ways to ls
 alias ll='ls -lh'
 alias la='ls -lAh'
@@ -87,7 +89,7 @@ alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 alias autorotate="jhead -autorot"
 
 # set initial working directory
-IWD=${IWD:-$PWD}
+: ${IWD:=$PWD}
 alias iwd='cd $IWD'
 
 # dotfiles
