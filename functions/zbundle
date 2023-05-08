@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-local bundlefile staticfile
-zstyle -s ':antidote:bundle' file 'bundlefile' ||
-  bundlefile=${ZDOTDIR:-~}/.zsh_plugins.txt
-zstyle -s ':antidote:static' file 'staticfile' ||
-  staticfile=${ZDOTDIR:-~}/.zsh_plugins.zsh
-
-antidote bundle < $bundlefile >| $staticfile
