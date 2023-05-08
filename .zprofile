@@ -1,56 +1,30 @@
+#!/bin/zsh
 #
 # .zprofile - execute login commands pre-zshrc
 #
-# https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zprofile
 
-#
+#region Paths
+
 # XDG
-#
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
+export XDG_STATE_HOME=~/.local/state
+export XDG_RUNTIME_DIR=~/.xdg
+export XDG_PROJECTS_DIR=~/Projects
 
-# Set XDG base dirs.
-# https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
-export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
-export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
-export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
-export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-$HOME/.xdg}
-
-# Ensure XDG dirs exist.
-for xdgdir in XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_RUNTIME_DIR; do
-  [[ -e ${(P)xdgdir} ]] || mkdir -p ${(P)xdgdir}
-done
-
-# OS specific
-if [[ "$OSTYPE" == darwin* ]]; then
-  export XDG_DESKTOP_DIR=${XDG_DESKTOP_DIR:-$HOME/Desktop}
-  export XDG_DOCUMENTS_DIR=${XDG_DOCUMENTS_DIR:-$HOME/Documents}
-  export XDG_DOWNLOAD_DIR=${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
-  export XDG_MUSIC_DIR=${XDG_MUSIC_DIR:-$HOME/Music}
-  export XDG_PICTURES_DIR=${XDG_PICTURES_DIR:-$HOME/Pictures}
-  export XDG_VIDEOS_DIR=${XDG_VIDEOS_DIR:-$HOME/Videos}
-  export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
+# Custom
+if [[ -e /opt/homebrew/bin/brew ]]; then
+  export HOMEBREW_PREFIX=/opt/homebrew
+else
+  export HOMEBREW_PREFIX=/usr/local
 fi
-
-#
-# Common
-#
-
-# Set editor variables.
-export EDITOR=vim
-export VISUAL=code
-export PAGER=less
-
-# Browser.
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-fi
-
-# Regional settings
-export LANG='en_US.UTF-8'
-
-#
-# Paths
-#
+export DOTFILES=$XDG_CONFIG_HOME/dotfiles
+export GLOBALGOPATH=$XDG_PROJECTS_DIR/golang
+export GNUPGHOME=$XDG_DATA_HOME/gnupg
+export REPO_HOME=$XDG_CACHE_HOME/repos
+export ANTIDOTE_HOME=$REPO_HOME
+export LESSHISTFILE=$XDG_CACHE_HOME/less/history
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU fpath path cdpath
@@ -71,34 +45,39 @@ path=(
 
   # emacs
   $HOME/.emacs.d/bin(N)
-  ${XDG_CONFIG_HOME:-$HOME/.config}/emacs/bin(N)
+  $XDG_CONFIG_HOME/emacs/bin(N)
+
+  # apps
+  /{usr/local,opt/homebrew}/opt/curl/bin(N)
+  /{usr/local,opt/homebrew}/opt/go/libexec/bin(N)
+  /{usr/local,opt/homebrew}/share/npm/bin(N)
+  /{usr/local,opt/homebrew}/opt/ruby/bin(N)
+  /{usr/local,opt/homebrew}/lib/ruby/gems/*/bin(N)
+  $HOME/.gem/ruby/*/bin(N)
 
   # path
   $path
 )
 
-#
-# Less
-#
+#endregion
 
-# Set the default Less options.
-# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
-# Remove -X to enable it.
-if [[ -z "$LESS" ]]; then
-  export LESS='-g -i -M -R -S -w -z-4'
+export EDITOR=vim
+export VISUAL=code
+export PAGER=less
+if [[ "$OSTYPE" == darwin* ]]; then
+  export BROWSER='open'
 fi
 
-# Set the Less input preprocessor.
-# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
-if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
+# Regional settings
+export LANG='en_US.UTF-8'
+
+# Less
+export LESS='-g -i -M -R -S -w -z-4'
+if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
-#
 # Misc
-#
-
-export DOTFILES=$XDG_CONFIG_HOME/dotfiles
 export KEYTIMEOUT=1
 
 # Make Apple Terminal behave.
@@ -106,5 +85,3 @@ export SHELL_SESSIONS_DISABLE=1
 
 # Use `< file` to quickly view the contents of any file.
 [[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
-
-# vim: ft=zsh sw=2 ts=2 et
