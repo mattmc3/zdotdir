@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+##? funcfresh - refresh function definition
+#function funcfresh {
+if ! (( $# )); then
+  echo >&2 "repo: Expecting function argument."
+  return 1
+elif ! (( $+functions[$1] )); then
+  echo >&2 "repo: Function not found '$1'."
+  return 1
+fi
+unfunction $1
+autoload -Uz $1
+#}
