@@ -3,7 +3,6 @@
 #
 
 # Pre-reqs
-mattmc3/zfunctions
 sorin-ionescu/prezto path:modules/helper autoload:functions
 
 # Clone-only utils
