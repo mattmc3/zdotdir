@@ -1,4 +1,0 @@
-HISTFILE=$XDG_DATA_HOME/zsh/history
-[[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
-SAVEHIST=10000
-HISTSIZE=10000

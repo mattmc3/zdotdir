@@ -1,6 +1,10 @@
 #
-# .zsh_plugins.txt - antidote plugins file
+# .zplugins - antidote plugins file
 #
+
+# Pre-reqs
+mattmc3/zfunctions
+sorin-ionescu/prezto path:modules/helper autoload:functions
 
 # Clone-only utils
 mbadolato/iTerm2-Color-Schemes kind:clone
@@ -8,12 +12,10 @@ sindresorhus/pure kind:clone
 romkatv/powerlevel10k kind:clone
 agkozak/zsh-z kind:clone
 
-# Pre-reqs
-sorin-ionescu/prezto path:modules/helper autoload:functions
-
 # my custom plugins
 $ZDOTDIR/plugins/git
 $ZDOTDIR/plugins/python
+$ZDOTDIR/plugins/starship
 
 # clipboard
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
@@ -44,6 +46,7 @@ sorin-ionescu/prezto path:modules/terminal
 belak/zsh-utils path:utility
 ohmyzsh/ohmyzsh path:plugins/extract
 romkatv/zsh-bench kind:path
+ohmyzsh/ohmyzsh path:plugins/globalias
 rupa/z
 mattmc3/zman
 
@@ -51,7 +54,8 @@ mattmc3/zman
 sorin-ionescu/prezto path:modules/completion
 
 # deferred plugins
-olets/zsh-abbr kind:defer
+sorin-ionescu/prezto path:runcoms/zlogin kind:defer
+#olets/zsh-abbr kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search kind:defer

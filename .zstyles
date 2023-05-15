@@ -1,5 +1,6 @@
-#!/bin/zsh
-### .zstyles - zstyle settings for features/plugins that need them.
+#
+# zstyles - zstyle settings for features/plugins that need them.
+#
 
 #
 # Antidote
@@ -10,12 +11,12 @@ zstyle ':antidote:static' file ${ZDOTDIR:-~}/.zplugins.zsh
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':antidote:plugin:*' defer-options '-p'
 
-
 #
 # Prezto
 #
 
 zstyle ':prezto:*:*' color 'yes'
+zstyle ':prezto:module:*:alias' skip 'yes'
 
 #
 # Autosuggestions
@@ -24,16 +25,10 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:module:autosuggestions:color' found 'fg=60'
 
 #
-# Git
-#
-
-zstyle ':prezto:module:git:alias' skip 'yes'
-
-#
 # History
 #
 
-zstyle ':prezto:module:history' histfile ${XDG_DATA_HOME:=$HOME/.local/share}/zsh/history
+zstyle ':prezto:module:history' histfile ${XDG_DATA_HOME:=$HOME/.local/share}/zsh/zsh_history
 
 #
 # Editor
@@ -46,19 +41,6 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Set this to whatever you want to use to edit a command
-zstyle :zle:edit-command-line editor vim
+zstyle :zle:edit-command-line editor hx
 
-#
-# Prompt
-#
-
-# Set prompt
-zstyle ':zsh_custom:plugin:prompt' theme starship
-zstyle ':zsh_custom:plugin:prompt:starship' config mmc
-
-# Config pure prompt
-# zstyle ':zsh:prompt:starship' config hydro
-
-# Config powerlevel10k prompt
-# zstyle ':zsh:prompt:powerlevel10k' config lean
-# zstyle ':zsh:prompt:powerlevel10k' instant-prompt on
+# vim: ft=zsh sw=2 ts=2 et

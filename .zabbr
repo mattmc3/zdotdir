@@ -1,3 +1,7 @@
+#
+# zabbr - abbreviations file for olets/zsh-abbr
+#
+
 abbr -="cd -"
 abbr brewup="brew update && brew upgrade && brew cleanup"
 abbr dotfl="cd \$DOTFILES/local"
@@ -47,3 +51,5 @@ abbr tarls="tar -tvf"
 abbr untar="tar -xv"
 abbr zdot="cd \$ZDOTDIR"
 abbr zz="exit"
+
+# vim: ft=zsh sw=2 ts=2 et

@@ -1,46 +1,52 @@
-#!/bin/zsh
-#####
-# My aliases
 #
+# aliases - Zsh and bash aliases
+#
+
 # References
 # - https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789#.vh7hhm6th
 # - https://github.com/webpro/dotfiles/blob/master/system/.alias
 # - https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
 # - https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
-#####
+#
 
 # directory aliases
-alias -- -='cd -'
 alias dirh='dirs -v'
-dotdot=".."
-for index ({1..9}); do
-  alias "$index"="cd +${index}"
-  alias -g "..$index"="$dotdot"
-  dotdot+='/..'
-done
-unset index dotdot
+if [[ -n "$ZSH_VERSION" ]]; then
+  alias -- -='cd -'
+  for index in {1..9}; do
+    alias "$index"="cd +${index}"
+    alias -g "..$index"=$(printf '../%.0s' {1..$index})
+  done
+  unset index
+fi
 
 # single character shortcuts - be sparing!
 alias _=sudo
 alias l=ls
-alias o=open
 alias g=git
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
 alias vi=vim
+alias nv=nvim
+alias grep="command grep --exclude-dir={.git,.vscode}"
+export GNUPGHOME=${XDG_DATA_HOME:=~/.local/share}/gnupg
+alias gpg="command gpg --homedir \"\$GNUPGHOME\""
 
-GREP_EXCL=(.bzr CVS .git .hg .svn .idea .tox)
-alias grep="${aliases[grep]:-grep} --exclude-dir={\${(j.,.)GREP_EXCL}}"
+# brew
+alias brewup="brew update && brew upgrade && brew cleanup"
 
-alias gpg="${aliases[gpg]:-gpg} --homedir \"\$GNUPGHOME\""
+# directories
+alias secrets="cd ${XDG_DATA_HOME:=~/.local/share}/secrets"
 
 # more ways to ls
 alias ll='ls -lh'
 alias la='ls -lAh'
+alias lsa="ls -aG"
 alias ldot='ls -ld .*'
 
 # fix typos
+alias get=git
 alias quit='exit'
 alias cd..='cd ..'
 alias zz='exit'
@@ -76,11 +82,9 @@ alias urlencode='python3 -c "import sys, urllib.parse as ul; \
 alias please=sudo
 alias zshrc='${EDITOR:-vim} "${ZDOTDIR:-$HOME}"/.zshrc'
 alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
-alias zdot='cd $ZDOTDIR'
-alias fdot='cd ${XDG_CONFIG_HOME:-$HOME/.config}/fish'
 alias cls="clear && printf '\e[3J'"
 
-# echo things
+# print things
 alias print-fpath='for fp in $fpath; do echo $fp; done; unset fp'
 alias print-path='echo $PATH | tr ":" "\n"'
 alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
@@ -95,6 +99,10 @@ alias iwd='cd $IWD'
 # dotfiles
 alias dotf='cd "$DOTFILES"'
 alias dotfed='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
+alias dotfl="cd \$DOTFILES/local"
+alias fdot='cd ${XDG_CONFIG_HOME:=$HOME/.config}/fish'
+alias fconf=fdot
+alias zdot='cd $ZDOTDIR'
 
 # java
 alias setjavahome="export JAVA_HOME=\`/usr/libexec/java_home\`"

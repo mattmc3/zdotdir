@@ -1,4 +1,3 @@
-#!/bin/zsh
 #
 # .zshrc - Run on interactive Zsh session.
 #
@@ -7,8 +6,9 @@
 [[ -z "$ZPROFRC" ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-# zstyles
 [[ -f $ZDOTDIR/.zstyles ]] && . $ZDOTDIR/.zstyles
+[[ -f $ZDOTDIR/.zvars ]] && . $ZDOTDIR/.zvars
+[[ -f $ZDOTDIR/.zaliases ]] && . $ZDOTDIR/.zaliases
 
 # Lazy-load functions directory like fish.
 autoload -Uz $ZDOTDIR/functions/autoload-dir
@@ -17,27 +17,30 @@ autoload-dir $ZDOTDIR/functions $ZDOTDIR/functions/*(/FN)
 # Add custom completions directory like fish.
 fpath=($ZDOTDIR/completions(/N) $fpath)
 
-# Set history vars.
-HISTFILE=$XDG_DATA_HOME/zsh/history
-[[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
-SAVEHIST=10000
-HISTSIZE=10000
+# Load antidote for plugin management.
+source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
+zplugins=${ZDOTDIR:-$HOME}/.zplugins
+if [[ ! ${zplugins}.zsh -nt ${zplugins} ]]; then
+  (antidote bundle <${zplugins} >${zplugins}.zsh)
+fi
+source ${zplugins}.zsh
 
-# add conf.d like fish
+# Add conf.d like fish.
 for zfile in $ZDOTDIR/conf.d/*.zsh(.N); do
   [[ $zfile:t != '~'* ]] || continue
   . $zfile
 done
 unset zfile
 
-# Load starship prompt.
-export STARSHIP_CONFIG=$ZDOTDIR/themes/mmc.toml
-eval "$(starship init zsh)"
-
 # Load local overrides.
-[[ -f $DOTFILES/local/zsh/zshrc_local.zsh ]] && . $DOTFILES/local/zsh/zshrc_local.zsh
+if [[ ! -f $ZDOTDIR/.zlocal ]] && [[ -f $DOTFILES/local/zsh/zshrc_local.zsh ]]; then
+  ln -sf $DOTFILES/local/zsh/zshrc_local.zsh $ZDOTDIR/.zlocal
+fi
+[[ -f $ZDOTDIR/.zlocal ]] && . $ZDOTDIR/.zlocal
 
 # Done profiling.
 [[ -z "$ZPROFRC" ]] || zprof
 unset ZPROFRC
 true
+
+# vim: ft=zsh sw=2 ts=2 et
