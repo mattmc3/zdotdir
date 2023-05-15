@@ -12,7 +12,6 @@ setopt extended_glob no_beep
 # Lazy-load functions directory like fish.
 for fndir in $ZDOTDIR/functions(/FN) $ZDOTDIR/functions/*(/FN); do
   fpath=($fndir $fpath)
-  echo $fpath[1]/*~*/_*(N.:t)
   autoload -Uz $fpath[1]/*~*/_*(N.:t)
 done
 
