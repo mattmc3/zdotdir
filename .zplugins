@@ -46,7 +46,6 @@ sorin-ionescu/prezto path:modules/terminal
 belak/zsh-utils path:utility
 ohmyzsh/ohmyzsh path:plugins/extract
 romkatv/zsh-bench kind:path
-ohmyzsh/ohmyzsh path:plugins/globalias
 rupa/z
 mattmc3/zman
 
