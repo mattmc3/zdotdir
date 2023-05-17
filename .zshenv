@@ -29,9 +29,6 @@ export REPO_HOME=$XDG_CACHE_HOME/repos
 export ANTIDOTE_HOME=$REPO_HOME
 export LESSHISTFILE=$XDG_CACHE_HOME/less/history
 
-# Zsh completion dump
-ZSH_COMPDUMP=$XDG_CACHE_HOME/prezto/zcompdump
-
 # Ensure path arrays do not contain duplicates.
 typeset -gU fpath path cdpath
 
@@ -97,54 +94,8 @@ export SHELL_SESSIONS_DISABLE=1 # Make Apple Terminal behave.
 ABBR_USER_ABBREVIATIONS_FILE=$ZDOTDIR/.zabbr
 MAGIC_ENTER_GIT_COMMAND='git status -sb'
 MAGIC_ENTER_OTHER_COMMAND='ls'
-ZSH_COMPDUMP=$XDG_CACHE_HOME/prezto/zcompdump
 _Z_DATA=$XDG_DATA_HOME/z/data
 [[ -d $_Z_DATA:h ]] || mkdir -p $_Z_DATA:h
-
-#endregion
-
-#region zstyles
-
-#
-# Antidote
-#
-
-zstyle ':antidote:bundle' file ${ZDOTDIR:-~}/.zplugins
-zstyle ':antidote:static' file ${ZDOTDIR:-~}/.zplugins.zsh
-zstyle ':antidote:bundle' use-friendly-names 'yes'
-zstyle ':antidote:plugin:*' defer-options '-p'
-
-#
-# Prezto
-#
-
-zstyle ':prezto:*:*' color 'yes'
-zstyle ':prezto:module:*:alias' skip 'yes'
-
-#
-# Autosuggestions
-#
-
-zstyle ':prezto:module:autosuggestions:color' found 'fg=60'
-
-#
-# History
-#
-
-zstyle ':prezto:module:history' histfile ${XDG_DATA_HOME:=$HOME/.local/share}/zsh/zsh_history
-
-#
-# Editor
-#
-
-# Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' key-bindings 'emacs'
-
-# Expand ... to ../..
-zstyle ':prezto:module:editor' dot-expansion 'yes'
-
-# Set this to whatever you want to use to edit a command
-zstyle :zle:edit-command-line editor hx
 
 #endregion
 

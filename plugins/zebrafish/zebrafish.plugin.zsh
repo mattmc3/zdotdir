@@ -57,9 +57,9 @@ function dopromptinit {
   # Set prompt.
   local -a prompt_argv
   zstyle -a ':zebrafish:prompt' theme 'prompt_argv'
-  if [[ $TERM == (dumb|linux|*bsd*) ]] || (( $#prompt_argv < 1 )); then
+  if [[ $TERM == (dumb|linux|*bsd*) ]]; then
     prompt 'off'
-  else
+  elif (( $#prompt_argv > 0 )); then
     prompt "$prompt_argv[@]"
   fi
 }
@@ -133,91 +133,6 @@ function compstyle_zebrafish_setup {
   zstyle ':completion:*:manuals.*'  insert-sections   true
   zstyle ':completion:*:man:*'      menu yes select
 }
-
-#region Plugin manager
-
-##? plugin-clone - Clone zsh plugins in parallel.
-function plugin-clone {
-  emulate -L zsh; setopt local_options no_monitor
-  local repo repodir
-  for repo in ${(u)@}; do
-    repodir=$REPO_HOME/$repo
-    [[ ! -d $repodir ]] || continue
-    echo "Cloning $repo..."
-    (
-      command git clone -q --depth 1 --recursive --shallow-submodules \
-        https://github.com/$repo $repodir
-      plugin-compile $repodir
-    ) &
-  done
-  wait
-}
-
-##? plugin-load - Load zsh plugins.
-function plugin-load {
-  source <(plugin-script $@)
-}
-
-##? plugin-script - Script loading of zsh plugins.
-function plugin-script {
-  emulate -L zsh; setopt local_options extended_glob
-  local repo plugin pluginfile defer=0
-  local -Ua initpaths repos=()
-
-  # Remove bare words and paths, then split/join to keep the 2-part user/repo form.
-  for repo in ${${(M)@:#*/*}:#/*}; do
-    repo=${(@j:/:)${(@s:/:)repo}[1,2]}
-    [[ -e $REPO_HOME/$repo ]] || repos+=$repo
-  done
-  plugin-clone $repos >&2
-
-  for plugin in $@; do
-    initpaths=(
-      {$__zsh_config_dir/plugins,$REPO_HOME}/${plugin}/${plugin:t}.{plugin.zsh,zsh-theme,zsh,sh}(N)
-      {$__zsh_config_dir/plugins,$REPO_HOME}/${plugin}/*.{plugin.zsh,zsh-theme,zsh,sh}(N)
-      $REPO_HOME/$plugin(N)
-      ${plugin}/*.{plugin.zsh,zsh-theme,zsh,sh}(N)
-      ${plugin}(N)
-    )
-    (( $#initpaths )) || { echo >&2 "Plugin file not found '$plugin'." && continue }
-    pluginfile=$initpaths[1]
-    echo "fpath+=$pluginfile:h"
-    (( $defer )) && echo zsh-defer source $pluginfile || echo source $pluginfile
-    [[ "$plugin:t" == zsh-defer ]] && defer=1
-  done
-}
-
-##? plugin-compile - Compile plugins.
-function plugin-compile {
-  emulate -L zsh; setopt local_options extended_glob
-  autoload -Uz zrecompile
-  local zfile
-  for zfile in ${1:-REPO_HOME}/**/*.zsh{,-theme}(N); do
-    [[ $zfile != */test-data/* ]] || continue
-    zrecompile -pq "$zfile"
-  done
-}
-
-##? Update plugins.
-function plugin-update {
-  emulate -L zsh; setopt local_options extended_glob
-  local repodir oldsha newsha
-  for repodir in $REPO_HOME/**/.git(N/); do
-    repodir=${repodir:A:h}
-    echo "Updating ${repodir:t}..."
-    (
-      oldsha=$(command git -C $repodir rev-parse --short HEAD)
-      command git -C $repodir pull --quiet --ff --depth 1 --rebase --autostash
-      newsha=$(command git -C $repodir rev-parse --short HEAD)
-      [[ $oldsha == $newsha ]] || echo "Plugin updated: $repodir:t ($oldsha -> $newsha)"
-    ) &
-  done
-  wait
-  plugin-compile
-  echo "Update complete."
-}
-
-#endregion
 
 () {
   #
@@ -371,25 +286,6 @@ function plugin-update {
   local zfcompstyle
   zstyle -s ':zebrafish:completion' compstyle 'zfcompstyle' || zfcompstyle=zebrafish
   (( $+functions[compstyle_${zfcompstyle}_setup] )) && compstyle_${zfcompstyle}_setup
-
-  #
-  # Plugins
-  #
-
-  local -a clone_plugins
-  zstyle -a ':zebrafish:plugins' clone 'clone_plugins' || clone_plugins=(
-    sindresorhus/pure
-  )
-  (( $#clone_plugins )) && plugin-clone $clone_plugins
-
-  local -a plugins
-  zstyle -a ':zebrafish:plugins' load 'plugins' ||
-    plugins=(
-      zsh-users/zsh-autosuggestions
-      zsh-users/zsh-syntax-highlighting
-      zsh-users/zsh-history-substring-search
-    )
-  plugin-load $plugins
 
   #
   # conf.d
