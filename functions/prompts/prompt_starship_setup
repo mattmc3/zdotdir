@@ -1,0 +1,2 @@
+export STARSHIP_CONFIG=$ZDOTDIR/themes/zsh.toml
+eval "$(starship init zsh)"
