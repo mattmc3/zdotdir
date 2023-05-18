@@ -46,7 +46,7 @@ plugin-load --kind fpath $myprompts
 plugin-load $myplugins
 
 # prompt
-prompt pure
+prompt starship
 
 # Done profiling.
 [[ -z "$ZPROFRC" ]] || zprof
