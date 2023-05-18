@@ -26,7 +26,6 @@ export DOTFILES=$XDG_CONFIG_HOME/dotfiles
 export GLOBALGOPATH=$XDG_PROJECTS_DIR/golang
 export GNUPGHOME=$XDG_DATA_HOME/gnupg
 export REPO_HOME=$XDG_CACHE_HOME/repos
-export ANTIDOTE_HOME=$REPO_HOME
 export LESSHISTFILE=$XDG_CACHE_HOME/less/history
 
 # Ensure path arrays do not contain duplicates.
