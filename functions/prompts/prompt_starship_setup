@@ -1,2 +1,12 @@
-export STARSHIP_CONFIG=$ZDOTDIR/themes/zsh.toml
-eval "$(starship init zsh)"
+if [[ -n "$1" ]]; then
+  local -a configs=(
+    $ZDOTDIR/themes/$1.toml(N)
+    ${XDG_CONFIG_HOME:-$HOME/.config}/starship/$1.toml(N)
+  )
+  (( $#configs )) && export STARSHIP_CONFIG=$configs[1]
+fi
+
+local starship_init=${XDG_CACHE_HOME:=~/.cache}/zsh/starship_init.zsh
+local cache=($starship_init(Nmh-20))
+(( $#cache )) || starship init zsh --print-full-init >| $starship_init
+source $starship_init
