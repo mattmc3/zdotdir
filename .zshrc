@@ -6,6 +6,9 @@
 [[ -z "$ZPROFRC" ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
+# zstyles
+[[ -r $ZDOTDIR/.zstyles ]] && . $ZDOTDIR/.zstyles
+
 # use antidote for plugin management
 zplugins=${ZDOTDIR:-$HOME}/.zplugins
 if [[ ! ${zplugins}.zsh -nt ${zplugins} ]]; then
