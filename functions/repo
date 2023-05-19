@@ -93,7 +93,7 @@ function repo {
     up|update)
       echo "Checking for updates..."
       for repo in $(repo ls); do
-        echo "$1..."
+        echo "$repo..."
         __repo_update $repo &
       done
       wait
