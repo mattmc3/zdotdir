@@ -446,5 +446,5 @@ else
     compdef _starship starship
 fi
 
-# starship completions zsh > $ZDOTDIR/plugins/prompt/functions/_starship
+# starship completions zsh >| $ZDOTDIR/completions/_starship
 # vim: ft=zsh sw=2 ts=2 et
