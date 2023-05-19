@@ -2,42 +2,29 @@
 # .zshrc - Run on interactive Zsh session.
 #
 
-# Load zprof first if we need to profile.
+# init profiling
 [[ -z "$ZPROFRC" ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-# Essential zsh options
-setopt extended_glob no_beep
+# use antidote for plugin management
+zplugins=${ZDOTDIR:-$HOME}/.zplugins
+if [[ ! ${zplugins}.zsh -nt ${zplugins} ]]; then
+  (
+    source ${HOMEBREW_PREFIX:=/opt/homebrew}/opt/antidote/share/antidote/antidote.zsh
+    antidote bundle <${zplugins} >${zplugins}.zsh
+  )
+fi
+source ${zplugins}.zsh
 
-# Lazy-load functions directory like fish.
-for fndir in $ZDOTDIR/functions(/FN) $ZDOTDIR/functions/*(/FN); do
-  fpath=($fndir $fpath)
-  autoload -Uz $fpath[1]/*~*/_*(N.:t)
-done
+# prompt
+setopt prompt_subst
+prompt starship zephyr
 
-# Add custom completions directory like fish.
-fpath=($ZDOTDIR/completions(/N) $fpath)
-
-# Setup history.
-HISTFILE=$XDG_DATA_HOME/zsh/zsh_history
-[[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
-SAVEHIST=10000
-HISTSIZE=10000
-
-# Add conf.d like fish.
-for zfile in $ZDOTDIR/conf.d/*.zsh(.N); do
-  [[ $zfile:t != '~'* ]] || continue
-  . $zfile
-done
-
-# Load local overrides.
-[[ -f $ZDOTDIR/.zlocal ]] && . $ZDOTDIR/.zlocal
-
-# Done profiling.
+# done profiling
 [[ -z "$ZPROFRC" ]] || zprof
 
-# Cleanup
-unset ZPROFRC zfile fndir
+# cleanup
+unset ZPROFRC zplugins
 true
 
 # vim: ft=zsh sw=2 ts=2 et
