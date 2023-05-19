@@ -4,23 +4,23 @@
 
 # Pre-reqs
 sorin-ionescu/prezto path:modules/helper autoload:functions
+mattmc3/zfunctions
 
 # Clone-only utils
 mbadolato/iTerm2-Color-Schemes kind:clone
-sindresorhus/pure kind:clone
-romkatv/powerlevel10k kind:clone
-agkozak/zsh-z kind:clone
 
 # my custom plugins
-$ZDOTDIR/plugins/git
+$ZDOTDIR/plugins/git-completions
 $ZDOTDIR/plugins/python
-$ZDOTDIR/plugins/starship
 
 # clipboard
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
 ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/copypath
+
+# directory
+sorin-ionescu/prezto path:modules/directory
 
 # editor
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
@@ -48,12 +48,20 @@ romkatv/zsh-bench kind:path
 rupa/z
 mattmc3/zman
 
+# prompt
+sindresorhus/pure kind:fpath
+romkatv/powerlevel10k kind:fpath
+sorin-ionescu/prezto path:modules/prompt
+
 # completions
 sorin-ionescu/prezto path:modules/completion
+sorin-ionescu/prezto path:runcoms/zlogin kind:defer
+
+# conf.d
+mattmc3/zshrc.d
 
 # deferred plugins
-sorin-ionescu/prezto path:runcoms/zlogin kind:defer
-#olets/zsh-abbr kind:defer
+olets/zsh-abbr kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search kind:defer
