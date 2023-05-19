@@ -1,3 +1,4 @@
+#function prompt_starship_setup {
 if [[ -n "$1" ]]; then
   local -a configs=(
     $ZDOTDIR/themes/$1.toml(N)
@@ -8,5 +9,7 @@ fi
 
 local starship_init=${XDG_CACHE_HOME:=~/.cache}/zsh/starship_init.zsh
 local cache=($starship_init(Nmh-20))
+[[ -d $starship_init:h ]] || mkdir -p $starship_init:h
 (( $#cache )) || starship init zsh --print-full-init >| $starship_init
 source $starship_init
+#}
