@@ -10,18 +10,14 @@ alias zprofrc="ZPROFRC=1 zsh"
 [[ -r $ZDOTDIR/.zstyles ]] && . $ZDOTDIR/.zstyles
 
 # use antidote for plugin management
+source ${HOMEBREW_PREFIX:=/opt/homebrew}/opt/antidote/share/antidote/antidote.zsh
 zplugins=${ZDOTDIR:-$HOME}/.zplugins
 if [[ ! ${zplugins}.zsh -nt ${zplugins} ]]; then
   (
-    source ${HOMEBREW_PREFIX:=/opt/homebrew}/opt/antidote/share/antidote/antidote.zsh
     antidote bundle <${zplugins} >${zplugins}.zsh
   )
 fi
 source ${zplugins}.zsh
-
-# prompt
-setopt prompt_subst
-prompt starship zephyr
 
 # done profiling
 [[ -z "$ZPROFRC" ]] || zprof
