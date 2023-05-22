@@ -10,7 +10,8 @@ alias zprofrc="ZPROFRC=1 zsh"
 [[ -r $ZDOTDIR/.zstyles ]] && . $ZDOTDIR/.zstyles
 
 # use antidote for plugin management
-source ${HOMEBREW_PREFIX:=/opt/homebrew}/opt/antidote/share/antidote/antidote.zsh
+fpath+=${HOMEBREW_PREFIX:=/opt/homebrew}/opt/antidote/share/antidote/functions
+autoload -Uz antidote
 zplugins=${ZDOTDIR:-$HOME}/.zplugins
 if [[ ! ${zplugins}.zsh -nt ${zplugins} ]]; then
   (
