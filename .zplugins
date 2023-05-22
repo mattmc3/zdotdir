@@ -12,6 +12,10 @@ mbadolato/iTerm2-Color-Schemes kind:clone
 $ZDOTDIR/plugins/git-completions
 $ZDOTDIR/plugins/python
 
+# omz
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+
 # zephyr
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/editor
@@ -25,7 +29,6 @@ mattmc3/zephyr path:plugins/macos conditional:is-darwin
 mattmc3/zephyr path:plugins/homebrew
 
 # utilities
-ohmyzsh/ohmyzsh path:plugins/extract
 romkatv/zsh-bench kind:path
 rupa/z
 mattmc3/zman
