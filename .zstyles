@@ -12,11 +12,19 @@ zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':antidote:plugin:*' defer-options '-p'
 
 #
-# Editor
+# Prezto
 #
 
-# Expand ... to ../..
-zstyle ':zephyr:plugin:editor' dot-expansion 'yes'
+zstyle ':prezto:module:autosuggestions:color' found 'fg=60'
+zstyle ':prezto:*:*' color 'yes'
+zstyle ':prezto:module:history' histfile "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/zsh_history"
+zstyle ':prezto:module:*:alias' skip 'yes'
+zstyle ':prezto:module:editor' key-bindings 'emacs'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
+
+#
+# Editor
+#
 
 # Set this to whatever you want to use to edit a command
 zstyle :zle:edit-command-line editor hx
