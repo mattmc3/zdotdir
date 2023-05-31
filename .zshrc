@@ -20,6 +20,9 @@ if [[ ! ${zplugins}.zsh -nt ${zplugins} ]]; then
 fi
 source ${zplugins}.zsh
 
+# prompt
+prompt starship mmc
+
 # done profiling
 [[ -z "$ZPROFRC" ]] || zprof
 

@@ -1,4 +1,8 @@
 #function prompt_starship_setup {
+
+# When loaded through the prompt command, these prompt_* options will be enabled
+prompt_opts=(cr percent sp subst)
+
 if [[ -n "$1" ]]; then
   local -a configs=(
     $ZDOTDIR/themes/$1.toml(N)
