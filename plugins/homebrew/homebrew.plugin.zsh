@@ -1,3 +1,7 @@
+#
+# homebrew
+#
+
 (( $+commands[brew] )) || return 1
 
 brewcache=${XDG_CACHE_HOME:=~/.cache}/zsh/homebrew.zsh
