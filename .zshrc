@@ -10,15 +10,16 @@ alias zprofrc="ZPROFRC=1 zsh"
 [[ -r $ZDOTDIR/.zstyles ]] && . $ZDOTDIR/.zstyles
 
 # use antidote for plugin management
-fpath+=${HOMEBREW_PREFIX:=/opt/homebrew}/opt/antidote/share/antidote/functions
-autoload -Uz antidote
-zplugins=${ZDOTDIR:-$HOME}/.zplugins
-if [[ ! ${zplugins}.zsh -nt ${zplugins} ]]; then
-  (
-    antidote bundle <${zplugins} >${zplugins}.zsh
-  )
-fi
-source ${zplugins}.zsh
+export ANTIDOTE_HOME=${XDG_CACHE_HOME:=~/.cache}/repos
+[[ -d $ANTIDOTE_HOME/mattmc3/antidote ]] ||
+  git clone --depth 1 --quiet https://github.com/mattmc3/antidote $ANTIDOTE_HOME/mattmc3/antidote
+
+# keep all 3 for different test scenarios
+# . $ANTIDOTE_HOME/mattmc3/antidote/antidote.zsh
+# . ~/Projects/mattmc3/antidote/antidote.zsh
+# . ${HOMEBREW_PREFIX:=/opt/homebrew}/opt/antidote/share/antidote/antidote.zsh
+source $ANTIDOTE_HOME/mattmc3/antidote/antidote.zsh
+antidote load
 
 # prompt
 prompt starship mmc
