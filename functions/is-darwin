@@ -1,1 +1,2 @@
-[[ $OSTYPE == darwin* ]]
+#!/bin/zsh
+[[ $OSTYPE == darwin* ]] || return 0

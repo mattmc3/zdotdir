@@ -1,11 +1,15 @@
 #!/bin/zsh
-##? substenv - substitutes string parts with environment variables
-#function substenv {
-  if (( $# == 0 )); then
-    subenv ZDOTDIR | subenv HOME
-  else
-    local sedexp="s|${(P)1}|\$$1|g"
-    shift
-    sed "$sedexp" "$@"
-  fi
-#}
+
+##? substenv - substitute value in shell strings with environment variable
+# function substenv {
+
+# The opposite of envsubst.
+if (( $# == 0 )); then
+  substenv ZDOTDIR | substenv HOME
+else
+  local sedexp="s|${(P)1}|\$$1|g"
+  shift
+  sed "$sedexp" "$@"
+fi
+
+# }
