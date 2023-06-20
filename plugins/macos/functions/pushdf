@@ -1,0 +1,3 @@
+#!/bin/zsh
+# pushdf - Push the current Finder directory to the dirstack.
+pushd "$(pfd)"

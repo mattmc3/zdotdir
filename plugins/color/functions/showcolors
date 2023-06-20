@@ -1,0 +1,57 @@
+#!/bin/zsh
+
+##? showcolors - show ANSI terminal color codes and effects.
+
+# tput cmds - setaf:fgcolor; smul:underline; smso:standout; sgr0:clear;
+local normal=$(tput sgr0)
+local black=$(tput setaf 0)
+local white=$(tput setaf 7)
+
+local -A colors=(
+  0    black
+  1    red
+  2    green
+  3    yellow
+  4    blue
+  5    magenta
+  6    cyan
+  7    white
+  8    brblack
+  9    brred
+  10   brgreen
+  11   bryellow
+  12   brblue
+  13   brmagenta
+  14   brcyan
+  15   brwhite
+)
+
+local -A effects=(
+  bold       bold
+  dim        dim
+  italic     sitm
+  reverse    rev
+  standout   smso
+  underline  smul
+)
+
+local id colorname color bgcolor
+
+for id in ${(kno)colors}; do
+  colorname=$colors[$id]
+  color=$(tput setaf $id)
+  printf "%-3s${color}%-25s${normal}%-25s%-10s\n" "fg" "${colorname}" "tput setaf $id" "${$(tput setaf $id):q}"
+done
+for id in ${(kno)colors}; do
+  colorname=$colors[$id]
+  bgcolor=$(tput setab $id)
+  printf "${bgcolor}${white}%-3s${black}%-25s${normal}%-25s%-10s\n" "bg" "${colorname}" "tput setab $id" "${$(tput setab $id):q}"
+done
+
+local name code effect
+for name in ${(kno)effects}; do
+  code=$effects[$name]
+  effect=$(tput $code)
+  printf "%-3s${effect}%-25s${normal}%-25s%-10s\n" "fx" "${name}" "tput $code" "${$(tput $code):q}"
+done
+printf "%-28s%-25s%-10s\n" "normal" "tput sgr0" "${$(tput sgr0):q}"

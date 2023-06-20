@@ -1,0 +1,9 @@
+#!/bin/zsh
+emulate -L zsh; setopt local_optins $_fishify_opts
+local s len exitcode=1
+for s in "$@"; do
+  len="${#s}"
+  [[ $len -eq 0 ]] || exitcode=0
+  echo "$len"
+done
+return $exitcode

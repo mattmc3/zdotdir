@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+##? plugin-load - load a plugin
+#function plugin-load {
+: ${REPO_HOME:=${XDG_CACHE_HOME:-~/.cache}/repos}
+local zhome=${ZDOTDIR:-${XDG_CONFIG_HOME:-~/.config}/zsh}
+
+local plugin plugindir
+local -a initfiles
+for plugin in $@; do
+  plugindir=$REPO_HOME/$plugin
+
+  initfiles=(
+    $REPO_HOME/$plugin/${plugin:t}.plugin.zsh(.N)
+    $REPO_HOME/$plugin/*.{plugin.zsh,zsh-theme,zsh,sh}(.N)
+    $REPO_HOME/$plugin(.N)
+    ${ZSH_CUSTOM:-$zhome}/plugins/${plugin}/${plugin}.plugin.zsh(.N)
+  )
+  if [[ $#initfiles -eq 0 ]]; then
+    echo >&2 "Plugin init file not found '$1' ${ZSH_CUSTOM:-$zhome}/plugins/${plugin}/${plugin}.plugin.zsh."
+    continue
+  fi
+  fpath+=$initfiles[1]:h
+  (( $+functions[zsh-defer] )) && zsh-defer . $initfiles[1] || . $initfiles[1]
+done
+#}

@@ -1,0 +1,11 @@
+##? funchelp - use '##?' comments in function files as help docs.
+##?
+##? usage: fnhelp <func>
+
+local ZFUNCDIR="${ZFUNCDIR:-${ZDOTDIR:-~/.config/zsh}/functions}"
+if [[ ! -f "$ZFUNCDIR/$1" ]]; then
+  echo >&2 "funchelp: function not found '$1'." && return 1
+fi
+command grep "^##?" "$ZFUNCDIR/$1" | cut -c 5-
+
+# vim: ft=zsh

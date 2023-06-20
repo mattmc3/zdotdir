@@ -1,0 +1,7 @@
+#!/bin/zsh
+emulate -L zsh; setopt local_optins $_fishify_opts
+local sep=$1; shift
+local s
+for s in "${(ps.$sep.)@}"; do
+  echo $s
+done

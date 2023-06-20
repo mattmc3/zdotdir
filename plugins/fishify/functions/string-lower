@@ -1,0 +1,9 @@
+#!/bin/zsh
+emulate -L zsh; setopt local_optins $_fishify_opts
+local str newstr exitcode=1
+for str in "$@"; do
+  newstr="${(L)str}"
+  [[ "$str" != "$newstr" ]] && exitcode=0
+  echo $newstr
+done
+return $exitcode

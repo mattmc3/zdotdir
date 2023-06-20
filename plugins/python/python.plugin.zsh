@@ -1,13 +1,13 @@
 #
-# python
+# python - Aliases and functions for python
 #
+
+export WORKON_HOME="$XDG_DATA_HOME/venvs"
+[[ -d "$WORKON_HOME" ]] || mkdir -p "$WORKON_HOME"
 
 # Load plugin functions.
 fpath=(${0:A:h}/functions $fpath)
 autoload -U $fpath[1]/*(.:t)
-
-export WORKON_HOME="$XDG_DATA_HOME/venvs"
-[[ -d "$WORKON_HOME" ]] || mkdir -p "$WORKON_HOME"
 
 alias py2='python2'
 alias py3='python3'

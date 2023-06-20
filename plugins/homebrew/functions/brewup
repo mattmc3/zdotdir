@@ -1,0 +1,6 @@
+#!/bin/zsh
+##? brewup - brew update/upgrade/cleanup
+function brewup {
+  brew update && brew upgrade && brew cleanup
+}
+brewup "$@"

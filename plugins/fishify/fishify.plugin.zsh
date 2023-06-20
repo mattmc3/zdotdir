@@ -1,4 +1,2 @@
-0=${(%):-%x}
+0=${(%):-%N}
 autoload-dir ${0:A:h}/functions
-
-alias get="git"

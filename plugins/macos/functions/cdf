@@ -1,0 +1,3 @@
+#!/bin/zsh
+##? cdf - Change to the current Finder directory.
+cd "$(pfd)

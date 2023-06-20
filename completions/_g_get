@@ -1,0 +1,5 @@
+#compdef g get
+#autoload
+
+# completions for g and get match git
+_git

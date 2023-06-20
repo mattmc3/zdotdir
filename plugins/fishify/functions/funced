@@ -1,0 +1,54 @@
+#!/bin/zsh
+##? funced - edit the function specified
+
+# check args
+if [[ -z "$1" ]]; then
+  echo >&2 "funced: Expected function name argument"
+  return 1
+elif [[ ! -d "$ZFUNCDIR" ]]; then
+  echo >&2 "funced: Directory not found '$ZFUNCDIR'."
+  return 1
+fi
+
+# new function definition: make a file template
+if [[ ! -f "$ZFUNCDIR/$1" ]]; then
+  cat <<eos > "$ZFUNCDIR/$1"
+##############################################################################
+# TODO: Remove this header block
+# Do NOT include function definition (ie: omit 'function $1() {').
+# See: https://zsh.sourceforge.io/Doc/Release/Functions.html#Autoloading-Functions
+#
+# Use ##? comments for help/usage docs.
+##############################################################################
+
+# function $1 {
+
+# TODO: add additional usage
+##? usage: $1 [-h|--help]
+##?        $1 [<options>] <arguments>
+
+local -a o_help
+zmodload zsh/zutil
+zparseopts -D -F -K -- \
+  {h,-help}=o_help ||
+  return 1
+
+if (( \$#o_help )); then
+  funchelp "$1"
+  return
+fi
+
+# TODO: write your function
+
+# }
+
+eos
+  autoload -Uz "$ZFUNCDIR/$1"
+fi
+
+# open the function file
+if [[ -z "$VISUAL" ]]; then
+  $VISUAL "$ZFUNCDIR/$1"
+else
+  ${EDITOR:-vim} "$ZFUNCDIR/$1"
+fi
