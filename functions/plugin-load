@@ -2,7 +2,7 @@
 
 ##? plugin-load - load a plugin
 #function plugin-load {
-: ${REPO_HOME:=${XDG_CACHE_HOME:=$HOME/.cache}/zsh/repos}
+: ${REPO_HOME:=${XDG_CACHE_HOME:=$HOME/.cache}/repos}
 local zhome=${ZDOTDIR:-${XDG_CONFIG_HOME:-~/.config}/zsh}
 
 local plugin plugindir
