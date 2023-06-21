@@ -1,0 +1,17 @@
+##? funchelp - use '##?' comments in function files as help docs
+##?
+##? usage: funchelp <func>
+
+# function funchelp {
+emulate -L zsh; setopt local_options extended_glob rc_expand_param
+
+local funcs=(${fpath}/$1(N))
+if (( $#funcs )); then
+  command grep "^##?" "$funcs[1]" | cut -c 5-
+else
+  echo >&2 "funchelp: function not found '$1'."
+  return 1
+fi
+# }
+
+# vim: ft=zsh sw=2 ts=2 et

@@ -1,0 +1,4 @@
+#compdef funchelp
+
+# show files in the functions dir (exclude dirs)
+_path_files -W "${ZFUNCDIR:-${ZDOTDIR:-$HOME/.config/zsh}/functions}" -g "**/*(.)"

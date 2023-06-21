@@ -1,0 +1,38 @@
+##? funced - edit the function specified
+
+#function funced {
+
+local ZFUNCDIR="${ZFUNCDIR:-${ZDOTDIR:-$HOME/.config/zsh}/functions}"
+
+# check args
+if [[ -z "$1" ]]; then
+  echo >&2 "funced: Expected function name argument"
+  return 1
+elif [[ ! -d "$ZFUNCDIR" ]]; then
+  echo >&2 "funced: Directory not found '$ZFUNCDIR'."
+  return 1
+fi
+
+# new function definition: make a file template
+if [[ ! -f "$ZFUNCDIR/$1" ]]; then
+  local -a tmpl=(
+    '#!/bin/zsh'
+    "##? $1 - description"
+    "#function $1 {"
+    ''
+    '#}'
+  )
+  printf "%s\n" "${(@)tmpl}" >"$ZFUNCDIR/$1"
+  autoload -Uz "$ZFUNCDIR/$1"
+fi
+
+# open the function file
+if [[ -z "$VISUAL" ]]; then
+  $VISUAL "$ZFUNCDIR/$1"
+else
+  ${EDITOR:-vim} "$ZFUNCDIR/$1"
+fi
+
+#}
+
+# vim: ft=zsh sw=2 ts=2 et
