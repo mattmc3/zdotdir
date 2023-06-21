@@ -5,7 +5,6 @@
 # Install all with: `repo in <repos.txt`
 
 # frameworks
-belak/zsh-utils
 ohmyzsh/ohmyzsh
 sorin-ionescu/prezto
 
@@ -18,5 +17,9 @@ zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
 zsh-users/zsh-history-substring-search
+zshzoo/editor
+zshzoo/fancy-ctrl-z
+zshzoo/magic-enter
+zshzoo/terminal
 
 # vim: ft=zsh sw=2 ts=2 et

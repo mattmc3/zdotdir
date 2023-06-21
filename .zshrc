@@ -35,14 +35,15 @@ myplugins=(
   golang
   homebrew
   macos
-  magic-enter
   prompt
   python
-  terminal
   utility
   z
   confd
   completion
+
+  zshzoo/magic-enter
+  zshzoo/terminal
 
   _defer_
   syntax-highlighting
