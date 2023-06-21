@@ -4,20 +4,19 @@
 
 # Install all with: `repo in <repos.txt`
 
+# frameworks
 belak/zsh-utils
-mattmc3/antidote
-mattmc3/zfunctions
-mattmc3/zman
-mattmc3/zshrc.d
-mbadolato/iTerm2-Color-Schemes
 ohmyzsh/ohmyzsh
-olets/zsh-abbr
+sorin-ionescu/prezto
+
+# plugins
+mattmc3/zman
 romkatv/zsh-bench
 romkatv/zsh-defer
 rupa/z
-sorin-ionescu/prezto
 zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
 zsh-users/zsh-history-substring-search
-zshzoo/macos
+
+# vim: ft=zsh sw=2 ts=2 et
