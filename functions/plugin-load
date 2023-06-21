@@ -17,7 +17,7 @@ for plugin in $@; do
     ${ZSH_CUSTOM:-$zhome}/plugins/${plugin}/${plugin}.plugin.zsh(.N)
   )
   if [[ $#initfiles -eq 0 ]]; then
-    echo >&2 "Plugin init file not found '$1'."
+    echo >&2 "Plugin init file not found '$plugin'."
     continue
   fi
   fpath+=$initfiles[1]:h
