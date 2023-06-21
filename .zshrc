@@ -9,6 +9,9 @@ alias zprofrc="ZPROFRC=1 zsh"
 # Zstyle customizations
 [[ -f $ZDOTDIR/.zstyles ]] && source $ZDOTDIR/.zstyles
 
+# Zsh lib
+for zlib in $ZDOTDIR/lib/*.zsh(.N); . $zlib
+
 # Add lazy-load functions
 ZFUNCDIR=$ZDOTDIR/functions
 for zdir in $ZFUNCDIR(/FN) $ZFUNCDIR/*(/FN); do
@@ -25,14 +28,14 @@ myplugins=(
   # load plugins
   colorize
   clipboard
-  directory
   editor
+  fancy-ctrl-z
   fishify
   git
   golang
-  history
   homebrew
   macos
+  magic-enter
   prompt
   python
   terminal
@@ -53,6 +56,9 @@ prompt starship mmc
 
 # local settings
 [[ ! -f $DOTFILES.local/zsh/zshrc_local.zsh ]] || source $DOTFILES.local/zsh/zshrc_local.zsh
+
+# clean up
+unset zlib zdir
 
 # done profiling
 [[ ${ZPROFRC:-0} -eq 0 ]] || { unset ZPROFRC && zprof }
