@@ -17,21 +17,12 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 zstyle :zle:edit-command-line editor ${EDITOR:-vim}
 
 #
-# Oh-My-Zsh
-#
-
-plugin-load ohmyzsh/ohmyzsh/plugins/magic-enter \
-            ohmyzsh/ohmyzsh/plugins/fancy-ctrl-z
-
-# magic-enter
-MAGIC_ENTER_GIT_COMMAND='git status -sb'
-MAGIC_ENTER_OTHER_COMMAND='ls'
-
-#
 # Prezto
 #
 
-plugin-load sorin-ionescu/prezto/modules/editor
+# Load plugin functions.
+0=${(%):-%N}
+source ${0:A:h}/external/prezto_editor.zsh
 
 # undo bad prezto settings
 unsetopt BEEP
