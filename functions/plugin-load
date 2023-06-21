@@ -2,7 +2,7 @@
 
 ##? plugin-load - load a plugin
 #function plugin-load {
-: ${REPO_HOME:=${XDG_CACHE_HOME:-~/.cache}/repos}
+: ${REPO_HOME:=${XDG_CACHE_HOME:=$HOME/.cache}/zsh/repos}
 local zhome=${ZDOTDIR:-${XDG_CONFIG_HOME:-~/.config}/zsh}
 
 local plugin plugindir
@@ -17,7 +17,7 @@ for plugin in $@; do
     ${ZSH_CUSTOM:-$zhome}/plugins/${plugin}/${plugin}.plugin.zsh(.N)
   )
   if [[ $#initfiles -eq 0 ]]; then
-    echo >&2 "Plugin init file not found '$1' ${ZSH_CUSTOM:-$zhome}/plugins/${plugin}/${plugin}.plugin.zsh."
+    echo >&2 "Plugin init file not found '$1'."
     continue
   fi
   fpath+=$initfiles[1]:h
