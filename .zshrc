@@ -23,7 +23,7 @@ REPO_HOME=${XDG_CACHE_HOME:=~/.cache}/repos
 # Plugins
 myplugins=(
   # load plugins
-  color
+  colorize
   clipboard
   directory
   editor
@@ -43,7 +43,7 @@ myplugins=(
 
   _defer_
   syntax-highlighting
-  autosuggestions
+  autosuggest
   history-substring-search
 )
 plugin-load $myplugins
