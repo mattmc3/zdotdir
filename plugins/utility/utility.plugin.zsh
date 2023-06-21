@@ -1,38 +1,14 @@
 #
-# utility - Misc Zsh shell options and utilities.
+# utility - Misc Zsh shell utilities.
 #
-
-#
-# Options
-#
-
-# Glob options.
-setopt EXTENDED_GLOB         # Use more awesome globbing features.
-setopt GLOB_DOTS             # Include dotfiles when globbing.
-setopt NO_RM_STAR_SILENT     # Ask for confirmation for `rm *' or `rm path/*'
-
-# General options.
-setopt COMBINING_CHARS       # Combine 0-len chars with the base character (eg: accents).
-setopt INTERACTIVE_COMMENTS  # Enable comments in interactive shell.
-setopt RC_QUOTES             # Allow 'Hitchhikers''s Guide' instead of 'Hitchhikers'\''s Guide'.
-unsetopt MAIL_WARNING        # Don't print a warning message if a mail file has been accessed.
-unsetopt BEEP                # Don't Beep on error in line editor.
-
-# Job options.
-setopt LONG_LIST_JOBS        # List jobs in the long format by default.
-setopt AUTO_RESUME           # Attempt to resume existing job before creating a new process.
-setopt NOTIFY                # Report status of background jobs immediately.
-unsetopt BG_NICE             # Don't run all background jobs at a lower priority.
-unsetopt HUP                 # Don't kill jobs on shell exit.
-unsetopt CHECK_JOBS          # Don't report on jobs when shell exit.
 
 #
 # Functions
 #
 
 # Autoload functions.
-fpath=(${0:A:h}/functions $fpath)
-autoload -Uz ${0:A:h}/functions/*(.:t)
+0=${(%):-%N}
+autoload-dir ${0:A:h}/functions
 
 #
 # Aliases
@@ -72,5 +48,4 @@ alias help=run-help
 #
 
 plugin-load mattmc3/zman
-plugin-load ohmyzsh/ohmyzsh/plugins/extract
 path+=($REPO_HOME/romkatv/zsh-bench)
