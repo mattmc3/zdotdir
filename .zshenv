@@ -29,9 +29,6 @@ export REPO_HOME=$XDG_CACHE_HOME/repos
 export ANTIDOTE_HOME=$REPO_HOME
 export LESSHISTFILE=$XDG_CACHE_HOME/less/history
 
-# Zsh completion dump
-ZSH_COMPDUMP=$XDG_CACHE_HOME/prezto/zcompdump
-
 # Ensure path arrays do not contain duplicates.
 typeset -gU fpath path cdpath
 
@@ -97,7 +94,6 @@ export SHELL_SESSIONS_DISABLE=1 # Make Apple Terminal behave.
 ABBR_USER_ABBREVIATIONS_FILE=$ZDOTDIR/.zabbr
 MAGIC_ENTER_GIT_COMMAND='git status -sb'
 MAGIC_ENTER_OTHER_COMMAND='ls'
-ZSH_COMPDUMP=$XDG_CACHE_HOME/prezto/zcompdump
 _Z_DATA=$XDG_DATA_HOME/z/data
 [[ -d $_Z_DATA:h ]] || mkdir -p $_Z_DATA:h
 

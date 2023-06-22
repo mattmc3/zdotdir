@@ -3,45 +3,42 @@
 #
 
 # Pre-reqs
-mattmc3/zfunctions
+mattmc3/zephyr path:plugins/zfunctions
 
 # Clone-only utils
 mbadolato/iTerm2-Color-Schemes kind:clone
 
-# my custom plugins
-$ZDOTDIR/plugins/git
-$ZDOTDIR/plugins/python
-$ZDOTDIR/plugins/homebrew
-
-# prezto
-sorin-ionescu/prezto path:modules/helper autoload:functions
-sorin-ionescu/prezto path:modules/environment
-sorin-ionescu/prezto path:runcoms/zprofile
-sorin-ionescu/prezto path:modules/terminal
-sorin-ionescu/prezto path:modules/editor
-sorin-ionescu/prezto path:modules/directory
+# Zephyr
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/clipboard
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/editor
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/homebrew
+mattmc3/zephyr path:plugins/macos conditional:is-darwin
+mattmc3/zephyr path:plugins/prompt
+mattmc3/zephyr path:plugins/utility
 
 # omz
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 
-# zsh-utils
-belak/zsh-utils path:utility
-belak/zsh-utils path:history
-belak/zsh-utils path:prompt
-belak/zsh-utils path:completion
+# my custom plugins
+$ZDOTDIR/plugins/git
+$ZDOTDIR/plugins/python
 
 # utilities
 romkatv/zsh-bench kind:path
 rupa/z
 mattmc3/zman
-zshzoo/macos conditional:is-darwin
 
-# conf.d
-mattmc3/zshrc.d
+# final
+zsh-users/zsh-completions kind:fpath path:src
+mattmc3/zephyr path:plugins/completion
+mattmc3/zephyr path:plugins/confd
 
 # deferred plugins
-olets/zsh-abbr kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search kind:defer
