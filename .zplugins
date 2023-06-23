@@ -25,6 +25,7 @@ ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 
 # my custom plugins
+$ZDOTDIR/plugins/xdg
 $ZDOTDIR/plugins/git
 $ZDOTDIR/plugins/python
 
