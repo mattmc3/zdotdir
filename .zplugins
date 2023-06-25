@@ -26,7 +26,9 @@ ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 
 # my custom plugins
 $ZDOTDIR/plugins/xdg
+$ZDOTDIR/plugins/abbreviations
 $ZDOTDIR/plugins/git
+$ZDOTDIR/plugins/otp
 $ZDOTDIR/plugins/python
 
 # utilities

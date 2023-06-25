@@ -91,4 +91,14 @@ alias setjavahome="export JAVA_HOME=\`/usr/libexec/java_home\`"
 alias t="todo.sh"
 alias todos="$VISUAL $HOME/Desktop/todo.txt"
 
+#
+# noexpand
+#
+
+noexpand_aliases=(
+  grep
+  ls
+  vi
+)
+
 # vim: ft=zsh sw=2 ts=2 et
