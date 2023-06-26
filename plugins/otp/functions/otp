@@ -24,13 +24,14 @@
     recipients+="--recipient=$recp "
   done
 
-  local -a flag_help flag_add
+  local -a flag_help flag_add flag_list
   local usage=(
-    "usage: otp [-h | --help] [-a | --add] <key>"
+    "usage: otp [-h | --help] [-l | --list] [-a | --add] <key>"
   )
   zmodload zsh/zutil
   zparseopts -D -F -K -- \
     {h,-help}=flag_help \
+    {l,-list}=flag_list \
     {a,-add}=flag_add || {
       print -u 2 "Run 'opt -h' for usage."
       return 1
@@ -39,6 +40,11 @@
   if (( $#flag_help )); then
     print -l $usage
     return
+  elif (( $#flag_list )); then
+    local file
+    for file in $OTP_HOME/*.otp.asc; do
+      print $file:t:r:r
+    done
   elif [[ -z "$1" ]]; then
     print -u 2 "otp: Expecting <key> argument. Run 'opt -h' for usage."
     return 1
