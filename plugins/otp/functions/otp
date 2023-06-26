@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 #function otp {
   # set otp home
   zstyle -s ':zephyr:plugin:otp' home 'OTP_HOME' ||
