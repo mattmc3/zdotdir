@@ -35,4 +35,12 @@ zstyle :zle:edit-command-line editor hx
 
 zstyle ':zephyr:plugin:prompt' theme zephyr
 
+#
+# Local
+#
+
+if [[ -r $DOTFILES/local/zsh/zstyles.local.zsh ]]; then
+  . $DOTFILES/local/zsh/zstyles.local.zsh
+fi
+
 # vim: ft=zsh sw=2 ts=2 et
