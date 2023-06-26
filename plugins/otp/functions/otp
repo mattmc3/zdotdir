@@ -16,6 +16,14 @@
     return 1
   fi
 
+  local -a recps
+  zstyle -a ':zephyr:plugin:otp' recipents 'recps'
+
+  local recp recipients=
+  for recp in $recps; do
+    recipients+="--recipient=$recp "
+  done
+
   local -a flag_help flag_add
   local usage=(
     "usage: otp [-h | --help] [-a | --add] <key>"
@@ -40,12 +48,12 @@
     echo "When done, press enter to end with an empty line."
     echo "Next, you will paste your OTP secret key, followed by ^D to end the GPG message."
     rm -f $OTP_HOME/$1.otp.asc
-    gpg --armor --encrypt --output $OTP_HOME/$1.otp.asc /dev/stdin
+    gpg ${=recipients} --armor --encrypt --output $OTP_HOME/$1.otp.asc /dev/stdin
   elif [[ ! -f $OTP_HOME/$1.otp.asc ]]; then
     echo "otp: missing key '$1'. Run 'otp --add <key>' to add a new one-time password."
     return 1
   else
-    totpkey=$(gpg --decrypt $OTP_HOME/$1.otp.asc)
+    totpkey=$(gpg --quiet --decrypt $OTP_HOME/$1.otp.asc)
     oathtool --totp --b $totpkey | tee /dev/stderr | clipcopy
   fi
 #}
