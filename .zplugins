@@ -17,7 +17,7 @@ mattmc3/zephyr path:plugins/editor
 mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/homebrew
 mattmc3/zephyr path:plugins/macos conditional:is-darwin
-mattmc3/zephyr path:plugins/prompt
+#mattmc3/zephyr path:plugins/prompt
 mattmc3/zephyr path:plugins/utility
 
 # omz
@@ -30,6 +30,10 @@ $ZDOTDIR/plugins/abbreviations
 $ZDOTDIR/plugins/git
 $ZDOTDIR/plugins/otp
 $ZDOTDIR/plugins/python
+
+# prompts
+romkatv/powerlevel10k kind:fpath
+$ZDOTDIR/plugins/prompt
 
 # utilities
 romkatv/zsh-bench kind:path

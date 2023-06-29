@@ -22,7 +22,8 @@ source $ANTIDOTE_HOME/mattmc3/antidote/antidote.zsh
 antidote load
 
 # prompt
-# prompt starship mmc
+prompt starship mmc
+#prompt p10k pure
 
 # done profiling
 [[ -z "$ZPROFRC" ]] || zprof
