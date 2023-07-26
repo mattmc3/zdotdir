@@ -22,12 +22,12 @@ typeset -ag noexpand_aliases=()
 
 function globalias {
    # Get last word to the left of the cursor:
-   # (z) splits into words using shell parsing
    # (A) makes it an array even if there's only one element
+   # (z) splits into words using shell parsing
    local word=${${(Az)LBUFFER}[-1]}
    if [[ $noexpand_aliases[(Ie)$word] -eq 0 ]]; then
       zle _expand_alias
-      zle expand-word
+      # zle expand-word
    fi
    zle self-insert
 }
