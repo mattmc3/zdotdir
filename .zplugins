@@ -37,7 +37,8 @@ $ZDOTDIR/plugins/prompt
 
 # utilities
 romkatv/zsh-bench kind:path
-rupa/z
+ajeetdsouza/zoxide
+# rupa/z
 mattmc3/zman
 
 # final
