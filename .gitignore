@@ -1,4 +1,5 @@
 ~*
+.archive/
 .zephyr/
 .custom/
 .external/
