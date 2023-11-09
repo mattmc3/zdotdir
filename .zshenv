@@ -1,3 +1,4 @@
+#!/bin/zsh
 #
 # .zshenv - Zsh environment file, loaded always.
 #
@@ -37,5 +38,3 @@ path=(
   /usr/local/{,s}bin(N)
   $path
 )
-
-# vim: ft=zsh sw=2 ts=2 et
