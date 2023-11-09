@@ -1,0 +1,15 @@
+~*
+.zephyr/
+.custom/
+.external/
+.zplugins/
+.zsh_sessions/
+.zdirs
+*.bak
+*.cache
+*.local
+*.local.zsh
+*.old
+*.zwc
+.zcompdump*
+.zsh_history
