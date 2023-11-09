@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# Use the default Z1 prompt.
+zstyle ':z1:prompt' theme 'z1'
