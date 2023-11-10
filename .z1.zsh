@@ -6,6 +6,7 @@
 # Init z1
 () {
   typeset -g Z1_VERSION="0.0.1"
+  typeset -gaH __z1_opts=(extended_glob NO_xtrace NO_ksh_arrays)
 
   # Add variables for key Zsh directories.
   export __zsh_config_dir=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}
@@ -24,6 +25,8 @@
 
 ##? run_compinit - Initialize the built-in Zsh completion system.
 function run_compinit {
+  emulate -L zsh; setopt local_options $__z1_opts
+
   # Zsh compdump file.
   typeset -g ZSH_COMPDUMP
   zstyle -s ':z1:completion' compdump 'ZSH_COMPDUMP' ||
@@ -55,6 +58,8 @@ function run_compinit {
 
 # compstyle_z1_setup - Set Zsh completion styles.
 function compstyle_z1_setup {
+  emulate -L zsh; setopt local_options $__z1_opts
+
   # Defaults.
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
   zstyle ':completion:*:default' list-prompt '%S%M matches%s'
@@ -123,22 +128,23 @@ function compstyle_z1_setup {
   zstyle ':completion:*:man:*'      menu yes select
 }
 
-# __coreutils_alias_setup - Add colorization for coreutils commands.
-function __coreutils_alias_setup {
-  local prefix=$1  # 'g' or '' for GNU coreutils alongside BSD coreutils
-
-  # Cache results of running dircolors for 20 hours, so it should almost
-  # always regenerate the first time a shell is opened each day.
-  local dircolors_cache=$__zsh_cache_dir/${prefix}dircolors.zsh
-  local cache_files=($dircolors_cache(Nmh-20))
-  if ! (( $#cache_files )); then
-    ${prefix}dircolors --sh >| $dircolors_cache
+# __memoize_cmd - Evaluate a command, cache its output, and use its cache for 20 hours
+function __memoize_cmd {
+  emulate -L zsh; setopt local_options $__z1_opts
+  local memofile=$__zsh_cache_dir/memoized/$1; shift
+  local -a cached=($memofile(Nmh-20))
+  if ! (( $#cached )); then
+    mkdir -p ${memofile:h}
+    "$@" >| $memofile
   fi
-  source "${dircolors_cache}"
-  alias ${prefix}ls="${aliases[${prefix}ls]:-${prefix}ls} --group-directories-first --color=auto"
+  source $memofile
 }
 
+# prompt_z1_setup - Add a nice prompt for Z1 users.
 function prompt_z1_setup {
+  emulate -L zsh; setopt local_options $__z1_opts
+
+  # Remove right prompt from prior commands
   setopt transient_rprompt
 
   function prompt_pwd {
@@ -232,18 +238,79 @@ function prompt_z1_setup {
   prompt_z1_setup "$@"
 }
 
+# colormap - Print a quick colormap
+function colormap {
+  for i in {0..255}; do
+    print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}
+  done
+}
+
 # Run z1.
 () {
   #
-  # General Options
+  # Options
   #
 
-  setopt extended_glob           # Use extended globbing syntax.
-  setopt combining_chars         # Combine 0-len chars with base chars (eg: accents).
-  setopt interactive_comments    # Enable comments in interactive shell.
-  setopt rc_quotes               # Allow 'Hitchhiker''s Guide' instead of 'Hitchhiker'\''s Guide'.
-  setopt NO_beep                 # Be quiet.
-  setopt NO_mail_warning         # Don't print a warning if a mail file was accessed.
+  local zshopts=(
+    # https://zsh.sourceforge.io/Doc/Release/Options.html
+    # 16.2.1 Changing Directories
+    auto_pushd              # Make cd push the old directory onto the dirstack.
+    pushd_minus             # Exchanges meanings of +/- when navigating the dirstack.
+    pushd_silent            # Do not print the directory stack after pushd or popd.
+    pushd_to_home           # Push to home directory when no argument is given.
+
+    # 16.2.2 Completion
+    always_to_end           # Move cursor to the end of a completed word.
+    auto_list               # Automatically list choices on ambiguous completion.
+    auto_menu               # Show completion menu on a successive tab press.
+    auto_param_slash        # If completed parameter is a directory, add a trailing slash.
+    complete_in_word        # Complete from both ends of a word.
+    path_dirs               # Perform path search even on command names with slashes.
+    NO_flow_control         # Disable start/stop characters in shell editor.
+    NO_menu_complete        # Do not autoselect the first completion entry.
+
+    # 16.2.3 Expansion and Globbing
+    extended_glob           # Use extended globbing syntax.
+    glob_dots               # Don't hide dotfiles from glob patterns.
+
+    # 16.2.4 History
+    bang_hist               # Treat the '!' character specially during expansion.
+    extended_history        # Write the history file in the ':start:elapsed;command' format.
+    hist_expire_dups_first  # Expire a duplicate event first when trimming history.
+    hist_find_no_dups       # When using find, only display a command once.
+    hist_ignore_dups        # Do not record an event that was just recorded again.
+    hist_ignore_space       # Do not record an event starting with a space.
+    hist_verify             # Do not execute immediately upon history expansion.
+    inc_append_history      # Write to the history file immediately, not when the shell exits.
+    NO_share_history        # Do not share history between all sessions.
+    NO_hist_beep            # Do not beep when accessing non-existent history.
+
+    # 16.2.6 Input/Output
+    interactive_comments    # Enable comments in interactive shell.
+    rc_quotes               # Allow 'Hitchhiker''s Guide' instead of 'Hitchhiker'\''s Guide'.
+    NO_clobber              # Don't overwrite files with >. Use >| to bypass.
+    NO_mail_warning         # Don't print a warning if a mail file was accessed.
+    NO_rm_star_silent       # Ask for confirmation for `rm *' or `rm path/*'
+
+    # 16.2.7 Job Control
+    auto_resume             # Attempt to resume existing job before creating a new process.
+    long_list_jobs          # List jobs in the long format by default.
+    notify                  # Report status of background jobs immediately.
+    NO_bg_nice              # Don't run all background jobs at a lower priority.
+    NO_check_jobs           # Don't report on jobs when shell exit.
+    NO_hup                  # Don't kill jobs on shell exit.
+
+    # 16.2.8 Prompting
+    prompt_subst            # Expand parameters in prompt variables
+
+    # 16.2.9 Scripts and Functions
+    multios                 # Write to multiple descriptors.
+
+    # 16.2.12 Zle
+    combining_chars         # Combine 0-len chars with base chars (eg: accents).
+    NO_beep                 # Be quiet
+  )
+  setopt $zshopts
 
   #
   # Autoload functions
@@ -277,27 +344,21 @@ function prompt_z1_setup {
 
   # Set colors for grep and ls command using dircolors if available.
   alias grep="${aliases[grep]:-grep} --color=auto"
-  (( $+commands[gdircolors] )) && __coreutils_alias_setup g
+  if (( $+commands[gdircolors] )); then
+    __memoize_cmd 'gdircolors.zsh' gdircolors --sh
+    alias gls="${aliases[gls]:-gls} --group-directories-first --color=auto"
+  fi
   if (( $+commands[dircolors] )); then
-    __coreutils_alias_setup
+    __memoize_cmd 'dircolors.zsh' dircolors --sh
+    alias ls="${aliases[ls]:-ls} --group-directories-first --color=auto"
   else
     alias ls="${aliases[ls]:-ls} -G"
     export LSCOLORS=${LSCOLORS:-exfxcxdxbxGxDxabagacad}
   fi
-  unfunction -- __coreutils_alias_setup
 
   #
-  # File system
+  # Directory
   #
-
-  setopt auto_pushd              # Make cd push the old directory onto the dirstack.
-  setopt pushd_minus             # Exchanges meanings of +/- when navigating the dirstack.
-  setopt pushd_silent            # Do not print the directory stack after pushd or popd.
-  setopt pushd_to_home           # Push to home directory when no argument is given.
-  setopt multios                 # Write to multiple descriptors.
-  setopt glob_dots               # Don't hide dotfiles from glob patterns.
-  setopt NO_clobber              # Don't overwrite files with >. Use >| to bypass.
-  setopt NO_rm_star_silent       # Ask for confirmation for `rm *' or `rm path/*'
 
   # Show directory stack.
   alias dirh='dirs -v'
@@ -305,20 +366,6 @@ function prompt_z1_setup {
   #
   # History
   #
-
-  setopt bang_hist               # Treat the '!' character specially during expansion.
-  setopt extended_history        # Write the history file in the ':start:elapsed;command' format.
-  setopt hist_expire_dups_first  # Expire a duplicate event first when trimming history.
-  setopt hist_find_no_dups       # Do not display a previously found event.
-  setopt hist_ignore_all_dups    # Delete an old recorded event if a new event is a duplicate.
-  setopt hist_ignore_dups        # Do not record an event that was just recorded again.
-  setopt hist_ignore_space       # Do not record an event starting with a space.
-  setopt hist_reduce_blanks      # Remove extra blanks from commands added to the history list.
-  setopt hist_save_no_dups       # Do not write a duplicate event to the history file.
-  setopt hist_verify             # Do not execute immediately upon history expansion.
-  setopt inc_append_history      # Write to the history file immediately, not when the shell exits.
-  setopt NO_hist_beep            # Don't beep when accessing non-existent history.
-  setopt NO_share_history        # Don't share history between all sessions.
 
   # Set the path to the history file.
   zstyle -s ':z1:history' histfile 'HISTFILE' \
@@ -332,17 +379,6 @@ function prompt_z1_setup {
 
   # Use a better history command.
   alias history='fc -li'
-
-  #
-  # Job control
-  #
-
-  setopt auto_resume             # Attempt to resume existing job before creating a new process.
-  setopt long_list_jobs          # List jobs in the long format by default.
-  setopt notify                  # Report status of background jobs immediately.
-  setopt NO_bg_nice              # Don't run all background jobs at a lower priority.
-  setopt NO_check_jobs           # Don't report on jobs when shell exit.
-  setopt NO_hup                  # Don't kill jobs on shell exit.
 
   #
   # Utilities
@@ -365,15 +401,6 @@ function prompt_z1_setup {
   # Completions
   #
 
-  setopt always_to_end           # Move cursor to the end of a completed word.
-  setopt auto_list               # Automatically list choices on ambiguous completion.
-  setopt auto_menu               # Show completion menu on a successive tab press.
-  setopt auto_param_slash        # If completed parameter is a directory, add a trailing slash.
-  setopt complete_in_word        # Complete from both ends of a word.
-  setopt path_dirs               # Perform path search even on command names with slashes.
-  setopt NO_flow_control         # Disable start/stop characters in shell editor.
-  setopt NO_menu_complete        # Do not autoselect the first completion entry.
-
   # Add custom completions directory.
   fpath=($__zsh_config_dir/completions(/N) $fpath)
 
@@ -389,9 +416,6 @@ function prompt_z1_setup {
   #
   # Prompt
   #
-
-  # Expand parameters in prompt variables.
-  setopt prompt_subst
 
   # Initialize prompt if the user didn't.
   if ! (( $+functions[promptinit] )); then
@@ -413,7 +437,6 @@ function prompt_z1_setup {
     elif (( $#prompt_argv > 0 )); then
       prompt "$prompt_argv[@]"
     fi
-    echo "prompt_argv: $prompt_argv"
   fi
 }
 
