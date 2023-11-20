@@ -52,7 +52,7 @@ belak/zsh-utils path:prompt
 ohmyzsh/ohmyzsh path:plugins/extract
 belak/zsh-utils path:utility
 romkatv/zsh-bench kind:path
-ajeetdsouza/zoxide
+$ZDOTDIR/plugins/zoxide
 mattmc3/zman
 
 # Completions
