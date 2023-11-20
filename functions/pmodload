@@ -1,0 +1,4 @@
+# empty function to appease prezto
+# function pmodload {
+  # do nothing
+# }
