@@ -21,10 +21,6 @@ export ANTIDOTE_HOME=${XDG_CACHE_HOME:=~/.cache}/repos
 source $ANTIDOTE_HOME/mattmc3/antidote/antidote.zsh
 antidote load
 
-# prompt
-prompt starship mmc
-#prompt p10k pure
-
 # done profiling
 [[ -z "$ZPROFRC" ]] || zprof
 
