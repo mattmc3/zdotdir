@@ -3,6 +3,7 @@
 #
 
 # Pre-reqs
+$ZDOTDIR/plugins/p10k-instaprompt
 mattmc3/zfunctions
 sorin-ionescu/prezto path:modules/helper
 
@@ -46,7 +47,7 @@ $ZDOTDIR/plugins/python
 # Prompts
 sindresorhus/pure kind:fpath
 romkatv/powerlevel10k kind:fpath
-belak/zsh-utils path:prompt
+# belak/zsh-utils path:prompt
 
 # Utilities
 ohmyzsh/ohmyzsh path:plugins/extract

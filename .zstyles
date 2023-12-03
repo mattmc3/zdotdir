@@ -6,9 +6,11 @@
 # Antidote
 #
 
-zstyle ':antidote:bundle' file ${ZDOTDIR:-~}/.zplugins
-zstyle ':antidote:static' file ${ZDOTDIR:-~}/.zplugins.zsh
 zstyle ':antidote:bundle' use-friendly-names 'yes'
+zstyle ':antidote:bundle' file ${ZDOTDIR:-~}/.zplugins
+zstyle ':antidote:bundle:*' zcompile 'yes'
+zstyle ':antidote:static' file ${ZDOTDIR:-~}/.zplugins.zsh
+zstyle ':antidote:static' zcompile 'yes'
 zstyle ':antidote:plugin:*' defer-options '-p'
 
 #
