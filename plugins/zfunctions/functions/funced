@@ -1,0 +1,37 @@
+#!/bin/zsh
+##? funced - edit the function specified
+
+local ZFUNCDIR="${ZFUNCDIR:-${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}/functions}"
+
+# check args
+if [[ -z "$1" ]]; then
+  echo >&2 "funced: Expected function name argument"
+  return 1
+elif [[ ! -d "$ZFUNCDIR" ]]; then
+  echo >&2 "funced: Zsh function directory not found '$ZFUNCDIR'."
+  return 1
+fi
+
+# new function definition: make a file template
+if [[ ! -f "$ZFUNCDIR/$1" ]]; then
+  cat <<EOS > "$ZFUNCDIR/$1"
+#!/bin/zsh
+##? TODO: Add description. Use ##? comments for funchelp docs.
+
+###
+### TODO: write your autoload function here.
+### WARNING: Do not add a 'function $1() {}' wrapper for autoloads.
+###
+
+# vim: ft=zsh sw=2 ts=2 et
+
+EOS
+  autoload -Uz "$ZFUNCDIR/$1"
+fi
+
+# open the function file
+if [[ -n "$VISUAL" ]]; then
+  $VISUAL "$ZFUNCDIR/$1"
+else
+  ${EDITOR:-vim} "$ZFUNCDIR/$1"
+fi
