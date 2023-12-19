@@ -1,0 +1,39 @@
+#!/bin/zsh
+## manp - Open man page in Dash.app
+if test $# -eq 0; then
+  echo >&2 'mand: What manual page do you want to open in Dash?' && return 1
+fi
+
+local args=()
+local docset=manpages
+while (( $# )); do
+  case $1 in
+    --)
+      shift
+      args+=("$@")
+      break
+      ;;
+    -d|--docset)
+      shift
+      docset=$1
+      ;;
+    -d=*|--docset=*)
+      docset="${1#*=}"
+      ;;
+    -*)
+      echo >&2 "mand: Unknown option '$1'"
+      return 2
+      ;;
+    *)
+      args+=("$1")
+      ;;
+  esac
+  shift
+done
+
+dashcmd="dash://$docset%3A$args"
+open $dashcmd 2> /dev/null
+if test $? -ne 0; then
+  echo >&2 "$0: Dash is not installed"
+  return 2
+fi

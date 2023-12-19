@@ -1,0 +1,10 @@
+#!/bin/zsh
+## manp - Open man page in Preview.app
+local page
+if (( $# > 0 )); then
+  for page in "$@"; do
+    man -t "$page" | open -f -a Preview
+  done
+else
+  echo >&2 'manp: You must specify the manual page you want'
+fi
