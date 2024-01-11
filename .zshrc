@@ -9,6 +9,9 @@ alias zprofrc="ZPROFRC=1 zsh"
 # zstyles
 [[ -r $ZDOTDIR/.zstyles ]] && . $ZDOTDIR/.zstyles
 
+# zsh custom
+ZSH_CUSTOM=${ZDOTDIR:-$HOME/.config/zsh}
+
 # use antidote for plugin management
 export ANTIDOTE_HOME=${XDG_CACHE_HOME:=~/.cache}/repos
 [[ -d $ANTIDOTE_HOME/mattmc3/antidote ]] ||

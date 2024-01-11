@@ -1,1 +1,0 @@
-compstyle zshzoo

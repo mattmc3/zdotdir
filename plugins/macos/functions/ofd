@@ -1,3 +1,0 @@
-#!/bin/zsh
-##? ofd - Open the current directory in Finder
-open "$PWD"
