@@ -1,0 +1,20 @@
+#!/bin/zsh
+##? Memoize a command
+# function memoize-command {
+emulate -L zsh; setopt local_options extended_glob
+(( $# >= 2 )) || return 1
+
+# make the command name safer as a file path
+local cmdname="${1}"; shift
+cmdname=${cmdname:gs/\@/-AT-}
+cmdname=${cmdname:gs/\:/-COLON-}
+cmdname=${cmdname:gs/\//-SLASH-}
+
+local memofile=${__zsh_cache_dir:=$XDG_CACHE_HOME/zsh}/memoized/${cmdname}.zsh
+local -a cached=($memofile(Nmh-20))
+if ! (( ${#cached} )); then
+  mkdir -p ${memofile:h}
+  "$@" >| $memofile
+fi
+source $memofile
+# }
