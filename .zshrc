@@ -2,33 +2,34 @@
 # .zshrc - Run on interactive Zsh session.
 #
 
-# init profiling
-[[ -z "$ZPROFRC" ]] || zmodload zsh/zprof
-alias zprofrc="ZPROFRC=1 zsh"
+# load lib
+ZSH_CUSTOM=$ZDOTDIR
+for _zrcfile in $ZDOTDIR/lib/*.zsh; do
+  source $_zrcfile
+done
 
-# zstyles
-[[ -r $ZDOTDIR/.zstyles ]] && . $ZDOTDIR/.zstyles
-
-# zsh custom
-ZSH_CUSTOM=${ZDOTDIR:-$HOME/.config/zsh}
-
-# use antidote for plugin management
+# Use antidote for plugin management.
 export ANTIDOTE_HOME=${XDG_CACHE_HOME:=~/.cache}/repos
-[[ -d $ANTIDOTE_HOME/mattmc3/antidote ]] ||
-  git clone --depth 1 --quiet https://github.com/mattmc3/antidote $ANTIDOTE_HOME/mattmc3/antidote
+antidote_path=$ANTIDOTE_HOME/mattmc3/antidote
 
 # keep all 3 for different test scenarios
-# . $ANTIDOTE_HOME/mattmc3/antidote/antidote.zsh
-# . ~/Projects/mattmc3/antidote/antidote.zsh
-# . ${HOMEBREW_PREFIX:=/opt/homebrew}/opt/antidote/share/antidote/antidote.zsh
-source $ANTIDOTE_HOME/mattmc3/antidote/antidote.zsh
+# antidote_path=$ANTIDOTE_HOME/mattmc3/antidote
+# antidote_path=~/Projects/mattmc3/antidote/antidote.zsh
+# antidote_path=${HOMEBREW_PREFIX:-/opt/homebrew}/opt/antidote/share/antidote/antidote.zsh
+
+# Load antidote.
+[[ -d $antidote_path ]] \
+  || git clone --depth 1 --quiet https://github.com/mattmc3/antidote $antidote_path
+source $antidote_path/antidote.zsh
 antidote load
 
-# done profiling
-[[ -z "$ZPROFRC" ]] || zprof
+# Set prompt.
+doprompt p10k mmc
 
-# cleanup
-unset ZPROFRC zplugins
+# Initialize completions.
+docompinit
+
+# Always succeed.
 true
 
 # vim: ft=zsh sw=2 ts=2 et

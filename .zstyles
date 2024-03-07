@@ -10,10 +10,11 @@ zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':antidote:plugin:*' defer-options '-p'
 
 #
-# Zephyr
+# ZshZoo
 #
 
-zstyle ':zephyr:plugin:prompt' theme zephyr
+zstyle ':zshzoo:plugin:prompt:p10k-instant-prompt' enabled yes
+zstyle ':zshzoo:plugin:prompt' theme 'p10k' 'mmc'
 
 #
 # Custom

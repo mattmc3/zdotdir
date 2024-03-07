@@ -4,23 +4,17 @@
 
 # Load near the top so you get p10k's instaprompt if you need it.
 $ZSH_CUSTOM path:plugins/p10k-instaprompt
-mattmc3/zephyr path:plugins/zfunctions
+mattmc3/zfunctions
 $ZSH_CUSTOM path:plugins/xdg
 
 # Zephyr
-mattmc3/zephyr path:plugins/homebrew
-mattmc3/zephyr path:plugins/environment
-mattmc3/zephyr path:plugins/utility
-mattmc3/zephyr path:plugins/color
-mattmc3/zephyr path:plugins/directory
-mattmc3/zephyr path:plugins/history
+# mattmc3/zephyr path:plugins/homebrew
+# mattmc3/zephyr path:plugins/environment
+# mattmc3/zephyr path:plugins/utility
+# mattmc3/zephyr path:plugins/color
+# mattmc3/zephyr path:plugins/directory
+# mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/macos conditional:is-macos
-
-# Clipboard
-ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-ohmyzsh/ohmyzsh path:plugins/copyfile
-ohmyzsh/ohmyzsh path:plugins/copybuffer
-ohmyzsh/ohmyzsh path:plugins/copypath
 
 # Custom
 $ZSH_CUSTOM path:plugins/abbreviations
@@ -36,7 +30,6 @@ romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
 
 # Editor
-mattmc3/zephyr path:plugins/editor
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 
@@ -45,19 +38,13 @@ sindresorhus/pure kind:fpath
 romkatv/powerlevel10k kind:fpath
 
 # z - jump around
-# $ZSH_CUSTOM path:plugins/zoxide
 ajeetdsouza/zoxide
-# rupa/z
-# agkozak/zsh-z
-
-# Completion
-mattmc3/zephyr path:plugins/completion
 
 # Regular plugins
 mattmc3/zman
 
 # Final plugins
-mattmc3/zephyr path:plugins/confd
+mattmc3/zshrc.d
 zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
