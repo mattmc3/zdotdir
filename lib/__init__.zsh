@@ -14,7 +14,6 @@ setopt extended_glob interactive_comments
 
 # Enable Powerlevel10k instant prompt.
 if zstyle -t ':zshzoo:plugin:prompt:p10k-instant-prompt' 'enabled'; then
-  echo here
   if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
   fi
