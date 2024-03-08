@@ -3,24 +3,16 @@
 #
 
 # Load near the top so you get p10k's instaprompt if you need it.
-$ZSH_CUSTOM path:plugins/p10k-instaprompt
+#$ZSH_CUSTOM path:plugins/p10k-instaprompt
 mattmc3/zfunctions
-$ZSH_CUSTOM path:plugins/xdg
+#$ZSH_CUSTOM path:plugins/xdg
 
 # Zephyr
-# mattmc3/zephyr path:plugins/homebrew
-# mattmc3/zephyr path:plugins/environment
-# mattmc3/zephyr path:plugins/utility
-# mattmc3/zephyr path:plugins/color
-# mattmc3/zephyr path:plugins/directory
-# mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/macos conditional:is-macos
 
 # Custom
 $ZSH_CUSTOM path:plugins/abbreviations
 $ZSH_CUSTOM path:plugins/git
-$ZSH_CUSTOM path:plugins/gpg
-$ZSH_CUSTOM path:plugins/iwd
 $ZSH_CUSTOM path:plugins/golang
 $ZSH_CUSTOM path:plugins/otp
 $ZSH_CUSTOM path:plugins/python
@@ -37,14 +29,12 @@ ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 sindresorhus/pure kind:fpath
 romkatv/powerlevel10k kind:fpath
 
-# z - jump around
-ajeetdsouza/zoxide
-
 # Regular plugins
 mattmc3/zman
 
 # Final plugins
 mattmc3/zshrc.d
+#zsh-users/zsh-syntax-highlighting
 zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
