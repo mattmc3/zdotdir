@@ -36,12 +36,11 @@ fi
 # Source the antidote static plugins file.
 source $zsh_plugins
 
-
 # Set prompt.
-doprompt p10k mmc
+myprompt p10k mmc
 
 # Initialize completions.
-docompinit
+mycompinit
 
 # Always succeed.
 true

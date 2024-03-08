@@ -28,7 +28,7 @@ if (( $+commands[starship] )); then
   }
 fi
 
-function doprompt {
+function myprompt {
   # Initialize built-in prompt system.
   autoload -Uz promptinit && promptinit
   if [[ $TERM == dumb ]] || (( $# == 0 )); then
@@ -54,4 +54,8 @@ function doprompt {
 
   # Set prompt.
   prompt "$@[@]"
+
+  # Mark theme as loaded.
+  zstyle ':zshzoo:feature:prompt:theme' loaded yes
 }
+
