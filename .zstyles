@@ -13,8 +13,8 @@ zstyle ':antidote:plugin:*' defer-options '-p'
 # ZshZoo
 #
 
-zstyle ':zshzoo:plugin:prompt:p10k-instant-prompt' enabled yes
-zstyle ':zshzoo:plugin:prompt' theme 'p10k' 'mmc'
+zstyle ':zshzoo:feature:prompt:p10k-instant-prompt' enabled yes
+zstyle ':zshzoo:feature:prompt' theme 'p10k' 'mmc'
 
 #
 # Custom
