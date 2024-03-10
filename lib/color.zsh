@@ -42,5 +42,10 @@ if (( ! $+commands[dircolors] )); then
   export LSCOLORS="${LSCOLORS:-exfxcxdxbxGxDxabagacad}"
 fi
 
+# Use diff --color if available
+if command diff --color /dev/null{,} &>/dev/null; then
+  alias diff="${aliases[diff]:-diff} --color"
+fi
+
 # Set completion colors.
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
