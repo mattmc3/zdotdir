@@ -1,5 +1,5 @@
 #
-# zzz - Sleepily wait until the end, and then post-lib and post-zshrc.
+# zzz: Sleepily wait until the end, and then post-lib and post-zshrc.
 #
 
 # Source the antidote static plugins file.
