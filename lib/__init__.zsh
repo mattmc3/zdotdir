@@ -6,11 +6,14 @@
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
+# Zero.
+0=${(%):-%N}
+
 # Set critical options
 setopt extended_glob interactive_comments
 
 # Load .zstyles file.
-[[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
+[[ -r ${ZDOTDIR:-~}/.zstyles ]] && source ${ZDOTDIR:-~}/.zstyles
 
 # Enable Powerlevel10k instant prompt.
 if zstyle -t ':myzsh:feature:prompt:p10k-instant-prompt' 'enabled' &&
@@ -21,21 +24,22 @@ then
   fi
 fi
 
-# Add hook so that zprof runs only once at the very end.
-autoload -Uz add-zsh-hook
-if [[ "$ZPROFRC" -eq 1 ]]; then
-  function zprof-precmd {
-    zprof
-    add-zsh-hook -d precmd zprof-precmd
-    unset ZPROFRC
-  }
-  add-zsh-hook precmd zprof-precmd
-fi
+# Load .zshrc.pre file.
+[[ -r ${ZDOTDIR:-~}/.zshrc.pre ]] && source ${ZDOTDIR:-~}/.zshrc.pre
 
-##? Expand variable names to their values.
-function expandvars {
-  local v; for v in $@; print ${(P)v}
+# Add hook so that we can run post zshrc stuff.
+autoload -Uz add-zsh-hook
+typeset -gaH __postzshrc_cmds=()
+function postzshrc {
+  local cmd
+  for cmd in $__postzshrc_cmds; ${=cmd}
+  unset __postzshrc_cmds
+  add-zsh-hook -d precmd postzshrc
 }
+add-zsh-hook precmd postzshrc  # precmd is the best I know to do.
+
+# Source zzz.postzsh in postzshrc hook.
+__postzshrc_cmds+=("source ${0:A:h}/zzz.postzshrc")
 
 ##? Make directory from variables
 function mkdir-fromvars {
@@ -60,6 +64,13 @@ function cached-eval {
   source $memofile
 }
 
+#
+# Paths
+#
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path
+
 # Set XDG dirs
 if zstyle -T ':z1:environment' use-xdg-basedirs; then
   : ${XDG_CONFIG_HOME:=$HOME/.config}
@@ -77,9 +88,6 @@ fi
 export __zsh_{config,cache,user_data}_dir
 mkdir-fromvars __zsh_{config,cache,user_data}_dir
 
-# Ensure path arrays do not contain duplicates.
-typeset -gU cdpath fpath mailpath path
-
 # Setup homebrew if it exists on the system.
 typeset -aU _brewcmd=(
   $HOME/brew/bin/brew(N)
@@ -89,7 +97,7 @@ typeset -aU _brewcmd=(
   $HOME/.linuxbrew/bin/brew(N)
   /home/linuxbrew/.linuxbrew/bin/brew(N)
 )
-(( $#_brewcmd )) && source <($_brewcmd[1] shellenv)
+(( $#_brewcmd )) && cached-eval 'brew_shellenv' $_brewcmd[1] shellenv
 unset _brewcmd
 
 # Build remaining path.
