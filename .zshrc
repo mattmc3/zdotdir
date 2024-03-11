@@ -9,7 +9,7 @@ for _zrcfile in $ZDOTDIR/lib/*.zsh; do
 done
 
 # Setup antidote.
-export ANTIDOTE_HOME=${XDG_CACHE_HOME:=~/.cache}/repos
+export ANTIDOTE_HOME=${XDG_CACHE_HOME:-~/.cache}/repos
 antidote_path=$ANTIDOTE_HOME/mattmc3/antidote
 
 # keep all 3 for different test scenarios
