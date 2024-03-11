@@ -50,6 +50,10 @@ alias unixepoch="date +%s"
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
+# homebrew
+alias brewup="brew update && brew upgrade && brew cleanup"
+alias brewinfo="brew leaves | xargs brew desc --eval-all"
+
 # disk usage
 alias biggest='du -s ./* | sort -nr | awk '\''{print $2}'\'' | xargs du -sh'
 alias dux='du -x --max-depth=1 | sort -n'
