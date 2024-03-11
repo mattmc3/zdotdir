@@ -33,7 +33,4 @@ function mycompinit {
     # Ensure $ZSH_COMPDUMP is younger than the cache time even if it isn't regenerated.
     touch "$ZSH_COMPDUMP"
   fi
-
-  # Mark compinit as loaded.
-  zstyle ':myzsh:feature:completion:compinit' loaded yes
 }

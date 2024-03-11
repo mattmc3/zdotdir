@@ -6,9 +6,6 @@
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-# Zero.
-0=${(%):-%N}
-
 # Set critical options
 setopt extended_glob interactive_comments
 
@@ -27,19 +24,9 @@ fi
 # Load .zshrc.pre file.
 [[ -r ${ZDOTDIR:-~}/.zshrc.pre ]] && source ${ZDOTDIR:-~}/.zshrc.pre
 
-# Add hook so that we can run post zshrc stuff.
-autoload -Uz add-zsh-hook
-typeset -gaH __postzshrc_cmds=()
-function postzshrc {
-  local cmd
-  for cmd in $__postzshrc_cmds; ${=cmd}
-  unset __postzshrc_cmds
-  add-zsh-hook -d precmd postzshrc
-}
-add-zsh-hook precmd postzshrc  # precmd is the best I know to do.
-
-# Source zzz.postzsh in postzshrc hook.
-__postzshrc_cmds+=("source ${0:A:h}/zzz.postzshrc")
+#
+# Funcs
+#
 
 ##? Make directory from variables
 function mkdir-fromvars {
