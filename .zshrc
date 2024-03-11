@@ -9,9 +9,6 @@ for _zrcfile in $ZDOTDIR/lib/*.zsh; do
 done
 unset _zrcfile
 
-# Set prompt.
-# mypromptint
-
 # Run post zshrc at the very end.
 zshrc-post
 
