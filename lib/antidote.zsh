@@ -1,3 +1,7 @@
+#
+# antidote: The fastest Zsh plugin manager.
+#
+
 # Setup antidote.
 : ${ANTIDOTE_HOME:=${XDG_CACHE_HOME:-~/.cache}/repos}
 zstyle -s ':antidote:repo' path antidote_path \
