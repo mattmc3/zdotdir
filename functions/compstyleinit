@@ -1,7 +1,0 @@
-function compstyle {
-  if (( $+functions[compstyle_$1_setup] )); then
-    compstyle_$1_setup
-  else
-    autoload -Uz compstyle_$1_setup && compstyle_$1_setup
-  fi
-}
