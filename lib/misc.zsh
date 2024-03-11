@@ -1,6 +1,12 @@
 #
-# utility: Setup commands for easier cross-platform work.
+# misc: Setup misc Zsh utils, common aliases, and other miscellany.
 #
+
+# Use built-in paste magic.
+autoload -Uz bracketed-paste-url-magic
+zle -N bracketed-paste bracketed-paste-url-magic
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
 
 # Load more specific 'run-help' function from $fpath.
 (( $+aliases[run-help] )) && unalias run-help && autoload -Uz run-help

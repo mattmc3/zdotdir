@@ -2,12 +2,6 @@
 # editor: Setup Zsh line editor behavior.
 #
 
-# Use built-in paste magic.
-autoload -Uz bracketed-paste-url-magic
-zle -N bracketed-paste bracketed-paste-url-magic
-autoload -Uz url-quote-magic
-zle -N self-insert url-quote-magic
-
 # 16.2.6 Input/Output
 setopt interactive_comments    # Enable comments in interactive shell.
 setopt rc_quotes               # Allow 'Hitchhikers''s Guide' instead of 'Hitchhikers'\''s Guide'.
