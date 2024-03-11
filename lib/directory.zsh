@@ -21,8 +21,8 @@ setopt NO_rm_star_silent  # Ask for confirmation for `rm *' or `rm path/*'
 setopt multios        # Write to multiple descriptors.
 
 # Set directory aliases.
-alias -- -='cd -'
 alias dirh='dirs -v'
+alias -- -='cd -'
 alias -g '..2'='../..'
 alias -g '..3'='../../..'
 alias -g '..4'='../../../..'
