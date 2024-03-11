@@ -1,4 +1,4 @@
 # https://github.com/ajeetdsouza/zoxide
 if (( $+commands[zoxide] )); then
-  eval "$(zoxide init zsh)"
+  cached-eval 'zoxide-init-zsh' zoxide init zsh
 fi

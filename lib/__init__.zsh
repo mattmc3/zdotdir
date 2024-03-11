@@ -45,6 +45,21 @@ function mkdir-fromvars {
   done
 }
 
+##? Memoize a command
+function cached-eval {
+  emulate -L zsh; setopt local_options extended_glob
+  (( $# >= 2 )) || return 1
+
+  local cmdname=$1; shift
+  local memofile=$__zsh_cache_dir/memoized/${cmdname}.zsh
+  local -a cached=($memofile(Nmh-20))
+  if ! (( ${#cached} )); then
+    mkdir -p ${memofile:h}
+    "$@" >| $memofile
+  fi
+  source $memofile
+}
+
 # Set XDG dirs
 if zstyle -T ':z1:environment' use-xdg-basedirs; then
   : ${XDG_CONFIG_HOME:=$HOME/.config}
