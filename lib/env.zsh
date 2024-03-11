@@ -6,7 +6,6 @@
 export EDITOR=${EDITOR:-vim}
 export VISUAL=${VISUAL:-vim}
 export PAGER=${PAGER:-less}
-[[ "$OSTYPE" == darwin* ]] && export BROWSER=${BROWSER:-open}
 export LANG=${LANG:-en_US.UTF-8}
 
 # Set the Less input preprocessor.
@@ -15,3 +14,17 @@ if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 export LESS="${LESS:--g -i -M -R -S -w -z-4}"
+
+# macOS
+if [[ "$OSTYPE" == darwin* ]]; then
+  export BROWSER=${BROWSER:-open}
+
+  # Make Apple Terminal behave.
+  export SHELL_SESSIONS_DISABLE=${SHELL_SESSIONS_DISABLE:-1}
+fi
+
+# Misc
+export KEYTIMEOUT=${KEYTIMEOUT:-1}
+
+# Use `< file` to quickly view the contents of any file.
+[[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
