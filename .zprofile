@@ -12,10 +12,12 @@ export __zsh_user_data_dir=${XDG_DATA_HOME:-$HOME/.local/share}/zsh
 export __zsh_cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
 
 # Ensure Zsh directories exist.
-for _zdir in __zsh_{config,user_data,cache}_dir; do
-  [[ -d "${(P)_zdir}" ]] || mkdir -p ${(P)_zdir}
-done
-unset _zdir
+() {
+  local zdir
+  for zdir in $@; do
+    [[ -d "${(P)zdir}" ]] || mkdir -p -- "${(P)zdir}"
+  done
+} __zsh_{config,user_data,cache}_dir XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_{RUNTIME,PROJECTS}_DIR
 
 # Custom
 export DOTFILES=$XDG_CONFIG_HOME/dotfiles
