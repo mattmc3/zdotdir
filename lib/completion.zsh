@@ -35,13 +35,5 @@ function mycompinit {
   fi
 
   # Mark compinit as loaded.
-  zstyle ':zshzoo:feature:completion:compinit' loaded yes
+  zstyle ':myzsh:feature:completion:compinit' loaded yes
 }
-
-function mycompinit-precmd {
-  if ! zstyle -t ':zshzoo:feature:completion:compinit' loaded; then
-    mycompinit
-  fi
-  add-zsh-hook -d precmd mycompinit-precmd
-}
-add-zsh-hook precmd mycompinit-precmd

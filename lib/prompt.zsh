@@ -56,6 +56,5 @@ function myprompt {
   prompt "$@[@]"
 
   # Mark theme as loaded.
-  zstyle ':zshzoo:feature:prompt:theme' loaded yes
+  zstyle ':myzsh:feature:prompt:theme' loaded yes
 }
-
