@@ -56,38 +56,54 @@ zsh
 
 ## Performance
 
-A snappy shell is very important. My config includes a `zbench` alias
-that runs zsh 10 times and presents the timings.
+A snappy shell is very important. I regularly run [zsh-bench](https://github.com/romkatv/zsh-bench) to make sure my shell feels snappy.
 
 The latest benchmark run shows that we load a new shell pretty fast.
 
 ```zsh
-% # MacBook Air (M1, 2020)
-% for i in $(seq 10); do; /usr/bin/time zsh -lic exit; done
-        0.06 real         0.03 user         0.02 sys
-        0.04 real         0.02 user         0.01 sys
-        0.04 real         0.02 user         0.01 sys
-        0.04 real         0.02 user         0.01 sys
-        0.04 real         0.02 user         0.01 sys
-        0.04 real         0.02 user         0.01 sys
-        0.04 real         0.02 user         0.02 sys
-        0.04 real         0.02 user         0.01 sys
-        0.04 real         0.02 user         0.01 sys
-        0.04 real         0.02 user         0.01 sys
-
-% # pure prompt
+% # MacBook Air (M3, 2024): starship prompt
 % zsh-bench
 ==> benchmarking login shell of user matt ...
 creates_tty=0
 has_compsys=1
-has_syntax_highlighting=0
+has_syntax_highlighting=1
 has_autosuggestions=1
-has_git_prompt=0
-first_prompt_lag_ms=17.076
-first_command_lag_ms=83.892
-command_lag_ms=57.657
-input_lag_ms=5.708
-exit_time_ms=43.770
+has_git_prompt=1
+first_prompt_lag_ms=130.800
+first_command_lag_ms=139.313
+command_lag_ms=126.693
+input_lag_ms=11.314
+exit_time_ms=65.501
+
+% # MacBook Air (M3, 2024): p10k prompt
+==> benchmarking login shell of user matt ...
+creates_tty=0
+has_compsys=1
+has_syntax_highlighting=1
+has_autosuggestions=1
+has_git_prompt=1
+first_prompt_lag_ms=13.365
+first_command_lag_ms=125.555
+command_lag_ms=47.757
+input_lag_ms=8.953
+exit_time_ms=70.038
+```
+
+If you prefer a naive, completely meaningless Zsh 'exit' benchmark, I include that too for legacy reasons.
+
+```zsh
+% # MacBook Air (M3, 2024)
+% for i in {1..10}; do; /usr/bin/time zsh -lic exit; done
+        0.09 real         0.03 user         0.02 sys
+        0.07 real         0.02 user         0.01 sys
+        0.06 real         0.02 user         0.01 sys
+        0.07 real         0.02 user         0.01 sys
+        0.07 real         0.02 user         0.01 sys
+        0.06 real         0.02 user         0.01 sys
+        0.07 real         0.02 user         0.01 sys
+        0.07 real         0.02 user         0.01 sys
+        0.06 real         0.02 user         0.01 sys
+        0.07 real         0.02 user         0.01 sys
 ```
 
 ## Look-and-feel
