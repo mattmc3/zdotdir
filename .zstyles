@@ -1,3 +1,4 @@
+#!/bin/zsh
 #
 # .zstyles - zstyle settings for features/plugins that need them.
 #
@@ -36,5 +37,3 @@ noexpand=(
   z
 )
 zstyle ':myzsh:feature:abbreviations' noexpand $noexpand
-
-# vim: ft=zsh sw=2 ts=2 et

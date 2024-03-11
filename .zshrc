@@ -1,18 +1,20 @@
+#!/bin/zsh
 #
 # .zshrc - Run on interactive Zsh session.
 #
 
-# load lib
+# Load everything in lib
 ZSH_CUSTOM=$ZDOTDIR
 for _zrcfile in $ZDOTDIR/lib/*.zsh; do
   source $_zrcfile
 done
 unset _zrcfile
 
+# Add stuff here...
+# ...
+
 # Run post zshrc at the very end.
 zshrc-post
 
 # Always succeed.
 true
-
-# vim: ft=zsh sw=2 ts=2 et
