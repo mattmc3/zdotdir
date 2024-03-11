@@ -12,8 +12,13 @@ zle -N self-insert url-quote-magic
 (( $+aliases[run-help] )) && unalias run-help && autoload -Uz run-help
 alias help=run-help
 
+# It's time. Python2 is dead.
+if (( $+commands[python3] )) && ! (( $+commands[python] )); then
+  alias python=python3
+fi
+
 # Ensure envsubst command exists.
-if ! (( $+commands[envsubst] )); then
+if ! (( $+commands[envsubst] )) && (( $+commands[python] )); then
   alias envsubst="python -c 'import os,sys;[sys.stdout.write(os.path.expandvars(l)) for l in sys.stdin]'"
 fi
 
@@ -30,27 +35,5 @@ if ! (( $+commands[open] )); then
     alias open='termux-open'
   elif (( $+commands[xdg-open] )); then
     alias open='xdg-open'
-  fi
-fi
-
-# Ensure pbcopy/pbpaste commands exist.
-if ! (( $+commands[pbcopy] )); then
-  if [[ "$OSTYPE" == cygwin* ]]; then
-    alias pbcopy='tee > /dev/clipboard'
-    alias pbpaste='cat /dev/clipboard'
-  elif [[ "$OSTYPE" == linux-android ]]; then
-    alias pbcopy='termux-clipboard-set'
-    alias pbpaste='termux-clipboard-get'
-  elif (( $+commands[wl-copy] && $+commands[wl-paste] )); then
-    alias pbcopy='wl-copy'
-    alias pbpaste='wl-paste'
-  elif [[ -n $DISPLAY ]]; then
-    if (( $+commands[xclip] )); then
-      alias pbcopy='xclip -selection clipboard -in'
-      alias pbpaste='xclip -selection clipboard -out'
-    elif (( $+commands[xsel] )); then
-      alias pbcopy='xsel --clipboard --input'
-      alias pbpaste='xsel --clipboard --output'
-    fi
   fi
 fi
