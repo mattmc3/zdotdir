@@ -15,6 +15,4 @@ function autoload-dir {
 }
 
 # Load zfunctions.
-: ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
-: ${ZFUNCDIR:=$__zsh_config_dir/functions}
-autoload-dir $ZFUNCDIR(N/) $ZFUNCDIR/*(N/)
+autoload-dir $__zsh_config_dir/functions(N/) $__zsh_config_dir/functions/*(N/)
