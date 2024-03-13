@@ -15,22 +15,22 @@ setopt NO_menu_complete  # Do not autoselect the first completion entry.
 
 # Initialize completions.
 function mycompinit {
-  typeset -g ZSH_COMPDUMP=${ZSH_COMPDUMP:-$__zsh_cache_dir/compdump}
-  export ZSH_COMPDUMP
+  local compdump=${ZSH_COMPDUMP:-$__zsh_cache_dir/compdump}
+  [[ -d $compdump:h ]] || mkdir -p $compdump:h
 
   # Force cache reset flag
-  [[ "$1" == "-f" ]] && [[ -f "$ZSH_COMPDUMP" ]] && rm -rf -- $ZSH_COMPDUMP
+  [[ "$1" == "-f" ]] && [[ -f "$compdump" ]] && rm -rf -- $compdump
 
   # Load and initialize the completion system ignoring insecure directories with a
   # cache time of 20 hours, so it should almost always regenerate the first time a
   # shell is opened each day.
   autoload -Uz compinit
-  local compdump_cache=($ZSH_COMPDUMP(Nmh-20))
+  local compdump_cache=($compdump(Nmh-20))
   if (( $#compdump_cache )); then
-    compinit -i -C -d "$ZSH_COMPDUMP"
+    compinit -i -C -d "$compdump"
   else
-    compinit -i -d "$ZSH_COMPDUMP"
-    # Ensure $ZSH_COMPDUMP is younger than the cache time even if it isn't regenerated.
-    touch "$ZSH_COMPDUMP"
+    compinit -i -d "$compdump"
+    # Ensure $compdump is younger than the cache time even if it isn't regenerated.
+    touch "$compdump"
   fi
 }
