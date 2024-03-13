@@ -15,10 +15,11 @@ zstyle -s ':antidote:repo' path antidote_path \
 fpath=($antidote_path/functions $fpath)
 autoload -Uz antidote
 
-# Generate static file in a subshell whenever .zsh_plugins.txt is updated.
-zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins
-if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
-  (antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh)
+# Generate static file in a subshell whenever .zplugins.txt is updated.
+zplugins=${ZDOTDIR:-~}/.zplugins
+if [[ ! ${zplugins}.zsh -nt ${zplugins}.txt ]] || [[ ! -d $ANTIDOTE_HOME ]]; then
+  (antidote bundle <${zplugins}.txt >|${zplugins}.zsh)
 fi
 
-# Don't source the static file until zzz.
+# Source the static file.
+source ${zplugins}.zsh
