@@ -1,5 +1,5 @@
 #
-# zsh-syntax-highlighting - Snippet to config zsh-users/zsh-syntax-highlighting
+# zsh-syntax-highlighting: Snippet to config zsh-users/zsh-syntax-highlighting
 #
 
 # See available highlighters here:

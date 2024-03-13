@@ -1,6 +1,5 @@
-#!/bin/zsh
 #
-# env: Set environment variables for interactive shells.
+# __init__: This runs prior to any other conf.d contents.
 #
 
 # Apps
