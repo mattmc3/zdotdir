@@ -3,7 +3,7 @@
 #
 
 # Apps
-export EDITOR=hx
+export EDITOR=nvim
 export VISUAL=code
 export PAGER=less
 
