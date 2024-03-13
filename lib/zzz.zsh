@@ -3,7 +3,7 @@
 #
 
 # Sort and source conf files.
-_rcs=(${ZDOTDIR:-$HOME/.zsh}/conf.d/*.{sh,zsh}(N))
+_rcs=($__zsh_config_dir/conf.d/*.{sh,zsh}(N))
 for _rc in ${(o)_rcs}; do
   [[ ${_rc:t} == '~'* ]] && continue  # ignore tilde ~files
   source "$_rc"
