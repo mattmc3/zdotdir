@@ -18,7 +18,7 @@ setopt NO_hist_beep            # Don't beep when accessing non-existent history.
 setopt NO_share_history        # Don't share history between all sessions.
 
 # Path to the history file.
-HISTFILE=$__zsh_user_data_dir/zsh_history
+HISTFILE=${XDG_DATA_HOME:-$HOME/.local/share}/zsh/zsh_history
 [[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
 [[ "$SAVEHIST" -gt 1000 ]] || SAVEHIST=100000  # History file size
 [[ "$HISTSIZE" -gt 2000 ]] || HISTSIZE=20000   # Session history size
