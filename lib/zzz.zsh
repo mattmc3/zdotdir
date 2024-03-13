@@ -2,23 +2,19 @@
 # zzz: Sleepily wait until the end, and then post-lib and post-zshrc.
 #
 
-# Source the antidote static plugins file.
-source ${zsh_plugins}.zsh
-
-# Set conf.d.
-: ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
-: ${ZSHRCD:=$__zsh_config_dir/conf.d}
-
 # Sort and source conf files.
-_rcfiles=($ZSHRCD/*.{sh,zsh}(N))
-for _rcfile in ${(o)_rcfiles}; do
-  [[ ${_rcfile:t} == '~'* ]] && continue  # ignore tilde ~files
-  source "$_rcfile"
+_rcs=(${ZDOTDIR:-$HOME/.zsh}/conf.d/*.{sh,zsh}(N))
+for _rc in ${(o)_rcs}; do
+  [[ ${_rc:t} == '~'* ]] && continue  # ignore tilde ~files
+  source "$_rc"
 done
-unset _rcfile{,s}
+unset _rc{,s}
 
 # Init aliases.
-[[ -r ${ZDOTDIR:-~}/.zaliases ]] && source ${ZDOTDIR:-~}/.zaliases
+[[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
+
+# Run local settings.
+[[ -r ${ZDOTDIR:-$HOME}/.zshrc.local ]] && source ${ZDOTDIR:-$HOME}/.zshrc.local
 
 # Run this at the very end.
 function zshrc-post {
