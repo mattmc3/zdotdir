@@ -3,6 +3,7 @@
 #
 
 # Setup antidote.
+: ${ZSH_CUSTOM:=$ZDOTDIR}
 : ${ANTIDOTE_HOME:=${XDG_CACHE_HOME:-~/.cache}/repos}
 zstyle -s ':antidote:repo' path antidote_path \
   || antidote_path=$ANTIDOTE_HOME/mattmc3/antidote
@@ -17,8 +18,9 @@ autoload -Uz antidote
 
 # Generate static file in a subshell whenever .zplugins.txt is updated.
 zplugins=${ZDOTDIR:-~}/.zplugins
-if [[ ! ${zplugins}.zsh -nt ${zplugins}.txt ]] || [[ ! -d $ANTIDOTE_HOME ]]; then
-  (antidote bundle <${zplugins}.txt >|${zplugins}.zsh)
+if [[ ! ${zplugins}.zsh -nt ${zplugins}.txt ]] || [[ ! -e $ANTIDOTE_HOME/.lastupdated ]]; then
+  antidote bundle <${zplugins}.txt >|${zplugins}.zsh
+  date +%Y-%m-%dT%H:%M:%S%z >| $ANTIDOTE_HOME/.lastupdated
 fi
 
 # Source the static file.
