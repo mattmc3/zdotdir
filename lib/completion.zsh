@@ -21,16 +21,21 @@ function mycompinit {
   # Force cache reset flag
   [[ "$1" == "-f" ]] && [[ -f "$compdump" ]] && rm -rf -- $compdump
 
-  # Load and initialize the completion system ignoring insecure directories with a
-  # cache time of 20 hours, so it should almost always regenerate the first time a
-  # shell is opened each day.
+  # Initialize completions
   autoload -Uz compinit
-  local compdump_cache=($compdump(Nmh-20))
-  if (( $#compdump_cache )); then
-    compinit -i -C -d "$compdump"
+  if zstyle -t ':kickstart.zsh:feature:completion' 'use-cache'; then
+    # Load and initialize the completion system ignoring insecure directories with a
+    # cache time of 20 hours, so it should almost always regenerate the first time a
+    # shell is opened each day.
+    local compdump_cache=($compdump(Nmh-20))
+    if (( $#compdump_cache )); then
+      compinit -i -C -d "$compdump"
+    else
+      compinit -i -d "$compdump"
+      # Ensure $compdump is younger than the cache time even if it isn't regenerated.
+      touch "$compdump"
+    fi
   else
-    compinit -i -d "$compdump"
-    # Ensure $compdump is younger than the cache time even if it isn't regenerated.
-    touch "$compdump"
+    compinit -d "$compdump"
   fi
 }

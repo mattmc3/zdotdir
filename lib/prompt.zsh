@@ -26,20 +26,19 @@ function prompt_starship_setup {
     (( $#configs )) && export STARSHIP_CONFIG=$configs[1]
   fi
 
-  # Cache the output of 'starship init zsh'
-  local starship_init=$__zsh_cache_dir/starship_init.zsh
-  local cache=($starship_init(Nmh-20))
-  (( $#cache )) || starship init zsh >| $starship_init
-  source $starship_init
+  # Initialize starship.
+  if zstyle -t ':kickstart.zsh:feature:prompt' 'use-cache'; then
+    cached-eval 'starship-init-zsh' starship init zsh
+  else
+    source <(starship init zsh)
+  fi
 }
 
-function mypromptinit {
-  # Initialize built-in prompt system.
+# Wrap promptinit.
+function promptinit {
+  # Initialize real built-in prompt system.
+  unfunction promptinit
   autoload -Uz promptinit && promptinit
-  if [[ $TERM == dumb ]]; then
-    prompt 'off'
-    return
-  fi
 
   # Hook P10k into Zsh's prompt system.
   if (( $+functions[prompt_powerlevel10k_setup] )); then
@@ -58,9 +57,20 @@ function mypromptinit {
   # Keep prompt array sorted.
   prompt_themes=( "${(@on)prompt_themes}" )
 
-  # Set prompt.
-  local prompt_argv
-  zstyle -a ':myzsh:feature:prompt' 'theme' 'prompt_argv' \
-    || prompt_argv=(off)
-  prompt "$prompt_argv[@]"
+  # Set prompt
+  if [[ $TERM == dumb ]]; then
+    prompt 'off'
+  else
+    # Set prompt.
+    local -a prompt_argv
+    zstyle -a ':kickstart.zsh:feature:prompt' 'theme' 'prompt_argv'
+    if (( $#prompt_argv == 0 )); then
+      if (( $+commands[starship] )); then
+        prompt_argv=(starship zephyr)
+      else
+        prompt_argv=(off)
+      fi
+    fi
+    prompt "$prompt_argv[@]"
+  fi
 }

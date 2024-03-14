@@ -19,7 +19,7 @@ unset _rc{,s}
 # Run this at the very end.
 function zshrc-post {
   # Init prompt.
-  (( $+functions[promptinit] )) || mypromptinit
+  (( $#prompt_themes > 0 )) || promptinit
 
   # Init completions.
   (( $+functions[compinit] )) || mycompinit

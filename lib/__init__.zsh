@@ -7,36 +7,18 @@
 alias zprofrc="ZPROFRC=1 zsh"
 
 # Set critical options
-setopt extended_glob interactive_comments
+setopt extended_glob
 
-# Load .zstyles file.
-[[ -r ${ZDOTDIR:-~}/.zstyles ]] && source ${ZDOTDIR:-~}/.zstyles
+# Set critical vars
+: ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
+: ${__zsh_cache_dir:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh}
+: ${__zsh_user_data_dir:=${XDG_DATA_HOME:-$HOME/.local/share}/zsh}
+() {
+  local _zdir; for _zdir in $@; [ -d ${(P)_zdir} ] || mkdir -p ${(P)_zdir}
+} __zsh_{config,cache,user_data}_dir
 
-# Enable Powerlevel10k instant prompt.
-if zstyle -t ':myzsh:feature:prompt:p10k-instant-prompt' 'enabled' &&
-   [[ "$ZPROFRC" -ne 1 ]]
-then
-  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-  fi
-fi
-
-# Load .zshrc.pre file.
-[[ -r ${ZDOTDIR:-~}/.zshrc.pre ]] && source ${ZDOTDIR:-~}/.zshrc.pre
-
-#
-# Funcs
-#
-
-##? Make directory from variables
-function mkdir-fromvars {
-  local v
-  for v in $@; do
-    [[ -d "${(P)v}" ]] || mkdir -p "$(P){v}"
-  done
-}
-
-##? Memoize a command
+# Define critical functions
+##? Cache the results of an eval command
 function cached-eval {
   emulate -L zsh; setopt local_options extended_glob
   (( $# >= 2 )) || return 1
@@ -51,29 +33,14 @@ function cached-eval {
   source $memofile
 }
 
-#
-# Paths
-#
+# Load .zstyles file.
+[[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
+
+# Load .zshrc.pre file.
+[[ -r ${ZDOTDIR:-$HOME}/.zshrc.pre ]] && source ${ZDOTDIR:-$HOME}/.zshrc.pre
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
-
-# Set XDG dirs
-if zstyle -T ':z1:environment' use-xdg-basedirs; then
-  : ${XDG_CONFIG_HOME:=$HOME/.config}
-  : ${XDG_CACHE_HOME:=$HOME/.cache}
-  : ${XDG_DATA_HOME:=$HOME/.local/share}
-  : ${XDG_STATE_HOME:=$HOME/.local/state}
-  export XDG_{CONFIG,CACHE,DATA,STATE}_HOME
-  mkdir-fromvars XDG_{CONFIG,CACHE,DATA,STATE}_HOME
-fi
-
-# Set Fish-like directories for Zsh
-: ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
-: ${__zsh_user_data_dir:=${XDG_DATA_HOME:-$HOME/.local/share}/zsh}
-: ${__zsh_cache_dir:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh}
-export __zsh_{config,cache,user_data}_dir
-mkdir-fromvars __zsh_{config,cache,user_data}_dir
 
 # Setup homebrew if it exists on the system.
 typeset -aU _brewcmd=(
@@ -84,7 +51,13 @@ typeset -aU _brewcmd=(
   $HOME/.linuxbrew/bin/brew(N)
   /home/linuxbrew/.linuxbrew/bin/brew(N)
 )
-(( $#_brewcmd )) && cached-eval 'brew_shellenv' $_brewcmd[1] shellenv
+if (( $#_brewcmd )); then
+  if zstyle -t ':kickstart.zsh:feature:homebrew' 'use-cache'; then
+    cached-eval 'brew_shellenv' $_brewcmd[1] shellenv
+  else
+    source <($_brewcmd[1] shellenv)
+  fi
+fi
 unset _brewcmd
 
 # Build remaining path.
