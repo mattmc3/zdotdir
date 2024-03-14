@@ -1,5 +1,5 @@
 #
-# .zsh_plugins.txt - antidote plugins file
+# .zplugins.txt - antidote plugins file
 #
 
 # Load near the top so you get p10k's instaprompt if you need it.
@@ -24,6 +24,7 @@ ohmyzsh/ohmyzsh path:plugins/extract
 # Editor
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
 
 # Prompt
 sindresorhus/pure kind:fpath
