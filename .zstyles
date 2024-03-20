@@ -1,3 +1,4 @@
+#!/bin/zsh
 #
 # .zstyles - zstyle settings for features/plugins that need them.
 #
@@ -6,14 +7,23 @@
 # Antidote
 #
 
+# Keep all 3 for different test scenarios.
+: ${ANTIDOTE_HOME:=${XDG_CACHE_HOME:-~/.cache}/repos}
+antidote_repo=$ANTIDOTE_HOME/mattmc3/antidote
+# antidote_repo=~/Projects/mattmc3/antidote
+# antidote_repo=${HOMEBREW_PREFIX:-/opt/homebrew}/opt/antidote/share/antidote
+
+zstyle ':antidote:home' path $ANTIDOTE_HOME
+zstyle ':antidote:repo' path $antidote_repo
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':antidote:plugin:*' defer-options '-p'
 
 #
-# Zephyr
+# myzsh
 #
 
-zstyle ':zephyr:plugin:prompt' theme zephyr
+zstyle ':myzsh:feature:prompt:p10k-instant-prompt' enabled yes
+zstyle ':myzsh:feature:prompt' theme 'p10k' 'mmc'
 
 #
 # Custom
@@ -26,6 +36,4 @@ noexpand=(
   vi
   z
 )
-zstyle ':zsh_custom:plugin:abbreviations' noexpand $noexpand
-
-# vim: ft=zsh sw=2 ts=2 et
+zstyle ':myzsh:feature:abbreviations' noexpand $noexpand

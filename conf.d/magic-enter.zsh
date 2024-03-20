@@ -1,7 +1,7 @@
 #
-# magic-enter - run a default command when none is given
+# magic-enter: Configure ohmyzsh/ohmyzsh/plugins/magic-enter
 #
 
-# ohmyzsh/ohmyzsh/plugins/magic-enter
+# Set the default commands to run when none is given
 MAGIC_ENTER_GIT_COMMAND='git status -sb'
 MAGIC_ENTER_OTHER_COMMAND='ls'

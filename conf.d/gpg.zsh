@@ -1,5 +1,5 @@
 #
-# gpg
+# gpg: Customize GNUPG
 #
 
 export GNUPGHOME=${GNUPGHOME:=${XDG_DATA_HOME:-$HOME/.local/share}/gnupg}
