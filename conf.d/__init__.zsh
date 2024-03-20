@@ -23,12 +23,12 @@ path=(
   $HOME/.emacs.d/bin(N)
   $XDG_CONFIG_HOME/emacs/bin(N)
 
-  # apps
-  /{usr/local,opt/homebrew}/opt/curl/bin(N)
-  /{usr/local,opt/homebrew}/opt/go/libexec/bin(N)
-  /{usr/local,opt/homebrew}/share/npm/bin(N)
-  /{usr/local,opt/homebrew}/opt/ruby/bin(N)
-  /{usr/local,opt/homebrew}/lib/ruby/gems/*/bin(N)
+  # keg only brew apps
+  $HOMEBREW_PREFIX/opt/curl/bin(N)
+  $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
+  $HOMEBREW_PREFIX/share/npm/bin(N)
+  $HOMEBREW_PREFIX/opt/ruby/bin(N)
+  $HOMEBREW_PREFIX/lib/ruby/gems/*/bin(N)
   $HOME/.gem/ruby/*/bin(N)
 )
 
