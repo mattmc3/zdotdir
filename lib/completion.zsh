@@ -29,13 +29,13 @@ function mycompinit {
     # shell is opened each day.
     local compdump_cache=($compdump(Nmh-20))
     if (( $#compdump_cache )); then
-      compinit -i -C -d "$compdump"
+      compinit -u -C -d "$compdump"
     else
-      compinit -i -d "$compdump"
+      compinit -u -d "$compdump"
       # Ensure $compdump is younger than the cache time even if it isn't regenerated.
       touch "$compdump"
     fi
   else
-    compinit -i -d "$compdump"
+    compinit -u -d "$compdump"
   fi
 }
