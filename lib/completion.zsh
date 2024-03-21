@@ -36,6 +36,6 @@ function mycompinit {
       touch "$compdump"
     fi
   else
-    compinit -d "$compdump"
+    compinit -i -d "$compdump"
   fi
 }
