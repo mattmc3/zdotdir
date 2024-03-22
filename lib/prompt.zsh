@@ -56,4 +56,21 @@ function promptinit {
 
   # Keep prompt array sorted.
   prompt_themes=( "${(@on)prompt_themes}" )
+
+  # Set prompt
+  if [[ $TERM == dumb ]]; then
+    prompt 'off'
+  else
+    # Set prompt.
+    local -a prompt_argv
+    zstyle -a ':kickstart.zsh:feature:prompt' 'theme' 'prompt_argv'
+    if (( $#prompt_argv == 0 )); then
+      if (( $+commands[starship] )); then
+        prompt_argv=(starship zephyr)
+      else
+        prompt_argv=(off)
+      fi
+    fi
+    prompt "$prompt_argv[@]"
+  fi
 }
