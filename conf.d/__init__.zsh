@@ -32,6 +32,12 @@ path=(
   $HOME/.gem/ruby/*/bin(N)
 )
 
+# fpath=(
+#   $HOMEBREW_PREFIX/share/zsh/functions(N)
+#   $HOMEBREW_PREFIX/share/zsh/site-functions(N)
+#   $fpath
+# )
+
 # macOS
 if [[ "$OSTYPE" == darwin* ]]; then
   # Make Apple Terminal behave.
