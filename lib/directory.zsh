@@ -23,14 +23,12 @@ setopt multios        # Write to multiple descriptors.
 # Set directory aliases.
 alias dirh='dirs -v'
 alias -- -='cd -'
-alias -g '..2'='../..'
-alias -g '..3'='../../..'
-alias -g '..4'='../../../..'
-alias -g '..5'='../../../../..'
-alias -g '..6'='../../../../../..'
-alias -g '..7'='../../../../../../..'
-alias -g '..8'='../../../../../../../..'
-alias -g '..9'='../../../../../../../../..'
 
-# dirstack aliases (eg: "3"="cd -3")
-for index ({1..9}) alias "$index"="cd -${index}"; unset index
+() {
+  local index dotdots=".."
+  for index in {1..9}; do
+    alias "$index"="cd -${index}"   # dirstack aliases (eg: "3"="cd -3")
+    alias -g "..$index"="$dotdots"  # backref aliases (eg: "..3"="../../..")
+    dotdots+='/..'
+  done
+}
