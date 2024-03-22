@@ -21,6 +21,16 @@ function mycompinit {
   # Force cache reset flag
   [[ "$1" == "-f" ]] && [[ -f "$compdump" ]] && rm -rf -- $compdump
 
+  # Compfix flag
+  local -a compinit_flags=(-d "$compdump")
+  if zstyle -t ':kickstart.zsh:feature:completion' 'disable-compfix'; then
+    # Allow insecure directories in fpath
+    compinit_flags=(-u $compinit_flags)
+  else
+    # Remove insecure directories from fpath
+    compinit_flags=(-i $compinit_flags)
+  fi
+
   # Initialize completions
   autoload -Uz compinit
   if zstyle -t ':kickstart.zsh:feature:completion' 'use-cache'; then
@@ -29,13 +39,13 @@ function mycompinit {
     # shell is opened each day.
     local compdump_cache=($compdump(Nmh-20))
     if (( $#compdump_cache )); then
-      compinit -u -C -d "$compdump"
+      compinit -C $compinit_flags
     else
-      compinit -u -d "$compdump"
+      compinit $compinit_flags
       # Ensure $compdump is younger than the cache time even if it isn't regenerated.
       touch "$compdump"
     fi
   else
-    compinit -u -d "$compdump"
+    compinit $compinit_flags
   fi
 }
