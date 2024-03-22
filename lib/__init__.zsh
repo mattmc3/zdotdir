@@ -66,9 +66,3 @@ path=(
   /usr/local/{,s}bin(N)
   $path
 )
-
-# fpath=(
-#   $HOMEBREW_PREFIX/share/zsh/functions(N)
-#   $HOMEBREW_PREFIX/share/zsh/site-functions(N)
-#   $fpath
-# )
