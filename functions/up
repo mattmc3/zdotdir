@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+##? up: Quickly go up any number of directories.
+# function up {
+local parents=${1:-1}
+if [[ ! "$parents" -gt 0 ]]; then
+  echo >&2 "usage: up [<num>]"
+  return 1
+fi
+local dotdots=".."
+while (( --parents )); do
+  dotdots+="/.."
+done
+cd $dotdots
+# }
