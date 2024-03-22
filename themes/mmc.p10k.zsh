@@ -371,7 +371,7 @@
       # Styling for up-to-date Git status.
       local       meta='%f'     # default foreground
       local      clean='%76F'   # green foreground
-      local      dirty='%255F'  # white foreground
+      local      dirty='%226F'  # yellow foreground
       local   modified='%39F'   # blue foreground
       local conflicted='%196F'  # red foreground
     else
@@ -422,11 +422,11 @@
       res+=" ${modified}wip"
     fi
 
-    # • if dirty.
+    # asterisk if dirty.
     if (( VCS_STATUS_NUM_STAGED || VCS_STATUS_NUM_UNSTAGED || VCS_STATUS_NUM_UNTRACKED )) ||
        (( VCS_STATUS_HAS_UNSTAGED == -1 ))
     then
-      res+="${dirty}•"
+      res+="${dirty}*"  # ✱ • *
     fi
     if (( VCS_STATUS_COMMITS_AHEAD || VCS_STATUS_COMMITS_BEHIND )); then
       res+=" "
