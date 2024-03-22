@@ -109,6 +109,7 @@
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
     vcs                     # git status
+    shell
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
@@ -1645,6 +1646,14 @@
     # instant_prompt_example. This will give us the same `example` prompt segment in the instant
     # and regular prompts.
     prompt_example
+  }
+
+  # Add shell indicator to prompt.
+  function prompt_shell() {
+    p10k segment -f 6 -t '%%'
+  }
+  function instant_prompt_shell() {
+    prompt_shell
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
