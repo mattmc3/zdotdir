@@ -19,7 +19,19 @@ unset _rc{,s}
 # Run this at the very end.
 function zshrc-post {
   # Init prompt.
-  (( $#prompt_themes > 0 )) || promptinit
+  if (( $#prompt_themes == 0 )); then
+    promptinit
+
+    # Set prompt
+    if [[ $TERM == dumb ]]; then
+      prompt 'off'
+    else
+      local -a prompt_argv
+      zstyle -a ':kickstart.zsh:feature:prompt' 'theme' 'prompt_argv' \
+        || prompt_argv=(off)
+      prompt "$prompt_argv[@]"
+    fi
+  fi
 
   # Init completions.
   (( $+functions[compinit] )) || mycompinit
