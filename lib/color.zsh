@@ -1,5 +1,5 @@
 #
-# Color - Make the terminal more colorful.
+# color: Make the terminal more colorful.
 #
 
 # Return if requirements are not found.
