@@ -7,9 +7,6 @@
 #mattmc3/zfunctions
 #$ZSH_CUSTOM path:plugins/xdg
 
-# Zephyr
-mattmc3/zephyr path:plugins/macos conditional:is-macos
-
 # Custom
 #$ZSH_CUSTOM path:plugins/abbreviations
 $ZSH_CUSTOM path:plugins/git
