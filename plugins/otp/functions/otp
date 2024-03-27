@@ -2,9 +2,9 @@
 
 #function otp {
   # set otp home
-  zstyle -s ':zephyr:plugin:otp' home 'OTP_HOME' ||
-    OTP_HOME="${OTP_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/otp}"
-  [[ -d $OTP_HOME ]] || mkdir -p $OTP_HOME
+  zstyle -s ':zdotdir:plugin:otp' home 'SECRETS_HOME' ||
+    SECRETS_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/secrets"
+  [[ -d $SECRETS_HOME ]] || mkdir -p $SECRETS_HOME
 
   if ! command -v oathtool > /dev/null 2>&1; then
     echo >&2 "otp: 'oathtool' not found. Install oathtool or oath-toolkit, depending on your OS."
@@ -16,12 +16,10 @@
     return 1
   fi
 
-  local -a recps
-  zstyle -a ':zephyr:plugin:otp' recipents 'recps'
-
-  local recp recipients=
-  for recp in $recps; do
-    recipients+="--recipient=$recp "
+  source $SECRETS_HOME/bin/gpg_key_ids.zsh
+  local recp recipients=()
+  for recp in ${(v)gpg_key_ids}; do
+    recipients+=("--recipient=$recp")
   done
 
   local -a flag_help flag_add flag_list
@@ -60,6 +58,6 @@
     return 1
   else
     totpkey=$(gpg --quiet --decrypt $OTP_HOME/$1.otp.asc)
-    oathtool --totp --b $totpkey | tee /dev/stderr | clipcopy
+    oathtool --totp --b $totpkey | tee /dev/stderr | pbcopy
   fi
 #}
