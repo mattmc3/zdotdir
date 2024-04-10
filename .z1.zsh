@@ -19,6 +19,18 @@
     [[ -d "${(P)zdir}" ]] || mkdir -p ${(P)zdir}
   done
 
+  # Define Z1 paths
+  typeset -g Z1_{COMPLETIONS,CONFIGS,FUNCTION,REPO}_DIR
+  typeset -g Z1_{COMPSTYLE,THEME}
+
+  # Directory for Zsh autoload functions.
+  zstyle -s ':z1:functions' dir 'Z1_FUNCTION_DIR' \
+    || Z1_FUNCTION_DIR=${Z1_FUNCTION_DIR:-$__zsh_config_dir/functions}
+
+  # Directory for cloned Zsh plugin repos.
+  zstyle -s ':z1:repos' dir 'Z1_REPO_DIR' \
+    || Z1_REPO_DIR=${Z1_REPO_DIR:-$__zsh_cache_dir/repos}
+
   # Customize with zstyles.
   [[ ! -r $__zsh_config_dir/.zstyles ]] || source $__zsh_config_dir/.zstyles
 }
@@ -73,8 +85,8 @@ function z1_colorize {
 
 # z1_confd: Source Zsh config files in a conf.d directory.
 function z1_confd {
-  local zfile confd
-  zstyle -s ':z1:confd' dir 'confd' || confd=$__zsh_config_dir/conf.d
+  local confd zfile
+  zstyle -s ':z1:configs' dir 'confd' || confd=$__zsh_config_dir/conf.d
   for zfile in $confd/*.zsh(N); do
     [[ ${zfile:t} != '~'* ]] || continue
     source $zfile
@@ -84,22 +96,24 @@ function z1_confd {
 # z1_completions: Setup Zsh completion system.
 function z1_completions {
   # Set options related to the completions.
-  setopt always_to_end           # Move cursor to the end of a completed word.
-  setopt auto_list               # Automatically list choices on ambiguous completion.
-  setopt auto_menu               # Show completion menu on a successive tab press.
-  setopt auto_param_slash        # If completed parameter is a directory, add a trailing slash.
-  setopt complete_in_word        # Complete from both ends of a word.
-  setopt path_dirs               # Perform path search even on command names with slashes.
-  setopt NO_flow_control         # Disable start/stop characters in shell editor.
-  setopt NO_menu_complete        # Do not autoselect the first completion entry.
+  setopt always_to_end     # Move cursor to the end of a completed word.
+  setopt auto_list         # Automatically list choices on ambiguous completion.
+  setopt auto_menu         # Show completion menu on a successive tab press.
+  setopt auto_param_slash  # If completed param is a directory, add trailing slash.
+  setopt complete_in_word  # Complete from both ends of a word.
+  setopt path_dirs         # Perform path search even on command names with slashes.
+  setopt NO_flow_control   # Disable start/stop characters in shell editor.
+  setopt NO_menu_complete  # Do not autoselect the first completion entry.
 
   # Add custom completions directory.
-  fpath=($__zsh_config_dir/completions(/N) $fpath)
+  local compdir
+  zstyle -s ':z1:completions' dir 'compdir' || compdir=$__zsh_config_dir/completions
+  fpath=($compdir(/N) $fpath)
 
   # Set completion zstyles.
-  typeset -g ZSH_COMPSTYLE
-  zstyle -s ':z1:completion' compstyle 'ZSH_COMPSTYLE' || ZSH_COMPSTYLE=z1
-  (( $+functions[compstyle_${ZSH_COMPSTYLE}_setup] )) && compstyle_${ZSH_COMPSTYLE}_setup
+  local compstyle
+  zstyle -s ':z1:completion' compstyle 'compstyle' || compstyle=z1
+  (( $+functions[compstyle_${compstyle}_setup] )) && compstyle_${compstyle}_setup
 
   # Initialize completions if the user didn't.
   (( $+functions[compinit] )) || run_compinit
@@ -108,14 +122,14 @@ function z1_completions {
 # z1_directory: Set options and aliases for file system.
 function z1_directory {
   # Set options related to the file system, globbing, and directory stack.
-  setopt auto_pushd              # Make cd push the old directory onto the dirstack.
-  setopt pushd_minus             # Exchanges meanings of +/- when navigating the dirstack.
-  setopt pushd_silent            # Do not print the directory stack after pushd or popd.
-  setopt pushd_to_home           # Push to home directory when no argument is given.
-  setopt extended_glob           # Use extended globbing syntax.
-  setopt glob_dots               # Don't hide dotfiles from glob patterns.
-  setopt multios                 # Write to multiple descriptors.
-  setopt NO_clobber              # Don't overwrite files with >. Use >| to bypass.
+  setopt auto_pushd     # Make cd push the old directory onto the dirstack.
+  setopt pushd_minus    # Exchange meaning of +/- when navigating the dirstack.
+  setopt pushd_silent   # Do not print the directory stack after pushd or popd.
+  setopt pushd_to_home  # Push to home directory when no argument is given.
+  setopt extended_glob  # Use extended globbing syntax.
+  setopt glob_dots      # Don't hide dotfiles from glob patterns.
+  setopt multios        # Write to multiple descriptors.
+  setopt NO_clobber     # Don't overwrite files with >. Use >| to bypass.
 
   # Show directory stack.
   alias dirh='dirs -v'
@@ -127,9 +141,9 @@ function z1_editor {
   [[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
 
   # No PS2
-  builtin zle -N z1_no_ps2
-  bindkey '^J' z1_no_ps2
-  bindkey '^M' z1_no_ps2
+  builtin zle -N z1_editor_no_ps2
+  bindkey '^J' z1_editor_no_ps2
+  bindkey '^M' z1_editor_no_ps2
   bindkey -e
 }
 
@@ -147,14 +161,11 @@ function z1_history {
   setopt NO_hist_beep            # Do not beep when accessing non-existent history.
 
   # Set the path to the history file.
-  zstyle -s ':z1:history' histfile 'HISTFILE' \
-    || HISTFILE="$__zsh_user_data_dir/zsh_history"
+  zstyle -s ':z1:history' histfile 'HISTFILE' || HISTFILE="$__zsh_user_data_dir/zsh_history"
   # Set the maximum number of events to save in the internal history.
-  zstyle -s ':z1:history' histsize 'HISTSIZE' \
-    || HISTSIZE=20000
+  zstyle -s ':z1:history' histsize 'HISTSIZE' || HISTSIZE=20000
   # Set the maximum number of events to save in the history file.
-  zstyle -s ':z1:history' savehist 'SAVEHIST' \
-    || SAVEHIST=100000
+  zstyle -s ':z1:history' savehist 'SAVEHIST' || SAVEHIST=100000
 
   # Use a better history command.
   alias history='fc -li'
@@ -162,7 +173,8 @@ function z1_history {
 
 # z1_funcdir: Setup the autoload directory for Zsh functions.
 function z1_funcdir {
-  local zfuncdir fndir
+  emulate -L zsh; setopt local_options $__z1_opts
+  local fndir zfuncdir
   zstyle -s ':z1:functions' dir 'zfuncdir' || zfuncdir=$__zsh_config_dir/functions
   for fndir in $zfuncdir(-/FN) $zfuncdir/*(-/FN); do
     fpath=($fndir $fpath)
@@ -174,39 +186,35 @@ function z1_funcdir {
 function z1_plugins {
   emulate -L zsh; setopt local_options $__z1_opts
 
-  # Directory for cloned repos.
-  typeset -g ZPLUGINDIR
-  zstyle -s ':z1:plugins' dir 'ZPLUGINDIR' || ZPLUGINDIR=$__zsh_cache_dir/repos
-
-  local giturl
-  zstyle -s ':z1:plugins' giturl 'giturl' || giturl="https://github.com"
+  local repo_dir giturl
+  zstyle -s ':z1:repos' repo_dir 'repo_dir' || repo_dir=$__zsh_cache_dir/repos
+  zstyle -s ':z1:plugins' git_url  'git_url'  || git_url="https://github.com"
 
   # Get all the different plugin types.
-  local -a path_plugins fpath_plugin zsh_plugins defer_plugins
-  zstyle -a ':z1:plugins:load:kind' path 'path_plugins'
+  local -a {clone,path,fpath,zsh,defer}_plugins
+  zstyle -a ':z1:plugins:load:kind' clone 'clone_plugins'
+  zstyle -a ':z1:plugins:load:kind' path  'path_plugins'
   zstyle -a ':z1:plugins:load:kind' fpath 'fpath_plugins'
-  zstyle -a ':z1:plugins:load:kind' zsh 'zsh_plugins'
+  zstyle -a ':z1:plugins:load:kind' zsh   'zsh_plugins'
   zstyle -a ':z1:plugins:load:kind' defer 'defer_plugins'
 
   # Combine for cloning missing ones.
-  local -a plugins=($path_plugins $fpath_plugins $zsh_plugins $defer_plugins)
+  local -a plugins=($clone_plugins $path_plugins $fpath_plugins $zsh_plugins $defer_plugins)
 
   # Remove bare words ${(M)plugins:#*/*} and paths with leading slash ${plugins:#/*}.
   # Then split/join to keep the 2-part user/repo form to bulk-clone repos.
-  local repo; local -a repos
+  local repo; local -aU repos
   for repo in ${${(M)plugins:#*/*}:#/*}; do
     repo=${(@j:/:)${(@s:/:)repo}[1,2]}
-    if [[ ! -d $ZPLUGINDIR/$repo ]]; then
+    if [[ ! -d $ZSH_REPO_HOME/$repo ]]; then
       (
         command git clone -q --depth 1 --recursive --shallow-submodules \
-          $giturl/$repo $ZPLUGINDIR/$repo
-        # plugin-compile $ZPLUGINDIR/$repo
+          $git_url/$repo $ZSH_REPO_HOME/$repo
+          plugin-compile $ZSH_REPO_HOME/$repo
       ) &
     fi
   done
   wait
-
-
 }
 
 # z1_prompt: Setup built-in Zsh prompt system.
@@ -512,7 +520,7 @@ function prompt_z1_setup {
   prompt_z1_setup "$@"
 }
 
-function z1_no_ps2 {
+function z1_editor_no_ps2 {
   emulate -L zsh
   local -r func=no-ps2-test
 
@@ -537,6 +545,88 @@ function z1_no_ps2 {
   fi
 
   LBUFFER+=$'\n'
+}
+
+# plugin-clone: Use git to clone Zsh plugins in parallel.
+function plugin-clone {
+  emulate -L zsh; setopt local_options $__z1_opts
+
+  local repo_dir git_url
+  zstyle -s ':z1:plugins:repos' dir     'repo_dir' || repo_dir=$__zsh_cache_dir/repos
+  zstyle -s ':z1:plugins:repos' git_url 'git_url'  || git_url="https://github.com"
+
+  local repo repo_url plugin_dir
+  local -Ua repos=($@)
+  for repo in $repos; do
+    if [[ $repo == (http(|s)://|git@)* ]]; then
+      repo_url=$repo
+    else
+      repo_url=$git_url/$repo
+    fi
+
+    plugin_dir=$repo_dir/${${repo_url:t}%.git}
+    if [[ ! -d $plugin_dir ]]; then
+      echo "Cloning $repo..."
+      (
+        command git clone --quiet --depth 1 --recursive --shallow-submodules $repo_url $plugin_dir
+        plugin-compile $plugin_dir
+      ) &
+    fi
+  done
+  wait
+}
+
+# plugin-home: Show the plugin home directory
+function plugin-home {
+  emulate -L zsh; setopt local_options $__z1_opts
+  local repo_dir
+  zstyle -s ':z1:plugins:repos' dir 'repo_dir' || repo_dir=$__zsh_cache_dir/repos
+  print -r -- $repo_dir
+}
+
+# plugin-list: List cloned plugins.
+function plugin-list {
+  emulate -L zsh; setopt local_options $__z1_opts
+  local repo_dir plugin_dir
+  zstyle -s ':z1:plugins:repos' dir 'repo_dir' || repo_dir=$__zsh_cache_dir/repos
+  for plugin_dir in $repo_dir/*/.git(N/); do
+    print -r -- ${plugin_dir:A:h:t}
+  done
+}
+
+# plugin-update: Use git to pull updates to Zsh plugins.
+function plugin-update {
+  emulate -L zsh; setopt local_options $__z1_opts
+  local repo_dir
+  zstyle -s ':z1:plugins:repos' dir 'repo_dir' || repo_dir=$__zsh_cache_dir/repos
+
+  local plugin_dir oldsha newsha
+  for plugin_dir in $repo_dir/*/.git(N/); do
+    plugin_dir=${plugin_dir:A:h}
+    echo "Updating ${plugin_dir:t}..."
+    (
+      oldsha=$(command git -C $plugin_dir rev-parse --short HEAD)
+      command git -C $plugin_dir pull --quiet --ff --depth 1 --rebase --autostash
+      newsha=$(command git -C $plugin_dir rev-parse --short HEAD)
+      [[ $oldsha == $newsha ]] || echo "Plugin updated: $plugin_dir:t ($oldsha -> $newsha)"
+    ) &
+  done
+  wait
+  plugin-compile
+  echo "Update complete."
+}
+
+# plugin-compile: Compile plugins.
+function plugin-compile {
+  emulate -L zsh; setopt local_options $__z1_opts
+  local repo_dir
+  zstyle -s ':z1:plugins:repos' dir 'repo_dir' || repo_dir=$__zsh_cache_dir/repos
+  autoload -Uz zrecompile
+  local zfile
+  for zfile in ${1:-$repo_dir}/**/*.zsh{,-theme}(N); do
+    [[ $zfile != */test-data/* ]] || continue
+    zrecompile -pq "$zfile"
+  done
 }
 
 # Run z1.
