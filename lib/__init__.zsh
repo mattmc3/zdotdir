@@ -63,6 +63,7 @@ unset _brewcmd
 # Build remaining path.
 path=(
   $HOME/{,s}bin(N)
+  $HOME/.local/bin(N)
   $HOMEBREW_PREFIX/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $path
