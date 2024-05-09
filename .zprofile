@@ -3,6 +3,9 @@
 # .zprofile - Zsh file loaded on login.
 #
 
+is_wsl() {
+    uname -a | grep -qi Microsoft && return 0 || return 1
+}
 #
 # XDG
 #
@@ -21,6 +24,16 @@ done
 #
 # Browser
 #
+
+if is_wsl; then
+  # check if wslview is installed
+  # if not, install it
+  if ! command -v wslview &> /dev/null; then
+    echo "wslview not found, pls install it"
+  else
+    export BROWSER="${BROWSER:-wslview}"
+  fi
+fi
 
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER="${BROWSER:-open}"
