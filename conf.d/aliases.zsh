@@ -134,12 +134,6 @@ alias pyfind='find . -name "*.py"'
 alias pygrep='grep --include="*.py"'
 alias pyva="source .venv/bin/activate"
 
-# todo-txt
-alias t="todo"
-alias tad="todo add"
-alias ton="todo done"
-alias todos="$VISUAL $HOME/Desktop/todo.txt"
-
 # user specific aliases and functions
 if [[ -f "$USER_CONFIG/aliases.zsh" ]]; then
   source "$USER_CONFIG/aliases.zsh"

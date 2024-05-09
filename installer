@@ -32,10 +32,5 @@ export ZDOTDIR=~/.config/zsh
 [[ -f $ZDOTDIR/.zshenv ]] && . $ZDOTDIR/.zshenv
 EOF
 
-# clone todo.zsh and add it to $ZDOTDIR/functions
-git clone https://github.com/MrOnak/cli_todo.git $ZDOTDIR/todo
-mv $ZDOTDIR/todo/todo.zsh $ZDOTDIR/functions/todo
-rm -rf $ZDOTDIR/todo
-
 # remove git files
 # rm -rf $ZDOTDIR/.git*
