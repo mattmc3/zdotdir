@@ -23,6 +23,8 @@ alias zprofrc="ZPROFRC=1 zsh"
 [[ -f $ZDOTDIR/.zstyles ]] && source $ZDOTDIR/.zstyles
 
 
+test -f /usr/bin/keychain && eval $(/usr/bin/keychain --eval --quiet id_ed25519)
+
 #
 # antidote
 #
