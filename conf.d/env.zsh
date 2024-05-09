@@ -41,6 +41,7 @@ fi
 path=(
   # core
   $HOME/{,s}bin(N)
+  $HOME/.rye/shims
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
 
