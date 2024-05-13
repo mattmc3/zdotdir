@@ -2,7 +2,9 @@
 # golang
 #
 
-export GLOBALGOPATH=$XDG_PROJECTS_DIR/golang
+# export GLOBALGOPATH=$XDG_PROJECTS_DIR/golang
+
+path+=($HOME/go/bin(N))
 
 alias gob="go build"
 alias goc="go clean"
