@@ -23,3 +23,6 @@
 ~*
 .zephyr/
 .zlocal
+completions/_git
+completions/git-completion.bash
+completions/_starship
