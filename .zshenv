@@ -11,7 +11,7 @@ export XDG_CACHE_HOME=~/.cache
 export XDG_RUNTIME_DIR=~/.xdg
 
 # editors
-export EDITOR='hx'
+export EDITOR='vim'
 export VISUAL='code'
 export PAGER='less'
 if [[ "$OSTYPE" == darwin* ]]; then
