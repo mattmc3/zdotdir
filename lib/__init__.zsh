@@ -24,14 +24,14 @@ function cached-eval {
   (( $# >= 2 )) || return 1
 
   local cmdname=$1; shift
-  local memofile=$__zsh_cache_dir/memoized/${cmdname}.zsh
-  local -a cached=($memofile(Nmh-20))
+  local cachefile=$__zsh_cache_dir/cached/${cmdname}.zsh
+  local -a cached=($cachefile(Nmh-20))
   # If the file has no size (is empty), or is older than 20 hours re-gen the cache.
-  if [[ ! -s $memofile ]] || (( ! ${#cached} )); then
-    mkdir -p ${memofile:h}
-    "$@" >| $memofile
+  if [[ ! -s $cachefile ]] || (( ! ${#cached} )); then
+    mkdir -p ${cachefile:h}
+    "$@" >| $cachefile
   fi
-  source $memofile
+  source $cachefile
 }
 
 # Load .zstyles file.
@@ -52,7 +52,7 @@ typeset -aU _brewcmd=(
   /home/linuxbrew/.linuxbrew/bin/brew(N)
 )
 if (( $#_brewcmd )); then
-  if zstyle -t ':kickstart.zsh:feature:homebrew' 'use-cache'; then
+  if zstyle -t ':zdotdir:feature:homebrew' 'use-cache'; then
     cached-eval 'brew_shellenv' $_brewcmd[1] shellenv
   else
     source <($_brewcmd[1] shellenv)

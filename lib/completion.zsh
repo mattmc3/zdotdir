@@ -23,7 +23,7 @@ function mycompinit {
 
   # Compfix flag
   local -a compinit_flags=(-d "$compdump")
-  if zstyle -t ':kickstart.zsh:feature:completion' 'disable-compfix'; then
+  if zstyle -t ':zdotdir:feature:completion' 'disable-compfix'; then
     # Allow insecure directories in fpath
     compinit_flags=(-u $compinit_flags)
   else
@@ -33,7 +33,7 @@ function mycompinit {
 
   # Initialize completions
   autoload -Uz compinit
-  if zstyle -t ':kickstart.zsh:feature:completion' 'use-cache'; then
+  if zstyle -t ':zdotdir:feature:completion' 'use-cache'; then
     # Load and initialize the completion system ignoring insecure directories with a
     # cache time of 20 hours, so it should almost always regenerate the first time a
     # shell is opened each day.

@@ -21,7 +21,7 @@ export LESS_TERMCAP_me=$reset_color     # end bold/blink
 if [[ -z "$LS_COLORS" ]]; then
   for dircolors_cmd in dircolors gdircolors; do
     if (( $+commands[$dircolors_cmd] )); then
-      if zstyle -t ':kickstart.zsh:feature:color' 'use-cache'; then
+      if zstyle -t ':zdotdir:feature:color' 'use-cache'; then
         cached-eval "$dircolors_cmd" $dircolors_cmd --sh
       else
         source <($dircolors_cmd --sh)
@@ -53,14 +53,14 @@ alias grep="${aliases[grep]:-grep} --color=auto"
 
 # Set colors for coreutils ls.
 if (( $+commands[gls] )); then
-  alias gls="${aliases[gls]:-gls} --group-directories-first --color=auto"
+  alias gls="${aliases[gls]:-gls} --color=auto"
 fi
 
 # Set colors for ls.
 if (( ! $+commands[dircolors] )) || is-macos; then
   alias ls="${aliases[ls]:-ls} -G"
 else
-  alias ls="${aliases[ls]:-ls} --group-directories-first --color=auto"
+  alias ls="${aliases[ls]:-ls} --color=auto"
 fi
 
 # Set colors for diff

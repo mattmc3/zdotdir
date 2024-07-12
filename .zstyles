@@ -22,14 +22,14 @@ zstyle ':antidote:plugin:*' defer-options '-p'
 # Kickstart
 #
 
-zstyle ':kickstart.zsh:feature:*' 'use-cache' yes
+zstyle ':zdotdir:feature:*' 'use-cache' yes
 
 # From compinit docs:
 # To avoid these tests and make all files found be used without asking, use the
 # option -u, and to make compinit silently ignore all insecure files and directories
 # use the option -i. This security check is skipped entirely when the -C option is
 # given, provided the dumpfile exists.
-zstyle ':kickstart.zsh:feature:completion' 'disable-compfix' yes
+zstyle ':zdotdir:feature:completion' 'disable-compfix' yes
 
 #
 # Custom
