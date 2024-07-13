@@ -1,5 +1,5 @@
 #
-# functions: Common helper functions
+# helper: Common helper functions
 #
 
 ##? Checks if a file can be autoloaded by trying to load it in a subshell.
