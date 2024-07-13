@@ -53,12 +53,14 @@ fi
 export LANG=${LANG:-en_US.UTF-8}
 
 # Set the list of directories that Zsh searches for programs.
+if [[ ! -v prepath ]]; then
+  typeset -ga prepath=(
+    $HOME/{,s}bin(N)
+    $HOME/.local/{,s}bin(N)
+  )
+fi
 path=(
-  $HOME/{,s}bin(N)
-  $HOME/.local/{,s}bin(N)
-  $HOME/.homebrew/{,s}bin(N)
-  $HOME/.linuxbrew/{,s}bin(N)
-  /opt/{homebrew,local}/{,s}bin(N)
+  $prepath
   /usr/local/{,s}bin(N)
   $path
 )
