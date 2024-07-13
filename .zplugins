@@ -32,6 +32,7 @@ romkatv/powerlevel10k kind:fpath
 
 # Regular plugins
 mattmc3/zman
+romkatv/zsh-no-ps2
 
 zsh-users/zsh-completions kind:fpath path:src
 zsh-users/zsh-syntax-highlighting
