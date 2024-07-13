@@ -15,14 +15,14 @@ setopt NO_menu_complete  # Do not autoselect the first completion entry.
 
 # Initialize completions.
 function mycompinit {
-  local compdump=${ZSH_COMPDUMP:-$__zsh_cache_dir/compdump}
-  [[ -d $compdump:h ]] || mkdir -p $compdump:h
+  : ${ZSH_COMPDUMP:=$__zsh_cache_dir/compdump}
+  [[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
 
   # Force cache reset flag
-  [[ "$1" == "-f" ]] && [[ -f "$compdump" ]] && rm -rf -- $compdump
+  [[ "$1" == "-f" ]] && [[ -f "$ZSH_COMPDUMP" ]] && rm -rf -- $ZSH_COMPDUMP
 
   # Compfix flag
-  local -a compinit_flags=(-d "$compdump")
+  local -a compinit_flags=(-d "$ZSH_COMPDUMP")
   if zstyle -t ':zdotdir:feature:completion' 'disable-compfix'; then
     # Allow insecure directories in fpath
     compinit_flags=(-u $compinit_flags)
@@ -37,13 +37,13 @@ function mycompinit {
     # Load and initialize the completion system ignoring insecure directories with a
     # cache time of 20 hours, so it should almost always regenerate the first time a
     # shell is opened each day.
-    local compdump_cache=($compdump(Nmh-20))
+    local compdump_cache=($ZSH_COMPDUMP(Nmh-20))
     if (( $#compdump_cache )); then
       compinit -C $compinit_flags
     else
       compinit $compinit_flags
-      # Ensure $compdump is younger than the cache time even if it isn't regenerated.
-      touch "$compdump"
+      # Ensure $ZSH_COMPDUMP is younger than the cache time even if it isn't regenerated.
+      touch "$ZSH_COMPDUMP"
     fi
   else
     compinit $compinit_flags
