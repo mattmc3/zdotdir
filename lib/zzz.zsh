@@ -27,7 +27,7 @@ function zshrc-post {
       prompt 'off'
     else
       local -a prompt_argv
-      zstyle -a ':zdotdir:feature:prompt' 'theme' 'prompt_argv' \
+      zstyle -a ':zephyr:plugin:prompt' 'theme' 'prompt_argv' \
         || prompt_argv=(off)
       prompt "$prompt_argv[@]"
     fi

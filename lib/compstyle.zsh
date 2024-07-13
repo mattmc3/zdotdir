@@ -75,7 +75,7 @@ function compstyle_zshzoo_setup {
   zstyle ':completion:*:man:*'      menu yes select
 }
 
-zstyle -s ':zdotdir:features:compstyle' name 'zcompstyle' ||
+zstyle -s ':zephyr:plugins:compstyle' name 'zcompstyle' ||
     zcompstyle=zshzoo
 
 if (( $+functions[compstyle_${zcompstyle}_setup] )); then

@@ -21,7 +21,7 @@ setopt extended_glob
 [[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
 
 # Instant prompt
-if zstyle -t ':zdotdir:feature:prompt:powerlevel10k' instant-prompt; then
+if zstyle -t ':zephyr:plugin:prompt:powerlevel10k' instant-prompt; then
   # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
   # Initialization code that may require console input (password prompts, [y/n]
   # confirmations, etc.) must go above this block; everything else may go below.
@@ -59,7 +59,7 @@ typeset -aU _brewcmd=(
   /home/linuxbrew/.linuxbrew/bin/brew(N)
 )
 if (( $#_brewcmd )); then
-  if zstyle -t ':zdotdir:feature:homebrew' 'use-cache'; then
+  if zstyle -t ':zephyr:plugin:homebrew' 'use-cache'; then
     cached-eval 'brew_shellenv' $_brewcmd[1] shellenv
   else
     source <($_brewcmd[1] shellenv)
