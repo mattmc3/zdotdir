@@ -1,6 +1,10 @@
 #
-# utils: Setup utils with a focus on a consistent set of cross-platform commands.
+# utility: Misc Zsh shell options, utilities, and attempt at cross-platform conformity.
 #
+
+# References:
+# - https://github.com/sorin-ionescu/prezto/blob/master/modules/utility/init.zsh
+# - https://github.com/belak/zsh-utils/blob/main/utility/utility.plugin.zsh
 
 # Use built-in paste magic.
 autoload -Uz bracketed-paste-url-magic
@@ -12,7 +16,12 @@ zle -N self-insert url-quote-magic
 (( $+aliases[run-help] )) && unalias run-help && autoload -Uz run-help
 alias help=run-help
 
-# It's time. Python2 is dead.
+# Make ls more useful on non-BSD systems.
+if (( ! $+commands[dircolors] )) && [[ "$OSTYPE" != darwin* ]]; then
+  alias ls="${aliases[ls]:-ls} --group-directories-first"
+fi
+
+# Ensure python commands exist.
 if (( $+commands[python3] )) && ! (( $+commands[python] )); then
   alias python=python3
 fi
@@ -21,7 +30,7 @@ if (( $+commands[pip3] )) && ! (( $+commands[pip] )); then
 fi
 
 # Ensure envsubst command exists.
-if ! (( $+commands[envsubst] )) && (( $+commands[python] )); then
+if ! (( $+commands[envsubst] )); then
   alias envsubst="python -c 'import os,sys;[sys.stdout.write(os.path.expandvars(l)) for l in sys.stdin]'"
 fi
 
@@ -42,7 +51,7 @@ if ! (( $+commands[open] )); then
 fi
 
 # Ensure pbcopy/pbpaste commands exist.
-if ! (( $+commands[pbcopy] )) && ! (( $+commands[pbpaste] )); then
+if ! (( $+commands[pbcopy] )); then
   if [[ "$OSTYPE" == cygwin* ]]; then
     alias pbcopy='tee > /dev/clipboard'
     alias pbpaste='cat /dev/clipboard'
@@ -62,3 +71,9 @@ if ! (( $+commands[pbcopy] )) && ! (( $+commands[pbpaste] )); then
     fi
   fi
 fi
+
+##? Cross platform `sed -i` syntax
+function sedi {
+  # GNU/BSD
+  sed --version &>/dev/null && sed -i -- "$@" || sed -i "" "$@"
+}
