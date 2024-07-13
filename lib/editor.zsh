@@ -238,7 +238,7 @@ zle -N prepend-sudo
 # Expand aliases
 function glob-alias {
   local -a noexpand_aliases
-  zstyle -a ':zdotdir:feature:abbreviations' 'noexpand' 'noexpand_aliases' \
+  zstyle -a ':zdotdir:feature:editor:glob-alias' 'noexpand' 'noexpand_aliases' \
     || noexpand_aliases=()
 
   # Get last word to the left of the cursor:
