@@ -6,10 +6,6 @@
 # - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/brew
 # - https://github.com/sorin-ionescu/prezto/tree/master/modules/homebrew
 
-# Bootstrap.
-0=${(%):-%N}
-zstyle -t ':zephyr:lib:bootstrap' loaded || source ${0:a:h:h:h}/lib/bootstrap.zsh
-
 # Where is brew?
 # Setup homebrew if it exists on the system.
 typeset -aU _brewcmd=(
@@ -54,6 +50,3 @@ function brews {
   echo "${formulae}" | sed "s/^\(.*\):\(.*\)$/\1${blue}\2${off}/"
   echo "\n${blue}==>${off} ${bold}Casks${off}\n${casks}"
 }
-
-# Mark this plugin as loaded.
-zstyle ':zephyr:plugin:homebrew' loaded 'yes'
