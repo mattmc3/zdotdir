@@ -2,10 +2,10 @@
 ##? venv - Manage Python venvs.
 
 local workon_home
-local -a usage o_list o_remove
+local -a usage o_list o_remove o_path
 workon_home=${WORKON_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/venvs}
 usage=(
-  "usage: venv [--home=<home>] [-r|--remove] <pyvenv>"
+  "usage: venv [--home=<home>] [-r|--remove] [-p|--path] <pyvenv>"
   "       venv [-h|--help] [-l|--list]"
 )
 
@@ -25,6 +25,9 @@ while (( $# )); do
       ;;
     -r|--remove)
       o_remove+=($1)
+      ;;
+    -p|--path)
+      o_path+=($1)
       ;;
     --home)
       shift
@@ -59,6 +62,16 @@ fi
 if (( $# == 0 )); then
   echo >&2 "usage: venv <pyvenv>"
   return 1
+fi
+
+# --path
+if (( $#o_path )); then
+  if [[ ! -d "$workon_home/$1" ]]; then
+    echo >&2 "venv: venv not found '$1'."
+    return 1
+  fi
+  echo "$workon_home/$1"
+  return
 fi
 
 # --remove
