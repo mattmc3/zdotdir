@@ -8,12 +8,6 @@ if [[ "$TERM" == 'dumb' ]]; then
 fi
 
 #
-# Options
-#
-
-setopt NO_beep  # Do not beep on error in line editor.
-
-#
 # Variables
 #
 
@@ -77,6 +71,7 @@ zle -N edit-command-line
 #
 # Functions
 #
+
 # Runs bindkey but for all of the keymaps. Running it with no arguments will
 # print out the mappings for all of the keymaps.
 function bindkey-all {
@@ -86,6 +81,7 @@ function bindkey-all {
     bindkey -M "${keymap}" "$@"
   done
 }
+
 # Exposes information about the Zsh Line Editor via the $editor_info associative
 # array.
 function editor-info {
@@ -349,8 +345,8 @@ bindkey -M vicmd "#" vi-pound-insert
 # undefined things. In emacs mode they just insert a tilde, but bind these keys
 # in the main keymap to a noop op so if there is no keybind in the users mode
 # it will fall back and do nothing.
-function _prezto-zle-noop {  ; }
-zle -N _prezto-zle-noop
+function _editor-zle-noop {  ; }
+zle -N _editor-zle-noop
 local -a unbound_keys
 unbound_keys=(
   "${key_info[F1]}"
@@ -371,8 +367,8 @@ unbound_keys=(
   "${key_info[ControlPageDown]}"
 )
 for keymap in $unbound_keys; do
-  bindkey -M viins "${keymap}" _prezto-zle-noop
-  bindkey -M vicmd "${keymap}" _prezto-zle-noop
+  bindkey -M viins "${keymap}" _editor-zle-noop
+  bindkey -M vicmd "${keymap}" _editor-zle-noop
 done
 
 # Keybinds for all keymaps

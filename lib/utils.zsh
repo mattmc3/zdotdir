@@ -1,5 +1,5 @@
 #
-# misc: Setup utils with a focus on a consistent set of cross-platform commands.
+# utils: Setup utils with a focus on a consistent set of cross-platform commands.
 #
 
 # Use built-in paste magic.
