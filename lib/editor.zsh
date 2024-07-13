@@ -3,13 +3,7 @@
 #
 
 # Return if requirements are not found.
-if [[ "$TERM" == 'dumb' ]]; then
-  return 1
-fi
-
-#
-# Variables
-#
+[[ "$TERM" != 'dumb' ]] || return 1
 
 # Treat these characters as part of a word.
 zstyle -s ':zephyr:plugin:editor' wordchars 'WORDCHARS' \
@@ -59,10 +53,6 @@ for key in "${(k)key_info[@]}"; do
     key_info[$key]='�'
   fi
 done
-
-#
-# External Editor
-#
 
 # Allow command line editing in an external editor.
 autoload -Uz edit-command-line
@@ -311,7 +301,6 @@ fi
 # is similar to pount insert, but meant to work around some issues that were
 # being seen in iTerm.
 bindkey -M emacs "$key_info[Escape];" pound-toggle
-
 
 #
 # Vi Key Bindings
