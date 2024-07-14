@@ -52,19 +52,6 @@ fi
 # Set language.
 export LANG=${LANG:-en_US.UTF-8}
 
-# Set the list of directories that Zsh searches for programs.
-if [[ ! -v prepath ]]; then
-  typeset -ga prepath=(
-    $HOME/{,s}bin(N)
-    $HOME/.local/{,s}bin(N)
-  )
-fi
-path=(
-  $prepath
-  /usr/local/{,s}bin(N)
-  $path
-)
-
 # Set the default Less options.
 # Mouse-wheel scrolling can be disabled with -X (disable screen clearing).
 # Add -X to disable it.
