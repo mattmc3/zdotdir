@@ -1,0 +1,6 @@
+#!/bin/zsh
+if [[ -n "$1" ]]; then
+  local -a configs=($__zsh_config_dir/themes/$1.p10k.zsh(N))
+  (( $#configs )) && source $configs[1]
+fi
+source ${ANTIDOTE_HOME:-$HOME/.cache/repos}/romkatv/powerlevel10k/powerlevel10k.zsh-theme
