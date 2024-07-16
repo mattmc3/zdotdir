@@ -31,21 +31,3 @@ path=(
   $HOMEBREW_PREFIX/lib/ruby/gems/*/bin(N)
   $HOME/.gem/ruby/*/bin(N)
 )
-
-# fpath=(
-#   $HOMEBREW_PREFIX/share/zsh/functions(N)
-#   $HOMEBREW_PREFIX/share/zsh/site-functions(N)
-#   $fpath
-# )
-
-# macOS
-if [[ "$OSTYPE" == darwin* ]]; then
-  # Make Apple Terminal behave.
-  export SHELL_SESSIONS_DISABLE=1
-fi
-
-# Enable less wait time between key presses.
-export KEYTIMEOUT=1
-
-# Use `< file` to quickly view the contents of any file.
-[[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER
