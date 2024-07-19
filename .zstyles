@@ -19,12 +19,22 @@ zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':antidote:plugin:*' defer-options '-p'
 
 #
-# Zdotdir features
+# Zephyr features
 #
 
+# Use caching.
 zstyle ':zephyr:plugin:*' 'use-cache' yes
 
+# Glob alias expansion
 zstyle ':zephyr:plugin:editor' glob-alias 'yes'
+noexpand=(
+  ls
+  grep
+  gpg
+  vi
+  z
+)
+zstyle ':zephyr:plugin:editor:glob-alias' noexpand $noexpand
 
 # From compinit docs:
 # To avoid these tests and make all files found be used without asking, use the
@@ -34,18 +44,6 @@ zstyle ':zephyr:plugin:editor' glob-alias 'yes'
 zstyle ':zephyr:plugin:completion' 'disable-compfix' yes
 
 # Set prompt
-zstyle ':zephyr:plugin:prompt' theme 'p10k' 'mmc'
-zstyle ':zephyr:plugin:prompt:powerlevel10k' instant-prompt 'yes'
-
-#
-# Custom
-#
-
-noexpand=(
-  ls
-  grep
-  gpg
-  vi
-  z
-)
-zstyle ':zephyr:plugin:editor:glob-alias' noexpand $noexpand
+zstyle ':zephyr:plugin:prompt:starship' transient yes
+zstyle ':zephyr:plugin:prompt' theme 'zephyr'
+# zstyle ':zephyr:plugin:prompt:powerlevel10k' instant-prompt 'yes'
