@@ -17,6 +17,7 @@ cdpath=(
 # Set the list of directories that Zsh searches for programs.
 path=(
   # core
+  $prepath
   $path
 
   # emacs
