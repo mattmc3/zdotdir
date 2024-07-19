@@ -3,25 +3,25 @@
 #
 
 # Load near the top so you get p10k's instaprompt if you need it.
-$ZSH_CUSTOM path:plugins/p10k-instaprompt
-$ZSH_CUSTOM path:plugins/xdg
+$ZSH_CUSTOM/plugins/p10k-instaprompt
+$ZSH_CUSTOM/plugins/xdg
 
 # Completions
 zsh-users/zsh-completions kind:fpath path:src
 
 # Prompts
-$ZSH_CUSTOM path:plugins/prompts
+$ZSH_CUSTOM/plugins/prompts
 romkatv/powerlevel10k kind:fpath
 
 # Core
 mattmc3/zephyr
 
 # Custom
-#$ZSH_CUSTOM path:plugins/abbreviations
-$ZSH_CUSTOM path:plugins/git
-$ZSH_CUSTOM path:plugins/golang
-$ZSH_CUSTOM path:plugins/otp
-$ZSH_CUSTOM path:plugins/python
+#$ZSH_CUSTOM/plugins/abbreviations
+$ZSH_CUSTOM/plugins/git
+$ZSH_CUSTOM/plugins/golang
+$ZSH_CUSTOM/plugins/otp
+$ZSH_CUSTOM/plugins/python
 
 # Utils
 romkatv/zsh-bench kind:path
@@ -42,4 +42,4 @@ zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 
-# vi: ft=config
+# vi: ft=properties
