@@ -29,10 +29,14 @@ unset zlib
 # autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
 
 # Uncomment to manually set your prompt, or let Zephyr do it automatically in the
-# zshrc-post hook. Also, note that some prompts like powerlevel10k may not work
-# well with post_zshrc.
-autoload -Uz promptinit && promptinit
-prompt p10k mmc
+# zshrc-post hook. Note that some prompts like powerlevel10k may not work well
+# with post_zshrc.
+() {
+  autoload -Uz promptinit && promptinit
+  local -a prompt_argv
+  zstyle -a ':zephyr:plugin:prompt' theme 'prompt_argv' || return 1
+  prompt $prompt_argv
+}
 
 # Finish profiling by calling zprof.
 [[ "$ZPROFRC" -eq 1 ]] && zprof
