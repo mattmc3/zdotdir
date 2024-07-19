@@ -1,0 +1,25 @@
+# Move zephyr files into lib directory
+: ${ZEPHYR_HOME:=$HOME/Projects/mattmc3/zephyr}
+
+# rm -- $ZDOTDIR/lib/*.zsh
+cp -f $ZEPHYR_HOME/plugins/helper/helper.plugin.zsh $ZDOTDIR/lib/archive/__init__.zsh
+for plugin in $ZEPHYR_HOME/plugins/*(/); do
+  plugin=${plugin:t}
+  if [[ $plugin == macos ]] || [[ $plugin == helper ]]; then
+    continue
+  fi
+  cp -f $ZEPHYR_HOME/plugins/${plugin}/${plugin}.plugin.zsh $ZDOTDIR/lib/archive/${plugin}.zsh.tmp
+done
+
+filter_bootstap='
+  BEGIN { skip=0 }
+  /# Bootstrap/ { skip = 4 }
+  skip>0        { skip--; next }
+  skip==0       { print }
+'
+filter_last3='NR>n{print A[NR%n]} {A[NR%n]=$0}'
+
+for file in $ZDOTDIR/lib/archive/*.zsh.tmp; do
+  cat $file | awk $filter_bootstap | awk -v n=3 $filter_last3 >| ${file:r}
+  rm -- $file
+done
