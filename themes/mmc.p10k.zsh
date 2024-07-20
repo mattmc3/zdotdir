@@ -34,6 +34,7 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # os_icon               # os identifier
     dir                     # current directory
+    #prompt_prechar          # pre prompt symbol
     prompt_char             # prompt symbol
   )
 
@@ -1654,6 +1655,13 @@
   }
   function instant_prompt_shell() {
     prompt_shell
+  }
+
+  function prompt_prompt_prechar() {
+    p10k segment -t '❱'
+  }
+  function instant_prompt_prompt_prechar() {
+    prompt_prompt_prechar
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
