@@ -33,6 +33,7 @@ noexpand=(
   gpg
   vi
   z
+  0 1 2 3 4 5 6 7 8 9
 )
 zstyle ':zephyr:plugin:editor:glob-alias' noexpand $noexpand
 
@@ -42,6 +43,7 @@ zstyle ':zephyr:plugin:editor:glob-alias' noexpand $noexpand
 # use the option -i. This security check is skipped entirely when the -C option is
 # given, provided the dumpfile exists.
 zstyle ':zephyr:plugin:completion' 'disable-compfix' yes
+zstyle ':zephyr:plugin:completion' compstyle 'zephyr'
 
 # Set prompt
 zstyle ':zephyr:plugin:prompt:starship' transient yes
