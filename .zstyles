@@ -47,5 +47,5 @@ zstyle ':zephyr:plugin:completion' compstyle 'zephyr'
 
 # Set prompt
 zstyle ':zephyr:plugin:prompt:starship' transient yes
-zstyle ':zephyr:plugin:prompt' theme 'p10k' 'mmc'
+zstyle ':zephyr:plugin:prompt' theme starship zephyr
 # zstyle ':zephyr:plugin:prompt:powerlevel10k' instant-prompt 'yes'
