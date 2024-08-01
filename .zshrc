@@ -19,7 +19,7 @@ then
 fi
 
 # Load things from lib.
-for zlib in antidote; do
+for zlib in antidote transient-prompt; do
   source $ZDOTDIR/lib/${zlib}.zsh
 done
 unset zlib
@@ -32,16 +32,19 @@ unset zlib
 
 # Uncomment to manually initialize completion system if you want, or let Zephyr
 # do it automatically in the zshrc-post hook.
-ZSH_COMPDUMP=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
-[[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
-autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
+# ZSH_COMPDUMP=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
+# [[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
+# autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
 
 # Uncomment to manually set your prompt, or let Zephyr do it automatically in the
 # zshrc-post hook. Note that some prompts like powerlevel10k may not work well
 # with post_zshrc.
-setopt prompt_subst
-autoload -Uz promptinit && promptinit
-prompt $ZSH_THEME
+# setopt prompt_subst
+# autoload -Uz promptinit && promptinit
+# prompt $ZSH_THEME
+# if [[ "$ZSH_THEME" == starship* ]]; then
+#   source $ZDOTDIR/lib/starship-transient-prompt.zsh
+# fi
 
 # Finish profiling by calling zprof.
 [[ "$ZPROFRC" -eq 1 ]] && zprof
