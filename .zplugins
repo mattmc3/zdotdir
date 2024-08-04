@@ -49,6 +49,7 @@ mattmc3/zman
 ### Editor
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+jeffreytse/zsh-vi-mode
 romkatv/zsh-no-ps2
 
 ### macOS
