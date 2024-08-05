@@ -37,6 +37,9 @@ noexpand=(
 )
 zstyle ':zephyr:plugin:editor:glob-alias' noexpand $noexpand
 
+# Editor
+zstyle -s ':zephyr:plugin:editor' key-bindings 'vi'
+
 # From compinit docs:
 # To avoid these tests and make all files found be used without asking, use the
 # option -u, and to make compinit silently ignore all insecure files and directories
