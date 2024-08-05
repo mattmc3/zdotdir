@@ -4,6 +4,7 @@
 #
 
 export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
+export SHELL_SESSIONS_DISABLE=1
 
 # XDG
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
