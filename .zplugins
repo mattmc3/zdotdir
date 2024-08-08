@@ -2,48 +2,65 @@
 # .zplugins.txt - antidote plugins file
 #
 
-### Init
+#
+# Init
+#
 
-mattmc3/zshrc1
+$ZSH_CUSTOM/plugins/p10k-instaprompt conditional:is-theme-p10k
+mattmc3/zephyr
 $ZSH_CUSTOM/plugins/xdg
 
-### Completions
+#
+# Completions
+#
 
 zsh-users/zsh-completions kind:fpath path:src
 
-### Prompts
+#
+# Prompts
+#
 
 $ZDOTDIR/themes kind:fpath
 romkatv/powerlevel10k kind:fpath
 # sindresorhus/pure kind:fpath
 # miekg/lean kind:fpath
 
-### Custom
-#$ZSH_CUSTOM/plugins/abbreviations
+#
+# Custom
+#
+
 $ZSH_CUSTOM/plugins/git
 $ZSH_CUSTOM/plugins/golang
 $ZSH_CUSTOM/plugins/otp
 $ZSH_CUSTOM/plugins/python
 
-### Utils
+#
+# Utils
+#
+
 romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
 mattmc3/zman
 
-### Editor
+#
+# Editor
+#
+
 jeffreytse/zsh-vi-mode
-ohmyzsh/ohmyzsh path:plugins/magic-enter
-ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 romkatv/zsh-no-ps2
 
-### macOS
-zshzoo/macos conditional:is-macos
+#
+# macOS
+#
+
 ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
 
-### Fish-like
+#
+# Fish-like
+#
+
 zdharma-continuum/fast-syntax-highlighting
-#zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
+zsh-users/zsh-history-substring-search post:keybind-hss
 
 # vi: ft=properties
