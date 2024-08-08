@@ -3,48 +3,77 @@
 # .zshrc - Run on interactive Zsh session.
 #
 
-# Initialize profiling.
+#
+# Profiling
+#
+
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-ZSH_THEME=(p10k mmc)
+#
+# Zstyles
+#
 
 # Load .zstyles file with customizations.
 [[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
 
-# Setup prompt near the top so we can get instant prompt if we need it.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] &&
-   [[ "$ZSH_THEME" == (p10k|powerlevel10k)* ]]
-then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#
+# Theme
+#
+
+# Set prompt theme
+ZSH_THEME=(starship zephyr)
+#ZSH_THEME=(p10k mmc)
+
+function is-theme-p10k {
+  [[ "$ZSH_THEME" == (p10k|powerlevel10k)* ]]
+}
+
+#
+# Libs
+#
 
 # Load things from lib.
-for zlib in antidote; do
-  source $ZDOTDIR/lib/${zlib}.zsh
-done
+for zlib in $ZDOTDIR/lib/*.zsh; source $zlib
 unset zlib
 
-# Add more zsh config here, or in conf.d...
-# ...
+#
+# Aliases
+#
 
-# Add aliases.
 [[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
 
-# Uncomment to manually initialize completion system if you want, or let Zephyr
+#
+# Completions
+#
+
+# Uncomment to manually initialize completion system, or let Zephyr
 # do it automatically in the zshrc-post hook.
 # ZSH_COMPDUMP=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
 # [[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
 # autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
+
+#
+# Prompt
+#
 
 # Uncomment to manually set your prompt, or let Zephyr do it automatically in the
 # zshrc-post hook. Note that some prompts like powerlevel10k may not work well
 # with post_zshrc.
 setopt prompt_subst
 autoload -Uz promptinit && promptinit
-prompt $ZSH_THEME
+prompt "$ZSH_THEME[@]"
+
+#
+# Wrap up
+#
+
+# Manually call post_zshrc to bypass the hook
+(( $+functions[run_post_zshrc] )) && run_post_zshrc
 
 # Finish profiling by calling zprof.
 [[ "$ZPROFRC" -eq 1 ]] && zprof
 [[ -v ZPROFRC ]] && unset ZPROFRC
+
+# Always return success
 true
