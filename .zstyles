@@ -25,7 +25,20 @@ zstyle ':antidote:plugin:*' defer-options '-p'
 # Use caching.
 zstyle ':zephyr:plugin:*' 'use-cache' yes
 
-# Glob alias expansion
+#
+# Editor
+#
+
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':zephyr:plugin:editor' key-bindings 'vi'
+
+# Auto convert .... to ../..
+zstyle ':zephyr:plugin:editor' dot-expansion 'yes'
+
+# Use ^z to return background processes to foreground.
+zstyle ':zephyr:plugin:editor' symmetric-ctrl-z 'yes'
+
+# Expand aliases to their actual command like Fish abbreviations.
 zstyle ':zephyr:plugin:editor' glob-alias 'yes'
 noexpand=(
   ls
@@ -37,7 +50,12 @@ noexpand=(
 )
 zstyle ':zephyr:plugin:editor:glob-alias' noexpand $noexpand
 
-# Editor
+# Set the default (magic) command when hitting enter on an empty prompt.
+zstyle ':zephyr:plugin:editor' magic-enter 'yes'
+# zstyle ':zephyr:plugin:editor:magic-enter' command 'ls -lh .'
+# zstyle ':zephyr:plugin:editor:magic-enter' git-command 'git status -u .'
+
+# Editor style
 zstyle -s ':zephyr:plugin:editor' key-bindings 'vi'
 
 # From compinit docs:
@@ -48,7 +66,9 @@ zstyle -s ':zephyr:plugin:editor' key-bindings 'vi'
 zstyle ':zephyr:plugin:completion' 'disable-compfix' yes
 zstyle ':zephyr:plugin:completion' compstyle 'zephyr'
 
+#
+# Prompt
+#
+
 # Set prompt
-zstyle ':zephyr:plugin:prompt:starship' transient yes
 zstyle ':zephyr:plugin:prompt' theme starship zephyr
-# zstyle ':zephyr:plugin:prompt:powerlevel10k' instant-prompt 'yes'
