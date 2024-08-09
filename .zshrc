@@ -25,9 +25,8 @@ alias zprofrc="ZPROFRC=1 zsh"
 ZSH_THEME=(starship zephyr)
 #ZSH_THEME=(p10k mmc)
 
-function is-theme-p10k {
-  [[ "$ZSH_THEME" == (p10k|powerlevel10k)* ]]
-}
+is-theme-p10k()     { [[ "$ZSH_THEME" == (p10k|powerlevel10k)* ]] }
+is-theme-starship() { [[ "$ZSH_THEME" == starship* ]] }
 
 #
 # Libs
