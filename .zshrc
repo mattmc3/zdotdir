@@ -59,7 +59,7 @@ unset zlib
 # Uncomment to manually set your prompt, or let Zephyr do it automatically in the
 # zshrc-post hook. Note that some prompts like powerlevel10k may not work well
 # with post_zshrc.
-setopt prompt_subst
+setopt prompt_subst transient_rprompt
 autoload -Uz promptinit && promptinit
 prompt "$ZSH_THEME[@]"
 
