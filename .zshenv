@@ -25,3 +25,8 @@ export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
     [[ -d "${(P)zdir}" ]] || mkdir -p -- "${(P)zdir}"
   done
 } __zsh_{config,user_data,cache}_dir XDG_{CONFIG,CACHE,DATA,STATE}_HOME XDG_{RUNTIME,PROJECTS}_DIR
+
+# Make Terminal.app behave.
+if [[ "$OSTYPE" == darwin* ]]; then
+  export SHELL_SESSIONS_DISABLE=1
+fi
