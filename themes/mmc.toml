@@ -1,23 +1,67 @@
+#
+# mmc.toml - My default prompt theme
+#
+
 add_newline = false
-command_timeout = 1000
 
 # A minimal left prompt
 format = """$python$directory$character"""
 
 # move the rest of the prompt to the right
 #right_format = """$status$git_branch${custom.git_status_dirty}$git_status"""
-right_format = """$status$cmd_duration$git_branch${custom.git_status_dirty}$git_status"""
+right_format = """$status$cmd_duration$git_branch${custom.git_status_dirty}$git_status$shell"""
+
+palette="wombat"
+
+# Define custom colors
+[palettes.tokyo_night]
+black = '#15161e'
+blue = '#7aa2f7'
+cyan = '#7dcfff'
+green = '#9ece6a'
+purple = '#bb9af7'
+red = '#f7768e'
+white = '#a9b1d6'
+yellow = '#e0af68'
+
+[palettes.tokyo_night_256]
+black = '16'
+blue = '111'
+cyan = '117'
+green = '149'
+purple = '141'
+red = '210'
+white = '146'
+yellow = '179'
+
+[palettes.wombat]
+black = '#000000'
+blue = '#5da9f6'
+cyan = '#82fff7'
+green = '#b1e969'
+purple = '#e86aff'
+red = '#ff615a'
+white = '#dedacf'
+yellow = '#ebd99c'
+
+[palettes.wombat_256]
+black = '0'
+blue = '75'
+cyan = '123'
+green = '149'
+purple = '171'
+red = '203'
+white = '188'
+yellow = '223'
 
 [character]
 success_symbol = "[❯](purple)[❯](cyan)"
 error_symbol = "[❯](yellow)[❯](red)"
 vicmd_symbol = "[❮](purple)[❮](cyan)"
-# success_symbol = "[⨠](purple)"
-# error_symbol = "[⨠](red)"
-# vicmd_symbol = "[⪻](yellow)"
 
 [python]
-format = '\($virtualenv\) '
+format = '[(\($virtualenv\) )]($style)'
+style = 'white'
 
 [directory]
 style = "blue"
@@ -53,3 +97,11 @@ disabled = true
 [status]
 disabled = false
 symbol = ' ✘'
+
+[shell]
+fish_indicator = ' 🐟'  # 󰈺 🐟 🐠
+powershell_indicator = ' _'
+pwsh_indicator = ' _'
+zsh_indicator = '󠀥 %'
+style = 'cyan bold'
+disabled = false
