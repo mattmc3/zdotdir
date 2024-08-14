@@ -8,19 +8,22 @@
 
 $ZSH_CUSTOM/plugins/p10k-instaprompt conditional:is-theme-p10k
 $ZSH_CUSTOM/plugins/starship-ftl conditional:is-theme-starship
-mattmc3/zephyr
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/homebrew
 $ZSH_CUSTOM/plugins/xdg
 
 #
 # Completions
 #
 
+mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
 
 #
 # Prompts
 #
 
+mattmc3/zephyr path:plugins/prompt
 $ZDOTDIR/themes kind:fpath
 romkatv/powerlevel10k kind:fpath
 # sindresorhus/pure kind:fpath
@@ -39,6 +42,11 @@ $ZSH_CUSTOM/plugins/python
 # Utils
 #
 
+
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/utility
 romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
 mattmc3/zman
@@ -47,6 +55,7 @@ mattmc3/zman
 # Editor
 #
 
+mattmc3/zephyr path:plugins/editor
 jeffreytse/zsh-vi-mode
 romkatv/zsh-no-ps2
 
@@ -54,13 +63,17 @@ romkatv/zsh-no-ps2
 # macOS
 #
 
+mattmc3/zephyr path:plugins/macos conditional:is-macos
 ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
 
 #
 # Fish-like
 #
 
-zdharma-continuum/fast-syntax-highlighting
+mattmc3/zephyr path:plugins/zfunctions
+mattmc3/zephyr path:plugins/confd
+#zdharma-continuum/fast-syntax-highlighting
+zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search post:keybind-hss
 
