@@ -42,7 +42,6 @@ $ZSH_CUSTOM/plugins/python
 # Utils
 #
 
-
 mattmc3/zephyr path:plugins/color
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/history
