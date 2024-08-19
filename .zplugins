@@ -73,7 +73,7 @@ mattmc3/zephyr path:plugins/zfunctions
 mattmc3/zephyr path:plugins/confd
 #zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search post:keybind-hss
+zsh-users/zsh-autosuggestions post:post-autosuggestions
+zsh-users/zsh-history-substring-search post:post-history-substring-search
 
 # vi: ft=properties
