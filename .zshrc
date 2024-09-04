@@ -69,6 +69,9 @@ prompt "$ZSH_THEME[@]"
 # Wrap up
 #
 
+# Never start in the root file system. Looking at you, Zed.
+[[ "$PWD" != "/" ]] || cd
+
 # Manually call post_zshrc to bypass the hook
 (( $+functions[run_post_zshrc] )) && run_post_zshrc
 
