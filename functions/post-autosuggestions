@@ -1,22 +1,10 @@
+#!/bin/zsh
+# https://github.com/zsh-users/zsh-autosuggestions
 
-#
-# Highlighting
-#
-
-# # Set highlight color, default 'fg=8'.
-# zstyle -s ':plugin:autosuggestions:color' found \
-#   'ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE' || ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+# Set highlight color, default 'fg=8'.
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
-# # Disable highlighting.
-# if ! zstyle -t ':plugin:autosuggestions' color; then
-#   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=''
-# fi
-
-#
-# Key Bindings
-#
-
+# Set key bindings.
 if [[ -n "$key_info" ]]; then
   # vi
   bindkey -M viins "$key_info[Control]F" vi-forward-word

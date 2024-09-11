@@ -1,3 +1,6 @@
+#!/bin/zsh
+# https://github.com/zsh-users/zsh-history-substring-search
+
 for keymap in 'emacs' 'viins'; do
   bindkey -M "$keymap" "$terminfo[kcuu1]" history-substring-search-up
   bindkey -M "$keymap" "$terminfo[kcud1]" history-substring-search-down
