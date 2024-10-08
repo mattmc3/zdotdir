@@ -18,7 +18,7 @@ alias g=git
 alias ping='ping -c 5'
 alias vi=vim
 alias nv=nvim
-alias grep="command grep --exclude-dir={.git,.vscode}"
+alias grep="${aliases[grep]:-grep} --exclude-dir={.git,.vscode}"
 
 # directories
 alias secrets="cd ${XDG_DATA_HOME:-~/.local/share}/secrets"
@@ -51,8 +51,8 @@ alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
 # homebrew
-alias brewup="brew update && brew upgrade && brew cleanup"
-alias brewinfo="brew leaves | xargs brew desc --eval-all"
+#alias brewup="brew update && brew upgrade && brew cleanup"
+#alias brewinfo="brew leaves | xargs brew desc --eval-all"
 
 # disk usage
 alias biggest='du -s ./* | sort -nr | awk '\''{print $2}'\'' | xargs du -sh'
@@ -81,6 +81,7 @@ alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 alias autorotate="jhead -autorot"
 
 # dotfiles
+: ${DOTFILES:=$HOME/.dotfiles}
 alias dotf='cd "$DOTFILES"'
 alias dotfed='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
 alias dotfl="cd \$DOTFILES/local"

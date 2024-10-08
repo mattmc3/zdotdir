@@ -1,0 +1,15 @@
+function update_completions {
+  emulate -L zsh; setopt local_options
+  : ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
+  local destdir=$__zsh_config_dir/completions
+  mkdir -p $destdir
+
+  echo "Getting git completions..."
+  curl -fsSL -o $destdir/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+  curl -fsSL -o $destdir/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
+  echo "Generating starship completions..."
+  local _starship=$destdir/_starship
+  starship completions zsh >| $_starship
+}
+update_completions "$@"

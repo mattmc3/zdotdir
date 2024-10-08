@@ -12,9 +12,11 @@
 # Variables
 #
 
-zstyle -s ':zephyr:plugin:otp' home 'OTP_HOME' ||
-  OTP_HOME="${OTP_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/otp}"
-[[ -d $OTP_HOME ]] || mkdir -p $OTP_HOME
+zstyle -s ':zdotdir:plugin:otp' home 'SECRETS_HOME' ||
+  SECRETS_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/secrets"
+
+[[ -d $SECRETS_HOME ]] ||
+  git clone git@github.com:mattmc3/secrets $SECRETS_HOME
 
 #
 # Functions
@@ -30,7 +32,7 @@ autoload -Uz ${0:A:h}/functions/*(.:t)
 #
 
 function __otp_keys {
-  reply=($(find $OTP_HOME -name \*.otp.asc | xargs basename -s .otp.asc))
+  reply=($(find $SECRETS_HOME/otp -name \*.otp.asc | xargs basename -s .otp.asc))
 }
 
 compctl -K __otp_keys otp
@@ -39,4 +41,4 @@ compctl -K __otp_keys otp
 # Wrap up
 #
 
-zstyle ":zephyr:plugin:otp" loaded 'yes'
+zstyle ":zdotdir:plugin:otp" loaded 'yes'

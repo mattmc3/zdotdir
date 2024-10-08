@@ -17,6 +17,7 @@ cdpath=(
 # Set the list of directories that Zsh searches for programs.
 path=(
   # core
+  $prepath
   $path
 
   # emacs
@@ -31,15 +32,3 @@ path=(
   $HOMEBREW_PREFIX/lib/ruby/gems/*/bin(N)
   $HOME/.gem/ruby/*/bin(N)
 )
-
-# macOS
-if [[ "$OSTYPE" == darwin* ]]; then
-  # Make Apple Terminal behave.
-  export SHELL_SESSIONS_DISABLE=1
-fi
-
-# Enable less wait time between key presses.
-export KEYTIMEOUT=1
-
-# Use `< file` to quickly view the contents of any file.
-[[ -z "$READNULLCMD" ]] || READNULLCMD=$PAGER

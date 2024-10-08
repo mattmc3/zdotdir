@@ -1,5 +1,5 @@
 #compdef workon
 
-_files -W "$WORKON_HOME"
+_values 'venvs' $(venv -l)
 
 # vim: ft=zsh sw=2 ts=2 et

@@ -2,9 +2,9 @@
 
 #function otp {
   # set otp home
-  zstyle -s ':zephyr:plugin:otp' home 'OTP_HOME' ||
-    OTP_HOME="${OTP_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/otp}"
-  [[ -d $OTP_HOME ]] || mkdir -p $OTP_HOME
+  zstyle -s ':zdotdir:plugin:otp' home 'SECRETS_HOME' ||
+    SECRETS_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/secrets"
+  [[ -d $SECRETS_HOME ]] || mkdir -p $SECRETS_HOME
 
   if ! command -v oathtool > /dev/null 2>&1; then
     echo >&2 "otp: 'oathtool' not found. Install oathtool or oath-toolkit, depending on your OS."
@@ -16,12 +16,10 @@
     return 1
   fi
 
-  local -a recps
-  zstyle -a ':zephyr:plugin:otp' recipents 'recps'
-
-  local recp recipients=
-  for recp in $recps; do
-    recipients+="--recipient=$recp "
+  source $SECRETS_HOME/bin/gpg_key_ids.zsh
+  local recp recipients=()
+  for recp in ${(v)gpg_key_ids}; do
+    recipients+=("--recipient=$recp")
   done
 
   local -a flag_help flag_add flag_list
@@ -42,7 +40,7 @@
     return
   elif (( $#flag_list )); then
     local file
-    for file in $OTP_HOME/*.otp.asc; do
+    for file in $SECRETS_HOME/otp/*.otp.asc; do
       print $file:t:r:r
     done
   elif [[ -z "$1" ]]; then
@@ -53,13 +51,13 @@
     echo "First, enter the email address associated your GPG private key. You can add multiple."
     echo "When done, press enter to end with an empty line."
     echo "Next, you will paste your OTP secret key, followed by ^D to end the GPG message."
-    rm -f $OTP_HOME/$1.otp.asc
-    gpg ${=recipients} --armor --encrypt --output $OTP_HOME/$1.otp.asc /dev/stdin
-  elif [[ ! -f $OTP_HOME/$1.otp.asc ]]; then
+    rm -f $SECRETS_HOME/otp/$1.otp.asc
+    gpg ${=recipients} --armor --encrypt --output $SECRETS_HOME/otp/$1.otp.asc /dev/stdin
+  elif [[ ! -f $SECRETS_HOME/otp/$1.otp.asc ]]; then
     echo "otp: missing key '$1'. Run 'otp --add <key>' to add a new one-time password."
     return 1
   else
-    totpkey=$(gpg --quiet --decrypt $OTP_HOME/$1.otp.asc)
-    oathtool --totp --b $totpkey | tee /dev/stderr | clipcopy
+    totpkey=$(gpg --quiet --decrypt $SECRETS_HOME/otp/$1.otp.asc)
+    oathtool --totp --b $totpkey | tee /dev/stderr | pbcopy
   fi
 #}

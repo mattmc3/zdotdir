@@ -7,8 +7,9 @@
 # Antidote
 #
 
-# Keep all 3 for different test scenarios.
 : ${ANTIDOTE_HOME:=${XDG_CACHE_HOME:-~/.cache}/repos}
+
+# Keep all 3 for different test scenarios.
 antidote_repo=$ANTIDOTE_HOME/mattmc3/antidote
 # antidote_repo=~/Projects/mattmc3/antidote
 # antidote_repo=${HOMEBREW_PREFIX:-/opt/homebrew}/opt/antidote/share/antidote
@@ -17,23 +18,65 @@ zstyle ':antidote:home' path $ANTIDOTE_HOME
 zstyle ':antidote:repo' path $antidote_repo
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':antidote:plugin:*' defer-options '-p'
+zstyle ':antidote:*' zcompile 'yes'
 
 #
-# myzsh
+# Zephyr features
 #
 
-zstyle ':myzsh:feature:prompt:p10k-instant-prompt' enabled yes
-zstyle ':myzsh:feature:prompt' theme 'p10k' 'mmc'
+# Use caching.
+zstyle ':zephyr:plugin:*' 'use-cache' yes
 
 #
-# Custom
+# Editor
 #
 
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':zephyr:plugin:editor' key-bindings 'vi'
+
+# Auto convert .... to ../..
+zstyle ':zephyr:plugin:editor' dot-expansion 'yes'
+
+# Use ^z to return background processes to foreground.
+zstyle ':zephyr:plugin:editor' symmetric-ctrl-z 'yes'
+
+# Expand aliases to their actual command like Fish abbreviations.
+zstyle ':zephyr:plugin:editor' glob-alias 'yes'
 noexpand=(
   ls
   grep
   gpg
   vi
   z
+  0 1 2 3 4 5 6 7 8 9
 )
-zstyle ':myzsh:feature:abbreviations' noexpand $noexpand
+zstyle ':zephyr:plugin:editor:glob-alias' noexpand $noexpand
+
+# Set the default (magic) command when hitting enter on an empty prompt.
+zstyle ':zephyr:plugin:editor' magic-enter 'yes'
+# zstyle ':zephyr:plugin:editor:magic-enter' command 'ls -lh .'
+# zstyle ':zephyr:plugin:editor:magic-enter' git-command 'git status -u .'
+
+# Editor style
+zstyle -s ':zephyr:plugin:editor' key-bindings 'vi'
+
+# From compinit docs:
+# To avoid these tests and make all files found be used without asking, use the
+# option -u, and to make compinit silently ignore all insecure files and directories
+# use the option -i. This security check is skipped entirely when the -C option is
+# given, provided the dumpfile exists.
+zstyle ':zephyr:plugin:completion' 'disable-compfix' yes
+zstyle ':zephyr:plugin:completion' compstyle 'zephyr'
+
+#
+# Prompt
+#
+
+# Set prompt
+zstyle ':zephyr:plugin:prompt' theme starship mmc
+
+#
+# Completions
+#
+
+zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'

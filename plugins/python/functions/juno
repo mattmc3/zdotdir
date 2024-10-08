@@ -1,11 +1,16 @@
 #!/bin/zsh
 ##? Open a Jupyter notebook.
 
-if [[ -n "$1" ]]; then
-  cd "$1"
-else
-  local JUPYTER_HOME="${JUPYTER_HOME:-$HOME/Projects/jupyter}"
-  [[ -d $JUPYTER_HOME ]] || mkdir -p ${JUPYTER_HOME}
-  cd "$JUPYTER_HOME"
+if ! venv -p juno 2>/dev/null; then
+  venv juno
+  pip install --upgrade pip
+  pip install jupyterlab
+  pip install pandas
 fi
-jupyter notebook
+
+local jupyter_prj=$HOME/Projects/mattmc3/jupyter
+if [[ ! -d $jupyter_prj ]]; then
+  git clone git@github.com:mattmc3/jupyter $jupyter_prj
+fi
+
+jupyter lab ${1:-$jupyter_prj}

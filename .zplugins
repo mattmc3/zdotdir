@@ -2,43 +2,78 @@
 # .zplugins.txt - antidote plugins file
 #
 
-# Load near the top so you get p10k's instaprompt if you need it.
-#$ZSH_CUSTOM path:plugins/p10k-instaprompt
-#mattmc3/zfunctions
-#$ZSH_CUSTOM path:plugins/xdg
+#
+# Init
+#
 
-# Zephyr
-mattmc3/zephyr path:plugins/macos conditional:is-macos
+$ZSH_CUSTOM/plugins/p10k-instaprompt conditional:is-theme-p10k
+$ZSH_CUSTOM/plugins/starship-ftl conditional:is-theme-starship
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/homebrew
+$ZSH_CUSTOM/plugins/xdg
 
+#
+# Completions
+#
+
+mattmc3/ez-compinit
+zsh-users/zsh-completions kind:fpath path:src
+
+#
+# Prompts
+#
+
+mattmc3/zephyr path:plugins/prompt
+$ZDOTDIR/themes kind:fpath
+romkatv/powerlevel10k kind:fpath
+# sindresorhus/pure kind:fpath
+# miekg/lean kind:fpath
+
+#
 # Custom
-#$ZSH_CUSTOM path:plugins/abbreviations
-$ZSH_CUSTOM path:plugins/git
-$ZSH_CUSTOM path:plugins/golang
-$ZSH_CUSTOM path:plugins/otp
-$ZSH_CUSTOM path:plugins/python
+#
 
+$ZSH_CUSTOM/plugins/git
+$ZSH_CUSTOM/plugins/golang
+$ZSH_CUSTOM/plugins/otp
+$ZSH_CUSTOM/plugins/python
+
+#
 # Utils
+#
+
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/utility
 romkatv/zsh-bench kind:path
 ohmyzsh/ohmyzsh path:plugins/extract
-
-# Editor
-ohmyzsh/ohmyzsh path:plugins/magic-enter
-ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
-
-# macOS
-ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
-zshzoo/macos conditional:is-macos
-
-# Prompt
-sindresorhus/pure kind:fpath
-romkatv/powerlevel10k kind:fpath
-
-# Regular plugins
 mattmc3/zman
 
-zsh-users/zsh-completions kind:fpath path:src
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
+#
+# Editor
+#
 
-# vi: ft=config
+mattmc3/zephyr path:plugins/editor
+jeffreytse/zsh-vi-mode
+romkatv/zsh-no-ps2
+
+#
+# macOS
+#
+
+mattmc3/zephyr path:plugins/macos conditional:is-macos
+ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
+
+#
+# Fish-like
+#
+
+mattmc3/zephyr path:plugins/zfunctions
+mattmc3/zephyr path:plugins/confd
+#zdharma-continuum/fast-syntax-highlighting
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions post:post-autosuggestions
+zsh-users/zsh-history-substring-search post:post-history-substring-search
+
+# vi: ft=properties
