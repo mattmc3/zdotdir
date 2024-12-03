@@ -81,3 +81,10 @@ prompt "$ZSH_THEME[@]"
 
 # Always return success
 true
+
+# fnm
+FNM_PATH="/Users/lecoqjacob/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/Users/lecoqjacob/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi

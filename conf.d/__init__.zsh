@@ -4,7 +4,7 @@
 
 # Apps
 export EDITOR=nvim
-export VISUAL=code
+export VISUAL=nvim
 export PAGER=less
 
 # Set the list of directories that cd searches.
