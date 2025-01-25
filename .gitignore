@@ -1,0 +1,16 @@
+.external/
+.oh-my-zsh/
+.zcompcache/
+.zcompdump*
+.zdirs
+.zhistory
+.zlocal
+.zsh_history
+.zsh_sessions/
+*.bak
+*.cache
+*.local
+*.local.zsh
+*.zwc
+*.zwc.old
+~*
