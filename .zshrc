@@ -2,7 +2,9 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+__zsh_config_dir="${ZDOTDIR:-$HOME/.zsh}"
+export ZSH="$__zsh_config_dir/.oh-my-zsh"
+[ -d "$ZSH" ] || git clone --quiet https://github.com/ohmyzsh/ohmyzsh "$ZSH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
