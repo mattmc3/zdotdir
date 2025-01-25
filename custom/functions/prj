@@ -1,0 +1,51 @@
+#!/bin/zsh
+##? prj - project jumper
+if ! command -v fzf >/dev/null; then
+  echo "fzf command not found" >&2
+  return 1
+fi
+
+local query=()
+local project_dir=${XDG_PROJECTS_DIR:-$HOME/Projects}
+local usage=(
+  "prj [-h|--help]"
+  "prj [-d|--directory=<project_dir>] [<query...>]"
+)
+opterr() { echo >&2 "prj: Unknown option '$1'" }
+
+while (( $# )); do
+  case $1 in
+    --)                  shift; query+=("$@"); break     ;;
+    -h|--help)           printf "%s\n" $usage && return  ;;
+    -d|--directory)      shift; project_dir=$1           ;;
+    -d=*|--directory=*)  project_dir="${1#*=}"           ;;
+    -*)                  opterr $1 && return 2           ;;
+    *)                   query+=("$@"); break            ;;
+  esac
+  shift
+done
+
+if [[ $project_dir = '~/'* ]]; then
+  project_dir=${project_dir:s/~/$HOME}
+fi
+
+if [[ ! -d $project_dir ]]; then
+  echo >&2 "prj: Project home directory not found '$project_dir'"
+  return 1
+fi
+
+local projects=(
+  $project_dir/*/.git/..
+  $project_dir/*/*/.git/..
+)
+
+# absolute path with project dir prefix stripped
+projects=(${${projects:a}#*$project_dir/})
+
+# fzf a project
+local selection=$(printf "%s\n" ${projects[@]} | fzf --layout=reverse-list --query=$query)
+
+# cd to the selected project
+if [[ -n $selection ]] && [[ -d $project_dir/$selection ]]; then
+  cd $project_dir/$selection
+fi
