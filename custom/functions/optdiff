@@ -1,0 +1,9 @@
+#!/bin/zsh
+##? optdiff - show a diff between set options and Zsh defaults
+
+tmp1=$(mktemp)
+tmp2=$(mktemp)
+zsh -df -c "set -o" >| $tmp1
+set -o >| $tmp2
+gdiff --changed-group-format='%<' --unchanged-group-format='' $tmp2 $tmp1
+rm $tmp1 $tmp2

@@ -1,0 +1,129 @@
+#!/bin/zsh
+##? repo - Deal with git repos
+
+function __repo_help {
+  echo "repo - Deal with git repos"
+  echo ""
+  echo "commands:"
+  echo "  help   print this help"
+  echo "  home   print repo home"
+  echo "  ls     print repo list"
+  echo "  rm     remove repo"
+  echo "  in     install repo"
+  echo "  up     update repos"
+  echo ""
+  echo "examples:"
+  echo "  repo in <repos.txt"
+}
+
+function __repo_update {
+  local repodir=$REPO_HOME/$1
+  local oldsha=$(command git -C $repodir rev-parse --short HEAD)
+  command git -C $repodir pull --quiet --ff --depth 1 --rebase --autostash
+  local newsha=$(command git -C $repodir rev-parse --short HEAD)
+  if [ $oldsha != $newsha ]; then
+    echo "Repo updated: "$1" ($oldsha->$newsha)"
+  fi
+}
+
+function __repo_clone {
+  local repo=$1
+  local repodir=$REPO_HOME/$repo
+  if [ -d $repodir ]; then
+    echo "Found $repo..."
+    return
+  fi
+
+  echo "Cloning $repo..."
+  command git clone --quiet --depth 1 --recursive --shallow-submodules \
+    https://github.com/$repo $repodir
+
+  local init=$repodir/${repo:t}.plugin.zsh
+  if [[ ! -e $init ]]; then
+    local -a initfiles=($repodir/*.{plugin.zsh,zsh-theme,zsh,sh}(N))
+    (( $#initfiles )) && ln -sf $initfiles[1] $init
+  fi
+  if [[ $repo == sorin-ionescu/prezto ]]; then
+    for init in $repodir/modules/*/init.zsh; do
+      ln -sf $init $init:h/${init:h:t}.plugin.zsh
+    done
+  fi
+  echo "Cloned $repo."
+}
+
+function repo {
+  emulate -L zsh
+  setopt local_options extended_glob no_monitor
+
+  (( $# )) || {
+    echo >&2 "repo: Expecting command argument."
+    return 1
+  }
+
+  local repo err=1
+  local cmd=$1; shift
+  : ${REPO_HOME:=${XDG_CACHE_HOME:-$HOME/.cache}/repos}
+
+  # piped/redirected input
+  if ! [ -t 0 ]; then
+    local -a args=($@)
+    local data
+    while IFS= read -r data || [ -n "$data" ]; do
+      data=${data%\#*}
+      args+=($data)
+    done
+    set -- $args
+  fi
+
+  case "$cmd" in
+    help|-h|--help)
+      __repo_help
+    ;;
+    home)
+      echo $REPO_HOME
+    ;;
+    ls|list)
+      err=1
+      for repo in $REPO_HOME/*/*/.git(/N); do
+        echo ${repo:h:h:t}/${repo:h:t}
+        err=0
+      done
+      return $err
+    ;;
+    up|update)
+      echo "Checking for updates..."
+      for repo in $(repo ls); do
+        echo "$repo..."
+        __repo_update $repo &
+      done
+      wait
+      echo "Updates complete."
+    ;;
+    in|install)
+      for repo in $@; do
+        __repo_clone $repo &
+      done
+      wait
+    ;;
+    rm|del)
+      local err=0
+      for repo in $@; do
+        if ! [[ "$REPO_HOME" =~ $HOME/* ]]; then
+          echo >&2 "repo: \$REPO_HOME not set correctly '$REPO_HOME'."
+          return 2
+        elif ! [[ -d $REPO_HOME/$repo ]]; then
+          echo "Repo not found '$repo'."
+          err=1
+        else
+          command rm -rf -- $REPO_HOME/$repo
+        fi
+      done
+      return $err
+    ;;
+    *)
+      echo >&2 "repo: Unknown command '"$cmd"'"
+      return 1
+    ;;
+  esac
+}
+repo "$@"
