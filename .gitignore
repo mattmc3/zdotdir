@@ -7,6 +7,8 @@
 .zlocal
 .zsh_history
 .zsh_sessions/
+**/plugins/zsh-*/
+**/plugins/fast-syntax-highlighting/
 *.bak
 *.cache
 *.local
