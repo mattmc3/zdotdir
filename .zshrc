@@ -95,6 +95,12 @@ plugins=(
   autoloader
   iwd
   git
+
+  # Core
+  no-ps2
+  autosuggestions
+  syntax-highlighting
+  history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
