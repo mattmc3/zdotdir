@@ -1,8 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your Oh My Zsh installation.
+# Set default Zsh dirs
 __zsh_config_dir="${ZDOTDIR:-$HOME/.zsh}"
+__zsh_data_dir="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
+__zsh_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+for zdir in $__zsh_data_dir $__zsh_cache_dir; do
+  [[ -d "$_zdir" ]] && mkdir -p "$_zdir"
+done
+unset _zdir
+
+# Path to your Oh My Zsh installation.
 export ZSH="$__zsh_config_dir/.oh-my-zsh"
 [ -d "$ZSH" ] || git clone --quiet https://github.com/ohmyzsh/ohmyzsh "$ZSH"
 
@@ -63,10 +71,15 @@ ZSH_THEME="robbyrussell"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 ZSH_CUSTOM=$__zsh_config_dir/custom
+
+# Set completions variables
+ZSH_DISABLE_COMPFIX=true
+ZSH_COMPDUMP="$__zsh_cache_dir/zcompdump"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
