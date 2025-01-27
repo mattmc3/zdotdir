@@ -125,7 +125,9 @@ plugins=(
   history-substring-search
 )
 
+[[ -r $__zsh_config_dir/.zshrc.pre.local ]] && source $__zsh_config_dir/.zshrc.pre.local
 source $ZSH/oh-my-zsh.sh
+[[ -r $__zsh_config_dir/.zshrc.post.local ]] && source $__zsh_config_dir/.zshrc.post.local
 
 ### User configuration
 
