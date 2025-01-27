@@ -11,6 +11,20 @@ do
 done
 unset _zdir
 
+# Add any missing ZSH_CUSTOM repos
+repos=(
+  mattmc3/zman
+  zdharma-continuum/fast-syntax-highlighting
+  romkatv/zsh-no-ps2
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-completions
+)
+for repo in $repos; do
+  if [[ ! -d $ZSH_CUSTOM/plugins/${repo:t} ]]; then
+    git -C $ZSH_CUSTOM/plugins clone --quiet --depth 1 https://github.com/$repo
+  fi
+done
+
 # Make Terminal.app behave.
 if [[ "$OSTYPE" == darwin* ]]; then
   export SHELL_SESSIONS_DISABLE=1
