@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -18,7 +25,8 @@ export ZSH="$__zsh_config_dir/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -89,7 +97,6 @@ ZSH_COMPDUMP="$__zsh_cache_dir/zcompdump"
 plugins=(
   # Essentials
   __init__
-  history
   brew
 
   # Clipboard
@@ -106,19 +113,44 @@ plugins=(
 
   # Zsh Custom
   autoloader
-  iwd
   git
+  terminal
 
   # Core
-  no-ps2
-  autosuggestions
-  syntax-highlighting
+  zsh-no-ps2
+  zsh-autosuggestions
+  fast-syntax-highlighting
   history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+### User configuration
+
+## Config magic-enter
+# Set the default commands to run when none is given
+MAGIC_ENTER_GIT_COMMAND='git status -sb'
+MAGIC_ENTER_OTHER_COMMAND='ls'
+
+## Config zsh-autosuggestions
+# Set highlight color, default 'fg=8'.
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+
+# Set key bindings.
+if [[ -n "$key_info" ]]; then
+  # vi
+  bindkey -M viins "$key_info[Control]F" vi-forward-word
+  bindkey -M viins "$key_info[Control]E" vi-add-eol
+fi
+
+## Config cdpath
+# Set the list of directories that cd searches.
+cdpath=(
+  $HOME/Projects(N/)
+  $HOME/Projects/jtb/(N/)
+  $HOME/Projects/mattmc3/(N/)
+  $cdpath
+)
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -146,3 +178,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.zsh/.p10k.zsh.
+[[ ! -f ${ZDOTDIR:-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR:-$HOME}/.p10k.zsh
