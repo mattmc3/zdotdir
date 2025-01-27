@@ -108,6 +108,8 @@ plugins=(
   colored-man-pages
 
   # Utils
+  direnv
+  macos
   extract
   zoxide
 
