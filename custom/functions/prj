@@ -35,8 +35,8 @@ if [[ ! -d $project_dir ]]; then
 fi
 
 local projects=(
-  $project_dir/*/.git/..
-  $project_dir/*/*/.git/..
+  $project_dir/*/.git/..(N)
+  $project_dir/*/*/.git/..(N)
 )
 
 # absolute path with project dir prefix stripped
