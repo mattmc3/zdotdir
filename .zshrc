@@ -108,6 +108,7 @@ plugins=(
   colored-man-pages
 
   # Utils
+  otp
   direnv
   macos
   extract
