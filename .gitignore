@@ -10,6 +10,7 @@
 **/plugins/zman/
 **/plugins/zsh-*/
 **/plugins/fast-syntax-highlighting/
+**/themes/powerlevel10k/
 *.bak
 *.cache
 *.local
