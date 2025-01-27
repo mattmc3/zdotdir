@@ -92,6 +92,9 @@ alias fdot='cd ${XDG_CONFIG_HOME:-~/.config}/fish'
 alias fconf=fdot
 alias zdot='cd $ZDOTDIR'
 
+# fonts
+alias fontlist="system_profiler SPFontsDataType | grep 'Full Name' | awk -F: '{print \$2}' | sed 's/^ *//g' | sort"
+
 # gpg
 export GNUPGHOME=${GNUPGHOME:=${XDG_DATA_HOME:-$HOME/.local/share}/gnupg}
 [[ -e $GNUPGHOME:h ]] || mkdir -p $GNUPGHOME:h
