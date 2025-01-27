@@ -113,6 +113,7 @@ plugins=(
   macos
   extract
   zoxide
+  zsh-bench
 
   # Zsh Custom
   autoloader

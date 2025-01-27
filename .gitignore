@@ -9,6 +9,7 @@
 .zsh_sessions/
 **/plugins/zman/
 **/plugins/zsh-*/
+!**/plugins/zsh-bench/
 **/plugins/fast-syntax-highlighting/
 **/themes/powerlevel10k/
 *.bak
