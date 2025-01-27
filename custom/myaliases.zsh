@@ -80,6 +80,9 @@ alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 # auto-orient images based on exif tags
 alias autorotate="jhead -autorot"
 
+# color
+alias colormap='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+"\n"}; done'
+
 # dotfiles
 : ${DOTFILES:=$HOME/.dotfiles}
 alias dotf='cd "$DOTFILES"'
