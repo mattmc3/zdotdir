@@ -12,16 +12,26 @@ done
 unset _zdir
 
 # Add any missing ZSH_CUSTOM repos
-repos=(
+external_plugins=(
   mattmc3/zman
   zdharma-continuum/fast-syntax-highlighting
   romkatv/zsh-no-ps2
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-completions
 )
-for repo in $repos; do
+for repo in $external_plugins; do
   if [[ ! -d $ZSH_CUSTOM/plugins/${repo:t} ]]; then
     git -C $ZSH_CUSTOM/plugins clone --quiet --depth 1 https://github.com/$repo
+  fi
+done
+
+# Add missing themes
+external_themes=(
+  romkatv/powerlevel10k
+)
+for repo in $external_themes; do
+  if [[ ! -d $ZSH_CUSTOM/themes/${repo:t} ]]; then
+    git -C $ZSH_CUSTOM/themes clone --quiet --depth 1 https://github.com/$repo
   fi
 done
 
