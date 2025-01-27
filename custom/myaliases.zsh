@@ -89,6 +89,15 @@ alias fdot='cd ${XDG_CONFIG_HOME:-~/.config}/fish'
 alias fconf=fdot
 alias zdot='cd $ZDOTDIR'
 
+# gpg
+export GNUPGHOME=${GNUPGHOME:=${XDG_DATA_HOME:-$HOME/.local/share}/gnupg}
+[[ -e $GNUPGHOME:h ]] || mkdir -p $GNUPGHOME:h
+alias gpg="${aliases[gpg]:-gpg} --homedir \"$GNUPGHOME\""
+
+# iwd - initial working directory
+: ${IWD:=$PWD}
+alias iwd='cd $IWD'
+
 # java
 alias setjavahome="export JAVA_HOME=\`/usr/libexec/java_home\`"
 
