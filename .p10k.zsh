@@ -33,6 +33,7 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     # os_icon               # os identifier
+    shell                   # shell indicator
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
@@ -482,13 +483,15 @@
     if (( $1 )); then
       # Styling for up-to-date Git status.
       local       meta='%f'     # default foreground
-      local      clean='%76F'   # green foreground
+      local      clean='%205F'  # magenta foreground
+      #local      clean='%76F'   # green foreground
       local      dirty='%226F'  # yellow foreground
       local   modified='%39F'   # blue foreground
       local conflicted='%196F'  # red foreground
     else
       # Styling for incomplete and stale Git status.
       local       meta='%244F'  # grey foreground
+      local     branch='%244F'  # grey foreground
       local      clean='%244F'  # grey foreground
       local      dirty='%244F'  # grey foreground
       local   modified='%244F'  # grey foreground
@@ -538,7 +541,7 @@
     if (( VCS_STATUS_NUM_STAGED || VCS_STATUS_NUM_UNSTAGED || VCS_STATUS_NUM_UNTRACKED )) ||
        (( VCS_STATUS_HAS_UNSTAGED == -1 ))
     then
-      res+="${dirty}*"  # ✱ • *
+      res+="${dirty}＊"  # ＊ ✱ • *
     fi
     if (( VCS_STATUS_COMMITS_AHEAD || VCS_STATUS_COMMITS_BEHIND )); then
       res+=" "
@@ -1764,6 +1767,14 @@
     # instant_prompt_example. This will give us the same `example` prompt segment in the instant
     # and regular prompts.
     prompt_example
+  }
+
+  # Add shell indicator to prompt.
+  function prompt_shell() {
+    p10k segment -f 6 -t '🅉 '
+  }
+  function instant_prompt_shell() {
+    prompt_shell
   }
 
   # User-defined prompt segments can be customized the same way as built-in segments.
