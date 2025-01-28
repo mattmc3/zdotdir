@@ -12,4 +12,9 @@ function set_terminal_var() {
     printf "\033]1337;SetUserVar=%s=%s\007" "$1" "$val"
   fi
 }
-set_terminal_var "TERM_CURRENT_SHELL" "zsh ${ZSH_PATCHLEVEL:-$ZSH_VERSION}"
+
+function set_current_shell_precmd() {
+  set_terminal_var "TERM_CURRENT_SHELL" "zsh ${ZSH_PATCHLEVEL:-$ZSH_VERSION}"
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd set_current_shell_precmd
