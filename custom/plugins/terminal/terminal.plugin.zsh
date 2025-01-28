@@ -14,7 +14,7 @@ function set_terminal_var() {
 }
 
 function set_current_shell_precmd() {
-  set_terminal_var "TERM_CURRENT_SHELL" "zsh ${ZSH_PATCHLEVEL:-$ZSH_VERSION}"
+  set_terminal_var "TERM_CURRENT_SHELL" "zsh ${${ZSH_PATCHLEVEL:-$ZSH_VERSION}#zsh-}"
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd set_current_shell_precmd
