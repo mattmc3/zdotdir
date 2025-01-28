@@ -108,17 +108,18 @@ plugins=(
   colored-man-pages
 
   # Utils
+  git
   otp
   direnv
   macos
   extract
   zoxide
-  zsh-bench
 
   # Zsh Custom
   autoloader
-  git
   terminal
+  utility
+  zsh-bench
 
   # Core
   zsh-no-ps2
