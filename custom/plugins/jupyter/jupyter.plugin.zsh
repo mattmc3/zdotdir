@@ -4,7 +4,7 @@
 # jupyter
 export JUPYTER_CONFIG_DIR="${JUPYTER_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/jupyter}"
 
-() {
+function juno {
   local workon_home="${WORKON_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/venvs}"
   [[ -d "$workon_home" ]] || mkdir -p "$workon_home"
 
@@ -20,11 +20,11 @@ export JUPYTER_CONFIG_DIR="${JUPYTER_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.confi
     pip install pandas
     deactivate
   fi
+
+  local jupyter_prj=$HOME/Projects/mattmc3/jupyter
+  if [[ ! -d $jupyter_prj ]]; then
+    git clone git@github.com:mattmc3/jupyter $jupyter_prj
+  fi
+
+  jupyter lab "${1:-$jupyter_prj}"
 }
-
-local jupyter_prj=$HOME/Projects/mattmc3/jupyter
-if [[ ! -d $jupyter_prj ]]; then
-  git clone git@github.com:mattmc3/jupyter $jupyter_prj
-fi
-
-jupyter lab "${1:-$jupyter_prj}"
