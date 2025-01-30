@@ -108,16 +108,20 @@ plugins=(
   colored-man-pages
 
   # Utils
-  git
-  otp
   direnv
-  macos
   extract
+  jupyter
+  git
+  macos
+  magic-enter
+  otp
+  python
   zoxide
 
   # Zsh Custom
+  zman
   autoloader
-  terminal
+  wezterm
   utility
   zsh-bench
 
