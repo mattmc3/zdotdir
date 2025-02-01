@@ -94,6 +94,7 @@ ZSH_COMPDUMP="$__zsh_cache_dir/zcompdump"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+typeset -gU plugins
 plugins=(
   # Essentials
   __init__
