@@ -7,6 +7,15 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+typeset -gU cdpath fpath path prepath  # ensure unique
+
+# Prepath lets us always keep certain directories at the front. If something changes
+# path, you can set `path=($prepath $path)` again at the end of .zshrc.
+prepath=(
+  ~/bin
+  ~/.local/bin
+)
+path=($prepath $path)
 
 # Set default Zsh dirs
 __zsh_config_dir="${ZDOTDIR:-$HOME/.zsh}"
@@ -155,7 +164,6 @@ if [[ -n "$key_info" ]]; then
   bindkey -M viins "$key_info[Control]E" vi-add-eol
 fi
 
-## Config cdpath
 # Set the list of directories that cd searches.
 cdpath=(
   $HOME/Projects(N/)
