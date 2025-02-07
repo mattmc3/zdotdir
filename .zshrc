@@ -120,8 +120,9 @@ plugins=(
   # Utils
   direnv
   extract
-  jupyter
   git
+  gitignore
+  jupyter
   macos
   magic-enter
   otp
