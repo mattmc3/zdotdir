@@ -33,12 +33,13 @@ romkatv/powerlevel10k
 #
 
 mattmc3/zsh_custom path:plugins/xdg
+mattmc3/zsh_custom path:plugins/azure
 mattmc3/zsh_custom path:plugins/common-aliases
 mattmc3/zsh_custom path:plugins/dotfiles
 mattmc3/zsh_custom path:plugins/dotnet
 mattmc3/zsh_custom path:plugins/git
-mattmc3/zsh_custom path:plugins/gpg
 mattmc3/zsh_custom path:plugins/golang
+mattmc3/zsh_custom path:plugins/gpg
 mattmc3/zsh_custom path:plugins/iwd
 mattmc3/zsh_custom path:plugins/jupyter
 mattmc3/zsh_custom path:plugins/otp
