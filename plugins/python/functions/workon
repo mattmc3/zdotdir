@@ -1,4 +1,0 @@
-#!/bin/zsh
-##? Work on (activate) a Python venv.
-
-venv -- "$@"

@@ -1,0 +1,96 @@
+#
+# .zsh_plugins.txt - antidote plugins file
+#
+
+#
+# Init
+#
+
+mattmc3/zsh_custom path:lib
+#mattmc3/zsh_custom path:plugins/p10k-instaprompt
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/homebrew conditional:is-macos
+
+#
+# Completions
+#
+
+mattmc3/ez-compinit
+zsh-users/zsh-completions kind:fpath path:src
+
+#
+# Prompts
+#
+
+romkatv/powerlevel10k
+# mattmc3/zephyr path:plugins/prompt
+# sindresorhus/pure kind:fpath
+# miekg/lean kind:fpath
+
+#
+# Custom
+#
+
+mattmc3/zsh_custom path:plugins/xdg
+mattmc3/zsh_custom path:plugins/common-aliases
+mattmc3/zsh_custom path:plugins/dotfiles
+mattmc3/zsh_custom path:plugins/dotnet
+mattmc3/zsh_custom path:plugins/git
+mattmc3/zsh_custom path:plugins/gpg
+mattmc3/zsh_custom path:plugins/golang
+mattmc3/zsh_custom path:plugins/iwd
+mattmc3/zsh_custom path:plugins/jupyter
+mattmc3/zsh_custom path:plugins/otp
+# mattmc3/zsh_custom path:plugins/prj
+mattmc3/zsh_custom path:plugins/python
+mattmc3/zsh_custom path:plugins/secrets
+mattmc3/zsh_custom path:plugins/todotxt
+mattmc3/zsh_custom path:plugins/up
+#mattmc3/zsh_custom path:plugins/terminal
+mattmc3/zsh_custom path:plugins/wezterm
+mattmc3/zsh_custom path:plugins/zoxide
+
+#
+# OMZ
+#
+
+# ohmyzsh/ohmyzsh path:plugins/magic-enter   # included in zephyr editor
+# ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z  # included in zephyr editor
+ohmyzsh/ohmyzsh path:plugins/extract
+
+#
+# Utils
+#
+
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/utility
+romkatv/zsh-bench kind:path
+aloxaf/fzf-tab
+mattmc3/zman
+
+#
+# Editor
+#
+
+mattmc3/zephyr path:plugins/editor
+jeffreytse/zsh-vi-mode
+romkatv/zsh-no-ps2
+
+#
+# macOS
+#
+
+mattmc3/zephyr path:plugins/macos conditional:is-macos
+ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
+
+#
+# Final
+#
+
+mattmc3/zsh_custom path:plugins/fast-syntax-highlighting
+mattmc3/zsh_custom path:plugins/zsh-autosuggestions
+mattmc3/zsh_custom path:plugins/history-substring-search
+
+# vi: ft=properties

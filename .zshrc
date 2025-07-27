@@ -1,79 +1,50 @@
 #!/bin/zsh
 #
-# .zshrc - Run on interactive Zsh session.
+# .zshrc - Zsh file loaded on interactive shell sessions.
 #
 
-#
 # Profiling
-#
-
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-#
-# Zstyles
-#
+# # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
+# # Initialization code that may require console input (password prompts, [y/n]
+# # confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Load .zstyles file with customizations.
-[[ -r ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
+# Lazy-load (autoload) Zsh function files from a directory.
+ZFUNCDIR=${ZDOTDIR:-$HOME/.config/zsh}/functions
+fpath=($ZFUNCDIR $fpath)
+autoload -Uz $ZFUNCDIR/*(.:t)
 
-#
-# Theme
-#
+# Set any zstyles you might use for configuration.
+[[ ! -f ${ZDOTDIR:-$HOME}/.zstyles ]] || source ${ZDOTDIR:-$HOME}/.zstyles
 
-# Set prompt theme
-typeset -ga ZSH_THEME
-zstyle -a ':zephyr:plugin:prompt' theme ZSH_THEME ||
-ZSH_THEME=(p10k mmc)
+# Clone antidote if necessary.
+if [[ ! -d ${ZDOTDIR:-$HOME}/.antidote ]]; then
+  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-$HOME}/.antidote
+fi
 
-# Set helpers for antidote.
-is-theme-p10k()     { [[ "$ZSH_THEME" == (p10k|powerlevel10k)* ]] }
-is-theme-starship() { [[ "$ZSH_THEME" == starship* ]] }
+# Create an amazing Zsh config using antidote plugins.
+source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
+antidote load
 
-#
-# Libs
-#
+# Source anything in conf.d.
+# for _rc in ${ZDOTDIR:-$HOME}/conf.d/*.zsh(N); do
+#   # Ignore tilde files.
+#   if [[ $_rc:t != '~'* ]]; then
+#     source "$_rc"
+#   fi
+# done
+# unset _rc
 
-# Load things from lib.
-for zlib in $ZDOTDIR/lib/*.zsh; source $zlib
-unset zlib
-
-#
-# Aliases
-#
-
-[[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
-
-#
-# Completions
-#
-
-# Uncomment to manually initialize completion system, or let Zephyr
-# do it automatically in the zshrc-post hook.
-# ZSH_COMPDUMP=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
-# [[ -d $ZSH_COMPDUMP:h ]] || mkdir -p $ZSH_COMPDUMP:h
-# autoload -Uz compinit && compinit -i -d $ZSH_COMPDUMP
-
-#
-# Prompt
-#
-
-# Uncomment to manually set your prompt, or let Zephyr do it automatically in the
-# zshrc-post hook. Note that some prompts like powerlevel10k may not work well
-# with post_zshrc.
-setopt prompt_subst transient_rprompt
-autoload -Uz promptinit && promptinit
-prompt "$ZSH_THEME[@]"
-
-#
-# Wrap up
-#
+# To customize prompt, run `p10k configure` or edit .p10k.zsh.
+[[ ! -f ${ZDOTDIR:-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR:-$HOME}/.p10k.zsh
 
 # Never start in the root file system. Looking at you, Zed.
 [[ "$PWD" != "/" ]] || cd
-
-# Manually call post_zshrc to bypass the hook
-(( $+functions[run_post_zshrc] )) && run_post_zshrc
 
 # Finish profiling by calling zprof.
 [[ "$ZPROFRC" -eq 1 ]] && zprof
