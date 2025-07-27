@@ -1,4 +1,5 @@
 #!/bin/sh
+# shellcheck disable=SC3043
 # repo - Deal with git repos
 
 REPO_HOME="${XDG_CACHE_HOME:-$HOME/.cache}/repos"
@@ -19,6 +20,7 @@ repo_help() {
 }
 
 repo_update() {
+  local repodir oldsha newsha
   repodir="$REPO_HOME/$1"
   oldsha=$(git -C "$repodir" rev-parse --short HEAD 2>/dev/null)
   git -C "$repodir" pull --quiet --ff --depth 1 --rebase --autostash
@@ -29,6 +31,7 @@ repo_update() {
 }
 
 repo_clone() {
+  local repo repodir init file
   repo="$1"
   repodir="$REPO_HOME/$repo"
   if [ -d "$repodir" ]; then
@@ -40,10 +43,10 @@ repo_clone() {
     "https://github.com/$repo" "$repodir"
   init="$repodir/$(basename "$repo").plugin.zsh"
   if [ ! -e "$init" ]; then
-    set -- "$(find "$repodir" -maxdepth 1 -type f \( -name '*.plugin.zsh' -o -name '*.zsh-theme' -o -name '*.zsh' -o -name '*.sh' \) 2>/dev/null)"
-    if [ "$1" ]; then
-      ln -sf "$1" "$init"
-    fi
+    find "$repodir" -maxdepth 1 -type f \( -name '*.plugin.zsh' -o -name '*.zsh-theme' -o -name '*.zsh' -o -name '*.sh' \) 2>/dev/null | while IFS= read -r file; do
+      ln -sf "$file" "$init"
+      break
+    done
   fi
   if [ "$repo" = "sorin-ionescu/prezto" ]; then
     for init in "$repodir"/modules/*/init.zsh; do
@@ -54,6 +57,7 @@ repo_clone() {
 }
 
 repo_main() {
+  local cmd err output repo repo_path parent_path data
   if [ "$#" -eq 0 ]; then
     repo_help
     return 1
