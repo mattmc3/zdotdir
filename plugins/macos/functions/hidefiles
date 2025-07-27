@@ -1,0 +1,3 @@
+#!/bin/zsh
+##? hidefiles - Hide hidden dotfiles in Finder.
+defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder

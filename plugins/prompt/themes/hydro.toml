@@ -1,0 +1,62 @@
+#
+# hydro - mimic Fish's hydro prompt
+#
+
+add_newline = false
+
+# A minimal left prompt
+format = """$all$directory$git_branch${custom.git_status_dirty}$git_status$cmd_duration$status$character"""
+
+# no right prompt
+right_format = ""
+
+# Timeout for commands executed by starship (in milliseconds)
+command_timeout=2000
+
+[character]
+success_symbol = "[❱](purple)"
+error_symbol = "[❱](red)"
+vicmd_symbol = "[❰](cyan)"
+
+[python]
+format = '[(\($virtualenv\) )]($style)'
+style = 'white'
+
+[directory]
+style = "blue"
+truncation_length = 1
+truncation_symbol = ""
+fish_style_pwd_dir_length = 1
+
+# right prompt uses left space padding
+[git_branch]
+format = '[$branch]($style)'
+style = 'bold green'
+
+[git_status]
+format = "[($ahead_behind$stashed)]($style) "
+style = "cyan"
+stashed = "≡"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+
+[custom.git_status_dirty]
+when = 'test -n "$(git status --porcelain 2>/dev/null)"'
+symbol = "•"
+style = "white"
+format="[$symbol]($style)"
+shell = ["zsh", "--no-rcs", "--no-globalrcs"]
+
+[cmd_duration]
+format = '[$duration]($style) '
+
+[line_break]
+disabled = true
+
+[status]
+disabled = false
+pipestatus = true
+format = '[$symbol$int]($style)'
+symbol = '✘'
+pipestatus_format = '\[$pipestatus\]($style)'

@@ -7,7 +7,6 @@
 #
 
 $ZSH_CUSTOM/plugins/p10k-instaprompt conditional:is-theme-p10k
-$ZSH_CUSTOM/plugins/starship-ftl conditional:is-theme-starship
 mattmc3/zephyr path:plugins/environment
 mattmc3/zephyr path:plugins/homebrew
 $ZSH_CUSTOM/plugins/xdg
