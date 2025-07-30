@@ -28,20 +28,17 @@ zstyle ':antidote:*' zcompile 'yes'
 zstyle ':zephyr:plugin:*' 'use-cache' yes
 
 #
+# Completions
+#
+
+zstyle ':zsh_custom:plugin:*' 'use-cache' no
+zstyle ':zsh_custom:plugin:completion' compstyle zshzoo
+
+#
 # Editor
 #
 
-# Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':zephyr:plugin:editor' key-bindings 'vi'
-
-# Auto convert .... to ../..
-zstyle ':zephyr:plugin:editor' dot-expansion 'yes'
-
-# Use ^z to return background processes to foreground.
-zstyle ':zephyr:plugin:editor' symmetric-ctrl-z 'yes'
-
 # Expand aliases to their actual command like Fish abbreviations.
-zstyle ':zephyr:plugin:editor' glob-alias 'yes'
 noexpand=(
   ls
   grep
@@ -50,23 +47,26 @@ noexpand=(
   z
   0 1 2 3 4 5 6 7 8 9
 )
-zstyle ':zephyr:plugin:editor:glob-alias' noexpand $noexpand
+zstyle ':zsh_custom:plugin:editor:auto-expand-aliases' noexpand $noexpand
 
-# Set the default (magic) command when hitting enter on an empty prompt.
-zstyle ':zephyr:plugin:editor' magic-enter 'yes'
-# zstyle ':zephyr:plugin:editor:magic-enter' command 'ls -lh .'
-# zstyle ':zephyr:plugin:editor:magic-enter' git-command 'git status -u .'
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':zsh_custom:plugin:editor' key-bindings 'vi'
 
-# Editor style
-zstyle -s ':zephyr:plugin:editor' key-bindings 'vi'
+# Enable all the editor extensions.
+zstyle ':zsh_custom:plugin:editor:*' 'enabled' 'yes'
 
-# From compinit docs:
-# To avoid these tests and make all files found be used without asking, use the
-# option -u, and to make compinit silently ignore all insecure files and directories
-# use the option -i. This security check is skipped entirely when the -C option is
-# given, provided the dumpfile exists.
-zstyle ':zephyr:plugin:completion' 'disable-compfix' yes
-zstyle ':zephyr:plugin:completion' compstyle 'zephyr'
+#
+# ZSH_CUSTOM features
+#
+
+# git
+zstyle ':zsh_custom:plugin:git' default-user mattmc3
+
+# zshrc.d location
+zstyle ':zsh_custom:plugin:zshrcd' directory $ZDOTDIR/conf.d
+
+# zfunctions location
+zstyle ':zsh_custom:plugin:zfunctions' directory $ZDOTDIR/functions
 
 #
 # Prompt
@@ -74,9 +74,3 @@ zstyle ':zephyr:plugin:completion' compstyle 'zephyr'
 
 # Set prompt
 zstyle ':zephyr:plugin:prompt' theme p10k mmc
-
-#
-# Completions
-#
-
-zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
