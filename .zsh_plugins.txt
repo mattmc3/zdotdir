@@ -39,6 +39,15 @@ romkatv/powerlevel10k
 # miekg/lean kind:fpath
 
 #
+# Clipboard
+#
+
+# ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+# ohmyzsh/ohmyzsh path:plugins/copypath
+# ohmyzsh/ohmyzsh path:plugins/copybuffer
+# ohmyzsh/ohmyzsh path:plugins/copyfile
+
+#
 # Custom
 #
 
@@ -75,6 +84,7 @@ mattmc3/zsh_custom path:plugins/zoxide
 
 # ohmyzsh/ohmyzsh path:plugins/magic-enter   # included in editor
 # ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z  # included in editor
+ohmyzsh/ohmyzsh path:plugins/direnv
 ohmyzsh/ohmyzsh path:plugins/extract
 
 #
