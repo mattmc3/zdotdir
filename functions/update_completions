@@ -1,3 +1,4 @@
+#!/bin/zsh
 function update_completions {
   emulate -L zsh; setopt local_options
   : ${__zsh_config_dir:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
