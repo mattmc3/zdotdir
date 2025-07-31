@@ -4,23 +4,6 @@
 #
 
 #
-# Antidote
-#
-
-: ${ANTIDOTE_HOME:=${XDG_CACHE_HOME:-~/.cache}/repos}
-
-# Keep all 3 for different test scenarios.
-antidote_repo=$ANTIDOTE_HOME/mattmc3/antidote
-# antidote_repo=~/Projects/mattmc3/antidote
-# antidote_repo=${HOMEBREW_PREFIX:-/opt/homebrew}/opt/antidote/share/antidote
-
-zstyle ':antidote:home' path $ANTIDOTE_HOME
-zstyle ':antidote:repo' path $antidote_repo
-zstyle ':antidote:bundle' use-friendly-names 'yes'
-zstyle ':antidote:plugin:*' defer-options '-p'
-zstyle ':antidote:*' zcompile 'yes'
-
-#
 # Zephyr features
 #
 

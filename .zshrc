@@ -14,6 +14,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Add custom completions
+fpath=(${ZDOTDIR:-$HOME/.config/zsh}/completions $fpath)
+
 # Lazy-load (autoload) Zsh function files from a directory.
 # ZFUNCDIR=${ZDOTDIR:-$HOME/.config/zsh}/functions
 # fpath=($ZFUNCDIR $fpath)
@@ -22,17 +25,11 @@ fi
 # Set any zstyles you might use for configuration.
 [[ ! -f ${ZDOTDIR:-$HOME}/.zstyles ]] || source ${ZDOTDIR:-$HOME}/.zstyles
 
-# Clone antidote if necessary.
-if [[ ! -d ${ZDOTDIR:-$HOME}/.antidote ]]; then
-  git clone https://github.com/mattmc3/antidote ${ZDOTDIR:-$HOME}/.antidote
-fi
-
-# Set dev location.
+# Set zsh_custom dev location for use in antidote plugins.
 ZSH_CUSTOM_DEV=$HOME/Projects/mattmc3/zsh_custom
 
 # Create an amazing Zsh config using antidote plugins.
-source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
-antidote load
+source ${ZDOTDIR:-$HOME/.config/zsh}/lib/antidote.zsh
 
 # To customize prompt, run `p10k configure` or edit .p10k.zsh.
 [[ ! -f ${ZDOTDIR:-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR:-$HOME}/.p10k.zsh
