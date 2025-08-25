@@ -27,6 +27,7 @@ zsh-users/zsh-completions kind:fpath path:src
 
 mattmc3/zsh_custom path:plugins/editor
 # jeffreytse/zsh-vi-mode
+# sorin-ionescu/prezto path:modules/editor
 # romkatv/zsh-no-ps2
 
 #
@@ -106,9 +107,10 @@ ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
 # Final
 #
 
-mattmc3/zsh_custom path:plugins/zshrcd
 mattmc3/zsh_custom path:plugins/fast-syntax-highlighting
 mattmc3/zsh_custom path:plugins/autosuggestions
-#mattmc3/zsh_custom path:plugins/history-substring-search
+mattmc3/zsh_custom path:plugins/history-substring-search
+#zsh-users/zsh-history-substring-search
+mattmc3/zsh_custom path:plugins/zshrcd
 
 # vi: ft=properties
