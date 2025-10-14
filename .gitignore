@@ -1,5 +1,7 @@
-.external/
 .oh-my-zsh/
+ohmyzsh/
+custom/
+.custom/
 .zcompcache/
 .zcompdump*
 .zdirs
@@ -7,15 +9,10 @@
 .zlocal
 .zsh_history
 .zsh_sessions/
-**/plugins/zman/
-**/plugins/zsh-*/
-!**/plugins/zsh-bench/
-**/plugins/fast-syntax-highlighting/
-**/themes/powerlevel10k/
 *.bak
 *.cache
 *.local
 *.local.zsh
 *.zwc
-*.zwc.old
+*.old
 ~*
