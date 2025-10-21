@@ -1,0 +1,14 @@
+.cache/
+.plugins/
+.zcompcache/
+.zcompdump*
+.zdirs
+.zsh_history
+.zsh_sessions/
+*.bak
+*.cache
+*.local
+*.local.zsh
+*.old
+*.zwc
+~*
