@@ -1,0 +1,37 @@
+#!/bin/zsh
+##? trash - Move files to macOS trash
+
+#function trash {
+
+emulate -L zsh
+setopt local_options extended_glob
+
+if (( $# == 0 )); then
+  echo >&2 "Usage: trash <files>"
+  return 1
+fi
+
+if [[ $OSTYPE != darwin* ]]; then
+  print -ru2 -- "trash: macOS not detected."
+  return 1
+fi
+
+local file
+local -a files
+for file in $@; do
+  if [[ -e $file ]]; then
+    files+=("the POSIX file \"${file:A}\"")
+  else
+    print -ru2 -- "trash: No such file or directory '$file'."
+    return 1
+  fi
+done
+
+if (( $#files == 0 )); then
+  print -ru2 -- 'usage: trash <files...>'
+  return 64 # match rm's return code
+fi
+
+osascript 2>&1 >/dev/null -e "tell app \"Finder\" to move { "${(pj., .)files}" } to trash"
+
+#}
