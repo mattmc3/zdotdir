@@ -5,6 +5,9 @@
 .zdirs
 .zsh_history
 .zsh_sessions/
+plugins/zsh-*
+plugins/powerlevel10k
+plugins/fast-syntax-highlighting
 *.bak
 *.cache
 *.local
