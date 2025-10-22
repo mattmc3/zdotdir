@@ -1,0 +1,15 @@
+#!/bin/zsh
+##? Quickly go up any number of directories.
+function up {
+  local parents=${1:-1}
+  if ! (( "$parents" > 0 )); then
+    echo >&2 "up: expecting a numeric parameter"
+    return 1
+  fi
+  local i dotdot=".."
+  for ((i = 1 ; i < parents ; i++)); do
+    dotdot+="/.."
+  done
+  cd $dotdot
+}
+up "$@"

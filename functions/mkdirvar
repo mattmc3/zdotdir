@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# Make a directory from a variable name.
+# function mkdirvar {
+emulate -L zsh
+local zdirvar
+for zdirvar in $@; do
+  [[ -n "$dirvar" ]] && [[ -n "${(P)dirvar}" ]] || continue
+  [[ -d "${(P)zdirvar}" ]] || mkdir -p "$(P){zdirvar}"
+done
+# }

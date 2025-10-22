@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+# Cache the results of an eval command
+# function cached-eval {
+emulate -L zsh; setopt local_options extended_glob
+(( $# >= 2 )) || return 1
+
+local cmdname=$1; shift
+local cachefile=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/cached-eval/${cmdname}.zsh
+local -a cached=($cachefile(Nmh-20))
+# If the file has no size (is empty), or is older than 20 hours re-gen the cache.
+if [[ ! -s $cachefile ]] || (( ! ${#cached} )); then
+  mkdir -p ${cachefile:h}
+  "$@" >| $cachefile
+fi
+source $cachefile
+# }
