@@ -1,0 +1,14 @@
+#!/bin/zsh
+function update_starship_completions {
+  emulate -L zsh
+  setopt local_options
+
+  : ${ZSH_CONFIG_DIR:=${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}}
+  local destdir=$ZSH_CONFIG_DIR/completions
+  mkdir -p $destdir
+
+  echo "Generating starship completions..."
+  local _starship=$destdir/_starship
+  starship completions zsh >| $_starship
+}
+update_starship_completions "$@"
