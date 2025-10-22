@@ -1,0 +1,37 @@
+#!/bin/zsh
+#
+# .zstyles - zstyle settings for features/plugins that need them.
+#
+
+#
+# Editor
+#
+
+zstyle ':zebrafish:editor:main' cursor line
+
+#
+# Prompt
+#
+
+# Set prompt
+zstyle ':zebrafish:prompt' theme powerlevel10k mmc
+
+#
+# Plugins
+#
+
+plugins=(
+  romkatv/zsh-no-ps2
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-completions
+  zsh-users/zsh-history-substring-search
+  zdharma-continuum/fast-syntax-highlighting
+)
+
+# Remove bare words ${(M)@:#*/*} and paths with leading slash ${@:#/*}.
+zstyle ':zebrafish:clone' plugins \
+  romkatv/powerlevel10k \
+  ${${(M)plugins:#*/*}:#/*}
+
+# Set plugins to load.
+zstyle ':zebrafish:load' plugins ${plugins#*/}
