@@ -13,6 +13,16 @@ export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 mkdir -p $ZSH_CONFIG_DIR $ZSH_DATA_DIR $ZSH_CACHE_DIR
 
 #
+# Libraries
+#
+
+for _lib in $ZSH_CONFIG_DIR/lib/*.zsh(N); do
+  [[ "${_lib:t}" != "zebrafish.zsh" ]] || continue
+  source $_lib
+done
+unset _lib
+
+#
 # General
 #
 
@@ -45,8 +55,8 @@ export LANG="${LANG:-en_US.UTF-8}"
 autoload -Uz colors && colors
 
 # BSD colors.
-[[ -n "$LSCOLORS" ]] || export LSCOLORS=exfxcxdxbxGxDxabagacad
-[[ -n "$LS_COLORS" ]] || export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+export LSCOLORS="${LSCOLORS:-exfxcxdxbxGxDxabagacad}"
+export LS_COLORS="${LS_COLORS:-di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43}"
 
 # Colorize commands
 alias ls="${aliases[ls]:-ls} --color=auto"
@@ -60,31 +70,6 @@ export LESS_TERMCAP_us=$'\e[04;35m'      # us:=start underline-mode (underline m
 export LESS_TERMCAP_se=$'\e[0m'          # se:=end standout-mode
 export LESS_TERMCAP_ue=$'\e[0m'          # ue:=end underline-mode
 export LESS_TERMCAP_me=$'\e[0m'          # me:=end modes
-
-#
-# External plugins
-#
-
-# Core plugins
-zstyle -a ':zebrafish:clone' plugins 'zf_repos' \
-|| zf_repos=(
-  zsh-users/zsh-autosuggestions
-  zsh-users/zsh-completions
-  zsh-users/zsh-history-substring-search
-  zsh-users/zsh-syntax-highlighting
-)
-
-function clone_zsh_plugins() {
-  emulate -L zsh
-  setopt local_options no_monitor
-  local zf_plugin
-  for zf_plugin in $@; do
-    [[ -d $ZSH_CONFIG_DIR/plugins/${zf_plugin:t} ]] && continue
-    git clone --quiet --depth 1 https://github.com/$zf_plugin $ZSH_CONFIG_DIR/plugins/${zf_plugin:t} &
-  done
-  wait
-}
-clone_zsh_plugins $zf_repos
 
 #
 # File system
@@ -302,26 +287,53 @@ setopt prompt_subst  # Expand parameters in prompt variables
 # overridden by a prompt or plugin, but is a better default than Zsh's.
 PS2='${${${(%):-%_}//[^ ]}// /  }    '
 
+# Initialize prompt system.
+autoload -Uz promptinit && promptinit
+
 #
 # Plugins
 #
 
-# Load Zsh plugins
+# Clone-only plugins
+zstyle -a ':zebrafish:clone' plugins 'clone_plugins' \
+|| clone_plugins=()
+
+# External plugins
 zstyle -a ':zebrafish:load' plugins 'plugins' \
 || plugins=(
-  zsh-completions
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  zsh-history-substring-search
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-completions
+  zsh-users/zsh-history-substring-search
+  zsh-users/zsh-syntax-highlighting
 )
 
+function clone_zsh_plugins() {
+  emulate -L zsh
+  setopt local_options no_monitor
+  local zf_plugin
+  for zf_plugin in $@; do
+    [[ -d $ZSH_CONFIG_DIR/plugins/${zf_plugin:t} ]] && continue
+    git clone --quiet --depth 1 https://github.com/$zf_plugin $ZSH_CONFIG_DIR/plugins/${zf_plugin:t} &
+  done
+  wait
+}
+clone_zsh_plugins ${${(M)plugins:#*/*}:#/*} ${clone_plugins[@]}
+
+# Add plugins to fpath
 for _plugin in $plugins; do
-  if [[ ! -d "$ZSH_CONFIG_DIR/plugins/${_plugin}" ]]; then
+  fpath+=("$ZSH_CONFIG_DIR/plugins/${_plugin:t}"(N))
+done
+
+# Initialize compinit system.
+autoload -Uz compinit && compinit -d "$ZSH_COMPDUMP"
+
+# Load Zsh plugins
+for _plugin in $plugins; do
+  if [[ ! -d "$ZSH_CONFIG_DIR/plugins/${_plugin:t}" ]]; then
     print -ru2 "Plugin not found: '$_plugin'."
     continue
   fi
-  fpath+=("$ZSH_CONFIG_DIR/plugins/${_plugin}")
-  source "$ZSH_CONFIG_DIR/plugins/${_plugin}/${_plugin}.plugin.zsh"
+  source "$ZSH_CONFIG_DIR/plugins/${_plugin:t}/${_plugin:t}.plugin.zsh"
 done
 unset _plugin
 
@@ -335,13 +347,3 @@ for _zfile in ${_confd}/*.zsh(N); do
   source $_zfile
 done
 unset _zfile _confd
-
-#
-# Final
-#
-
-# Initialize prompt system.
-autoload -Uz promptinit && promptinit
-
-# Initialize compinit system.
-autoload -Uz compinit && compinit -d "$ZSH_COMPDUMP"
