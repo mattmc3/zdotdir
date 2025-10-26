@@ -13,3 +13,4 @@ set_term_var() {
     fi
   fi
 }
+set_term_var "$@"

@@ -1,0 +1,7 @@
+#!/bin/zsh
+function gpg() {
+  [[ -n "$GNUPGHOME" ]] || export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+  [[ -e $GNUPGHOME:h ]] || mkdir -p $GNUPGHOME:h
+  command gpg --homedir "$GNUPGHOME" "$@"
+}
+gpg "$@"
