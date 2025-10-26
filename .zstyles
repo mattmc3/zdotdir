@@ -20,6 +20,12 @@ zstyle ':zebrafish:prompt' theme powerlevel10k mmc
 # Plugins
 #
 
+# Clone-only plugins.
+zstyle ':zebrafish:clone' plugins \
+  romkatv/powerlevel10k \
+  romkatv/zsh-bench
+
+# Loadable plugins.
 plugins=(
   romkatv/zsh-no-ps2
   zsh-users/zsh-autosuggestions
@@ -27,11 +33,4 @@ plugins=(
   zsh-users/zsh-history-substring-search
   zdharma-continuum/fast-syntax-highlighting
 )
-
-# Remove bare words ${(M)@:#*/*} and paths with leading slash ${@:#/*}.
-zstyle ':zebrafish:clone' plugins \
-  romkatv/powerlevel10k \
-  ${${(M)plugins:#*/*}:#/*}
-
-# Set plugins to load.
-zstyle ':zebrafish:load' plugins ${plugins#*/}
+zstyle ':zebrafish:load' plugins $plugins
