@@ -1,0 +1,8 @@
+#!/bin/zsh
+function update_starship_completions {
+  emulate -L zsh; setopt local_options
+  echo "Generating starship completions..."
+  local _starship=$ZDOTDIR/completions/_starship
+  starship completions zsh >| $_starship
+}
+update_starship_completions "$@"
