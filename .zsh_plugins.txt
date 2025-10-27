@@ -6,12 +6,9 @@
 # Init
 #
 
-mattmc3/zsh_custom path:lib
-#mattmc3/zsh_custom path:plugins/p10k-instaprompt
-mattmc3/zsh_custom path:plugins/xdg
-mattmc3/zsh_custom path:plugins/history
-mattmc3/zsh_custom path:plugins/environment
-mattmc3/zsh_custom path:plugins/homebrew conditional:is-macos
+mattmc3/zephyr path:plugins/history
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/homebrew conditional:is-macos
 
 #
 # Completions
@@ -19,16 +16,15 @@ mattmc3/zsh_custom path:plugins/homebrew conditional:is-macos
 
 mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
-#$ZSH_CUSTOM_DEV path:plugins/completion
 
 #
 # Editor
 #
 
-mattmc3/zsh_custom path:plugins/editor
+mattmc3/zephyr path:plugins/editor
 # jeffreytse/zsh-vi-mode
 # sorin-ionescu/prezto path:modules/editor
-# romkatv/zsh-no-ps2
+romkatv/zsh-no-ps2
 
 #
 # Prompts
@@ -43,48 +39,24 @@ romkatv/powerlevel10k
 # Clipboard
 #
 
-# ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-# ohmyzsh/ohmyzsh path:plugins/copypath
-# ohmyzsh/ohmyzsh path:plugins/copybuffer
-# ohmyzsh/ohmyzsh path:plugins/copyfile
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+ohmyzsh/ohmyzsh path:plugins/copypath
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+ohmyzsh/ohmyzsh path:plugins/copyfile
 
 #
-# Custom
+# Misc
 #
 
-mattmc3/zsh_custom path:plugins/azure
-#mattmc3/zsh_custom path:plugins/clipboard
-mattmc3/zsh_custom path:plugins/color
-mattmc3/zsh_custom path:plugins/common-aliases
-mattmc3/zsh_custom path:plugins/common-functions
-mattmc3/zsh_custom path:plugins/directory
-mattmc3/zsh_custom path:plugins/dotfiles
-mattmc3/zsh_custom path:plugins/dotnet
-#mattmc3/zsh_custom path:plugins/fzf
-mattmc3/zsh_custom path:plugins/git
-mattmc3/zsh_custom path:plugins/git-cmds
-mattmc3/zsh_custom path:plugins/golang
-mattmc3/zsh_custom path:plugins/gpg
-mattmc3/zsh_custom path:plugins/iwd
-mattmc3/zsh_custom path:plugins/jupyter
-mattmc3/zsh_custom path:plugins/otp
-mattmc3/zsh_custom path:plugins/prj
-mattmc3/zsh_custom path:plugins/python
-mattmc3/zsh_custom path:plugins/secrets
-mattmc3/zsh_custom path:plugins/todotxt
-#mattmc3/zsh_custom path:plugins/up
-mattmc3/zsh_custom path:plugins/utility
-#mattmc3/zsh_custom path:plugins/terminal
-mattmc3/zsh_custom path:plugins/wezterm
-mattmc3/zsh_custom path:plugins/zfunctions
-mattmc3/zsh_custom path:plugins/zoxide
+mattmc3/zephyr path:plugins/color
+mattmc3/zephyr path:plugins/directory
+mattmc3/zephyr path:plugins/utility
+mattmc3/zephyr path:plugins/zfunctions
 
 #
 # OMZ
 #
 
-# ohmyzsh/ohmyzsh path:plugins/magic-enter   # included in editor
-# ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z  # included in editor
 ohmyzsh/ohmyzsh path:plugins/direnv
 ohmyzsh/ohmyzsh path:plugins/extract
 
@@ -100,17 +72,15 @@ mattmc3/zman
 # macOS
 #
 
-mattmc3/zsh_custom path:plugins/macos conditional:is-macos
-ohmyzsh/ohmyzsh path:plugins/iterm2 conditional:is-macos
+mattmc3/zephyr path:plugins/macos conditional:is-macos
 
 #
 # Final
 #
 
-mattmc3/zsh_custom path:plugins/fast-syntax-highlighting
-mattmc3/zsh_custom path:plugins/autosuggestions
-mattmc3/zsh_custom path:plugins/history-substring-search
-#zsh-users/zsh-history-substring-search
-mattmc3/zsh_custom path:plugins/zshrcd
+zdharma-continuum/fast-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+mattmc3/zephyr path:plugins/confd
 
 # vi: ft=properties
