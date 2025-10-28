@@ -1,0 +1,137 @@
+#!/bin/sh
+# shellcheck disable=SC3043
+
+##? prj - project jumper
+SCRIPT_PATH="$(realpath "$0")"
+
+# Check dependencies
+check_dependencies() {
+  if ! command -v fzf >/dev/null; then
+    echo "fzf command not found" >&2
+    exit 1
+  elif ! command -v fd >/dev/null; then
+    echo "fd command not found" >&2
+    exit 1
+  fi
+}
+
+# Print usage information
+print_usage() {
+  echo "prj:    The project jumper"
+  echo "usage:  prj [-h] [-i <shell>] [<query...>]"
+}
+
+# Initialize sh/bash/zsh
+init_sh() {
+  cat <<EOF
+prj() {
+  local selection="\$("$SCRIPT_PATH" \$@)"
+  if [ -n "\$selection" ] && [ -d "\$selection" ]; then
+    cd "\$selection"
+  else
+    echo "\$selection"
+  fi
+}
+# eval "\$("$SCRIPT_PATH" -i sh)"
+EOF
+}
+
+# Initialize fish
+init_fish() {
+  cat <<EOF
+function prj
+    set selection ("$SCRIPT_PATH" \$argv)
+    if test -n "\$selection" && test -d "\$selection"
+        cd "\$selection"
+    else
+        echo "\$selection"
+    end
+end
+# "$SCRIPT_PATH" -i fish | source
+EOF
+}
+
+# Main function
+main() {
+  local show_help=false
+  local show_version=false
+  local init_shell=""
+  local query=""
+  local selection=""
+  local PROJECT_DIR="${PROJECT_DIR:-$HOME/Projects}"
+
+  check_dependencies
+
+  # Parse options - just set variables
+  while getopts "hi:v" opt; do
+    case $opt in
+      h) show_help=true ;;
+      v) show_version=true ;;
+      i) init_shell="$OPTARG" ;;
+      ?) exit 2 ;;  # Error message already printed by getopts
+    esac
+  done
+
+  # Collect query parameters
+  shift $((OPTIND-1))
+  for arg in "$@"; do
+    if [ -z "$query" ]; then
+      query="$arg"
+    else
+      query="$query $arg"
+    fi
+  done
+
+  # Handle actions based on parsed options
+  if [ "$show_help" = true ]; then
+    print_usage
+    exit 0
+  elif [ "$show_version" = true ]; then
+    echo "prj ver 1.0.0"
+    exit 0
+  fi
+
+  if [ -n "$init_shell" ]; then
+    case "$init_shell" in
+      sh|zsh|bash)
+        init_sh
+        exit 0
+        ;;
+      fish)
+        init_fish
+        exit 0
+        ;;
+      *)
+        echo "prj: Unsupported shell '$init_shell'" >&2
+        exit 2
+        ;;
+    esac
+  fi
+
+  # Handle tilde expansion
+  case "$PROJECT_DIR" in
+    ~*) PROJECT_DIR="$HOME${PROJECT_DIR#~}" ;;
+  esac
+
+  # Check project directory exists
+  if [ ! -d "$PROJECT_DIR" ]; then
+    echo >&2 "prj: Project home directory not found '$PROJECT_DIR'"
+    exit 1
+  fi
+
+  # Find and select project
+  selection=$(
+    fd --type d --hidden --max-depth 5 '\.git$' "$PROJECT_DIR" |
+    sed -e "s|^$PROJECT_DIR/||" -e "s|/.git/$||" |
+    sort -u |
+    fzf --layout=reverse-list --query="$query"
+  )
+
+  # Output the selected project directory
+  if [ -n "$selection" ] && [ -d "$PROJECT_DIR/$selection" ]; then
+    echo "$PROJECT_DIR/$selection"
+  fi
+}
+
+# Run the script
+main "$@"
