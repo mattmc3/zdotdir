@@ -1,0 +1,4 @@
+#!/bin/zsh
+0=${(%):-%x}
+curl -fsSL "https://raw.githubusercontent.com/wez/wezterm/main/assets/shell-integration/wezterm.sh" \
+  -o "$ZDOTDIR/lib/wezterm-shell-integration.sh"
