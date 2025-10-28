@@ -7,9 +7,9 @@
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-# # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
-# # Initialization code that may require console input (password prompts, [y/n]
-# # confirmations, etc.) must go above this block; everything else may go below.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -34,13 +34,18 @@ done
 unset _fndir
 
 # Set any zstyles you might use for configuration.
-[[ ! -f $ZSH_CONFIG_DIR/.zstyles ]] || source $ZSH_CONFIG_DIR/.zstyles
+[[ -r $ZSH_CONFIG_DIR/.zstyles ]] && source $ZSH_CONFIG_DIR/.zstyles
 
 # Create an amazing Zsh config using antidote plugins.
 source $ZSH_CONFIG_DIR/lib/antidote.zsh
 
-# # To customize prompt, run `p10k configure` or edit .p10k.zsh.
-# [[ ! -f $ZSH_CONFIG_DIR/.p10k.zsh ]] || source $ZSH_CONFIG_DIR/.p10k.zsh
+# Source conf.d.
+for _rc in $ZDOTDIR/conf.d/*.zsh; do
+  # ignore files that begin with ~
+  [[ "${_rc:t}" != '~'* ]] || continue
+  source "$_rc"
+done
+unset _rc
 
 # Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd

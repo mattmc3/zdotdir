@@ -31,7 +31,7 @@ $ZDOTDIR/lib/zsh-no-ps2.zsh
 # Prompts
 #
 
-romkatv/powerlevel10k kind:clone
+#romkatv/powerlevel10k kind:fpath
 # mattmc3/zephyr path:plugins/prompt
 # sindresorhus/pure kind:fpath
 # miekg/lean kind:fpath
@@ -82,6 +82,5 @@ mattmc3/zephyr path:plugins/macos conditional:is-macos
 zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
-mattmc3/zephyr path:plugins/confd
 
 # vi: ft=properties
