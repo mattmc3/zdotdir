@@ -14,27 +14,35 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Set Zsh location vars.
+ZSH_CONFIG_DIR="${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}"
+ZSH_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
+ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+mkdir -p $ZSH_CONFIG_DIR $ZSH_DATA_DIR $ZSH_CACHE_DIR
+
+# Set essential options
+setopt EXTENDED_GLOB INTERACTIVE_COMMENTS
+
 # Add custom completions
-fpath=(${ZDOTDIR:-$HOME/.config/zsh}/completions $fpath)
+fpath=($ZSH_CONFIG_DIR/completions $fpath)
 
 # Lazy-load (autoload) Zsh function files from a directory.
-# ZFUNCDIR=${ZDOTDIR:-$HOME/.config/zsh}/functions
-# fpath=($ZFUNCDIR $fpath)
-# autoload -Uz $ZFUNCDIR/*(.:t)
+for _fndir in $ZSH_CONFIG_DIR/functions(/FN) $ZSH_CONFIG_DIR/functions/*(/FN); do
+  fpath=($_fndir $fpath)
+  autoload -Uz $_fndir/*~*/_*(N.:t)
+done
+unset _fndir
 
 # Set any zstyles you might use for configuration.
-[[ ! -f ${ZDOTDIR:-$HOME}/.zstyles ]] || source ${ZDOTDIR:-$HOME}/.zstyles
-
-# Set zsh_custom dev location for use in antidote plugins.
-ZSH_CUSTOM_DEV=$HOME/Projects/mattmc3/zsh_custom
+[[ ! -f $ZSH_CONFIG_DIR/.zstyles ]] || source $ZSH_CONFIG_DIR/.zstyles
 
 # Create an amazing Zsh config using antidote plugins.
-source ${ZDOTDIR:-$HOME/.config/zsh}/lib/antidote.zsh
+source $ZSH_CONFIG_DIR/lib/antidote.zsh
 
-# To customize prompt, run `p10k configure` or edit .p10k.zsh.
-[[ ! -f ${ZDOTDIR:-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR:-$HOME}/.p10k.zsh
+# # To customize prompt, run `p10k configure` or edit .p10k.zsh.
+# [[ ! -f $ZSH_CONFIG_DIR/.p10k.zsh ]] || source $ZSH_CONFIG_DIR/.p10k.zsh
 
-# Never start in the root file system. Looking at you, Zed.
+# Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
 
 # Finish profiling by calling zprof.

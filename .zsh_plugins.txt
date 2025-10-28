@@ -24,13 +24,14 @@ zsh-users/zsh-completions kind:fpath path:src
 mattmc3/zephyr path:plugins/editor
 # jeffreytse/zsh-vi-mode
 # sorin-ionescu/prezto path:modules/editor
-romkatv/zsh-no-ps2
+# romkatv/zsh-no-ps2
+$ZDOTDIR/lib/zsh-no-ps2.zsh
 
 #
 # Prompts
 #
 
-romkatv/powerlevel10k
+romkatv/powerlevel10k kind:clone
 # mattmc3/zephyr path:plugins/prompt
 # sindresorhus/pure kind:fpath
 # miekg/lean kind:fpath
@@ -51,7 +52,7 @@ ohmyzsh/ohmyzsh path:plugins/copyfile
 mattmc3/zephyr path:plugins/color
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/utility
-mattmc3/zephyr path:plugins/zfunctions
+#mattmc3/zephyr path:plugins/zfunctions
 
 #
 # OMZ
