@@ -1,9 +1,9 @@
 #!/bin/zsh
-##? Open a Jupyter notebook.
 
 # jupyter
 export JUPYTER_CONFIG_DIR="${JUPYTER_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/jupyter}"
 
+##? Open a Jupyter notebook.
 function juno {
   local workon_home="${WORKON_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/venvs}"
   [[ -d "$workon_home" ]] || mkdir -p "$workon_home"
