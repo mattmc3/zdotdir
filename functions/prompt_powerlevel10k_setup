@@ -1,0 +1,16 @@
+#!/bin/zsh
+# Wrap powerlevel10k prompt to support themes directory.
+function prompt_powerlevel10k_setup {
+  if [[ -n "$1" ]]; then
+    local -a configs=($ZDOTDIR/themes/$1.p10k.zsh(N))
+    (( $#configs )) && source $configs[1]
+  fi
+  p10kpath="$(antidote path romkatv/powerlevel10k)"
+  if [[ -r "$p10kpath/powerlevel10k.zsh-theme" ]]; then
+    source $p10kpath/powerlevel10k.zsh-theme
+  else
+    print -ru2 "Powerlevel10k not found in plugins"
+    return 1
+  fi
+}
+prompt_powerlevel10k_setup "$@"
