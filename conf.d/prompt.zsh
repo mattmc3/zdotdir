@@ -3,7 +3,7 @@
 #
 
 # Initialize prompt
-setopt prompt_subst
+setopt prompt_subst transient_rprompt
 autoload -Uz promptinit && promptinit
-prompt powerlevel10k
-source $ZDOTDIR/.p10k.zsh
+prompt p10k mmc
+#source $ZDOTDIR/.p10k.zsh
