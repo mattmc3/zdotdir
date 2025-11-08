@@ -1,0 +1,7 @@
+#!/bin/zsh
+# Autoload fish-like functions directory.
+for _fndir in $ZSH_CONFIG_DIR/functions(/FN) $ZSH_CONFIG_DIR/functions/*(/FN); do
+  fpath=($_fndir $fpath)
+  autoload -Uz $_fndir/*~*/_*(N.:t)
+done
+unset _fndir

@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+# Load rcs.
+for _rc in $ZSH_CONFIG_DIR/conf.d/*.zsh(N); do
+  [[ $_rc:t != '~'* ]] || continue
+  source $_rc
+done
+unset _rc

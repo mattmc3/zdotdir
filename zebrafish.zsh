@@ -36,12 +36,26 @@ setopt NO_beep                 # Be quiet.
 setopt NO_mail_warning         # Don't print a warning if a mail file was accessed.
 
 # Ensure uniqueness in our builtin arrays.
-typeset -gaU cdpath fpath path
+typeset -gaU cdpath fpath mailpath path prepath
 
 #
 # Environment
 #
 
+# Set the list of directories that Zsh searches for programs.
+[[ -n "$prepath" ]] || prepath=(
+  $HOME/{,s}bin(N)
+  $HOME/.local/{,s}bin(N)
+)
+
+path=(
+  $prepath
+  /opt/{homebrew,local}/{,s}bin(N)
+  /usr/local/{,s}bin(N)
+  $path
+)
+
+export BROWSER="${BROWSER:-open}"
 export EDITOR="${EDITOR:-vim}"
 export VISUAL="${VISUAL:-vim}"
 export PAGER="${PAGER:-less}"
@@ -262,7 +276,7 @@ setopt NO_flow_control   # Disable start/stop characters in shell editor.
 setopt NO_menu_complete  # Do not autoselect the first completion entry.
 
 # Add Fish-like custom completions directory.
-fpath=($ZSH_CONFIG_DIR/completions(/N) $fpath)
+fpath=($ZSH_CONFIG_DIR/completions(/FN) $fpath)
 
 # Set ZSH_COMPDUMP path
 zstyle -s ':zebrafish:completions' path 'ZSH_COMPDUMP' \

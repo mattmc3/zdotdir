@@ -1,0 +1,99 @@
+#!/bin/zsh
+#
+# zsh completions styles extension
+#
+# Load with `autoload -Uz compstyleinit; compstyleinit'.
+# Type `compstyle -h' for help.
+#
+
+typeset -gaU completion_styles
+typeset -ga completion_style
+completion_styles=()
+
+function compstyleinit {
+  emulate -L zsh; setopt extendedglob
+
+  local name setupfn
+  local -a match
+
+  # Autoload all compstyle_*_setup functions in fpath.
+  for setupfn in $^fpath/compstyle_*_setup(N); do
+    if [[ $setupfn == */compstyle_(#b)(*)_setup ]]; then
+      name="$match[1]"
+      if [[ -r "$setupfn" ]]; then
+        completion_styles=($completion_styles $name)
+        autoload -Uz compstyle_${name}_setup
+      else
+        print "Cannot read '$setupfn' file containing completion styles."
+      fi
+    else
+      print "Unexpect compstyle setup function '$setupfn'."
+    fi
+  done
+}
+
+function _compstyle_usage {
+  emulate -L zsh; setopt extended_glob
+  0=${(%):-%x}
+  local usage='Usage: compstyle [-l] [-h [<style>]]
+       compstyle <style>
+Options:
+  -l            List currently available completion styles
+  -h [<style>]  Display help (for given compstyle)
+Arguments:
+  <style>       Switch to new compstyle
+
+Use `compstyle -h` for help.
+Load with `autoload -Uz compstyleinit; compstyleinit`.
+Set completion style with `compstyle <compstyle>`.'
+
+  if [[ -n "$1" && -n "$completion_styles[(r)$1]" ]]; then
+    # Run this in a subshell, so we don't need to clean up afterwards.
+    (
+      # If we can't find a _help function, run the _setup function to see
+      # if it will create one.
+      (( $+functions[compstyle_$1_help] )) || compstyle_$1_setup
+
+      # ...then try again.
+      if (( $+functions[compstyle_$1_help] )); then
+        print "Help for '$1' completion style:\n"
+        compstyle_$1_help
+      else
+        print "No help available for '$1' completion style."
+      fi
+    )
+  else
+    # read '##?' doc comments from this file to display usage
+    print $usage
+  fi
+}
+
+function compstyle {
+  # compstyle [-l] [-h [<style>]]
+  local opt
+  while getopts 'lh' opt; do
+    case "$opt" in
+      l) print Currently available completion styles:
+         print $completion_styles
+         return
+         ;;
+      h) _compstyle_usage "$@[2,-1]"; return $? ;;
+      *) _compstyle_usage;            return 2  ;;
+    esac
+  done
+
+  # error if compstyle specified not found
+  if [[ -z "$1" || -z $completion_styles[(r)$1] ]]; then
+    print >&2 "compstyle: Completion style not found '$1'."
+    _compstyle_usage
+    return 1
+  fi
+
+  # Cleanup any prior completion styles
+  source <(zstyle -L ':completion:*' | awk '{printf "zstyle -d %s\n", $2}')
+
+  # set the new completion styles
+  compstyle_${1}_setup "$@[2,-1]" && completion_style=( "$@" )
+}
+
+compstyleinit "$@"
