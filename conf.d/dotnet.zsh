@@ -1,6 +1,11 @@
 # zsh parameter completion for the dotnet CLI
 # https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
 
+# Add .NET Core SDK tools
+if [[ -d $HOME/.dotnet/tools ]]; then
+  path+=($HOME/.dotnet/tools)
+fi
+
 # nuget
 export NUGET_PACKAGES="${NUGET_PACKAGES:-$XDG_CACHE_HOME/NuGetPackages}"
 
