@@ -1,0 +1,4 @@
+#!/bin/zsh
+if is-macos; then
+  HISTDB_TABULATE_CMD=(sed -e $'s/\x1f/\t/g')
+fi

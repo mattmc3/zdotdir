@@ -6,9 +6,15 @@
 # Init
 #
 
-mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/environment
 mattmc3/zephyr path:plugins/homebrew conditional:is-macos
+
+#
+# History
+#
+
+mattmc3/zephyr path:plugins/history
+larkery/zsh-histdb pre:init_histdb
 
 #
 # Completions
