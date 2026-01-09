@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -17,17 +18,8 @@ prepath=(
 )
 path=($prepath $path)
 
-# Set default Zsh dirs
-__zsh_config_dir="${ZDOTDIR:-$HOME/.zsh}"
-__zsh_data_dir="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
-__zsh_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
-for zdir in $__zsh_data_dir $__zsh_cache_dir; do
-  [[ -d "$_zdir" ]] && mkdir -p "$_zdir"
-done
-unset _zdir
-
 # Path to your Oh My Zsh installation.
-export ZSH="$__zsh_config_dir/.oh-my-zsh"
+export ZSH="${ZDOTDIR:-$HOME}/.oh-my-zsh"
 [ -d "$ZSH" ] || git clone --quiet https://github.com/ohmyzsh/ohmyzsh "$ZSH"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -35,7 +27,7 @@ export ZSH="$__zsh_config_dir/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="romkatv/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -92,11 +84,15 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-ZSH_CUSTOM=$__zsh_config_dir/custom
+if [[ ! -d ${ZDOTDIR:-$HOME}/.zsh_custom ]]; then
+  git clone git@github.com:mattmc3/zsh_custom ${ZDOTDIR:-$HOME}/.zsh_custom
+fi
+zsh_custom=(${ZDOTDIR:-$HOME}/.zsh_custom)
 
 # Set completions variables
 ZSH_DISABLE_COMPFIX=true
-ZSH_COMPDUMP="$__zsh_cache_dir/zcompdump"
+ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+mkdir -p "${ZSH_COMPDUMP:h}"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -106,7 +102,6 @@ ZSH_COMPDUMP="$__zsh_cache_dir/zcompdump"
 typeset -gU plugins
 plugins=(
   # Essentials
-  __init__
   brew
 
   # Clipboard
@@ -122,30 +117,34 @@ plugins=(
   extract
   git
   gitignore
-  jupyter
   macos
   magic-enter
-  otp
   python
   zoxide
 
   # Zsh Custom
-  zman
-  autoloader
-  wezterm
-  utility
-  zsh-bench
+  mattmc3/zman
+  # autoloader
+  # wezterm
+  # utility
+  # zsh-bench
 
   # Core
-  zsh-no-ps2
-  zsh-autosuggestions
-  fast-syntax-highlighting
+  romkatv/zsh-no-ps2
+  zsh-users/zsh-autosuggestions
+  zdharma-continuum/fast-syntax-highlighting
   history-substring-search
 )
 
-[[ -r $__zsh_config_dir/.zshrc.pre.local ]] && source $__zsh_config_dir/.zshrc.pre.local
+##### START OMZ PLUS! ##################################################################
+export OMZ_PLUS=${ZDOTDIR:-$HOME}/.omz-plus
+[ -d "$OMZ_PLUS" ] || git clone git@github.com:mattmc3/omz-plus $OMZ_PLUS
+source $OMZ_PLUS/omz-plus.sh
+##### END OMZ PLUS! ####################################################################
+
+[[ -r ${ZDOTDIR:-$HOME}/.zshrc.pre.local ]] && source ${ZDOTDIR:-$HOME}/.zshrc.pre.local
 source $ZSH/oh-my-zsh.sh
-[[ -r $__zsh_config_dir/.zshrc.post.local ]] && source $__zsh_config_dir/.zshrc.post.local
+[[ -r ${ZDOTDIR:-$HOME}/.zshrc.post.local ]] && source ${ZDOTDIR:-$HOME}/.zshrc.post.local
 
 ### User configuration
 

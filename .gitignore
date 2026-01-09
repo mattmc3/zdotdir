@@ -1,7 +1,9 @@
 .oh-my-zsh/
 ohmyzsh/
+.zsh_custom/
 custom/
 .custom/
+.omz-plus/
 .zcompcache/
 .zcompdump*
 .zdirs
