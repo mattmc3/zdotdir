@@ -54,5 +54,9 @@ unset _rc
 [[ "$ZPROFRC" -eq 1 ]] && zprof
 [[ -v ZPROFRC ]] && unset ZPROFRC
 
+# Local settings
+[ -r $HOME/.local/config/zsh/.zshrc.local ] \
+&& . $HOME/.local/config/zsh/.zshrc.local
+
 # Always return success
 true
