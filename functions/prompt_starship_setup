@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+function prompt_starship_setup {
+  # When loaded through the prompt command, these prompt_* options will be enabled
+  prompt_opts=(cr percent sp subst)
+
+  # Set the starship config based on the argument if provided.
+  if [[ -n "$1" ]]; then
+    local -a configs=(
+      "${ZDOTDIR:-?}/themes/${1}.toml"(N)
+      "${XDG_CONFIG_HOME:-$HOME/.config}/starship/${1}.toml"(N)
+    )
+    (( $#configs )) && export STARSHIP_CONFIG=$configs[1]
+  fi
+
+  local -a starship_=(
+    $commands[starship](N)
+    /opt/homebrew/bin/starship(N)
+  )
+
+  source <(${starship_[1]} init zsh)
+}
