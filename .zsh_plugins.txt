@@ -37,10 +37,10 @@ $ZDOTDIR/lib/zsh-no-ps2.zsh
 # Prompts
 #
 
-sindresorhus/pure kind:fpath
-# romkatv/powerlevel10k kind:fpath
+# sindresorhus/pure kind:fpath
 # miekg/lean kind:fpath
-mattmc3/zephyr path:plugins/prompt
+# mattmc3/zephyr path:plugins/prompt
+romkatv/powerlevel10k
 
 #
 # Clipboard

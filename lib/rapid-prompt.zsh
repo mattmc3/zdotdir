@@ -11,6 +11,12 @@
 #   rapid_prompt pure
 
 autoload -Uz add-zsh-hook add-zle-hook-widget promptinit
+zmodload zsh/terminfo 2>/dev/null
+
+try_echoti() {
+  [[ -v terminfo[$1] ]] &&
+    echoti $@
+}
 
 rapid_prompt() {
   emulate -L zsh
@@ -31,27 +37,24 @@ rapid_prompt() {
   zmodload zsh/terminfo 2>/dev/null || return 0
   (( ${+terminfo[sc]} && ${+terminfo[rc]} && ${+terminfo[ed]} )) || return 0
 
-  # Hide cursor (polish).
-  (( ${+terminfo[civis]} )) && echoti civis
-
-  # Save cursor position.
-  echoti sc
+  try_echoti civis  # Hide cursor.
+  try_echoti sc     # Save cursor position.
 
   # One-shot precmd cleanup.
   add-zsh-hook precmd _rapid_prompt_precmd
 
   # Capture stderr during early init so warnings don't corrupt the drawn prompt.
-  typeset -gHi _rapid_prompt_fd=-1
-  typeset -gH _rapid_prompt_tmp==( <<< '' )
-  exec {_rapid_prompt_fd}>&2
-  exec 2> $_rapid_prompt_tmp
+  typeset -gHi _rapid_prompt_fd_err=-1
+  typeset -gH _rapid_prompt_tmp_err==( <<< '' )
+  exec {_rapid_prompt_fd_err}>&2
+  exec 2> $_rapid_prompt_tmp_err
 
   # Initialize prompt system and load theme now.
   promptinit
   prompt "$theme" "$@"
 
   # Save cursor position again in case theme setup moved it.
-  echoti sc
+  try_echoti sc
 
   # If the theme has a precmd, run it once so PS1/RPS1 are populated.
   local fn="prompt_${theme}_precmd"
@@ -79,7 +82,7 @@ rapid_prompt() {
   fi
 
   # Restore cursor visibility.
-  (( ${+terminfo[cnorm]} )) && echoti cnorm
+  try_echoti cnorm
 
   return 0
 }
@@ -92,20 +95,24 @@ _rapid_prompt_precmd() {
 
   zmodload zsh/terminfo 2>/dev/null || return 0
 
+  # Restore stderr and print captured error output above the prompt.
+  local err
+  if [[ -v _rapid_prompt_fd_err ]]; then
+    exec 2>&$_rapid_prompt_fd_err
+    err="$( < $_rapid_prompt_tmp_err )"
+    unset _rapid_prompt_fd_err _rapid_prompt_tmp_err
+  fi
+
   # Hide cursor while cleaning up.
-  (( ${+terminfo[civis]} )) && echoti civis
+  try_echoti civis
 
   # Restore cursor to where rapid prompt was printed.
-  echoti rc
+  try_echoti rc
 
-  # Restore stderr and print captured error output above the prompt.
-  if [[ -n ${_rapid_prompt_fd-} && -n ${_rapid_prompt_tmp-} ]]; then
-    exec 2>&$_rapid_prompt_fd
-    local err
-    err="$( < $_rapid_prompt_tmp )"
-    [[ -n $err ]] && print -u2 -- "$err"
-    unset _rapid_prompt_fd _rapid_prompt_tmp
-  fi
+  # Clear rapid prompt line + everything below it.
+  try_echoti ed
+
+  [[ -n "$err" ]] && print -nPru2 -- $err
 
   # Apply the real prompt theme automatically (so user doesn't need to).
   if [[ -n ${_rapid_prompt_theme-} ]]; then
@@ -117,7 +124,7 @@ _rapid_prompt_precmd() {
   fi
 
   # Ensure cursor visible again.
-  (( ${+terminfo[cnorm]} )) && echoti cnorm
+  try_echoti cnorm
 
   # Restore prompt spacing on first interactive line init.
   add-zle-hook-widget line-init _rapid_prompt_line_init
@@ -128,11 +135,8 @@ _rapid_prompt_precmd() {
 _rapid_prompt_line_init() {
   emulate -L zsh
 
-  # One-shot: remove ourselves.
   add-zle-hook-widget -d line-init ${(%):-%N}
-
-  zmodload zsh/terminfo 2>/dev/null || return 0
-  (( ${+terminfo[cnorm]} )) && echoti cnorm
+  try_echoti cnorm  # Make cursor normal
 
   # Restore prompt spacing if the user hasn't explicitly configured prompt_opts.
   [[ -v prompt_opts ]] || setopt promptsp
