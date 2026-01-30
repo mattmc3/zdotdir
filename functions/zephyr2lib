@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Move zephyr files into lib directory
 : ${ZEPHYR_HOME:=$HOME/Projects/mattmc3/zephyr}
 
