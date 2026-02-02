@@ -9,10 +9,10 @@ case "${TERM_PROGRAM:l}" in
     ;;
   vscode)
     # https://code.visualstudio.com/docs/terminal/shell-integration
-    MY_HISTFILE=$HISTFILE
+    MY_HISTFILE=${HISTFILE:-${XDG_DATA_HOME:-$HOME/.local/share}/zsh/zsh_history}
     source "$(code --locate-shell-integration-path zsh)"
     HISTFILE=$MY_HISTFILE
-    unset MY_HISTFILE
+    #unset MY_HISTFILE
     ;;
   wezterm)
     source "$ZDOTDIR/lib/wezterm-shell-integration.sh"
