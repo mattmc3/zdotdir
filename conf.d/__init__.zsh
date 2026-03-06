@@ -20,6 +20,10 @@ path=(
   $prepath
   $path
 
+  # .local/share
+  $HOME/.local/share/nimble/bin(N)
+  $HOME/.local/share/cargo/bin(N)
+
   # emacs
   $HOME/.emacs.d/bin(N)
   $XDG_CONFIG_HOME/emacs/bin(N)
