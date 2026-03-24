@@ -47,6 +47,9 @@ for _rc in $ZDOTDIR/conf.d/*.zsh; do
 done
 unset _rc
 
+ZSH_COMPDUMP=$XDG_CACHE_HOME/zsh/zcompdump
+compinit -i -d "$ZSH_COMPDUMP"
+
 # Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
 
