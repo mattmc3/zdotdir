@@ -1,0 +1,16 @@
+zmodload zsh/terminfo
+
+# Emacs
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# Vi
+bindkey -M vicmd "k" history-substring-search-up
+bindkey -M vicmd "j" history-substring-search-down
+
+# Up and down
+local keymap
+for keymap in 'main' 'emacs' 'viins'; do
+  bindkey -M "$keymap" "$terminfo[kcuu1]" history-substring-search-up
+  bindkey -M "$keymap" "$terminfo[kcud1]" history-substring-search-down
+done

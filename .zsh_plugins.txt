@@ -46,10 +46,11 @@ romkatv/powerlevel10k
 # Clipboard
 #
 
-ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-ohmyzsh/ohmyzsh path:plugins/copypath
-ohmyzsh/ohmyzsh path:plugins/copybuffer
-ohmyzsh/ohmyzsh path:plugins/copyfile
+ohmyzsh/ohmyzsh kind:clone pin:76ffd9e22acc7f11ca501f03d6999adbdb9baa61
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh pin:76ffd9e22acc7f11ca501f03d6999adbdb9baa61
+ohmyzsh/ohmyzsh path:plugins/copypath pin:76ffd9e22acc7f11ca501f03d6999adbdb9baa61
+ohmyzsh/ohmyzsh path:plugins/copybuffer pin:76ffd9e22acc7f11ca501f03d6999adbdb9baa61
+ohmyzsh/ohmyzsh path:plugins/copyfile pin:76ffd9e22acc7f11ca501f03d6999adbdb9baa61
 
 #
 # Misc
@@ -64,8 +65,8 @@ mattmc3/zephyr path:plugins/utility
 # OMZ
 #
 
-ohmyzsh/ohmyzsh path:plugins/direnv
-ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/direnv pin:76ffd9e22acc7f11ca501f03d6999adbdb9baa61
+ohmyzsh/ohmyzsh path:plugins/extract pin:76ffd9e22acc7f11ca501f03d6999adbdb9baa61
 
 #
 # Utils
@@ -87,6 +88,6 @@ mattmc3/zephyr path:plugins/macos conditional:is-macos
 
 zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
+zsh-users/zsh-history-substring-search post:bindkey-hss
 
 # vi: ft=properties
