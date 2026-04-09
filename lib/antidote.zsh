@@ -5,9 +5,9 @@
 : ${ANTIDOTE_HOME:=${XDG_CACHE_HOME:-~/.cache}/repos}
 
 # Keep all of these for different test scenarios.
-ANTIDOTE_REPO=$ANTIDOTE_HOME/github.com/mattmc3/antidote
+# ANTIDOTE_REPO=$ANTIDOTE_HOME/github.com/mattmc3/antidote
 # ANTIDOTE_REPO=$ANTIDOTE_HOME/https-COLON--SLASH--SLASH-github.com-SLASH-mattmc3-SLASH-antidote
-# ANTIDOTE_REPO=~/Projects/mattmc3/antidote
+ANTIDOTE_REPO=~/Projects/mattmc3/antidote
 # ANTIDOTE_REPO=${HOMEBREW_PREFIX:-/opt/homebrew}/opt/antidote/share/antidote
 
 zstyle ':antidote:home' path $ANTIDOTE_HOME
