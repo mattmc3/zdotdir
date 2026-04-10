@@ -18,6 +18,12 @@ editor
 macos conditional:is-macos
 
 #
+# Hooks
+#
+
+zsh-hooks/zsh-hooks
+
+#
 # Completions
 #
 
@@ -55,6 +61,30 @@ copyfile
 # Misc
 direnv
 extract
+
+#
+# Custom
+#
+
+using:mattmc3/zsh_custom path:plugins
+mattmc3/zsh_custom autoload:functions
+azure
+common-aliases
+common-functions
+dotfiles
+dotnet
+git
+git-cmds
+gpg
+iwd
+jupyter
+perl
+prj
+python
+ruby
+sqlite
+terminal
+zoxide
 
 #
 # Utils

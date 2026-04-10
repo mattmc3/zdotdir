@@ -23,9 +23,6 @@ mkdir -p $ZSH_CONFIG_DIR $ZSH_DATA_DIR $ZSH_CACHE_DIR
 # Set essential options
 setopt EXTENDED_GLOB INTERACTIVE_COMMENTS
 
-# Add custom completions
-fpath=($ZSH_CONFIG_DIR/completions $fpath)
-
 # Lazy-load (autoload) Zsh function files from a directory.
 for _fndir in $ZSH_CONFIG_DIR/functions(/FN) $ZSH_CONFIG_DIR/functions/*(/FN); do
   fpath=($_fndir $fpath)
@@ -39,16 +36,12 @@ unset _fndir
 # Create an amazing Zsh config using antidote plugins.
 source $ZSH_CONFIG_DIR/lib/antidote.zsh
 
-# Source conf.d.
-for _rc in $ZDOTDIR/conf.d/*.zsh; do
-  # ignore files that begin with ~
-  [[ "${_rc:t}" != '~'* ]] || continue
-  source "$_rc"
-done
-unset _rc
-
 ZSH_COMPDUMP=$XDG_CACHE_HOME/zsh/zcompdump
 compinit -i -d "$ZSH_COMPDUMP"
+
+# Set prompt
+source $ZDOTDIR/.p10k.zsh
+(( ! ${+functions[p10k]} )) || p10k finalize
 
 # Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
