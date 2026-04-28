@@ -34,10 +34,10 @@ unset _fndir
 [[ -r $ZSH_CONFIG_DIR/.zstyles ]] && source $ZSH_CONFIG_DIR/.zstyles
 
 # Create an amazing Zsh config using antidote plugins.
-source $ZSH_CONFIG_DIR/lib/antidote.zsh
+source $ZSH_CONFIG_DIR/lib/antidote-fast.zsh
 
-ZSH_COMPDUMP=$XDG_CACHE_HOME/zsh/zcompdump
-compinit -i -d "$ZSH_COMPDUMP"
+# ZSH_COMPDUMP=$XDG_CACHE_HOME/zsh/zcompdump
+# compinit -i -d "$ZSH_COMPDUMP"
 
 # Set prompt
 source $ZDOTDIR/.p10k.zsh
