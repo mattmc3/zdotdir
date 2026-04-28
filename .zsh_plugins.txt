@@ -47,32 +47,19 @@ romkatv/zsh-no-ps2
 romkatv/powerlevel10k
 
 #
-# OMZ
-#
-
-using:ohmyzsh/ohmyzsh path:plugins pin:76ffd9e22acc7f11ca501f03d6999adbdb9baa61
-
-# Clipboard
-ohmyzsh/ohmyzsh path:lib/clipboard.zsh pin:76ffd9e22acc7f11ca501f03d6999adbdb9baa61
-copypath
-copybuffer
-copyfile
-
-# Misc
-direnv
-extract
-
-#
 # Custom
 #
 
 using:mattmc3/zsh_custom path:plugins
 mattmc3/zsh_custom autoload:functions
 azure
+clipboard
 common-aliases
 common-functions
+direnv
 dotfiles
 dotnet
+extract
 git
 git-cmds
 gpg
