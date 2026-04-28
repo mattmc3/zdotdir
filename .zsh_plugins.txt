@@ -90,7 +90,6 @@ zoxide
 # Utils
 #
 
-larkery/zsh-histdb pre:init_histdb
 romkatv/zsh-bench kind:path
 # aloxaf/fzf-tab
 mattmc3/zman

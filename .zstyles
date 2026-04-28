@@ -18,6 +18,13 @@ zstyle ':zsh_custom:plugin:*' 'use-cache' no
 zstyle ':zsh_custom:plugin:completion' compstyle zshzoo
 
 #
+# History
+#
+
+zstyle ':zephyr:plugin:history:aux:sqlite' enable yes
+zstyle ':zephyr:plugin:history:aux:json' enable yes
+
+#
 # Editor
 #
 
