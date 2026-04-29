@@ -3,31 +3,16 @@
 #
 
 #
-# Zephyr
+# Z1
 #
 
-using:mattmc3/zephyr path:plugins
-environment
-homebrew conditional:is-macos
-history
-color
-directory
-utility
-editor
-#zfunctions
-macos conditional:is-macos
-
-#
-# Hooks
-#
-
-zsh-hooks/zsh-hooks
+mattmc3/zshrc1
 
 #
 # Completions
 #
 
-mattmc3/ez-compinit
+# mattmc3/ez-compinit
 zsh-users/zsh-completions kind:fpath path:src
 
 #
@@ -52,6 +37,7 @@ romkatv/powerlevel10k
 
 using:mattmc3/zsh_custom path:plugins
 mattmc3/zsh_custom autoload:functions
+xdg
 azure
 clipboard
 common-aliases
@@ -60,16 +46,15 @@ direnv
 dotfiles
 dotnet
 extract
+fzf
 git
 git-cmds
-gpg
 iwd
 jupyter
 perl
 prj
 python
 ruby
-sqlite
 terminal
 zoxide
 

@@ -14,32 +14,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Set Zsh location vars.
-ZSH_CONFIG_DIR="${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}"
-ZSH_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
-ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
-mkdir -p $ZSH_CONFIG_DIR $ZSH_DATA_DIR $ZSH_CACHE_DIR
-
-# Set essential options
-setopt EXTENDED_GLOB INTERACTIVE_COMMENTS
-
-# Lazy-load (autoload) Zsh function files from a directory.
-for _fndir in $ZSH_CONFIG_DIR/functions(/FN) $ZSH_CONFIG_DIR/functions/*(/FN); do
-  fpath=($_fndir $fpath)
-  autoload -Uz $_fndir/*~*/_*(N.:t)
-done
-unset _fndir
-
-# Set any zstyles you might use for configuration.
-[[ -r $ZSH_CONFIG_DIR/.zstyles ]] && source $ZSH_CONFIG_DIR/.zstyles
-
 # Create an amazing Zsh config using antidote plugins.
-source $ZSH_CONFIG_DIR/lib/antidote-fast.zsh
+source $ZDOTDIR/lib/antidote-fast.zsh
 
 # ZSH_COMPDUMP=$XDG_CACHE_HOME/zsh/zcompdump
 # compinit -i -d "$ZSH_COMPDUMP"
 
-# Set prompt
+# # Set prompt
+# autoload -Uz promptinit && promptinit
+# setopt transient_rprompt
+# prompt z1
+
 source $ZDOTDIR/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
 
