@@ -37,7 +37,7 @@ romkatv/powerlevel10k
 
 using:mattmc3/zsh_custom path:plugins
 mattmc3/zsh_custom autoload:functions
-xdg
+xdg-apps
 azure
 clipboard
 common-aliases
@@ -55,7 +55,7 @@ perl
 prj
 python
 ruby
-terminal
+#terminal
 zoxide
 
 #
