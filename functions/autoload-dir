@@ -1,0 +1,9 @@
+#!/bin/zsh
+local zdir
+local -a zautoloads
+for zdir in "$@"; do
+  [[ -d "$zdir" ]] || continue
+  fpath=("$zdir" $fpath)
+  zautoloads=($zdir/*~_*(N.:t))
+  (( $#zautoloads > 0 )) && autoload -Uz $zautoloads
+done
