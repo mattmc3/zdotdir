@@ -31,6 +31,7 @@ OMZ_SHA=7ea697fd8138550ddf7262456d412f0dcd1cbf84 # 2026-07-29
 antidote bundle <<EOBUNDLES
   # Better Zsh defaults
   mattmc3/z1
+  mattmc3/use-xdg-basedirs
 
   # Utils
   mattmc3/zman
