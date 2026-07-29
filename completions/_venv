@@ -1,0 +1,6 @@
+#compdef venv
+
+_arguments '-l[list]' '-h[help]' '-p[print venv path]' '-r[remove venv]' '--home[set venv home]'
+_values 'venvs' $(venv -l)
+
+# vim: ft=zsh sw=2 ts=2 et

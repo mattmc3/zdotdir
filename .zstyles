@@ -52,6 +52,9 @@ zstyle ':zsh_custom:plugin:editor:*' 'enabled' 'yes'
 # git
 zstyle ':zsh_custom:plugin:git' default-user mattmc3
 
+# for any dynamic plugins, use my custom antibody build
+zstyle ":zsh_custom:antidote" use-antibody true
+
 # zshrc.d location
 zstyle ':zsh_custom:plugin:zshrcd' directory $ZDOTDIR/conf.d
 
