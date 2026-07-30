@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+##? Reload an autoload function.
+if (( $# == 0 )); then
+  print -ru2 "funcfresh: Expecting function argument."
+  return 1
+elif ! (( $+functions[$1] )); then
+  print -ru2 "funcfresh: Function not found '$1'."
+  return 1
+fi
+
+unfunction "$1"
+autoload -Uz "$1"
