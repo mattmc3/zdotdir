@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 local zdir
 local -a zautoloads
 for zdir in "$@"; do

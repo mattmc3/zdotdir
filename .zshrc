@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 #
 # .zshrc - Zsh file loaded on interactive shell sessions.
 #
