@@ -20,11 +20,8 @@
 # -p draws an approximation immediately and loads the theme behind it:
 #   rapid_prompt -p '%~ %# ' powerlevel10k
 #
-# Anything printed during startup lands over the drawn prompt and is erased with
-# it, so load noisy plugins before this or keep them quiet.
-#
-# The technique is romkatv's, from
-# https://gist.github.com/romkatv/8b318a610dc302bdbe1487bb1847ad99
+# Anything printed during startup, direnv and errors included, is captured and
+# replayed above the real prompt once loading finishes.
 
 autoload -Uz add-zsh-hook promptinit
 
@@ -65,6 +62,7 @@ rapid_prompt() {
 
   if (( approximate )); then
     print -Pnr -- $loading
+    _rapid_prompt_capture
     promptinit
     prompt $theme "$@"
   else
@@ -76,9 +74,19 @@ rapid_prompt() {
     # price of not having a second prompt definition to maintain.
     (( $+functions[prompt_${theme}_precmd] )) && prompt_${theme}_precmd
     print -Pnr -- $PS1
+    _rapid_prompt_capture
   fi
 
   add-zsh-hook precmd _rapid_prompt_clear
+}
+
+# Send startup output to a log so it can be replayed above the real prompt,
+# instead of landing over the drawn prompt and being erased with it.
+_rapid_prompt_capture() {
+  emulate -L zsh
+  typeset -g _rapid_prompt_log=${XDG_CACHE_HOME:-$HOME/.cache}/rapid-prompt.$$
+  { : >| $_rapid_prompt_log } 2>/dev/null || { unset _rapid_prompt_log; return 0 }
+  exec {_rapid_prompt_fd1}>&1 {_rapid_prompt_fd2}>&2 >>$_rapid_prompt_log 2>&1
 }
 
 # Move the cleanup last, so the drawn prompt is not erased before the real
@@ -93,7 +101,20 @@ _rapid_prompt_clear() {
   emulate -L zsh
   add-zsh-hook -d precmd _rapid_prompt_clear
 
+  if (( ${+_rapid_prompt_fd1} )); then
+    exec 1>&$_rapid_prompt_fd1 2>&$_rapid_prompt_fd2 \
+        {_rapid_prompt_fd1}>&- {_rapid_prompt_fd2}>&-
+  fi
+
   # Back to where the drawn prompt started, and wipe from there down.
   print -rn -- ${terminfo[rc]}${terminfo[sgr0]}${terminfo[ed]}
+
+  # Replay what startup printed, so the real prompt lands below it.
+  if [[ -n $_rapid_prompt_log ]]; then
+    [[ -s $_rapid_prompt_log ]] && print -rn -- "$(<$_rapid_prompt_log)"$'\n'
+    command rm -f -- $_rapid_prompt_log
+  fi
+
+  unset _rapid_prompt_log _rapid_prompt_fd1 _rapid_prompt_fd2
   unfunction _rapid_prompt_clear
 }
