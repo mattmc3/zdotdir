@@ -112,7 +112,8 @@ _history_sqlite_init() {
   setopt local_options
   local db=$1 current_version i
 
-  mkdir -p "${db:h}" || return 1
+  mkdir -p -m 700 "${db:h}" || return 1
+  chmod 700 "${db:h}" || return 1
 
   (( $+commands[sqlite3] )) || {
     print -ru2 "history-sqlite: sqlite3 required"
@@ -120,6 +121,7 @@ _history_sqlite_init() {
   }
 
   sqlite3 "$db" "PRAGMA journal_mode=WAL;" >/dev/null 2>&1 || return 1
+  chmod 600 "$db" || return 1
   current_version=$(sqlite3 "$db" 'PRAGMA user_version;' 2>/dev/null || echo 0)
 
   for i in {0..10}; do

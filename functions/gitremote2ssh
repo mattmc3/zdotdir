@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+##? Convert a Git remote from HTTPS to SSH.
+local target_dir=${1:-.}
+local remote_name=${2:-origin}
+
+if [[ ! -d $target_dir ]]; then
+  print -ru2 "gitremote2ssh: directory not found: $target_dir"
+  return 1
+fi
+
+if ! git -C "$target_dir" rev-parse --git-dir >/dev/null 2>&1; then
+  print -ru2 "gitremote2ssh: not a Git repository: $target_dir"
+  return 1
+fi
+
+local remote_url
+remote_url=$(git -C "$target_dir" remote get-url "$remote_name" 2>/dev/null)
+if [[ -z $remote_url ]]; then
+  print -ru2 "gitremote2ssh: remote '$remote_name' not found in $target_dir"
+  return 1
+fi
+
+if [[ $remote_url != https://* ]]; then
+  print "gitremote2ssh: '$remote_name' is already non-HTTPS: $remote_url"
+  return
+fi
+
+local host=${${remote_url#https://}%%/*}
+local repo_path=${${remote_url#https://}#*/}
+local ssh_url="git@${host}:${repo_path}"
+
+git -C "$target_dir" remote set-url "$remote_name" "$ssh_url" || return 1
+print "gitremote2ssh: updated '$remote_name'"
+print "  from: $remote_url"
+print "    to: $ssh_url"
