@@ -28,9 +28,15 @@ source <(antidote init)
 # Pins
 OMZ_SHA=7ea697fd8138550ddf7262456d412f0dcd1cbf84 # 2026-07-29
 
+# Show an instant prompt
+antidote bundle mattmc3/z1
+setopt transient_rprompt
+source $ZDOTDIR/lib/rapid-prompt.zsh
+rapid_prompt z1
+
 antidote bundle <<EOBUNDLES
   # Better Zsh defaults
-  mattmc3/z1
+  # mattmc3/z1
   mattmc3/use-xdg-basedirs
 
   # Utils
@@ -55,9 +61,11 @@ EOBUNDLES
 
 # Setup the P10k prompt
 # source $ZDOTDIR/.p10k.zsh
-autoload -Uz promptinit && promptinit
 setopt transient_rprompt
-prompt z1
+source $ZDOTDIR/rapid-prompt.zsh
+rapid_prompt z1
+#autoload -Uz promptinit && promptinit
+#prompt z1
 
 # Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
