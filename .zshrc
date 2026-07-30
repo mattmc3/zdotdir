@@ -59,14 +59,6 @@ antidote bundle <<EOBUNDLES
   zsh-users/zsh-history-substring-search post:bindkey-hss
 EOBUNDLES
 
-# Setup the P10k prompt
-# source $ZDOTDIR/.p10k.zsh
-setopt transient_rprompt
-source $ZDOTDIR/rapid-prompt.zsh
-rapid_prompt z1
-#autoload -Uz promptinit && promptinit
-#prompt z1
-
 # Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
 
