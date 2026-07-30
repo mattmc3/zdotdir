@@ -1,0 +1,92 @@
+add_newline = false
+
+# A minimal left prompt
+format = """$python$directory$character"""
+
+# move the rest of the prompt to the right
+#right_format = """$status$git_branch${custom.git_status_dirty}$git_status"""
+right_format = """$status$cmd_duration$git_branch$git_status${custom.git_status_dirty}"""
+
+# Timeout for commands executed by starship (in milliseconds)
+command_timeout = 2000
+
+# Set the palette.
+palette = "wombat"
+
+# Define custom colors
+[palettes.tokyo_night]
+black = '#15161e'
+blue = '#7aa2f7'
+cyan = '#7dcfff'
+green = '#9ece6a'
+purple = '#bb9af7'
+red = '#f7768e'
+white = '#a9b1d6'
+yellow = '#e0af68'
+pink = '#ff6ac1'
+
+[palettes.wombat]
+black = '#000000'
+blue = '#5da9f6'
+cyan = '#82fff7'
+green = '#b1e969'
+purple = '#e86aff'
+red = '#ff615a'
+white = '#dedacf'
+yellow = '#ebd99c'
+
+[character]
+success_symbol = "[❯](purple)[❯](cyan)"
+error_symbol = "[❯](yellow)[❯](red)"
+vicmd_symbol = "[❮](purple)[❮](cyan)"
+
+[python]
+format = '[(\($virtualenv\) )]($style)'
+style = 'white'
+
+[directory]
+style = "blue"
+truncation_length = 1
+truncation_symbol = ""
+fish_style_pwd_dir_length = 1
+
+# right prompt uses left space padding
+[git_branch]
+format = ' [$branch]($style)'
+style = 'green'
+
+[git_status]
+format = '([\[$ahead_behind$stashed\]]($style))'
+style = "cyan"
+stashed = "≡"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+
+[custom.git_status_dirty]
+when = 'test -n "$(git status --porcelain 2>/dev/null)"'
+symbol = "•"
+style = "yellow"
+format="[$symbol]($style)"
+shell = ["sh"]
+
+[cmd_duration]
+format = ' [$duration]($style)'
+
+[line_break]
+disabled = true
+
+[shell]
+fish_indicator = '🐟'
+powershell_indicator = '_'
+pwsh_indicator = '_'
+zsh_indicator = '󠀥%'
+style = 'cyan bold'
+disabled = false
+
+[status]
+disabled = false
+pipestatus = true
+format = '[($symbol$int )]($style)'
+symbol = '✘'
+pipestatus_format = '\[$pipestatus\]($style)'
