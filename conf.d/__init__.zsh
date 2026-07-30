@@ -23,23 +23,7 @@ cdpath=(
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  # core
   $prepath
   $path
-
-  # .local/share
-  $HOME/.local/share/nimble/bin(N)
-  $HOME/.local/share/cargo/bin(N)
-
-  # emacs
-  $HOME/.emacs.d/bin(N)
-  $XDG_CONFIG_HOME/emacs/bin(N)
-
-  # keg only brew apps
   $HOMEBREW_PREFIX/opt/curl/bin(N)
-  $HOMEBREW_PREFIX/opt/go/libexec/bin(N)
-  $HOMEBREW_PREFIX/share/npm/bin(N)
-  $HOMEBREW_PREFIX/opt/ruby/bin(N)
-  $HOMEBREW_PREFIX/lib/ruby/gems/*/bin(N)
-  $HOME/.gem/ruby/*/bin(N)
 )

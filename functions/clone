@@ -10,17 +10,20 @@ if [[ "$1" = */* ]]; then
   user=${1%/*}
   repo=${1##*/}
 else
-  # Use the git user zstyle
-  zstyle -s ':zsh_custom:plugin:git' default-user user
+  user=$(git config --get zsh-clone.user)
   if [[ -z "$user" ]]; then
-    echo "clone: Expecting zstyle ':zsh_custom:plugin:git' default-user." >&2
+    print -ru2 "clone: Missing git config zsh-clone.user."
+    print -ru2 "Add it with:"
+    print -ru2 "  git config --global zsh-clone.user <user>"
+    print -ru2 "  git config --global zsh-clone.url github.com"
     return 1
   fi
   repo=$1
 fi
 
 local giturl
-zstyle -s ':zsh_custom:plugin:git' default-site giturl || giturl=github.com
+giturl=$(git config --get zsh-clone.url)
+giturl=${giturl:-github.com}
 local dest=${XDG_PROJECTS_HOME:-~/Projects}/$user/$repo
 
 if [[ ! -d $dest ]]; then

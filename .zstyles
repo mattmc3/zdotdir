@@ -49,9 +49,6 @@ zstyle ':zsh_custom:plugin:editor:*' 'enabled' 'yes'
 # ZSH_CUSTOM features
 #
 
-# git
-zstyle ':zsh_custom:plugin:git' default-user mattmc3
-
 # for any dynamic plugins, use my custom antibody build
 zstyle ":zsh_custom:antidote" use-antibody true
 
@@ -67,16 +64,15 @@ zstyle ':zsh_custom:plugin:zfunctions' directory $ZDOTDIR/functions
 
 # Apps are opt-in. Run xdgbasedir to see what is on, what is available, and
 # what is still waiting on a move.
-zstyle ':use-xdg-basedirs:(az|bundle|cargo|duckdb|go|gpg|jupyter)' enabled yes
+zstyle ':use-xdg-basedirs:(az|bundle|cargo|dotnet|duckdb|go|gpg|jupyter)' enabled yes
 zstyle ':use-xdg-basedirs:(less|node|npm|python3|readline|rg|screen|sqlite3)' enabled yes
-zstyle ':use-xdg-basedirs:(irb|ruff|starship)' enabled yes
+zstyle ':use-xdg-basedirs:(irb|psql|ruff|rustup|starship)' enabled yes
 
 # Off until the directory moves, otherwise turning these on just hides what is
 # already there. xdgbasedir lists them under "move these first".
 #   mv ~/.claude   ~/.config/claude
 #   mv ~/.parallel ~/.config/parallel
 #   mv ~/.rbenv    ~/.local/share/rbenv
-#   mv ~/.nuget/NuGet/NuGet.Config ~/.config/NuGet/NuGet.Config   # then dotnet
 
 # Left off. _JAVA_OPTIONS makes the JVM print a "Picked up" line to stderr on
 # every run, which some scripts and CI parsers choke on.
@@ -87,6 +83,4 @@ zstyle ':use-xdg-basedirs:(irb|ruff|starship)' enabled yes
 #
 
 # Set prompt
-zstyle ':zephyr:plugin:prompt' theme p10k mmc
-
-# zstyle ':z1:prompt' transient 'yes'
+zstyle ':z1:prompt' transient 'yes'
