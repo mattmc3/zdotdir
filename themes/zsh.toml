@@ -18,18 +18,6 @@ transient = '$time[❯](bold cyan) '
 transient_success = '$time[❯](bold green) '
 transient_error = '$status'
 
-# Define custom colors
-[palettes.tokyo_night]
-black = '#15161e'
-blue = '#7aa2f7'
-cyan = '#7dcfff'
-green = '#9ece6a'
-purple = '#bb9af7'
-red = '#f7768e'
-white = '#a9b1d6'
-yellow = '#e0af68'
-pink = '#ff6ac1'
-
 [palettes.wombat]
 black = '#000000'
 red = '#ff615a'
@@ -63,25 +51,6 @@ cursor-color = '#76ff9f'
 cursor-text = '#a6a6a6'
 selection-background = '#c1deff'
 selection-foreground = '#000000'
-
-# Ported from .p10k.zsh. p10k stores xterm-256 indices; hex is the exact
-# equivalent, with the source index in the comment.
-[palettes.p10k]
-black = '#000000'   # POWERLEVEL9K_BACKGROUND (transparent)
-blue = '#0087af'    # 31  dir
-cyan = '#00afaf'    # 37  virtualenv, pyenv
-green = '#5fd700'   # 76  prompt_char ok, vcs clean
-purple = '#af5fff'  # 135 per_directory_history local
-red = '#d70000'     # 160 status error
-white = '#8787af'   # 103 dir shortened
-yellow = '#d7af00'  # 178 vcs modified
-# extras with no standard-name slot
-anchor = '#00afff'  # 39  dir anchor
-duration = '#87875f' # 101 command_execution_time
-pink = '#ff5f87'    # 204 prompt_char error
-status_ok = '#5faf00' # 70  status ok
-time = '#5f8787'    # 66  time
-muted = '#6c6c6c'   # 242 ruler, prompt gap
 
 [character]
 success_symbol = "[❯](purple)[❯](cyan)"
@@ -143,4 +112,4 @@ pipestatus_format = '\[$pipestatus\]($style)'
 disabled = false
 format = '[$time]($style) '
 time_format = '%H:%M:%S'
-style = 'yellow'
+style = 'brblack'
