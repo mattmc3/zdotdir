@@ -25,6 +25,9 @@ alias ll='ls -lh'
 alias la='ls -lAh'
 alias lsa="ls -aG"
 alias ldot='ls -ld .*'
+if (( ${+commands[eza]} )); then
+  alias ls=eza
+fi
 
 # fix typos
 alias get=git
