@@ -188,29 +188,30 @@ histdb() {
     return 1
   }
 
-  local -a help here fail success session limit reverse
+  local -a help here fail success session limit head
   zparseopts -D -E -- \
     {h,-help}=help \
     {d,-here}=here \
     {f,-fail}=fail \
-    {r,-reverse}=reverse \
+    {H,-head}=head \
     {s,-success}=success \
     {S,-session}=session \
     {n,-limit}:=limit \
     || {
-      print -ru2 "usage: histdb [-d] [-f] [-s] [-S] [-r] [-n N] [pattern]"
+      print -ru2 "usage: histdb [-d] [-f] [-s] [-S] [-H] [-n N] [pattern]"
       return 1
     }
 
   if (( $#help )); then
-    print "usage: histdb [-d] [-f] [-s] [-S] [-r] [-n N] [pattern]"
+    print "usage: histdb [-d] [-f] [-s] [-S] [-H] [-n N] [pattern]"
     return 0
   fi
 
   local row_limit=${limit[-1]:-50}
   local pattern=${1:-}
-  local order=ASC
-  (( $#reverse )) && order=DESC
+  # Default tails the newest rows; --head takes the oldest.
+  local scan=DESC
+  (( $#head )) && scan=ASC
   local -a where
   local quote="'"
 
@@ -223,15 +224,22 @@ histdb() {
   [[ -n $pattern ]] \
     && where+=("cmd LIKE '%${pattern//$quote/$quote$quote}%'")
 
-  local sql="
-    SELECT datetime(start_ts, 'unixepoch', 'localtime') AS time,
+  # Either end grabs its slice, then output prints oldest first like `fc -li`.
+  local rows="
+    SELECT start_ts,
+           datetime(start_ts, 'unixepoch', 'localtime') AS time,
            printf('%.2f', end_ts - start_ts) AS dur,
            ret,
            replace(cwd, '$HOME', '~') AS cwd,
            cmd
     FROM zsh_history"
-  (( $#where )) && sql+=" WHERE ${(j: AND :)where}"
-  sql+=" ORDER BY start_ts $order LIMIT $row_limit;"
+  (( $#where )) && rows+=" WHERE ${(j: AND :)where}"
+  rows+=" ORDER BY start_ts $scan LIMIT $row_limit"
+
+  local sql="
+    SELECT time, dur, ret, cwd, cmd
+    FROM ($rows)
+    ORDER BY start_ts ASC;"
 
   sqlite3 -column -header "$db" "$sql"
 }
