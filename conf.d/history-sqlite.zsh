@@ -4,6 +4,16 @@
 
 HISTDBFILE=${HISTDBFILE:-$XDG_DATA_HOME/zsh/zsh_history.db}
 
+# Set the short hostname
+if [[ -z "$SHORT_HOST" ]]; then
+  if [[ "$OSTYPE" = darwin* ]]; then
+    # macOS's $HOST changes with dhcp, etc. Use LocalHostName if possible.
+    SHORT_HOST=$(scutil --get LocalHostName 2>/dev/null) || SHORT_HOST="${HOST/.*/}"
+  else
+    SHORT_HOST="${HOST/.*/}"
+  fi
+fi
+
 zmodload zsh/datetime 2>/dev/null
 typeset -gA _history_sqlite_state
 if [[ -n "${_history_sqlite_state[loaded]:-}" ]]; then
@@ -24,8 +34,25 @@ _history_sqlite_insert() {
   done
 
   sqlite3 "$db" \
-    "INSERT INTO zsh_history(sid,cwd,cmd,ret,pipestatus,start_ts,end_ts) VALUES(${(j:,:)values});" \
+    "INSERT INTO zsh_history(host,user,sid,cwd,vcs_root,cmd,ret,pipestatus,start_ts,end_ts) VALUES(${(j:,:)values});" \
     >/dev/null 2>&1
+}
+
+# Walk up for a VCS root, setting REPLY. Stays fork-free to keep off the prompt path.
+_history_sqlite_vcs_root() {
+  emulate -L zsh
+  setopt local_options
+  local dir=$PWD
+
+  REPLY=
+  while true; do
+    if [[ -e $dir/.git || -d $dir/.hg || -d $dir/.svn ]]; then
+      REPLY=$dir
+      return 0
+    fi
+    [[ $dir == / || -z $dir ]] && return 1
+    dir=${dir:h}
+  done
 }
 
 _history_sqlite_preexec() {
@@ -61,6 +88,9 @@ _history_sqlite_precmd() {
   local start_ts=${_history_sqlite_state[start_ts]:-0}
   local cmd=${_history_sqlite_state[cmd]}
   local session=${_history_sqlite_state[session]}
+  local user=${USERNAME:-$USER}
+  local REPLY vcs_root
+  _history_sqlite_vcs_root && vcs_root=$REPLY
 
   if [[ ( $ignore_dups == on || $ignore_all_dups == on ) \
         && $cmd == "${_history_sqlite_state[last_cmd]:-}" ]]; then
@@ -75,8 +105,8 @@ _history_sqlite_precmd() {
   fi
 
   if [[ "${_history_sqlite_state[initialized]}" == "$HISTDBFILE" ]]; then
-    _history_sqlite_insert "$HISTDBFILE" "$session" "$PWD" "$cmd" \
-      "$return_code" "$pipeline_status" "$start_ts" "$end_ts" &|
+    _history_sqlite_insert "$HISTDBFILE" "$SHORT_HOST" "$user" "$session" "$PWD" \
+      "$vcs_root" "$cmd" "$return_code" "$pipeline_status" "$start_ts" "$end_ts" &|
   fi
 
   _history_sqlite_state[last_cmd]=$cmd
@@ -92,8 +122,11 @@ _history_sqlite_migration_0() {
   sqlite3 "$db" <<'SQL'
 CREATE TABLE IF NOT EXISTS zsh_history (
   id         INTEGER PRIMARY KEY,
+  host       TEXT,
+  user       TEXT,
   sid        TEXT,
   cwd        TEXT,
+  vcs_root   TEXT,
   cmd        TEXT,
   ret        INTEGER,
   pipestatus TEXT,
@@ -192,9 +225,9 @@ histdb() {
 
   local sql="
     SELECT datetime(start_ts, 'unixepoch', 'localtime') AS time,
-           printf('%.2f', end_ts - start_ts) AS secs,
+           printf('%.2f', end_ts - start_ts) AS dur,
            ret,
-           replace(cwd, '$HOME', '~') AS dir,
+           replace(cwd, '$HOME', '~') AS cwd,
            cmd
     FROM zsh_history"
   (( $#where )) && sql+=" WHERE ${(j: AND :)where}"
