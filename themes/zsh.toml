@@ -11,7 +11,12 @@ right_format = """$status$cmd_duration$git_branch$git_status${custom.git_status_
 command_timeout = 2000
 
 # Set the palette.
-palette = "wombat"
+palette = "blue_matrix"
+
+[profiles]
+transient = '$time[❯](bold cyan) '
+transient_success = '$time[❯](bold green) '
+transient_error = '$status'
 
 # Define custom colors
 [palettes.tokyo_night]
@@ -27,13 +32,56 @@ pink = '#ff6ac1'
 
 [palettes.wombat]
 black = '#000000'
-blue = '#5da9f6'
-cyan = '#82fff7'
-green = '#b1e969'
-purple = '#e86aff'
 red = '#ff615a'
-white = '#dedacf'
+green = '#b1e969'
 yellow = '#ebd99c'
+blue = '#5da9f6'
+purple = '#e86aff'
+cyan = '#82fff7'
+white = '#dedacf'
+
+[palettes.blue_matrix]
+black = '#101116'
+red = '#ff5680'
+green = '#00ff9c'
+yellow = '#fffc58'
+blue = '#00b0ff'
+purple = '#d57bff'
+cyan = '#76c1ff'
+white = '#c7c7c7'
+brblack = '#686868'
+brred = '#ff6e67'
+brgreen = '#5ffa68'
+bryellow = '#fffc67'
+brblue = '#6871ff'
+brpurple = '#d682ec'
+brcyan = '#60fdff'
+brwhite = '#ffffff'
+background = '#101116'
+foreground = '#00a2ff'
+cursor-color = '#76ff9f'
+cursor-text = '#a6a6a6'
+selection-background = '#c1deff'
+selection-foreground = '#000000'
+
+# Ported from .p10k.zsh. p10k stores xterm-256 indices; hex is the exact
+# equivalent, with the source index in the comment.
+[palettes.p10k]
+black = '#000000'   # POWERLEVEL9K_BACKGROUND (transparent)
+blue = '#0087af'    # 31  dir
+cyan = '#00afaf'    # 37  virtualenv, pyenv
+green = '#5fd700'   # 76  prompt_char ok, vcs clean
+purple = '#af5fff'  # 135 per_directory_history local
+red = '#d70000'     # 160 status error
+white = '#8787af'   # 103 dir shortened
+yellow = '#d7af00'  # 178 vcs modified
+# extras with no standard-name slot
+anchor = '#00afff'  # 39  dir anchor
+duration = '#87875f' # 101 command_execution_time
+pink = '#ff5f87'    # 204 prompt_char error
+status_ok = '#5faf00' # 70  status ok
+time = '#5f8787'    # 66  time
+muted = '#6c6c6c'   # 242 ruler, prompt gap
 
 [character]
 success_symbol = "[❯](purple)[❯](cyan)"
@@ -87,6 +135,12 @@ disabled = false
 [status]
 disabled = false
 pipestatus = true
-format = '[($symbol$int )]($style)'
+format = '[($symbol$int)]($style)'
 symbol = '✘'
 pipestatus_format = '\[$pipestatus\]($style)'
+
+[time]
+disabled = false
+format = '[$time]($style) '
+time_format = '%H:%M:%S'
+style = 'yellow'
