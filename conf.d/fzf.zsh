@@ -23,7 +23,7 @@ else
 fi
 
 # Use fzf for tab completions
-antidote bundle aloxaf/fzf-tab
+# antidote bundle aloxaf/fzf-tab
 
 # fzf-tab ignores %F{}/%f prompt-escape sequences in completion format
 # zstyles (see fzf-tab README "Configure" section) - reset to plain text

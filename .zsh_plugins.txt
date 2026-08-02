@@ -1,0 +1,26 @@
+# Better Zsh defaults
+mattmc3/starship-ftl post:'ftl-prompt starship zsh; ftl-transient on'
+mattmc3/z1
+mattmc3/use-xdg-basedirs
+
+# Utils
+mattmc3/zman
+aloxaf/fzf-tab
+using:mattmc3/zephyr path:plugins
+macos
+
+# OMZ plugins
+using:ohmyzsh/ohmyzsh path:plugins pin:7ea697fd8138550ddf7262456d412f0dcd1cbf84
+magic-enter
+fancy-ctrl-z
+extract
+
+# romkatv/powerlevel10k
+romkatv/zsh-bench kind:path
+romkatv/zsh-no-ps2
+
+# Fish-like
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions kind:fpath path:src
+zdharma-continuum/fast-syntax-highlighting
+zsh-users/zsh-history-substring-search post:bindkey-hss

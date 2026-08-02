@@ -7,5 +7,6 @@
 !.zstyles*
 !.zprofile*
 !.zlog*
+.zsh_plugins.zsh
 *.zwc
 *.zwc.old
