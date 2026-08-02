@@ -7,40 +7,35 @@
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+# Show the starship prompt instantly with starship-ftl
+path=(/opt/homebrew/bin(N) $path)
+setopt transient_rprompt
+zstyle ':ftl-prompt:' cursor bar
 
 # Lazy-load (autoload) Zsh function files from a directory.
-# fpath=($ZDOTDIR/functions $fpath)
-# autoload -Uz $ZDOTDIR/functions/*(.:t)
+fpath=($ZDOTDIR/functions $fpath)
+autoload -Uz $ZDOTDIR/functions/*(.:t)
 
 # Create an amazing Zsh config using antidote plugins.
 if [[ ! -d $ZDOTDIR/.antidote ]]; then
   git clone https://github.com/mattmc3/antidote $ZDOTDIR/.antidote
 fi
 source $ZDOTDIR/.antidote/antidote.zsh
-source <(antidote init)
 
 # Pins
 OMZ_SHA=7ea697fd8138550ddf7262456d412f0dcd1cbf84 # 2026-07-29
 
-# Show an instant prompt
-antidote bundle mattmc3/z1
-setopt transient_rprompt
-source $ZDOTDIR/lib/rapid-prompt.zsh
-rapid_prompt z1
-
+source <(antidote init)
 antidote bundle <<EOBUNDLES
   # Better Zsh defaults
-  # mattmc3/z1
+  mattmc3/starship-ftl post:'ftl-prompt starship zsh; ftl-transient on'
+  mattmc3/z1
   mattmc3/use-xdg-basedirs
 
   # Utils
   mattmc3/zman
+  using:mattmc3/zephyr path:plugins
+  macos
 
   # OMZ plugins
   using:ohmyzsh/ohmyzsh path:plugins pin:$OMZ_SHA
@@ -52,7 +47,7 @@ antidote bundle <<EOBUNDLES
   romkatv/zsh-bench kind:path
   romkatv/zsh-no-ps2
 
-  # Fishy
+  # Fish-like
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-completions kind:fpath path:src
   zdharma-continuum/fast-syntax-highlighting
