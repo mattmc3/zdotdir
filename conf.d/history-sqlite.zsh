@@ -140,6 +140,18 @@ CREATE INDEX IF NOT EXISTS idx_zsh_history_cmd
 SQL
 }
 
+# Composite so `histdb -d` filters and orders off one index.
+_history_sqlite_migration_1() {
+  emulate -L zsh
+  setopt local_options
+  local db=$1
+
+  sqlite3 "$db" <<'SQL'
+CREATE INDEX IF NOT EXISTS idx_zsh_history_cwd_start_ts
+  ON zsh_history(cwd, start_ts DESC);
+SQL
+}
+
 _history_sqlite_init() {
   emulate -L zsh
   setopt local_options
