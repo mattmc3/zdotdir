@@ -27,6 +27,8 @@ alias lsa="ls -aG"
 alias ldot='ls -ld .*'
 if (( ${+commands[eza]} )); then
   alias ls=eza
+  [[ -d ${XDG_CONFIG_HOME:-$HOME/.config}/eza ]] && \
+    export EZA_CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}/eza
 fi
 
 # fix typos
