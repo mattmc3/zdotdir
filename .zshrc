@@ -16,6 +16,13 @@ zstyle ':ftl-prompt:' cursor bar
 # fpath=($ZDOTDIR/functions $fpath)
 # autoload -Uz $ZDOTDIR/functions/*(.:t)
 
+# FTL testing
+# first, comment this out in .zsh_plugins.txt:
+#   mattmc3/starship-ftl post:'ftl-prompt starship zsh; ftl-transient on'
+# source $ZDOTDIR/lib/test-ftl.zsh
+# # test-ftl
+# test-no-ftl
+
 # Create an amazing Zsh config using antidote plugins.
 source $ZDOTDIR/lib/antidote-fast.zsh
 
