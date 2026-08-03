@@ -2,15 +2,16 @@
 # prj: Project jumper
 #
 
-cmd_prj=(
+_prj_bin=(
   /opt/homebrew/bin/prj(N)
   $HOME/bin/prj(N)
 )
 
-if (( $#cmd_prj )); then
+if (( $#_prj_bin )); then
     if (( $+functions[cached-eval] )); then
-    cached-eval $cmd_prj[1] -i zsh
+    cached-eval $_prj_bin[1] -i zsh
   else
-    eval "$($cmd_prj[1] -i zsh)"
+    eval "$($_prj_bin[1] -i zsh)"
   fi
 fi
+unset _prj_bin

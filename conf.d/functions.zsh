@@ -28,8 +28,8 @@ function noext {
 
 ##? optdiff - show a diff between set options and Zsh defaults
 function optdiff {
-  tmp1=$(mktemp)
-  tmp2=$(mktemp)
+  local tmp1=$(mktemp)
+  local tmp2=$(mktemp)
   zsh -df -c "set -o" >| $tmp1
   set -o >| $tmp2
   gdiff --changed-group-format='%<' --unchanged-group-format='' $tmp2 $tmp1

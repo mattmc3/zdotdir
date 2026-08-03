@@ -4,59 +4,17 @@
 #
 
 #
-# Zephyr features
-#
-
-# Use caching.
-zstyle ':zephyr:plugin:*' 'use-cache' yes
-
-#
-# Completions
-#
-
-zstyle ':zsh_custom:plugin:*' 'use-cache' no
-zstyle ':zsh_custom:plugin:completion' compstyle zshzoo
-
-#
-# History
-#
-
-zstyle ':zephyr:plugin:history:aux:sqlite' enable yes
-zstyle ':zephyr:plugin:history:aux:json' enable yes
-
-#
 # Editor
 #
 
 # Expand aliases to their actual command like Fish abbreviations.
-noexpand=(
-  ls
-  grep
-  gpg
-  vi
-  z
+zstyle ':zdotdir:globalias' noexpand \
+  ls \
+  grep \
+  gpg \
+  vi \
+  z \
   0 1 2 3 4 5 6 7 8 9
-)
-zstyle ':zsh_custom:plugin:editor:auto-expand-aliases' noexpand $noexpand
-
-# Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':zsh_custom:plugin:editor' key-bindings 'vi'
-
-# Enable all the editor extensions.
-zstyle ':zsh_custom:plugin:editor:*' 'enabled' 'yes'
-
-#
-# ZSH_CUSTOM features
-#
-
-# for any dynamic plugins, use my custom antibody build
-zstyle ":zsh_custom:antidote" use-antibody true
-
-# zshrc.d location
-zstyle ':zsh_custom:plugin:zshrcd' directory $ZDOTDIR/conf.d
-
-# zfunctions location
-zstyle ':zsh_custom:plugin:zfunctions' directory $ZDOTDIR/functions
 
 #
 # XDG base dirs
@@ -67,16 +25,6 @@ zstyle ':zsh_custom:plugin:zfunctions' directory $ZDOTDIR/functions
 zstyle ':use-xdg-basedirs:(az|bundle|cargo|dotnet|duckdb|go|gpg|jupyter)' enabled yes
 zstyle ':use-xdg-basedirs:(less|node|npm|python3|readline|rg|screen|sqlite3)' enabled yes
 zstyle ':use-xdg-basedirs:(irb|psql|ruff|rustup|starship)' enabled yes
-
-# Off until the directory moves, otherwise turning these on just hides what is
-# already there. xdgbasedir lists them under "move these first".
-#   mv ~/.claude   ~/.config/claude
-#   mv ~/.parallel ~/.config/parallel
-#   mv ~/.rbenv    ~/.local/share/rbenv
-
-# Left off. _JAVA_OPTIONS makes the JVM print a "Picked up" line to stderr on
-# every run, which some scripts and CI parsers choke on.
-# zstyle ':use-xdg-basedirs:java' enabled yes
 
 #
 # Prompt

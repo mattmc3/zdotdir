@@ -15,6 +15,7 @@ if [[ -z "$HOMEBREW_PREFIX" ]]; then
 
   # brew shellenv
   source <($_brewcmd[1] shellenv)
+  unset _brewcmd
 
   # Ensure prepath
   path=($prepath $path)

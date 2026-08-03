@@ -20,3 +20,6 @@ fi
 
 # Source your static plugins file.
 source ${zsh_plugins}.zsh
+
+# Clean up
+unset zsh_plugins

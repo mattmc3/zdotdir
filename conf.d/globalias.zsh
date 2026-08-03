@@ -3,13 +3,13 @@
 # Fish-like abbreviation expansion via zsh global aliases.
 # Space expands the last word if it's an alias; Enter expands then accepts.
 # Alt+Space inserts a literal space without expanding.
-# Add words to skip via: zstyle ':zdotdir:plugin:globalias' noexpand 'word' ...
+# Add words to skip via: zstyle ':zdotdir:globalias' noexpand 'word' ...
 
 typeset -gA _globalias_noexpand
 () {
   local -a _words
   local _w
-  zstyle -a ':zdotdir:plugin:globalias' noexpand '_words'
+  zstyle -a ':zdotdir:globalias' noexpand '_words'
   for _w in "${_words[@]}"; do
     _globalias_noexpand[$_w]=1
   done
