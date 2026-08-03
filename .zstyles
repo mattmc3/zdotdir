@@ -4,6 +4,18 @@
 #
 
 #
+# Z1
+#
+
+# Add skips so that I can do these things myself
+zstyle ':z1:zstyles' skip 'yes'
+zstyle ':z1:zfunctions' skip 'yes'
+zstyle ':z1:confd' skip 'yes'
+
+# If we use the Z1 prompt, uncomment this
+# zstyle ':z1:prompt' transient 'yes'
+
+#
 # Editor
 #
 
@@ -25,10 +37,3 @@ zstyle ':zdotdir:globalias' noexpand \
 zstyle ':use-xdg-basedirs:(az|bundle|cargo|dotnet|duckdb|go|gpg|jupyter)' enabled yes
 zstyle ':use-xdg-basedirs:(less|node|npm|python3|readline|rg|screen|sqlite3)' enabled yes
 zstyle ':use-xdg-basedirs:(irb|psql|ruff|rustup|starship)' enabled yes
-
-#
-# Prompt
-#
-
-# Set prompt
-zstyle ':z1:prompt' transient 'yes'

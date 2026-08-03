@@ -12,9 +12,13 @@ path=(/opt/homebrew/bin(N) $path)
 setopt transient_rprompt
 zstyle ':ftl-prompt:' cursor bar
 
-# # Lazy-load (autoload) Zsh function files from a directory.
-# fpath=($ZDOTDIR/functions $fpath)
-# autoload -Uz $ZDOTDIR/functions/*(.:t)
+# Set zstyles
+[ -r $ZDOTDIR/.zstyles ] \
+&& . $ZDOTDIR/.zstyles
+
+# Lazy-load (autoload) Zsh function files from a directory.
+fpath=($ZDOTDIR/functions $fpath)
+autoload -Uz $ZDOTDIR/functions/*(.:t)
 
 # FTL testing
 # first, comment this out in .zsh_plugins.txt:
@@ -29,11 +33,18 @@ source $ZDOTDIR/lib/antidote-fast.zsh
 # Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
 
+# Source conf.d files
+local -a _zrcs=($ZDOTDIR/conf.d/*.{z,}sh(N-.))
+for _zrc in ${(o)_zrcs}; do
+  [[ "${_zrc:t}" == '~'* ]] || source "$_zrc"
+done
+unset _zrc{,s}
+
 # Local settings
 [ -r $HOME/.local/config/zsh/.zshrc.local ] \
 && . $HOME/.local/config/zsh/.zshrc.local
 
-# Run the end of zshrc hook manually
+# Run the end of zshrc hook manually (defined in Z1)
 run_post_zshrc
 
 # Finish profiling by calling zprof.
