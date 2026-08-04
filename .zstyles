@@ -11,6 +11,7 @@
 zstyle ':z1:zstyles' skip 'yes'
 zstyle ':z1:zfunctions' skip 'yes'
 zstyle ':z1:confd' skip 'yes'
+zstyle ':z1:compinit' cache 'yes'
 
 # If we use the Z1 prompt, uncomment this
 # zstyle ':z1:prompt' transient 'yes'
