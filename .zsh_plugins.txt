@@ -7,12 +7,11 @@ mattmc3/use-xdg-basedirs
 getantidote/contrib
 mattmc3/zman
 aloxaf/fzf-tab
-using:mattmc3/zephyr path:plugins
-macos
+zshzoo/macos conditional:is-macos
+zshzoo/magic-enter
 
 # OMZ plugins
 using:ohmyzsh/ohmyzsh path:plugins pin:7ea697fd8138550ddf7262456d412f0dcd1cbf84
-magic-enter
 fancy-ctrl-z
 extract
 
