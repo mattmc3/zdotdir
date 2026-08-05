@@ -53,9 +53,16 @@ function brewdeps() {
 
 # Handle brew on multi-user Apple silicon.
 if [[ "$HOMEBREW_PREFIX" == /opt/homebrew ]]; then
-  _brew_owner="$(stat -f "%Su" "$HOMEBREW_PREFIX" 2>/dev/null)"
-  if [[ -n "$_brew_owner" ]] && [[ "$(whoami)" != "$_brew_owner" ]]; then
-    alias brew="sudo -Hu '$_brew_owner' brew"
+  # The (u$UID) qualifier matches only when the current user owns the prefix,
+  # so the usual single-user case never forks. Looking up the owner's name is
+  # left to zstat in the branch that actually needs it.
+  _brew_mine=("$HOMEBREW_PREFIX"(N/u$UID))
+  if (( ! $#_brew_mine )); then
+    zmodload -F zsh/stat b:zstat
+    typeset -A _brew_stat
+    zstat -s -H _brew_stat -- "$HOMEBREW_PREFIX" 2>/dev/null
+    [[ -z "$_brew_stat[uid]" ]] || alias brew="sudo -Hu '$_brew_stat[uid]' brew"
+    unset _brew_stat
   fi
-  unset _brew_owner
+  unset _brew_mine
 fi
