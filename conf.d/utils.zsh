@@ -9,5 +9,5 @@ cached-eval zsh-patina activate
 # frecency cd replacement
 cached-eval zoxide init zsh
 # x-shell completions
-export CARAPACE_BRIDGES="${CARAPACE_BRIDGES:-zsh,fish,bash}"
+export CARAPACE_BRIDGES="${CARAPACE_BRIDGES:-fish,bash}"
 cached-eval carapace _carapace

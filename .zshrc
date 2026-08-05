@@ -12,22 +12,16 @@ path=(/opt/homebrew/bin(N) $path)
 setopt transient_rprompt
 zstyle ':ftl-prompt:' cursor bar
 
-# Set zstyles
-[ -r $ZDOTDIR/.zstyles ] \
-&& . $ZDOTDIR/.zstyles
-
-# Lazy-load (autoload) Zsh function files from a directory.
-fpath=($ZDOTDIR/functions $fpath)
-autoload -Uz $ZDOTDIR/functions/*(.:t)
-
 # FTL testing
 # first, comment this out in .zsh_plugins.txt:
 #   mattmc3/starship-ftl post:'ftl-prompt starship zsh; ftl-transient on'
-# source $ZDOTDIR/lib/test-ftl.zsh
-# # test-ftl
+# source $HOME/Projects/mattmc3/starship-ftl/starship-ftl.plugin.zsh
+# ftl-prompt starship zsh
+# ftl-transient on
 # test-no-ftl
 
 # Create an amazing Zsh config using antidote plugins.
+is-macos() { [[ "$OSTYPE" == darwin* ]]; }
 source $ZDOTDIR/lib/antidote-fast.zsh
 
 # Never start in the root file system.
