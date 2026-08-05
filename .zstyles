@@ -8,6 +8,7 @@
 #
 
 # Add skips so that I can do these things myself
+zstyle ':z1:homebrew' cache yes
 #zstyle ':z1:zstyles' skip yes
 #zstyle ':z1:zfunctions' skip yes
 zstyle ':z1:confd' skip yes
