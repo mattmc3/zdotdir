@@ -1,7 +1,8 @@
 add_newline = false
 
 # Two-line left prompt, nothing on the right.
-format = """
+format = """\
+$shell\
 $directory\
 $git_branch\
 $git_status\
@@ -18,6 +19,15 @@ command_timeout = 2000
 palette = "blue_matrix"
 
 [profiles]
+# Drawn by starship-ftl before the real prompt is ready. Same shape as `format`
+# and `right_format`, minus anything that has to shell out (git especially), so
+# the cost stays flat no matter how big the repo is.
+ftl-prompt = """\
+$shell\
+$directory
+$python$character\
+"""
+ftl-rprompt = ""
 transient = '$time[❯](bold cyan) '
 transient_success = '$time[❯](bold green) '
 transient_error = '$status'
@@ -94,10 +104,11 @@ diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 format = ' [$duration]($style)'
 
 [shell]
+format = '[$indicator]($style) '
 fish_indicator = '🐟'
 powershell_indicator = '_'
 pwsh_indicator = '_'
-zsh_indicator = '󠀥%'
+zsh_indicator = '󠀥ℤ'
 style = 'cyan bold'
 disabled = false
 

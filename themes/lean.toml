@@ -1,0 +1,195 @@
+# Starship port of the Powerlevel10k "lean" style configured in ~/.config/zsh/.p10k.zsh.
+#
+# Layout, glyphs, and 256-color values are taken from that file. Everything
+# lives in the left prompt: RPROMPT would cost a second starship process per
+# prompt, so the right-hand segments are pushed over with $fill instead.
+
+add_newline = false
+command_timeout = 2000
+palette = "lean"
+
+format = """\
+[╭─ ](frame)\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$fill\
+$status\
+$cmd_duration\
+$jobs\
+$direnv\
+$python\
+$nix_shell\
+$username\
+$hostname\
+$time\
+[ ─╮](frame)
+[╰─](frame)$character\
+"""
+
+[profiles]
+# Drawn by starship-ftl before the real prompt is ready. Same shape as the real
+# prompt minus anything that shells out, so the cost is flat in any repo.
+ftl-prompt = """\
+[╭─ ](frame)$directory$fill[ ─╮](frame)
+[╰─](frame)$character\
+"""
+ftl-rprompt = ""
+
+# p10k's POWERLEVEL9K_TRANSIENT_PROMPT=always collapses old prompts to the
+# prompt char alone.
+transient = '[❯](ok) '
+transient_success = '[❯](ok) '
+transient_error = '[❯](err) '
+
+[palettes.lean]
+frame = "238"           # multiline frame
+dir = "31"              # POWERLEVEL9K_DIR_FOREGROUND
+dir_shortened = "103"   # POWERLEVEL9K_DIR_SHORTENED_FOREGROUND
+dir_anchor = "39"       # POWERLEVEL9K_DIR_ANCHOR_FOREGROUND
+vcs_clean = "76"
+vcs_modified = "178"
+vcs_untracked = "39"
+vcs_conflicted = "196"
+vcs_meta = "244"
+ok = "76"
+err = "196"
+status_err = "160"
+duration = "101"
+jobs = "70"
+direnv = "178"
+venv = "37"
+nix = "74"
+context = "180"
+context_root = "178"
+time = "66"
+
+[fill]
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR is a space and the ruler is off.
+symbol = " "
+style = "frame"
+
+[character]
+success_symbol = "[❯](ok)"
+error_symbol = "[❯](err)"
+vicmd_symbol = "[❮](ok)"
+
+[directory]
+# p10k uses truncate_to_unique, which starship has no equivalent for. Keeping
+# the last component whole and collapsing every parent to one character is the
+# closest approximation. Anchor dirs are not special-cased.
+format = "[$path]($style)[$read_only]($read_only_style)"
+style = "dir"
+truncation_length = 1
+truncation_symbol = ""
+truncate_to_repo = false
+fish_style_pwd_dir_length = 1
+read_only = " "
+read_only_style = "status_err"
+
+[git_branch]
+# p10k drops the branch icon and only prints :remote when the upstream name
+# differs from the local one. starship has no such comparison, so remote is
+# omitted rather than always shown.
+format = " [$branch]($style)"
+style = "vcs_clean"
+truncation_length = 32
+truncation_symbol = "…"
+
+[git_commit]
+# Matches p10k's @<8 chars of sha> on a detached HEAD, and #tag when tagged.
+only_detached = true
+format = "[@$hash$tag]($style)"
+style = "vcs_clean"
+commit_hash_length = 8
+tag_disabled = false
+tag_symbol = " #"
+
+[git_state]
+format = " [$state( $progress_current/$progress_total)]($style)"
+style = "vcs_conflicted"
+
+[git_status]
+format = """\
+([ $ahead_behind](vcs_clean))\
+([ $stashed](vcs_clean))\
+([ $conflicted](vcs_conflicted))\
+([ $staged](vcs_modified))\
+([ $modified](vcs_modified))\
+([ $untracked](vcs_untracked))\
+"""
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇣${behind_count} ⇡${ahead_count}"
+stashed = "*${count}"
+conflicted = "~${count}"
+staged = "+${count}"
+modified = "!${count}"
+untracked = "?${count}"
+renamed = ""
+deleted = ""
+typechanged = ""
+
+[status]
+# p10k hides a zero exit code and prints ✘<code> otherwise.
+disabled = false
+format = " [$symbol$status]($style)"
+symbol = "✘"
+style = "status_err"
+pipestatus = true
+pipestatus_format = " [\\[$pipestatus\\]]($style)"
+pipestatus_separator = " "
+map_symbol = false
+recognize_signal_code = true
+
+[cmd_duration]
+# POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3 with second precision.
+min_time = 3000
+show_milliseconds = false
+format = " [$duration]($style)"
+style = "duration"
+
+[jobs]
+# POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=false, so the count is dropped.
+format = " [$symbol]($style)"
+symbol = "≡"
+style = "jobs"
+number_threshold = 1
+symbol_threshold = 1
+
+[direnv]
+disabled = false
+format = " [$symbol$loaded/$allowed]($style)"
+symbol = ""
+style = "direnv"
+
+[python]
+# Stands in for p10k's virtualenv segment: name only, no python version, no
+# surrounding delimiters. starship only renders it inside a python project.
+format = " [$virtualenv]($style)"
+style = "venv"
+
+[nix_shell]
+format = " [$symbol$state( \\($name\\))]($style)"
+symbol = ""
+style = "nix"
+
+[username]
+# p10k's context segment is blank for a local non-root user.
+format = " [$user]($style)"
+style_user = "context"
+style_root = "context_root bold"
+show_always = false
+
+[hostname]
+ssh_only = true
+format = "[@$hostname]($style)"
+style = "context"
+
+[time]
+disabled = false
+format = " [$time]($style)"
+time_format = "%H:%M:%S"
+style = "time"
