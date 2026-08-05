@@ -1,5 +1,5 @@
 # project jumper
-cached-eval prj init zsh
+cached-eval prj -i zsh
 # SQLite history
 cached-eval histdb init zsh
 # .envrc source
