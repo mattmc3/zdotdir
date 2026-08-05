@@ -1,0 +1,14 @@
+#compdef dotnet
+# zsh parameter completion for the dotnet CLI
+# https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete
+
+local completions=("$(dotnet complete "$words")")
+
+if [[ -z "$completions" ]]; then
+  _arguments '*::arguments: _normal'
+  return
+fi
+
+_values = "${(ps:\n:)completions}"
+
+# vim: ft=zsh sw=2 ts=2 et

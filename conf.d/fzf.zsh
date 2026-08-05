@@ -16,6 +16,7 @@ function init_fzf() {
   fi
 }
 
+# make sure fzf works with jeffreytse/zsh-vi-mode
 if (( $+functions[zvm_version] )); then
   zvm_after_init_commands+=(init_fzf)
 else

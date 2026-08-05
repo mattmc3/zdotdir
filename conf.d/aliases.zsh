@@ -81,3 +81,26 @@ alias todos="$VISUAL $HOME/Desktop/todo.txt"
 
 # auto-orient images based on exif tags
 alias autorotate="jhead -autorot"
+
+# directory
+alias -g ..2="../.."
+alias -g ..3="../../.."
+alias -g ..4="../../../.."
+alias -g ..5="../../../../.."
+alias -g ..6="../../../../../.."
+alias -g ..7="../../../../../../.."
+alias -g ..8="../../../../../../../.."
+alias -g ..9="../../../../../../../../.."
+
+# Set the initial working directory so we can easily return to it.
+: ${IWD:=$PWD}
+alias iwd='cd $IWD'
+
+# dotfiles
+: ${DOTFILES:=$HOME/.dotfiles}
+alias dotf='cd "$DOTFILES"'
+alias dotfed='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
+alias dotfl="cd \$DOTFILES/local"
+alias fdot='cd ${XDG_CONFIG_HOME:-$HOME/.config}/fish'
+alias fconf=fdot
+alias zdot='cd $ZDOTDIR'
