@@ -1,0 +1,109 @@
+#
+# zephyr.toml - Zephyr default prompt theme
+#
+
+add_newline = false
+
+# A minimal left prompt
+format = """$python$directory$character"""
+
+# move the rest of the prompt to the right
+right_format = """$status$cmd_duration$git_branch$git_status"""
+
+# Timeout for commands executed by starship (in milliseconds)
+command_timeout = 2000
+
+# Set the palette.
+palette = "blue_matrix"
+
+[profiles]
+# Drawn by starship-ftl before the real prompt is ready. Same shape as `format`
+# and `right_format`, minus anything that has to shell out (git especially), so
+# the cost stays flat no matter how big the repo is.
+ftl-prompt = """$python$directory$character"""
+ftl-rprompt = ""
+transient = '$time[❯](bold cyan) '
+transient_success = '$time[❯](bold green) '
+transient_error = '$status'
+
+[palettes.blue_matrix]
+black = '#101116'
+red = '#ff5680'
+green = '#00ff9c'
+yellow = '#fffc58'
+blue = '#00b0ff'
+purple = '#d57bff'
+cyan = '#76c1ff'
+white = '#c7c7c7'
+brblack = '#686868'
+brred = '#ff6e67'
+brgreen = '#5ffa68'
+bryellow = '#fffc67'
+brblue = '#6871ff'
+brpurple = '#d682ec'
+brcyan = '#60fdff'
+brwhite = '#ffffff'
+background = '#101116'
+foreground = '#00a2ff'
+cursor-color = '#76ff9f'
+cursor-text = '#a6a6a6'
+selection-background = '#c1deff'
+selection-foreground = '#000000'
+
+[character]
+success_symbol = "[❯](purple)[❯](cyan)"
+error_symbol = "[❯](yellow)[❯](red)"
+vicmd_symbol = "[❮](purple)[❮](cyan)"
+
+[python]
+format = '[(\($virtualenv\) )]($style)'
+style = 'white'
+
+[directory]
+style = "blue"
+truncation_length = 1
+truncation_symbol = ""
+fish_style_pwd_dir_length = 1
+
+# right prompt uses left space padding
+[git_branch]
+format = ' [$branch]($style)'
+style = 'green'
+
+# Dirty flag rides on git_status: the group only renders when a state fires, so
+# `*` shows for any dirt. Symbols are U+034F combining grapheme joiners, which
+# attach to the `*` and are the invisible char zsh's RPROMPT math counts as
+# zero-width (it counts U+200B as one, which walks the cursor left).
+[git_status]
+format = '([•$conflicted$deleted$renamed$modified$typechanged$staged$untracked](white))([\[$ahead_behind$stashed\]]($style))'
+style = "cyan"
+stashed = "≡"
+conflicted = "͏"
+deleted = "͏"
+renamed = "͏"
+modified = "͏"
+typechanged = "͏"
+staged = "͏"
+untracked = "͏"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+
+[cmd_duration]
+format = ' [$duration]($style)'
+
+[line_break]
+disabled = true
+
+[status]
+disabled = false
+pipestatus = true
+format = '[($symbol$int)]($style)'
+symbol = '✘'
+pipestatus_format = '\[$pipestatus\]($style)'
+
+[time]
+disabled = false
+format = '[$time]($style) '
+time_format = '%H:%M:%S'
+style = 'brblack'

@@ -22,6 +22,7 @@ zstyle ':ftl-prompt:' cursor bar
 
 # Create an amazing Zsh config using antidote plugins.
 is-macos() { [[ "$OSTYPE" == darwin* ]]; }
+zsh_theme=(starship zephyr)
 source $ZDOTDIR/lib/antidote-fast.zsh
 
 # Never start in the root file system.
