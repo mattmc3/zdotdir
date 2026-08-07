@@ -1,5 +1,10 @@
-# Better Zsh defaults
+# Faster than light!
 mattmc3/starship-ftl post:'ftl-prompt $zsh_theme; ftl-transient on'
+
+# Header
+preset:ohmyzsh/ohmyzsh pin:7ea697fd8138550ddf7262456d412f0dcd1cbf84
+
+# Better Zsh defaults
 mattmc3/z1
 mattmc3/use-xdg-basedirs
 
@@ -8,12 +13,17 @@ getantidote/contrib
 mattmc3/zman
 aloxaf/fzf-tab
 zshzoo/macos conditional:is-macos
-zshzoo/magic-enter
+#zshzoo/magic-enter
 
 # OMZ plugins
-using:ohmyzsh/ohmyzsh path:plugins pin:7ea697fd8138550ddf7262456d412f0dcd1cbf84
-fancy-ctrl-z
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+using:ohmyzsh/ohmyzsh path:plugins
+copybuffer
+copyfile
+copypath
 extract
+fancy-ctrl-z
+magic-enter
 
 # romkatv/powerlevel10k
 romkatv/zsh-bench kind:path

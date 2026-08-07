@@ -9,7 +9,7 @@
 
 # Add skips so that I can do these things myself
 zstyle ':z1:homebrew' cache yes
-#zstyle ':z1:zstyles' skip yes
+zstyle ':z1:zstyles' skip yes
 #zstyle ':z1:zfunctions' skip yes
 zstyle ':z1:confd' skip yes
 #zstyle ':z1:compinit' cache yes
@@ -40,3 +40,15 @@ zstyle ':zdotdir:globalias' noexpand \
 zstyle ':use-xdg-basedirs:(az|bundle|cargo|dotnet|duckdb|go|gpg|jupyter)' enabled yes
 zstyle ':use-xdg-basedirs:(less|node|npm|python3|readline|rg|screen|sqlite3)' enabled yes
 zstyle ':use-xdg-basedirs:(irb|psql|ruff|rustup|starship)' enabled yes
+
+#
+# Antidote
+#
+
+# zcompile everything: static file + all bundles + dynamic cache
+zstyle ':antidote:*' zcompile 'yes'
+
+# or, set individually
+zstyle ':antidote:static'   zcompile 'yes'  # the static file
+zstyle ':antidote:bundle:*' zcompile 'yes'  # all bundles
+zstyle ':antidote:dynamic'  zcompile 'yes'  # dynamic-mode cache files

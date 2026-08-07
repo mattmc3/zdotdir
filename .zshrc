@@ -7,6 +7,10 @@
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
+# Set the styles
+[ -r $ZDOTDIR/.zstyles ] \
+&& . $ZDOTDIR/.zstyles
+
 # Show the starship prompt instantly with starship-ftl
 path=(/opt/homebrew/bin(N) $path)
 setopt transient_rprompt
@@ -23,7 +27,7 @@ zstyle ':ftl-prompt:' cursor bar
 # Create an amazing Zsh config using antidote plugins.
 is-macos() { [[ "$OSTYPE" == darwin* ]]; }
 zsh_theme=(starship zephyr)
-source $ZDOTDIR/lib/antidote-fast.zsh
+source $ZDOTDIR/lib/antidote-edge.zsh
 
 # Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
