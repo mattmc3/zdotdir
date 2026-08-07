@@ -2,7 +2,7 @@
 # cache time of 20 hours, so it should almost always regenerate the first time a
 # shell is opened each day.
 
-: ${ZSH_COMPDUMP:=$ZSH_CACHE_DIR/ZSH_COMPDUMP-${ZSH_VERSION}}
+: ${ZSH_COMPDUMP:=$ZSH_CACHE_DIR/zcompdump-${ZSH_VERSION}}
 autoload -Uz compinit
 # #q expands globs in conditional expressions
 if [[ $ZSH_COMPDUMP(#qNmh-20) ]]; then
