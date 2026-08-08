@@ -8,7 +8,7 @@ add_newline = false
 format = """$python$directory$character"""
 
 # move the rest of the prompt to the right
-right_format = """$status$cmd_duration$git_branch$git_status"""
+right_format = """$git_branch$git_status$cmd_duration$status"""
 
 # Timeout for commands executed by starship (in milliseconds)
 command_timeout = 2000
@@ -67,7 +67,7 @@ fish_style_pwd_dir_length = 1
 
 # right prompt uses left space padding
 [git_branch]
-format = ' [$branch]($style)'
+format = '[$branch]($style)'
 style = 'green'
 
 # Dirty flag rides on git_status: the group only renders when a state fires, so
@@ -98,7 +98,7 @@ disabled = true
 [status]
 disabled = false
 pipestatus = true
-format = '[($symbol$int)]($style)'
+format = ' [($symbol$int)]($style)'
 symbol = '✘'
 pipestatus_format = '\[$pipestatus\]($style)'
 
