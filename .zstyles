@@ -15,21 +15,22 @@ zstyle ':z1:confd' skip yes
 #zstyle ':z1:compinit' cache yes
 zstyle ':z1:compinit' skip yes
 
-# If we use the Z1 prompt, uncomment this
-# zstyle ':z1:prompt' transient 'yes'
-
-#
-# Editor
-#
-
-# Expand aliases to their actual command like Fish abbreviations.
-zstyle ':zdotdir:globalias' noexpand \
+# expand aliases
+zstyle ':z1:editor' expand-alias true
+zstyle ':z1:editor:expand-alias' exclude \
   ls \
   grep \
   gpg \
   vi \
   z \
   0 1 2 3 4 5 6 7 8 9
+
+# default command
+zstyle ':z1:editor:default-command' command 'ls'
+zstyle ':z1:editor:default-command' git-command 'git status -sb'
+
+# If we use the Z1 prompt, uncomment this
+# zstyle ':z1:prompt' transient 'yes'
 
 #
 # XDG base dirs
@@ -49,6 +50,9 @@ zstyle ':use-xdg-basedirs:(irb|psql|ruff|rustup|starship)' enabled yes
 zstyle ':antidote:*' zcompile 'yes'
 
 # or, set individually
-zstyle ':antidote:static'   zcompile 'yes'  # the static file
-zstyle ':antidote:bundle:*' zcompile 'yes'  # all bundles
-zstyle ':antidote:dynamic'  zcompile 'yes'  # dynamic-mode cache files
+# zstyle ':antidote:static'   zcompile 'yes'  # the static file
+# zstyle ':antidote:bundle:*' zcompile 'yes'  # all bundles
+# zstyle ':antidote:dynamic'  zcompile 'yes'  # dynamic-mode cache files
+
+# wait 14 days to apply updates
+# zstyle ':antidote:bundle:*' min-age 14
