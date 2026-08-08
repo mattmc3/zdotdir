@@ -3,6 +3,7 @@ mattmc3/starship-ftl post:'ftl-prompt $zsh_theme; ftl-transient on'
 
 # Header
 preset:ohmyzsh/ohmyzsh pin:7ea697fd8138550ddf7262456d412f0dcd1cbf84
+using:ohmyzsh/ohmyzsh path:plugins
 
 # Better Zsh defaults
 mattmc3/z1
@@ -17,13 +18,10 @@ zshzoo/macos conditional:is-macos
 
 # OMZ plugins
 ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-using:ohmyzsh/ohmyzsh path:plugins
 copybuffer
 copyfile
 copypath
 extract
-fancy-ctrl-z
-magic-enter
 
 # romkatv/powerlevel10k
 romkatv/zsh-bench kind:path
