@@ -55,4 +55,7 @@ zstyle ':antidote:*' zcompile 'yes'
 # zstyle ':antidote:dynamic'  zcompile 'yes'  # dynamic-mode cache files
 
 # wait 14 days to apply updates
-# zstyle ':antidote:bundle:*' min-age 14
+zstyle ':antidote:bundle:*'              min-age 14
+zstyle ':antidote:bundle:mattmc3/*'      min-age 0
+zstyle ':antidote:bundle:zshzoo/*'       min-age 0
+zstyle ':antidote:bundle:getantidote/*'  min-age 0
