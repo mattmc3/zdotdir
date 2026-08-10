@@ -36,6 +36,36 @@ zstyle ':z1:editor' accept-line-or-newline true
 # zstyle ':z1:prompt' transient 'yes'
 
 #
+# Zephyr
+#
+
+# If Zephyr is loaded as a plugin, this picks the subplugins to load.
+zstyle ':zephyr:load' plugins \
+  environment homebrew color compstyle completion directory editor \
+  history history-search prompt utility zfunctions macos confd
+
+# Use caching for everything. We like speed.
+zstyle ':zephyr:plugin:*' use-cache yes
+
+# Editor features that are off by default.
+zstyle ':zephyr:plugin:editor' dot-expansion          yes  # ... expands to ../..
+zstyle ':zephyr:plugin:editor' magic-enter            yes  # Enter on an empty line
+zstyle ':zephyr:plugin:editor' accept-line-or-newline yes  # Enter opens a new line
+zstyle ':zephyr:plugin:editor' automatic-glob-alias   yes  # expand on space
+zstyle ':zephyr:plugin:editor:glob-alias' on-accept   yes  # expand on Enter too
+
+# What magic-enter runs.
+zstyle ':zephyr:plugin:editor:magic-enter' command 'ls'
+zstyle ':zephyr:plugin:editor:magic-enter' git-command 'git status -sb'
+zstyle ':zephyr:plugin:editor:magic-enter' jj-command  'jj st'
+
+# Cursor per mode, and how a history search match is painted (zsh 5.9+).
+zstyle ':zephyr:plugin:editor:emacs' cursor 'line'
+zstyle ':zephyr:plugin:editor:viins' cursor 'line'
+zstyle ':zephyr:plugin:editor:vicmd' cursor 'block'
+#zstyle ':zephyr:plugin:history-search' highlight 'fg=black,bg=cyan'
+
+#
 # XDG base dirs
 #
 
@@ -62,3 +92,9 @@ zstyle ':antidote:bundle:*'              min-age 14
 zstyle ':antidote:bundle:mattmc3/*'      min-age 0
 zstyle ':antidote:bundle:zshzoo/*'       min-age 0
 zstyle ':antidote:bundle:getantidote/*'  min-age 0
+
+#
+# Starship-FTL
+#
+
+zstyle ':ftl-prompt:' cursor bar

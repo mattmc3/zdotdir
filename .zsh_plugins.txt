@@ -1,38 +1,21 @@
 # Faster than light!
 mattmc3/starship-ftl post:'ftl-prompt $zsh_theme; ftl-transient on'
 
-# Header
-preset:ohmyzsh/ohmyzsh pin:7ea697fd8138550ddf7262456d412f0dcd1cbf84
-using:ohmyzsh/ohmyzsh path:plugins
-
 # Better Zsh defaults
-mattmc3/z1
+#$HOME/Projects/mattmc3/z1
+mattmc3/zephyr
 mattmc3/use-xdg-basedirs
 
 # Utils
-getantidote/contrib
 mattmc3/zman
 aloxaf/fzf-tab
-zshzoo/macos conditional:is-macos
-#zshzoo/magic-enter
-
-# OMZ plugins
-ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-copybuffer
-copyfile
-copypath
-extract
+#zshzoo/macos conditional:is-macos
 
 # romkatv/powerlevel10k
 romkatv/zsh-bench kind:path
-romkatv/zsh-no-ps2
 
-# Syntax highlighting
-# michel-kraemer/zsh-patina kind:clone post:'autoload -Uz init-zsh-patina && init-zsh-patina'
-# zdharma-continuum/fast-syntax-highlighting
-# zsh-users/zsh-syntax-highlighting
-
-# Fish-like
-zsh-users/zsh-autosuggestions
+# Completions
 zsh-users/zsh-completions kind:fpath path:src
-zsh-users/zsh-history-substring-search post:'autoload -Uz bindkey-hss && bindkey-hss'
+
+# Auto-suggest
+zsh-users/zsh-autosuggestions

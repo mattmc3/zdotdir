@@ -8,43 +8,21 @@
 alias zprofrc="ZPROFRC=1 zsh"
 
 # Set the styles
-[ -r $ZDOTDIR/.zstyles ] \
-&& . $ZDOTDIR/.zstyles
-
-# Show the starship prompt instantly with starship-ftl
-path=(/opt/homebrew/bin(N) $path)
-setopt transient_rprompt
-zstyle ':ftl-prompt:' cursor bar
-
-# FTL testing
-# first, comment this out in .zsh_plugins.txt:
-#   mattmc3/starship-ftl post:'ftl-prompt starship zsh; ftl-transient on'
-# source $HOME/Projects/mattmc3/starship-ftl/starship-ftl.plugin.zsh
-# ftl-prompt starship zsh
-# ftl-transient on
-# test-no-ftl
+[[ -r $ZDOTDIR/.zstyles ]] \
+ && . $ZDOTDIR/.zstyles
 
 # Create an amazing Zsh config using antidote plugins.
-is-macos() { [[ "$OSTYPE" == darwin* ]]; }
+fpath+=($ZDOTDIR/functions $fpath)
+autoload -Uz is-macos
 zsh_theme=(starship zephyr)
 source $ZDOTDIR/lib/antidote-edge.zsh
 
 # Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
 
-# Source conf.d files
-local -a _zrcs=($ZDOTDIR/conf.d/*.{z,}sh(N-.))
-for _zrc in ${(o)_zrcs}; do
-  [[ "${_zrc:t}" == '~'* ]] || source "$_zrc"
-done
-unset _zrc{,s}
-
 # Local settings
-[ -r $HOME/.local/config/zsh/.zshrc.local ] \
-&& . $HOME/.local/config/zsh/.zshrc.local
-
-# Run the end of zshrc hook manually (defined in Z1)
-run_post_zshrc
+[[ -r $HOME/.local/config/zsh/.zshrc.local ]] \
+ && . $HOME/.local/config/zsh/.zshrc.local
 
 # Finish profiling by calling zprof.
 [[ "$ZPROFRC" -eq 1 ]] && zprof
