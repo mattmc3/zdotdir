@@ -40,9 +40,12 @@ zstyle ':z1:editor' accept-line-or-newline true
 #
 
 # If Zephyr is loaded as a plugin, this picks the subplugins to load.
-zstyle ':zephyr:load' plugins \
-  environment homebrew color compstyle completion directory editor \
-  history history-search prompt utility zfunctions macos confd
+# zstyle ':zephyr:load' plugins \
+#   environment homebrew color compstyle completion directory editor \
+#   history history-search prompt utility zfunctions macos confd
+
+zstyle ":zephyr:load" plugins-preset all
+zstyle ":zephyr:plugin:prompt" skip yes
 
 # Use caching for everything. We like speed.
 zstyle ':zephyr:plugin:*' use-cache yes
@@ -98,3 +101,9 @@ zstyle ':antidote:bundle:getantidote/*'  min-age 0
 #
 
 zstyle ':ftl-prompt:' cursor bar
+
+#
+# ZLE
+#
+
+zstyle ':zle:edit-command-line' editor nvim
