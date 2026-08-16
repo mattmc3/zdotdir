@@ -18,4 +18,4 @@ romkatv/zsh-bench kind:path
 zsh-users/zsh-completions kind:fpath path:src
 
 # Auto-suggest
-zsh-users/zsh-autosuggestions
+#zsh-users/zsh-autosuggestions
