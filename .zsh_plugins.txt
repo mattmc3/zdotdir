@@ -3,7 +3,8 @@ mattmc3/starship-ftl post:'ftl-prompt $zsh_theme; ftl-transient on'
 
 # Better Zsh defaults
 #$HOME/Projects/mattmc3/z1
-mattmc3/zephyr
+#mattmc3/zephyr
+mattmc3/z1
 mattmc3/use-xdg-basedirs
 
 # Utils

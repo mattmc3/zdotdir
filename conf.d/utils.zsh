@@ -4,8 +4,6 @@ cached-eval prj -i zsh
 cached-eval histdb init zsh
 # .envrc source
 cached-eval direnv hook zsh
-# syntax highlighting
-cached-eval zsh-patina activate
 # frecency cd replacement
 cached-eval zoxide init zsh
 # x-shell completions

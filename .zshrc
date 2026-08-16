@@ -20,9 +20,16 @@ source $ZDOTDIR/lib/antidote-edge.zsh
 # Never start in the root file system.
 [[ "$PWD" != "/" ]] || cd
 
+# we skip these for z1
+source $ZDOTDIR/lib/compinit.zsh
+source $ZDOTDIR/lib/confd.zsh
+
 # Local settings
 [[ -r $HOME/.local/config/zsh/.zshrc.local ]] \
  && . $HOME/.local/config/zsh/.zshrc.local
+
+# Run the end of zshrc hook manually (defined in Z1)
+run_post_zshrc
 
 # Finish profiling by calling zprof.
 [[ "$ZPROFRC" -eq 1 ]] && zprof
