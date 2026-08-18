@@ -2,7 +2,7 @@
 # fzf: Configure the fuzzy finder.
 #
 
-# https://github.com/ajeetdsouza/fzf
+# https://github.com/junegunn/fzf
 if ! (( $+commands[fzf] )); then
   print -ru2 "fzf not found"
   return 1
