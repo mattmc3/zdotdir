@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+##? Fetch a gitignore from gitignore.io.
+if (( $# == 0 )); then
+  print -ru2 "usage: gi <topic> [<topic>...]"
+  print -ru2 "       gi list"
+  return 1
+fi
+
+curl -fsSLw '\n' "https://www.toptal.com/developers/gitignore/api/${(j:,:)@}"
