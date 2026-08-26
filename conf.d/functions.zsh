@@ -64,7 +64,7 @@ function rmzwc {
 }
 
 ##? Substitutes string parts with environment variables
-function substenv {
+function subenv {
   if (( $# == 0 )); then
     subenv ZDOTDIR | subenv HOME
   else
